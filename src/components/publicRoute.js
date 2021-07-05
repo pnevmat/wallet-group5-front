@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
-import selectors from '../redux/selectors/selectors';
+import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
 
 const PublicRoute = ({
     component: Component,
@@ -15,8 +15,4 @@ const PublicRoute = ({
     />
 );
 
-const mapStateToProps = state => ({
-    authorisation: selectors.authorisation(state)
-})
-
-export default connect(mapStateToProps)(PublicRoute);
+export default PublicRoute;
