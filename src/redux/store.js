@@ -1,8 +1,9 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import {persistStore, persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import registrationReducers from './reducers/registrationReducer/registrationReducers';
+import authorisationReducers from './reducers/authorisationReducer/authorisationReducer';
 
 import logger from 'redux-logger';
 
@@ -14,9 +15,19 @@ const userTokenPersistConfig = {
 
 const store = configureStore({
     reducer: {
-        userData: registrationReducers.userDataReducer,
-        userToken: persistReducer(userTokenPersistConfig, registrationReducers.registrationReducer),
-        session: {isAuth: registrationReducers.authReducer, error: registrationReducers.authErrorReducer}
+        userData: combineReducers({
+            data: registrationReducers.userDataReducer,
+            data: authorisationReducers.userDataReducer
+        }),
+        userToken: persistReducer(
+            userTokenPersistConfig,
+            registrationReducers.registrationReducer,
+            authorisationReducers.authorisationReducer
+        ),
+        session: combineReducers({
+            isAuth: authorisationReducers.authReducer,
+            error: authorisationReducers.authErrorReducer
+        })
     },
     middleware: [
         ...getDefaultMiddleware(),
