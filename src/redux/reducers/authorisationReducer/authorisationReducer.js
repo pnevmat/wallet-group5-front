@@ -19,8 +19,8 @@ const authReducer = createReducer(authorisationInitialState, {
 });
 
 const authErrorReducer = createReducer(authorisationInitialState, {
-    [registrationActions.registrationError]: (_, payload) => payload.message,
-    [loginActions.loginError]: (_, payload) => payload.message
+    [registrationActions.registrationError]: (_, {payload}) => payload.message,
+    [loginActions.loginError]: (_, {payload}) => payload.message
 });
 
 export default {authorisationReducer, userDataReducer, authReducer, authErrorReducer};
