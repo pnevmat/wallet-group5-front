@@ -1,5 +1,9 @@
-// import {createSelector} from '@reduxjs/toolkit';
+import {createSelector} from '@reduxjs/toolkit';
 
 const getSessionErrorStatus = state => state.session.error;
 
-export default getSessionErrorStatus;
+const registrationSelector = createSelector([getSessionErrorStatus], error => {
+    return error
+});
+
+export default {getSessionErrorStatus, registrationSelector};

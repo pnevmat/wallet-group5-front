@@ -7,7 +7,7 @@ import AddTransactionButton from './components/addTransactionButton/AddTransacti
 
 // const HomePage = lazy(() => import('./pages/homePage' /* webpackChunkName: "Home-Page" */));
 const RegisterPage = lazy(() => import('./pages/registrationPage' /* webpackChunkName: "Registration-Page" */));
-// const LoginPage = lazy(() => import('./pages/loginPage' /* webpackChunkName: "Login-Page" */));
+const LoginPage = lazy(() => import('./pages/loginPage' /* webpackChunkName: "Login-Page" */));
 
 const FinanceApp = () => {
     return (
@@ -16,7 +16,7 @@ const FinanceApp = () => {
                 <Switch>
                     {/* <Route exact path='/' render={(props) => <HomePage {...props} />} /> */}
                     <PublicRoute path='/register' restricted component={RegisterPage} redirectTo='/contacts' />
-                    {/* <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/contacts' /> */}
+                    <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/contacts' />
                 </Switch>
                 <AddTransactionButton/>
             </section>
