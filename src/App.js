@@ -7,6 +7,8 @@ import PublicRoute from './components/publicRoute';
 // const HomePage = lazy(() => import('./pages/homePage' /* webpackChunkName: "Home-Page" */));
 const RegisterPage = lazy(() => import('./pages/registrationPage' /* webpackChunkName: "Registration-Page" */));
 const LoginPage = lazy(() => import('./pages/loginPage' /* webpackChunkName: "Login-Page" */));
+const DashboardPage = lazy(() => import('./pages/dashboardPage' /* webpackChunkName: "Dashboard-Page" */));
+const StatisticsPage = lazy(() => import('./pages/statisticsPage' /* webpackChunkName: "Statistics-Page" */))
 
 const FinanceApp = () => {
     return (
@@ -16,6 +18,8 @@ const FinanceApp = () => {
                     {/* <Route exact path='/' render={(props) => <HomePage {...props} />} /> */}
                     <PublicRoute path='/register' restricted component={RegisterPage} redirectTo='/contacts' />
                     <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/contacts' />
+                    <PrivateRoute path='/dashboard' restricted component={DashboardPage} redirectTo='/login' />
+                    <PrivateRoute path='/statistics' restricted component={StatisticsPage} redirectTo='/login' />
                 </Switch>
             </section>
         </Suspense>

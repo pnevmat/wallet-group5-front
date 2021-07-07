@@ -4,6 +4,7 @@ import registrationActions from '../../actions/registrationActions/registrationA
 import loginActions from '../../actions/loginActions/loginActions';
 
 const authorisationInitialState = {};
+const authReducerInitialState = true;
 
 const authorisationReducer = createReducer(authorisationInitialState, {
     [loginActions.loginSuccess]: (_, payload) => payload.token
@@ -13,7 +14,7 @@ const userDataReducer = createReducer(authorisationInitialState, {
     [loginActions.loginSuccess]: (_, payload) => payload.data
 });
 
-const authReducer = createReducer(authorisationInitialState, {
+const authReducer = createReducer(authReducerInitialState, {
     [registrationActions.registrationSuccess]: () => true,
     [loginActions.loginSuccess]: () => true
 });
