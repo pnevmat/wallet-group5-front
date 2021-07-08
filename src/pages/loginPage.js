@@ -1,17 +1,16 @@
 import {React, useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import registrationOperation from '../redux/operations/registrationOperation';
+import loginOperation from '../redux/operations/loginOperation';
 import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
 
-import RegistrationForm from '../components/registrationForm/registrationForm';
+import LoginForm from '../components/loginForm/loginForm';
 
-const RegistrationPage = () => {
+const LoginPage = () => {
     const dispatch = useDispatch();
-    const onRegistrationSubmit = userData => dispatch(registrationOperation(userData));
+    const onLoginSubmit = userData => dispatch(loginOperation(userData));
 
     const error = useSelector(selectors.registrationSelector);
-    console.log(error);
 
     if (error && typeof error === 'string') {
         alert(`${error}`);
@@ -23,9 +22,9 @@ const RegistrationPage = () => {
                 <img src='#' alt='кошелек'/>
                 <h1>Wallet</h1>
             </div>
-            <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
+            <LoginForm onLoginSubmit={onLoginSubmit} />
         </>
     );
 };
 
-export default RegistrationPage;
+export default LoginPage;

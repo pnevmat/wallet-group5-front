@@ -2,7 +2,7 @@
 
 Клонируем себе сборку на репозиторий:
  * через Github Desktop https://docs.google.com/document/d/1pXbLLIkiCUn4pGgI6pHlp29425vwhoUL8UZ1-xLnP0g/edit или
- * через команду в консоли: git clone -b dev https://github.com/pnevmat/movie-skylines
+ * через команду в консоли: git clone -b dev https://github.com/pnevmat/wallet-group5-front.git
 
 Переходим в ветку dev, если вы не находитесь в ней, с помощью команды:
  * git checkout dev

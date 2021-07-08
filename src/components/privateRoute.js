@@ -1,18 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
-import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
+import selectors from '../redux/selectors/authorisationSelectors/authorisationSelectors';
 
 const PrivateRoute = ({
     component: Component,
-    authorisation,
     redirectTo,
     ...routeProps
-}) => (
-    <Route 
-        {...routeProps}
-        render={props => authorisation ? <Component {...props} /> : <Redirect to={redirectTo} />}
-    />
-);
+}) => {
+
+    const authorisation = useSelector(selectors.authorisation);
+    
+    return (
+        <Route 
+            {...routeProps}
+            render={props => authorisation ? <Component {...props} /> : <Redirect to={redirectTo} />}
+        />
+    );
+};
 
 export default PrivateRoute;
