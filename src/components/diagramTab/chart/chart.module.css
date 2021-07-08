@@ -1,0 +1,10 @@
+.chart_container {
+    display: inline-block;
+    width: 320px;
+    height: 320px;
+}
+
+.canvas {
+    border-radius: 50%;
+}
+
