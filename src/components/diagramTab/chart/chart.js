@@ -1,6 +1,9 @@
+import styles from './chart.module.css';
+
 import React, { useEffect } from 'react';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
+
 
 const ChartComponent = (props) => {
     useEffect(() => {
@@ -13,32 +16,29 @@ const ChartComponent = (props) => {
                 datasets: [{
                     label: '# of Votes',
                     data: transactionsData.map(transaction => transaction.sum),
+                    radius: 225,
                     backgroundColor: transactionsData.map(transaction => transaction.color),
-                    hoverOffset: 4
-                    // borderColor: [
-                    //     'rgba(255, 99, 132, 1)',
-                    //     'rgba(54, 162, 235, 1)',
-                    //     'rgba(255, 206, 86, 1)',
-                    //     'rgba(75, 192, 192, 1)',
-                    //     'rgba(153, 102, 255, 1)',
-                    //     'rgba(255, 159, 64, 1)'
-                    // ],
-                    // borderWidth: 3
+                    hoverOffset: 4,
+                    borderColor: transactionsData.map(transaction => transaction.color),
+                    borderWidth: 2,
                 }]
             },
             options: {
-                // scales: {
-                //     y: {
-                //         beginAtZero: true
-                //     }
-                // }
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            color: '#000001'
+                        }
+                    }
+                }
             }
         });
     }, [])
     
     return (
-        <div>
-            <canvas id="myChart"></canvas>
+        <div className={styles.chart_container}>
+            <canvas className={styles.canvas} id="myChart"></canvas>
         </div>
     );
 };

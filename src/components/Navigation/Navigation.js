@@ -14,7 +14,7 @@ const Navigation = () => {
             exact
             className={s.links}
             activeClassName={s.activeLinks}
-            to={'/home'}
+            to={'/dashboard'}
           >
             <HomeIcon />
             <span className={s.navTitle}>Главная</span>
@@ -26,7 +26,7 @@ const Navigation = () => {
             exact
             className={s.links}
             activeClassName={s.activeLinks}
-            to={'/diagram'}
+            to={'/statistics'}
           >
             <StatisticsIcon /> <span className={s.navTitle}>Статистика</span>
           </NavLink>
