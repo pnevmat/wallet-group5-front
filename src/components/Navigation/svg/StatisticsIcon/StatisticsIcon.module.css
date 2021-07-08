@@ -1,0 +1,15 @@
+.navIcons {
+  width: 100%;
+  max-width: 38px;
+  max-height: 38px;
+}
+@media screen and (min-width: 767px) {
+  .navIcons {
+    max-width: 18px;
+    max-height: 18px;
+    margin-right: 18px;
+  }
+}
+.navIcons:hover {
+  fill: #4a56e2;
+}
