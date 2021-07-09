@@ -1,0 +1,85 @@
+@import url(../../utils/cssVaribles.css);
+
+ul {
+  margin: 0px, 0px, 0px, 0px;
+  padding: 0px;
+}
+.links {
+  font-size: 18px;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+}
+
+.links:hover {
+  color: #4a56e2;
+}
+
+.activeLinks {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .navTitle {
+    display: none;
+  }
+}
+.navTitle {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .navTitle {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navLastItem {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .navList {
+    display: flex;
+    /* justify-content: space-around; */
+  }
+}
+.navLastItem {
+  margin-top: 13px;
+}
+.navList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.navItem {
+  margin-top: 13px;
+  margin-right: 36px;
+}
+.navItem:first-child {
+  margin-left: 67px;
+}
+
+@media screen and (min-width: 768px) {
+  .navItem:first-child {
+    margin-top: 35px;
+    margin-left: 43px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .navItem {
+    margin-top: 19px;
+    margin-left: 43px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .navItem:first-child {
+    margin-top: 45px;
+    margin-left: 88px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .navItem {
+    margin-left: 88px;
+  }
+}
