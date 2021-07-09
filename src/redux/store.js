@@ -16,13 +16,15 @@ const userTokenPersistConfig = {
 const store = configureStore({
     reducer: {
         userData: combineReducers({
-            data: registrationReducers.userDataReducer,
-            data: authorisationReducers.userDataReducer
+            registrationData: registrationReducers.userDataReducer,
+            authorisationData: authorisationReducers.userDataReducer
         }),
         userToken: persistReducer(
             userTokenPersistConfig,
-            registrationReducers.registrationReducer,
-            authorisationReducers.authorisationReducer
+            combineReducers({
+                registrationToken: registrationReducers.registrationReducer,
+                authorisationToken: authorisationReducers.authorisationReducer
+            })
         ),
         session: combineReducers({
             isAuth: authorisationReducers.authReducer,

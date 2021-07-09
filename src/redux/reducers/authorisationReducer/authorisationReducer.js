@@ -4,14 +4,14 @@ import registrationActions from '../../actions/registrationActions/registrationA
 import loginActions from '../../actions/loginActions/loginActions';
 
 const authorisationInitialState = {};
-const authReducerInitialState = true;
+const authReducerInitialState = false;
 
 const authorisationReducer = createReducer(authorisationInitialState, {
-    [loginActions.loginSuccess]: (_, payload) => payload.token
+    [loginActions.loginSuccess]: (_, {payload}) => payload.data.token
 });
 
 const userDataReducer = createReducer(authorisationInitialState, {
-    [loginActions.loginSuccess]: (_, payload) => payload.data
+    [loginActions.loginSuccess]: (_, {payload}) => payload.user
 });
 
 const authReducer = createReducer(authReducerInitialState, {

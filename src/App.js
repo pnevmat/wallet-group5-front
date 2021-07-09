@@ -18,7 +18,7 @@ const FinanceApp = () => {
                 <Switch>
                     <Route exact path='/' render={(props) => <HomePage {...props} />} />
                     <PublicRoute path='/register' restricted component={RegisterPage} redirectTo='/contacts' />
-                    <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/contacts' />
+                    <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/dashboard' />
                     <PrivateRoute path='/dashboard' restricted component={DashboardPage} redirectTo='/login' />
                     <PrivateRoute path='/statistics' restricted component={StatisticsPage} redirectTo='/login' />
                 </Switch>
