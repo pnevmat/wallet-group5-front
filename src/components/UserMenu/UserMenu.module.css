@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* .avatar {
+    margin-right: 4px;
+    border-radius: "50%";
+}; */
+
+.name {
+  font-weight: 600;
+  margin: 0 12px 0 0;
+}
+
+.btn_logout {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 2px #097f86;
+  border-width: 0;
+  border-style: none;
+  cursor: pointer;
+  min-width: 100px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: initial;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+}
+
+.btn_logout:hover {
+  color: red;
+  box-shadow: 0 0 5px 2px rgb(255, 0, 89);
+}
