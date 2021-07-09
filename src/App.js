@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
+import AddTransactionButton from './components/addTransactionButton/AddTransactionButton'
 import Navigation from './components/Navigation/Navigation';
 import AppBar from '../src/components/AppBar/AppBar';
 import routes from '../src/routes';
@@ -25,6 +26,7 @@ const FinanceApp = () => {
                     <PrivateRoute path='/dashboard' restricted component={DashboardPage} redirectTo='/login' />
                     <PrivateRoute path='/statistics' restricted component={StatisticsPage} redirectTo='/login' />
                 </Switch>
+                <AddTransactionButton/>
             </section>
         </Suspense>
     );
