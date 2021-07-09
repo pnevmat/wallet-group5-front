@@ -4,6 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 import Navigation from './components/Navigation/Navigation';
+import AppBar from '../src/components/AppBar/AppBar';
+import routes from '../src/routes';
+import Spinner from './Spinner';
 
 const HomePage = lazy(() => import('./pages/HomePage' /* webpackChunkName: "Home-Page" */));
 const RegisterPage = lazy(() => import('./pages/registrationPage' /* webpackChunkName: "Registration-Page" */));
@@ -13,10 +16,10 @@ const StatisticsPage = lazy(() => import('./pages/statisticsPage' /* webpackChun
 
 const FinanceApp = () => {
     return (
-        <Suspense fallback={<p>Загружаем...</p>} >
+        <Suspense fallback={<Spinner />} >
             <section>
                 <Switch>
-                    <Route exact path='/' render={(props) => <HomePage {...props} />} />
+                    <Route exact path={routes.home} render={(props) => <HomePage {...props} />} />
                     <PublicRoute path='/register' restricted component={RegisterPage} redirectTo='/contacts' />
                     <PublicRoute path='/login' restricted component={LoginPage} redirectTo='/contacts' />
                     <PrivateRoute path='/dashboard' restricted component={DashboardPage} redirectTo='/login' />
