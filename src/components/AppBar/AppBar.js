@@ -4,11 +4,11 @@ import UserMenu from "../UserMenu/UserMenu";
 import AuthNav from "../AuthNav/AuthNav";
 // import { connect } from 'react-redux';
 import { useSelector } from "react-redux";
-import { authSelectors } from "../../redux/auth";
+import authorisation from "../../redux/selectors/authorisationSelectors/authorisationSelectors";
 import s from "./appBar.module.css";
 
 export default function AppBar() {
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const isAuthenticated = useSelector(authorisation);
 
   return (
     <header className={s.AppBar}>

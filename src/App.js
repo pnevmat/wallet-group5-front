@@ -1,5 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
