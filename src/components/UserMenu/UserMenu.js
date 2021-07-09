@@ -1,17 +1,17 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { authSelectors } from "../../redux/selectors";
-import { authOperations } from "../../redux/operations/loginOperation";
+import getUserName from "../../redux/selectors/authorisationSelectors/authorisationSelectors";
+import logoutOperation from "../../redux/operations/logoutOperation";
 import s from "./UserMenu.module.css";
 import defaultAvatar from "./default-avatar.png";
 
 export default function UserMenu() {
   const dispatch = useDispatch();
   //!!!
-  const name = useSelector(authSelectors.getUserName);
+  const name = useSelector(getUserName);
 
   const onLogout = useCallback(() => {
-    dispatch(authOperations.logoutUser());
+    dispatch(logoutOperation());
   }, [dispatch]);
 
   return (

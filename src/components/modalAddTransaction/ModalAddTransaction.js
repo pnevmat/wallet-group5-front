@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import AddIcon from '@material-ui/icons/Add';
 import { createPortal } from 'react-dom';
-import s from './ModalAddTransaction.module.css';
-import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
-import RemoveIcon from '@material-ui/icons/Remove';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
-import CategoryForm from './CategoryForm';
+import AddIcon from '@material-ui/icons/Add';
+import CloseIcon from '@material-ui/icons/Close';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import RemoveIcon from '@material-ui/icons/Remove';
 import moment from 'moment';
+import CategoryForm from './CategoryForm';
 import { validate } from 'indicative/validator'
+import s from './ModalAddTransaction.module.css';
 
 const schema = {
   username: 'required|alpha',

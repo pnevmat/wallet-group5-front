@@ -31,7 +31,7 @@ const loginOperation = userData => async dispatch => {
 
         dispatch(loginActions.loginSuccess(response.data));
     }catch(error) {
-        dispatch(loginActions.loginError(error.message));
+        dispatch(loginActions.loginError(error));
     };
 };
 
