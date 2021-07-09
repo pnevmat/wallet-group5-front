@@ -20,7 +20,7 @@ const registerOperation = userData => async dispatch => {
 
         dispatch(registrationAction.registrationSuccess(response.data));
     }catch(error) {
-        dispatch(registrationAction.registrationError(error.message));
+        dispatch(registrationAction.registrationError(error));
     };
 };
 
