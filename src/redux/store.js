@@ -17,14 +17,16 @@ const userTokenPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    userData: combineReducers({
-      data: registrationReducers.userDataReducer,
-      data: authorisationReducers.userDataReducer,
+     userData: combineReducers({
+      registrationData: registrationReducers.userDataReducer,
+      authorisationData: authorisationReducers.userDataReducer
     }),
     userToken: persistReducer(
       userTokenPersistConfig,
-      registrationReducers.registrationReducer,
-      authorisationReducers.authorisationReducer,
+      combineReducers({
+        registrationToken: registrationReducers.registrationReducer,
+        authorisationToken: authorisationReducers.authorisationReducer
+      })
     ),
     session: combineReducers({
       isAuth: authorisationReducers.authReducer,
@@ -32,7 +34,7 @@ const store = configureStore({
     }),
   },
   middleware: [...getDefaultMiddleware(), logger],
-  devTools: process.env.NODE_ENV === 'development',
+  devTools: process.env.NODE_ENV === 'development'
 });
 
 const persistor = persistStore(store);

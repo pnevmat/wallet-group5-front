@@ -9,7 +9,7 @@ const registrationReducer = createReducer(registrationInitialState, {
 });
 
 const userDataReducer = createReducer(registrationInitialState, {
-    [registrationActions.registrationSuccess]: (_, payload) => payload.data
+    [registrationActions.registrationSuccess]: (_, {payload}) => payload.user
 });
 
 export default {registrationReducer, userDataReducer};
