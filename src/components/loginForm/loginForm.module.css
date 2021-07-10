@@ -1,0 +1,340 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* max-width: 720; */
+  /* height: 720; */
+  background: #fff;
+  /* position: relative; */
+  padding: 30px 20px;
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+  /* background-image: url(./images/gradient.png);
+  background-repeat: no-repeat; */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 30px;
+
+  /* margin-bottom: 50px; */
+}
+
+.logo__name {
+  font-size: 30px;
+}
+
+.logo__img {
+  margin-right: 30px;
+}
+
+.form {
+  background-color: #fff;
+  display: flex;
+  margin: auto;
+  max-width: 540px;
+  /* height: 468px; */
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  /* padding: 0 65px;
+  border-radius: 20px; */
+}
+
+.input__email {
+  background-image: url(./images/email.png);
+  /* width: 410px;
+  height: 34px;
+
+  margin-bottom: 35px; */
+  background-repeat: no-repeat;
+  background-position-x: 15px;
+  background-position-y: 8px;
+  padding-left: 50px;
+  color: #bdbdbd;
+  font-size: 15px;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.input__password {
+  background-image: url(./images/lock.png);
+  /* width: 410px;
+  height: 34px; */
+
+  background-repeat: no-repeat;
+  background-position-x: 15px;
+  background-position-y: 3px;
+  padding-left: 50px;
+
+  font-size: 15px;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  /* margin-bottom: 45px; */
+}
+
+.button__submit {
+  /* width: 300px;
+  height: 50px; */
+  text-decoration: none;
+  color: #fff;
+  background: #24cca7;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.button__registration {
+  text-align: center;
+  align-items: baseline;
+  /* width: 300px;
+  height: 50px; */
+  text-decoration: none;
+  background: #24cca7;
+  padding-top: 13px;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 60px;
+}
+
+.button:hover,
+.button:focus {
+  color: #fff;
+  /* background: #24cca7; */
+  /* border: 1px solid #ced2d1; */
+  transition: all 0.2s linear;
+}
+
+.containerloginPages {
+  max-width: 1238px;
+  margin: 0 auto;
+  /* display: flex; */
+}
+
+.loginPages {
+  position: relative;
+  background: #e5e5e5;
+  z-index: 1;
+}
+
+/* .loginPagesImg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 150px;
+  z-index: 1;
+} */
+
+.loginPageName {
+  text-align: center;
+}
+
+/* .loginPageVrap {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 618px;
+  min-height: 449px;
+  background-image: url(./images/backgroud.png);
+  background-repeat: no-repeat;
+  z-index: -1;
+} */
+
+@media (min-width: 768px) and (max-width: 320px) {
+  .container {
+    max-width: 320;
+    padding: 0;
+  }
+  .loginPages {
+    display: none;
+  }
+
+  .form {
+    width: 320;
+    border-radius: 0;
+    padding: 0px 20px;
+  }
+
+  .input__email {
+    width: 280px;
+  }
+
+  .input__password {
+    width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .loginPagesImg {
+    display: none;
+  }
+
+  .logiPagedox {
+  }
+
+  .logiPagedoxImg1 {
+    position: relative;
+    left: 100px;
+    bottom: 180px;
+  }
+
+  .logiPagedoxImg2 {
+    position: relative;
+    left: 50px;
+  }
+
+  .containerloginPages {
+    max-width: 768px;
+    position: relative;
+    /* display: flex;
+        flex-direction: column; */
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: absolute;
+    top: 362px;
+    left: 110px;
+    z-index: 3;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+
+  /* .containerloginPages::before{
+        content: "";
+        display: block;
+        width: 456px;
+        height: 486px;
+        background-image: url(./images/frame-tablet.png);
+        background-position: x=4;
+        background-repeat: no-repeat;
+    } */
+
+  /* .loginPages::after {
+        content: "";
+     display: block;
+     width: 456px;
+     height: 486px;
+     background-image: url(./images/eclipseTablet.png);
+     background-position: x=4;
+     background-repeat: no-repeat;
+      } */
+
+  /* .loginPageVrap {
+        position: absolute;
+        top: 160px;
+        left: 0;
+        width: 618px;
+        min-height: 449px;
+        background-image: url(./images/backgroud.png);
+        background-repeat: no-repeat;
+        z-index: -1;
+      } */
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 136px 85px 116px 95px;
+    max-width: 720px;
+    background-image: url(./images/gradient.png);
+    background-repeat: no-repeat;
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: inherit;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+
+  .containerloginPages {
+    display: flex;
+    max-width: 1238px;
+  }
+
+  .loginPages {
+    width: 618px;
+    height: 720;
+    z-index: 1;
+  }
+
+  .loginPagesImg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 150px;
+    z-index: 1;
+  }
+
+  .loginPageVrap {
+    position: absolute;
+    top: 160px;
+    left: 0;
+    width: 618px;
+    min-height: 449px;
+    background-image: url(./images/backgroud.png);
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .logiPagedox {
+    display: none;
+  }
+}
