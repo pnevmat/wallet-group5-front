@@ -1,0 +1,324 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  padding: 30px 20px;
+}
+
+.active {
+  color: #ffa848;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.logo__name {
+  font-size: 30px;
+}
+
+.logo__img {
+  margin-right: 30px;
+}
+
+.form {
+  background-color: #fff;
+  display: flex;
+  margin: auto;
+  max-width: 540px;
+
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.input__email {
+  background-image: url(./images/email.png);
+  background-repeat: no-repeat;
+  background-position-x: 15px;
+  background-position-y: 8px;
+  padding-left: 50px;
+  color: #bdbdbd;
+  font-size: 15px;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.input__password {
+  background-image: url(./images/lock.png);
+
+  background-repeat: no-repeat;
+  background-position-x: 15px;
+  background-position-y: 3px;
+  padding-left: 50px;
+
+  font-size: 15px;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  
+}
+
+.button__submit {
+  
+  text-decoration: none;
+  color: #fff;
+  background: #24cca7;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.button__registration {
+  text-align: center;
+  align-items: baseline;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 18px;
+  padding-top: 13px;
+  color: #4a56e2;
+  border: none;
+  background: #ffffff;
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+  margin-bottom: 60px;
+}
+
+.button:hover,
+.button:focus {
+  color: #fff;
+  transition: all 0.2s linear;
+}
+
+.containerloginPages {
+  max-width: 1238px;
+  margin: 0 auto;
+}
+
+.loginPages {
+  position: relative;
+  background: #e5e5e5;
+  z-index: 1;
+}
+
+.loginPageName {
+  text-align: center;
+  z-index: 3;
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 320;
+    padding: 0;
+  }
+  .loginPages {
+    display: none;
+  }
+
+  .logo {
+    padding-top: 100px;
+    padding-bottom: 52px;
+  }
+
+  .form {
+    width: 320;
+    border-radius: 0;
+    padding: 0px 20px;
+  }
+
+  .input__email {
+    width: 280px;
+    height: 34px;
+    margin-bottom: 30px;
+  }
+
+  .input__password {
+    width: 280px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit{
+    width: 280px;
+    height: 50px;
+  }
+
+  .button__registration{
+    width: 280px;
+    height: 50px;
+    margin-bottom: 110px;
+  }
+}
+
+@media (min-width: 768px) {
+  .loginPagesImg {
+    display: none;
+  }
+
+  .loginPages {
+ 
+    padding-bottom: 511px;
+  }
+
+  .logiPagedoxImg1 {
+    position: relative;
+    left: 100px;
+    bottom: 180px;
+  }
+
+  .logiPagedoxImg2 {
+    position: relative;
+    left: 50px;
+  }
+
+  .loginPageName {
+    position: absolute;
+    right: 222px;
+    top: 143px;
+  }
+
+  .containerloginPages {
+    max-width: 768px;
+    position: relative;
+
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: absolute;
+    top: 362px;
+    left: 110px;
+    z-index: 3;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+
+  .loginPageVrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 618px;
+    min-height: 449px;
+    background-image: url(./images/backgroud.png);
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 136px 85px 116px 95px;
+    max-width: 720px;
+    background-image: url(./images/gradient.png);
+    background-repeat: no-repeat;
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: inherit;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+
+  .containerloginPages {
+    display: flex;
+    max-width: 1238px;
+  }
+
+  .loginPages {
+    width: 618px;
+    height: 720;
+    padding: 0;
+    z-index: 1;
+  }
+
+  .loginPageName {
+    position: absolute;
+    min-width: 150px;
+    left: 35%;
+    top: 615px;
+    margin: 0;
+    z-index: 3;
+  }
+
+  .loginPagesImg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 150px;
+    z-index: 1;
+  }
+
+  .loginPageVrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 618px;
+    min-height: 449px;
+    background-image: url(./images/backgroud.png);
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .logiPagedox {
+    display: none;
+  }
+}
