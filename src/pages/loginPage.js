@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import loginOperation from '../redux/operations/loginOperation';
 import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
 
+import FormAuth from '../components/FormAuth/FormAuth';
 import LoginForm from '../components/loginForm/loginForm';
 
 const LoginPage = () => {
@@ -17,13 +18,13 @@ const LoginPage = () => {
   }
 
   return (
-    <>
-      <div>
+    <FormAuth>
+      {/* <div>
         <img src="#" alt="кошелек" />
         <h1>Wallet</h1>
-      </div>
+      </div> */}
       <LoginForm onLoginSubmit={onLoginSubmit} />
-    </>
+    </FormAuth>
   );
 };
 

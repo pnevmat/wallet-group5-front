@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  width: 100%;
+  border: none;
+
+  padding-bottom: 10px;
+}
+.label {
+  line-height: 27px;
+  margin-bottom: 40px;
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 10px;
+}
+.input_email {
+  background-image: url(./Email.svg);
+  width: 20px;
+  height: 16px;
+  margin-right: 10px;
+}
+.input_password {
+  background-image: url(./Password.svg);
+  width: 16px;
+  height: 21px;
+  margin-right: 14px;
+}
+.input_name {
+  background-image: url(./Name.svg);
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+}
+.button_registr {
+  width: 300px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background: #24cca7;
+  border-radius: 20px;
+  border-color: #24cca7;
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+.button_entrance {
+  width: 300px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #ffffff;
+  border: 1px solid #4a56e2;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.button_entrance > a {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #4a56e2;
+}
