@@ -1,9 +1,9 @@
-// import axios from "axios";
+import axios from "axios";
 import registrationAction from '../actions/registrationActions/registrationAction';
 
 import BASE_URL from '../../utils/baseUrl'
 
-// axios.defaults.baseUrl = BASE_URL;
+axios.defaults.baseURL = BASE_URL;
 
 // const token = {
 //     set(token) {
@@ -13,15 +13,14 @@ import BASE_URL from '../../utils/baseUrl'
 
 const registerOperation = userData => async dispatch => {
     dispatch(registrationAction.registrationRequest());
-
     try {
-        // const response = axios.post('', userData);
-
+        const response = await axios.post('/api/users/register', userData);
+        
         // token.set(response.data.token);
 
-        // dispatch(registrationAction.registrationSuccess());
+        dispatch(registrationAction.registrationSuccess(response.data));
     }catch(error) {
-        dispatch(registrationAction.registrationError(error.message));
+        dispatch(registrationAction.registrationError(error));
     };
 };
 

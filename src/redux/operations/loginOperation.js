@@ -1,17 +1,17 @@
-// import axios from "axios";
+import axios from "axios";
 import loginActions from '../actions/loginActions/loginActions';
 import { validate } from 'indicative/validator';
 
 import BASE_URL from '../../utils/baseUrl';
 import validation from '../../utils/validation/loginFormValidate';
 
-// axios.defaults.baseUrl = BASE_URL;
+axios.defaults.baseURL = BASE_URL;
 
-// const token = {
-//     set(token) {
-//         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     }
-// };
+const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    }
+};
 
 const loginOperation = userData => async dispatch => {
     dispatch(loginActions.loginRequest());
@@ -25,13 +25,13 @@ const loginOperation = userData => async dispatch => {
             dispatch(loginActions.loginError(err));
             return;
         });
-        // const response = axios.post('', userData);
+        const response = await axios.post('/api/users/login', userData);
 
-        // token.set(response.data.token);
+        token.set(response.data.token);
 
-        // dispatch(loginAction.loginSuccess());
+        dispatch(loginActions.loginSuccess(response.data));
     }catch(error) {
-        dispatch(loginActions.loginError(error.message));
+        dispatch(loginActions.loginError(error));
     };
 };
 
