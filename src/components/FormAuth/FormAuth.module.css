@@ -1,0 +1,28 @@
+.container {
+  width: 540px;
+  background-color: white;
+  border-radius: 20px;
+  padding-left: 65.5px;
+  padding-right: 65px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+.logo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.title {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+}
+.logo {
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+}

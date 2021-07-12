@@ -1,0 +1,39 @@
+.conteiner {
+  display: inline-block;
+  width: 280px;
+  height: 80px;
+  margin-left: 20px;
+  margin-top: 13px;
+
+  background: #e9dada;
+  border-radius: 30px;
+}
+.title {
+  color: #a6a6a6;
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+.balance {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .conteiner {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 334px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .conteiner {
+    margin-top: 30px;
+    margin-left: 85px;
+    width: 350px;
+  }
+}
