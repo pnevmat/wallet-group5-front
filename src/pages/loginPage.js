@@ -10,6 +10,7 @@ import frameTablet from '../components/loginForm/images/eclipseTablet.png';
 import loginOperation from '../redux/operations/loginOperation';
 import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
 
+import FormAuth from '../components/FormAuth/FormAuth';
 import LoginForm from '../components/loginForm/loginForm';
 
 const LoginPage = () => {
@@ -24,6 +25,7 @@ const LoginPage = () => {
 
   return (
     <>
+      <FormAuth />
       <div className={s.containerloginPages}>
         <div className={s.loginPages}>
           <div className={s.logiPagedox}>
