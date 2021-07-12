@@ -8,6 +8,9 @@ import storage from 'redux-persist/lib/storage';
 import registrationReducers from './reducers/registrationReducer/registrationReducers';
 import authorisationReducers from './reducers/authorisationReducer/authorisationReducer';
 import logger from 'redux-logger';
+import categoryReducer from './reducers/categoryReducer/categoryReducer';
+import transactionReducer from './reducers/transactionReducer/transactionReducer';
+
 
 const userTokenPersistConfig = {
   key: 'token',
@@ -32,6 +35,15 @@ const store = configureStore({
       isAuth: authorisationReducers.authReducer,
       error: authorisationReducers.authErrorReducer,
     }),
+    categories:combineReducers({
+      category: categoryReducer,
+    
+      
+    }),
+    transactions:combineReducers({
+      transactions: transactionReducer,
+    })
+
   },
   middleware: [...getDefaultMiddleware(), logger],
   devTools: process.env.NODE_ENV === 'development'

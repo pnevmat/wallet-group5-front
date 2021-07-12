@@ -5,7 +5,7 @@ import loginActions from '../../actions/loginActions/loginActions';
 import logoutActions from '../../actions/logoutActions/logoutActions';
 
 const authorisationInitialState = {};
-const authReducerInitialState = true;
+const authReducerInitialState = false;
 
 const authorisationReducer = createReducer(authorisationInitialState, {
     [loginActions.loginSuccess]: (_, {payload}) => payload.data.token,
