@@ -1,23 +1,25 @@
 import React from 'react';
 
-const HomePage = () => (
+import s from './homepage.module.css';
+
+const HomeComponent = () => (
   <div className={s.registrationLoginPage}>
     <span className={s.homePageText}>Finance App</span>
-    <svg className={s.homePage}>
+    {/* <svg className={s.homePage}>
       <use
         className={s.homePageSvgFrame}
-        href="../../sprite/symbol-defs.svg#icon-Ellipse-1Frame"
+        href="../../sprite/symbol-defs.svg#icon-Ellipse-1"
       ></use>
       <use
         className={s.homePageSvgElipse1}
-        href="../../sprite/symbol-defs.svg#icon-Ellipse-1Elipse-1"
+        href="../../sprite/symbol-defs.svg#icon-Ellipse-2"
       ></use>
       <use
         className={s.homePageSvgRectangle}
-        href="../../sprite/symbol-defs.svg#icon-Ellipse-1Rectangle-3"
+        href="../../sprite/symbol-defs.svg#icon-Rectangle-3"
       ></use>
-    </svg>
+    </svg> */}
   </div>
 );
 
-export default HomePage;
+export default HomeComponent;

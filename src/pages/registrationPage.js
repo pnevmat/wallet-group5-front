@@ -21,11 +21,7 @@ const RegistrationPage = () => {
 
   return (
     <FormAuth>
-      {/* <div>
-        <img src="#" alt="кошелек" />
-        <h1>Wallet</h1> */}
       <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
-      {/* </div> */}
     </FormAuth>
   );
 };

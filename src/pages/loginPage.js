@@ -10,7 +10,6 @@ import frameTablet from '../components/loginForm/images/eclipseTablet.png';
 import loginOperation from '../redux/operations/loginOperation';
 import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
 
-import FormAuth from '../components/FormAuth/FormAuth';
 import LoginForm from '../components/loginForm/loginForm';
 
 const LoginPage = () => {
@@ -25,7 +24,9 @@ const LoginPage = () => {
 
   return (
     <>
-      <FormAuth />
+    {/* Эту разметку и ее стили нужно вынести в отдельный компонент
+    так как он переиспользуется на странице регистрации */}
+    {/* ======= */}
       <div className={s.containerloginPages}>
         <div className={s.loginPages}>
           <div className={s.logiPagedox}>
@@ -47,6 +48,7 @@ const LoginPage = () => {
           />
           <h1 className={s.loginPageName}>Finance App</h1>
         </div>
+      {/* ========= */}
         <LoginForm onLoginSubmit={onLoginSubmit} />
       </div>
     </>

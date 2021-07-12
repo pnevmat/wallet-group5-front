@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import routes from '../../routes';
-import { authSelectors } from '../../redux/selectors/authSelectors';
-// import s from './Navigation.module.css';
+import authSelectors from '../../redux/selectors/authorisationSelectors/authorisationSelectors';
+import s from './Navigation1.module.css';
 
-const s = authSelectors.getIsAuthenticated
+// const s = authSelectors.getIsAuthenticated
 
-export default function Navigation() {
+export default function Navigation1() {
   //!!!!
-  const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+  const isAuthenticated = useSelector(authSelectors.authorisation);
   return (
       <nav>
         <NavLink
