@@ -1,13 +1,6 @@
 .AppBar {
   display: flex;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
-  min-height: 80px;
-  /* padding-left: 30px;
-  padding-right: 30px; */
-  border-bottom: 3px solid rgb(202, 197, 197);
-  line-height: 1.5;
+  flex-direction: row-reverse;
 }
 
 body {
@@ -15,6 +8,7 @@ body {
 }
 
 html {
+  background-color: #e5e5e5;
   width: 1280px;
   height: 720px;
   text-align: center;

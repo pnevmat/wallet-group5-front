@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const authorisation = state => state.session.isAuth;
+const getIsAuthorisation = state => state.session.isAuth;
 const getUserName = state => state.userData.registrationData.name;
-const getUserEmail = state => state.auth.user.email;
+const getUserEmail = state => state.auserDatauth.user.email;
 const getUserBalance = state => state.userData.registrationData.balance;
 
-const authorisationSelector = createSelector([authorisation], authorised => {
+const authorisationSelector = createSelector([getIsAuthorisation], authorised => {
   return authorised;
 });
 
@@ -18,7 +18,7 @@ const userBalanceSelector = createSelector([getUserBalance], balace => {
 });
 
 export default {
-  authorisation,
+  getIsAuthorisation,
   getUserName,
   getUserEmail,
   getUserBalance,

@@ -1,19 +1,18 @@
 import React from "react";
-import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
-import AuthNav from "../AuthNav/AuthNav";
 // import { connect } from 'react-redux';
 import { useSelector } from "react-redux";
-import selectors from "../../redux/selectors/authorisationSelectors/authorisationSelectors";
+import selectors from "../../redux/selectors/authorisationSelectors";
 import s from "./appBar.module.css";
+import LoginForm from '../loginForm/loginForm';
+
 
 export default function AppBar() {
-  const isAuthenticated = useSelector(selectors.authorisation);
+  const isAuthenticated = useSelector(selectors.getIsAuthorisation);
 
   return (
     <header className={s.AppBar}>
-      <Navigation />
-      {isAuthenticated ? <UserMenu /> : <AuthNav />}
+      {isAuthenticated ? <LoginForm /> : <UserMenu /> }
     </header>
   );
 }
