@@ -28,6 +28,9 @@ class ModalAddTransaction extends Component {
     currentDate: moment().format('YYYY-MM-DD'),
     category: '',
     transactionValue: '',
+    comments:'',
+  
+
   };
 
 
@@ -69,9 +72,15 @@ class ModalAddTransaction extends Component {
 
   handleSubmitForm = e => {
     e.preventDefault();
-    const { currentDate, transactionValue, category } = this.state;
+    const { currentDate, transactionValue, category, comments, status  } = this.state;
 
-    const newTransaction = { currentDate, transactionValue, category };
+    const newTransaction = {
+      "date": currentDate,
+      "type": status ? "income":"cost",
+     "ammount":  transactionValue,
+    "category":  category,
+    "comments":comments
+   };
     console.log(newTransaction);
     this.onClickClose();
     this.props.addTransaction(newTransaction)
@@ -81,7 +90,7 @@ class ModalAddTransaction extends Component {
   };
 
   render() {
-    const { status, currentDate, transactionValue, category } = this.state;
+    const { status, currentDate, transactionValue, comments } = this.state;
 
     return (
       <div className={s.overlay} onClick={this.handleCloseModal}>
@@ -134,6 +143,8 @@ class ModalAddTransaction extends Component {
                 value={currentDate}
                 defaultValue={`${currentDate}`}
                 className={s.textField}
+
+
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -147,6 +158,9 @@ class ModalAddTransaction extends Component {
                 label="Комментарий"
                 margin="dense"
                 type="textarea"
+                name="comments"
+                value={comments}
+                onChange={this.handleTransactionInfo}
               />
               <div />
             </div>

@@ -1,6 +1,6 @@
 
 
 export const getCategories = (state) => {
-    return state.categories.category;
+    return state.category;
   };
 

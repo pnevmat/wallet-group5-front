@@ -1,4 +1,4 @@
-import  React, {useEffect,useState} from 'react';
+import  React, {useEffect} from 'react';
 import Box from '@material-ui/core/Box';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -15,9 +15,10 @@ export default function CategoryForm({categoryChange}) {
   useEffect(() => {
     dispatch(operation.fetchCategory());
   }, [dispatch]);
-  // const categories= useSelector(getCategories)
- 
 
+  const categories= useSelector(getCategories)
+ 
+ console.log(categories)
  const handleChange = (e) => {
   categoryChange(e.target.value)
 };
@@ -33,7 +34,6 @@ export default function CategoryForm({categoryChange}) {
         </InputLabel>
         <NativeSelect 
        name='category'
-      //  value={category}
        onChange={handleChange}
         //   defaultValue={''}
           inputProps={{
@@ -43,12 +43,12 @@ export default function CategoryForm({categoryChange}) {
             
           }}
         >
-          {/* {categories.map((el)=>{
+          {categories.length>0 && categories.map((el)=>{
            return <option>{el}</option>
-          })} */}
-          <option></option>
+          })}
+          {/* <option></option>
           <option>Еда</option>
-          <option>Животные</option>
+          <option>Животные</option> */}
         </NativeSelect>
       </FormControl>
     </Box>
