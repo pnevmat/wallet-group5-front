@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import FormAuth from '../FormAuth/FormAuth';
+
 import s from './registrationForm.module.css';
 
 const RegistrationForm = props => {
@@ -43,6 +46,7 @@ const RegistrationForm = props => {
           handleSubmit();
         }}
       >
+        <FormAuth />
         <label htmlFor="" name="register" className={s.label}>
           <div className={s.input_email}></div>
           <input
