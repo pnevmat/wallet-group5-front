@@ -5,8 +5,8 @@ import {
 } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import registrationReducers from './reducers/registrationReducer/registrationReducers';
-import authorisationReducers from './reducers/authorisationReducer/authorisationReducer';
+import registrationReducers from './reducers/registrationReducers';
+import authorisationReducers from './reducers/authorisationReducer';
 import logger from 'redux-logger';
 import categoryReducer from './reducers/categoryReducer/categoryReducer';
 import transactionReducer from './reducers/transactionReducer/transactionReducer';
