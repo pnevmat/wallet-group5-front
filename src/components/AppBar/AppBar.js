@@ -1,10 +1,12 @@
 import React from "react";
-import UserMenu from "../UserMenu/UserMenu";
-// import { connect } from 'react-redux';
 import { useSelector } from "react-redux";
+
 import selectors from "../../redux/selectors/authorisationSelectors";
-import s from "./appBar.module.css";
+
+import UserMenu from "../UserMenu/UserMenu";
 import LoginForm from '../loginForm/loginForm';
+
+import s from "./appBar.module.css";
 
 
 export default function AppBar() {

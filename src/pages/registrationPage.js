@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import registrationOperation from '../redux/operations/registrationOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
-import FormAuth from '../components/FormAuth/FormAuth';
 import RegistrationForm from '../components/registrationForm/registrationForm';
 
 const RegistrationPage = () => {
@@ -20,9 +19,7 @@ const RegistrationPage = () => {
   }
 
   return (
-    <FormAuth>
-      <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
-    </FormAuth>
+    <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
   );
 };
 

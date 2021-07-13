@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import s from './loginForm.module.css';
+import FormAuth from '../FormAuth/FormAuth';
 
-import wallet from './images/wallet.png';
+import s from './loginForm.module.css';
 
 const LoginForm = props => {
   const [email, setEmail] = useState('');
@@ -38,16 +38,7 @@ const LoginForm = props => {
           handleSubmit();
         }}
       >
-        <div className={s.logo}>
-          <img
-            className={s.logo__img}
-            src={wallet}
-            alt="logo"
-            width="40px"
-            height="40px"
-          />
-          <h1 className={s.logo__name}>Wallet</h1>
-        </div>
+        <FormAuth />
         <label htmlFor="" name="register">
           <input
             className={s.input__email}
