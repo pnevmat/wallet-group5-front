@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 
-import registrationActions from '../../actions/registrationActions/registrationAction';
+import registrationActions from '../actions/registrationAction';
 
 const registrationInitialState = {};
 
