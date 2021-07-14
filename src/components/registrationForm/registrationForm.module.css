@@ -78,3 +78,13 @@
 
   color: #4a56e2;
 }
+.formik {
+  color: red;
+  margin: 0;
+  position: absolute;
+  left: 200px;
+  top: -75px;
+}
+.formik_container {
+  position: relative;
+}
