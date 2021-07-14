@@ -13,23 +13,23 @@ import {
     }
 };
   
-const fetchCategory = ( ) => async (dispatch) => {
+const fetchCategory = ( userToken) => async (dispatch) => {
   dispatch(fetchcategoryRequest());
  
     try {
-    
+      token.set(userToken);
+      console.log(userToken)
       const { data } = await axios.get("/api/users/category");
       console.log(data)
-      token.set(data.token);
-      dispatch(fetchcategorySuccess(data));
+  
+      dispatch(fetchcategorySuccess(data.user.category));
       
       
     } catch (error) {
       dispatch(fetchcategoryError(error.message));
     }
 
-   
-  
+    
 };
 
 // const fetchCategory = () => async (dispatch, getState) => {
@@ -53,5 +53,4 @@ const fetchCategory = ( ) => async (dispatch) => {
 
 export default {
     fetchCategory,
-   
   };
