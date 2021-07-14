@@ -14,6 +14,7 @@ import LoginForm from '../components/loginForm/loginForm';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  
   const onLoginSubmit = userData => dispatch(loginOperation(userData));
 
   const error = useSelector(selectors.registrationSelector);
