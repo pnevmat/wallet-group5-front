@@ -1,5 +1,5 @@
 import axios from "axios";
-import loginActions from '../actions/loginActions/loginActions';
+import loginActions from '../actions/loginActions';
 import { validate } from 'indicative/validator';
 
 import BASE_URL from '../../utils/baseUrl';

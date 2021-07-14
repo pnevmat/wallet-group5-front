@@ -1,11 +1,11 @@
 import {createReducer} from '@reduxjs/toolkit';
 
-import registrationActions from '../../actions/registrationActions/registrationAction'
-import loginActions from '../../actions/loginActions/loginActions';
-import logoutActions from '../../actions/logoutActions/logoutActions';
+import registrationActions from '../actions/registrationAction'
+import loginActions from '../actions/loginActions';
+import logoutActions from '../actions/logoutActions';
 
 const authorisationInitialState = {};
-const authReducerInitialState = true;
+const authReducerInitialState = false;
 
 const authorisationReducer = createReducer(authorisationInitialState, {
     [loginActions.loginSuccess]: (_, {payload}) => payload.data.token,

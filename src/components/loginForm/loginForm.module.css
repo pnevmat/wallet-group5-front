@@ -14,22 +14,6 @@
   color: #ffa848;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 25px;
-  padding-bottom: 30px;
-}
-
-.logo__name {
-  font-size: 30px;
-}
-
-.logo__img {
-  margin-right: 30px;
-}
-
 .form {
   background-color: #fff;
   display: flex;

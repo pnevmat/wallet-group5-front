@@ -8,12 +8,13 @@ import eclipseTablet from '../components/loginForm/images/frameTablet.png';
 import frameTablet from '../components/loginForm/images/eclipseTablet.png';
 
 import loginOperation from '../redux/operations/loginOperation';
-import selectors from '../redux/selectors/registrationSelectors/registrationSelectors';
+import selectors from '../redux/selectors/registrationSelectors';
 
 import LoginForm from '../components/loginForm/loginForm';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  
   const onLoginSubmit = userData => dispatch(loginOperation(userData));
 
   const error = useSelector(selectors.registrationSelector);

@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 
+
 import routes from '../src/routes';
-import Spinner from './Spinner';
+import Spinner from '../src/components/Spinner/Spinner';
 
 const HomePage = lazy(() =>
   import('./pages/HomePage' /* webpackChunkName: "Home-Page" */),
@@ -25,6 +26,8 @@ const StatisticsPage = lazy(() =>
 );
 
 const FinanceApp = () => {
+ 
+
   return (
     <Suspense fallback={<Spinner />}>
       <section>
@@ -36,7 +39,7 @@ const FinanceApp = () => {
           />
           <PublicRoute
             path="/register"
-            // restricted
+            restricted
             component={RegisterPage}
             // redirectTo="/contacts"
           />

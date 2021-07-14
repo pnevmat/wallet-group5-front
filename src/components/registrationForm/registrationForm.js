@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import FormAuth from '../FormAuth/FormAuth';
+
 import s from './registrationForm.module.css';
 
 import { Formik } from 'formik';
@@ -87,6 +90,8 @@ const RegistrationForm = props => {
             onSubmit={e => {
               e.preventDefault();
               handleSubmit();
+          >
+        <FormAuth />
             }}
           >
             <label htmlFor="" name="register" className={s.label}>

@@ -1,8 +1,13 @@
 .container {
   display: flex;
   align-items: center;
-  margin-right: 0;
-  margin-left: auto;
+  margin: 0;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  min-height: 80px;
+  border-bottom: 3px solid rgb(202, 197, 197);
+  line-height: 1.5;
 }
 
 /* .avatar {
@@ -11,29 +16,43 @@
 }; */
 
 .name {
-  font-weight: 600;
-  margin: 0 12px 0 0;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0;
+  color: #bdbdbd;
 }
 
-.btn_logout {
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 4px;
-  box-shadow: 0 0 3px 2px #097f86;
-  border-width: 0;
-  border-style: none;
-  cursor: pointer;
-  min-width: 100px;
-  display: inline-block;
-  text-decoration: none;
-  background-color: initial;
-  color: rgb(255, 255, 255);
-  padding: 5px;
+.btnLogout {
+  color: #bdbdbd;
+  border: none;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.btn_logout:hover {
-  color: red;
-  box-shadow: 0 0 5px 2px rgb(255, 0, 89);
+.btnLogout:hover {
+  color: #111111;
+  background-color: #24CCA7;
+}
+
+.verticalLine {
+  display: flex;
+  height: 30px;
+  width: 1px;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #bdbdbd;
+  background-image: url(./Vector.svg);  
+
+}
+
+.exitSvg {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  color: #bdbdbd;
+  margin-right: 10px;
+  background-image: url(./exit.svg);  
 }

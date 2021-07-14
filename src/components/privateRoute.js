@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
-import selectors from '../redux/selectors/authorisationSelectors/authorisationSelectors';
+import selectors from '../redux/selectors/authorisationSelectors';
 
 const PrivateRoute = ({
     component: Component,
@@ -9,7 +9,7 @@ const PrivateRoute = ({
     ...routeProps
 }) => {
 
-    const authorisation = useSelector(selectors.authorisation);
+    const authorisation = useSelector(selectors.getIsAuthorisation);
     
     return (
         <Route 

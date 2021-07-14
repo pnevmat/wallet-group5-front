@@ -1,5 +1,5 @@
 import axios from "axios";
-import registrationAction from '../actions/registrationActions/registrationAction';
+import registrationAction from '../actions/registrationAction';
 
 import BASE_URL from '../../utils/baseUrl'
 
