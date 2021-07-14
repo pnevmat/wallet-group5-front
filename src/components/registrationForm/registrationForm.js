@@ -71,8 +71,6 @@ const RegistrationForm = props => {
       validateOnBlur
       validationSchema={validationsSchema}
       onSubmit={handleSubmit}
-
-      // onSubmit={values => onRegistrationSubmit(values)}
     >
       {({
         values,
@@ -90,10 +88,9 @@ const RegistrationForm = props => {
             onSubmit={e => {
               e.preventDefault();
               handleSubmit();
-          >
-        <FormAuth />
             }}
           >
+            <FormAuth />
             <label htmlFor="" name="register" className={s.label}>
               <div className={s.input_email}></div>
               <input
