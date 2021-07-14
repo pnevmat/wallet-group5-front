@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import registrationOperation from '../redux/operations/registrationOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
+import AppBar from '../components/AppBar/AppBar';
 import RegistrationForm from '../components/registrationForm/registrationForm';
 
-const RegistrationPage = () => {
+const RegistrationPage = (props) => {
   const dispatch = useDispatch();
   const onRegistrationSubmit = userData =>
     dispatch(registrationOperation(userData));
@@ -19,7 +20,10 @@ const RegistrationPage = () => {
   }
 
   return (
-    <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
+    <>
+      <AppBar {...props} />
+      <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
+    </>
   );
 };
 
