@@ -11,12 +11,21 @@ import TextField from '@material-ui/core/TextField';
 import CategoryForm from './CategoryForm';
 import { connect } from "react-redux";
 import moment from 'moment';
-import { validate } from 'indicative/validator';
+import { validate } from 'indicative/validator'
 
-// const schema = {
-//   username: 'required|alpha',
-//   password: 'required|min:4|max:40',
-// };
+const rules = {
+  category: 'required|alpha',
+  transactionValue: 'required|email',
+  currentDate: 'required|min:4',
+}
+
+const messages = {
+  required: (field) => `${field} is required`,
+  ' category': 'This field is required',
+  'transactionValue': 'This field is required',
+  'currentDate': 'This field is required',
+}
+
 
 // import PropTypes from "prop-types";
 
@@ -185,6 +194,7 @@ class ModalAddTransaction extends Component {
     );
   }
 }
+
 
 const mapDispatchToProps={
   addTransaction: operation.addTransaction,
