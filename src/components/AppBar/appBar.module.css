@@ -1,6 +1,7 @@
 .AppBar {
   display: flex;
-  flex-direction: row-reverse;
+  background-color: pink;
+  /* flex-direction: row-reverse; */
 }
 
 body {

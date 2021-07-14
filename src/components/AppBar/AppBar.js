@@ -5,6 +5,7 @@ import selectors from "../../redux/selectors/authorisationSelectors";
 
 import UserMenu from "../UserMenu/UserMenu";
 import LoginForm from '../loginForm/loginForm';
+import LoginPageComponent from '../LoginPage/loginPage';
 
 import s from "./appBar.module.css";
 
@@ -13,8 +14,13 @@ export default function AppBar() {
   const isAuthenticated = useSelector(selectors.getIsAuthorisation);
 
   return (
+    <>
     <header className={s.AppBar}>
-      {isAuthenticated ? <LoginForm /> : <UserMenu /> }
+    <LoginPageComponent/>
+      {isAuthenticated ?  <LoginForm /> : <UserMenu /> }
+      
     </header>
+   
+    </>
   );
 }

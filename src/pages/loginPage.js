@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import frame from '../components/loginForm/images/frame.png';
 import s from '../components/loginForm/loginForm.module.css';
 
-import eclipseTablet from '../components/loginForm/images/frameTablet.png';
-import frameTablet from '../components/loginForm/images/eclipseTablet.png';
+// import LoginPageComponent from '../components/LoginPage/loginPage';
+
+
 
 import loginOperation from '../redux/operations/loginOperation';
 import selectors from '../redux/selectors/registrationSelectors';
@@ -24,11 +25,13 @@ const LoginPage = () => {
 
   return (
     <>
+    {/* <LoginPageComponent/> */}
     {/* Эту разметку и ее стили нужно вынести в отдельный компонент
     так как он переиспользуется на странице регистрации */}
     {/* ======= */}
-      <div className={s.containerloginPages}>
-        <div className={s.loginPages}>
+      {/* <div className={s.containerloginPages}> */}
+        
+        {/* <div className={s.loginPages}>
           <div className={s.logiPagedox}>
             <img
               className={s.logiPagedoxImg1}
@@ -47,10 +50,10 @@ const LoginPage = () => {
             height="420"
           />
           <h1 className={s.loginPageName}>Finance App</h1>
-        </div>
-      {/* ========= */}
-        <LoginForm onLoginSubmit={onLoginSubmit} />
-      </div>
+        </div>  */}
+      {/* =========
+        {/* <LoginForm onLoginSubmit={onLoginSubmit} /> */}
+      {/* </div> */}
     </>
   );
 };

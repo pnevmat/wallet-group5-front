@@ -184,8 +184,8 @@
     padding: 0 65px;
     border-radius: 20px;
     position: absolute;
-    top: 362px;
-    left: 110px;
+    top: 431px;
+    left: 350px;
     z-index: 3;
   }
 
@@ -236,7 +236,7 @@
     padding: 0 65px;
     border-radius: 20px;
     position: inherit;
-  }
+  } 
 
   .input__email {
     width: 410px;
@@ -261,10 +261,7 @@
     height: 50px;
   }
 
-  .containerloginPages {
-    display: flex;
-    max-width: 1238px;
-  }
+  
 
   .loginPages {
     width: 618px;
