@@ -25,12 +25,15 @@ const StatisticsPage = lazy(() =>
   import('./pages/statisticsPage' /* webpackChunkName: "Statistics-Page" */),
 );
 
+
+
 const FinanceApp = () => {
  
 
   return (
     <Suspense fallback={<Spinner />}>
       <section>
+
         <Switch>
           <Route
             exact
