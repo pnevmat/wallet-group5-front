@@ -7,19 +7,19 @@ Chart.register(...registerables);
 
 const ChartComponent = (props) => {
     useEffect(() => {
-        const {transactionsData} = props.chartPercentage;
-        var ctx = document.getElementById('myChart');
+        const {data} = props.chartPercentage;
+        const ctx = document.getElementById('myChart');
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: transactionsData.map(transaction => transaction.categorie),
+                labels: data.categories.map(transaction => transaction.categorie),
                 datasets: [{
                     label: '# of Votes',
-                    data: transactionsData.map(transaction => transaction.sum),
+                    data: data.categories.map(transaction => transaction.amount),
                     radius: 225,
-                    backgroundColor: transactionsData.map(transaction => transaction.color),
+                    backgroundColor: data.categories.map(transaction => transaction.color),
                     hoverOffset: 4,
-                    borderColor: transactionsData.map(transaction => transaction.color),
+                    borderColor: data.categories.map(transaction => transaction.color),
                     borderWidth: 2,
                 }]
             },

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Table = (props) => {
-    const {categories} = props.table;
+    const {categories} = props.table.data;
     return (
         <>
             <ul>
@@ -11,7 +11,7 @@ const Table = (props) => {
                         <li key={item.id}>
                             <span style={color}>{item.color}</span>
                             <span>{item.categorie}</span>
-                            <span>{item.sum}</span>
+                            <span>{item.amount}</span>
                         </li>
                     );
                 })}
