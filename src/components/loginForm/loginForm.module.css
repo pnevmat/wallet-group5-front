@@ -63,6 +63,7 @@
   border: none;
   border-radius: 20px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .button__registration {
@@ -129,6 +130,10 @@
 }
 
 @media (min-width: 768px) {
+
+  .container{
+    padding: 0 25px;
+  }
   .form {
     max-width: 540px;
     padding: 0 65px;
