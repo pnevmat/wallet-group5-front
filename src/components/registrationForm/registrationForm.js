@@ -15,6 +15,7 @@ const RegistrationForm = props => {
   const [name, setName] = useState('');
 
   const handleChange = e => {
+    console.log('registration email: ', email);
     const { name, value } = e.target;
     switch (name) {
       case 'email':
@@ -33,8 +34,8 @@ const RegistrationForm = props => {
         console.log('error');
     }
   };
-
-  const handleSubmit = () => {
+  
+  const handleSubmit = ({email, password, repeatPassword, name}) => {
     const { onRegistrationSubmit } = props;
 
     onRegistrationSubmit({ email, password, repeatPassword, name });
@@ -70,6 +71,7 @@ const RegistrationForm = props => {
       }}
       validateOnBlur
       validationSchema={validationsSchema}
+      onChange={handleChange}
       onSubmit={handleSubmit}
     >
       {({
@@ -87,7 +89,7 @@ const RegistrationForm = props => {
             className={s.form}
             onSubmit={e => {
               e.preventDefault();
-              handleSubmit();
+              handleSubmit(values);
             }}
           >
             <FormAuth />

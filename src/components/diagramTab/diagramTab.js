@@ -1,34 +1,39 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import statisticsOperation from '../../redux/operations/statisticsOperation';
 
 import ChartComponent from './chart/chart';
 import Table from './table/table';
 
-const DiagramTab = () => {
-    const table = {
-        categories: [
-            {id: 1, categorie: 'Авто', sum: 300, color: '#0ea150'},
-            {id: 2, categorie: 'Комуналка', sum: 2000, color: '#32c5f1'},
-            {id: 3, categorie: 'Питание', sum: 1000, color: '#8c52f8'}
-        ]
-    };
+import authSelectors from '../../redux/selectors/authorisationSelectors';
 
-    const chartPercentage = {
-        total: 5000,
-        transactionsData: [
-            {id: 1, categorie: 'Авто', sum: 300, color: '#0ea150'},
-            {id: 2, categorie: 'Комуналка', sum: 500, color: '#32c5f1'},
-            {id: 3, categorie: 'Питание', sum: 700, color: '#8c52f8'},
-            {id: 3, categorie: 'расход4', sum: 1000, color: '#3017bd'},
-            {id: 3, categorie: 'расход5', sum: 800, color: '#f02ae6'},
-            {id: 3, categorie: 'расход6', sum: 900, color: '#7b5fad'},
-            {id: 3, categorie: 'расход7', sum: 1100, color: '#b2e71f'}
-        ]
-    };
+const DiagramTab = () => {
+    const userToken = useSelector(authSelectors.getUserToken)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(statisticsOperation(userToken))
+    }, []);
+
+    const backResponse = {
+        status: "success",
+        code: 200,
+        data: {
+            incomeBalance: 53000,
+            costBalance: 16000,
+            categories: [
+                {id: 1, categorie: "Основной доход", amount: 35000, color: "#372813"},
+                {id: 2, categorie: "Ремонт машины", amount: 13000, color: "#030b05"},
+                {id: 3, categorie: "Ремонт ноутбука", amount: 3000, color: "#1d101c"},
+                {id: 4, categorie: "Допольнительный зароботок", amount: 18000, color: "#040c06"}
+            ]
+        }
+    }
 
     return (
         <>
-        <ChartComponent chartPercentage={chartPercentage} />
-        <Table table={table} />
+        <ChartComponent chartPercentage={backResponse} />
+        <Table table={backResponse} />
         </>
     );
 };

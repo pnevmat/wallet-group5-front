@@ -41,7 +41,7 @@ const FinanceApp = () => {
             path="/register"
             restricted
             component={RegisterPage}
-            // redirectTo="/contacts"
+            redirectTo="/dashboard"
           />
           <PublicRoute
             path="/login"
