@@ -10,12 +10,20 @@ import {
 
   } from '../actions/transaction/transactionActions.js';
 
-const fetchTransaction = () => async (dispatch) => {
+  const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    }
+};
+
+const fetchTransaction = (userToken) => async (dispatch) => {
     dispatch(fetchTransactionRequest());
   
     try {
+      token.set(userToken);
       const { data } = await axios.get("/api/transactions");
-      dispatch( fetchTransactionSuccess(data));
+      dispatch( fetchTransactionSuccess(data.data.transactions));
+      console.log(data)
     } catch (error) {
       dispatch( fetchTransactionError(error.message));
     }
