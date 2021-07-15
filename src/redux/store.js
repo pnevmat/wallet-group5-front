@@ -11,6 +11,7 @@ import authorisationReducers from './reducers/authorisationReducer';
 import categoryReducer from './reducers/categoryReducer/categoryReducer';
 import transactionReducer from './reducers/transactionReducer/transactionReducer';
 import statisticsTransactionReducer from './reducers/statisticsTransactionReducer';
+import isModalLogoutOpenReducer from './reducers/isModalLogoutOpenReducer';
 
 import logger from 'redux-logger';
 
@@ -26,6 +27,7 @@ const store = configureStore({
     userData: combineReducers({
       registrationData: registrationReducers.userDataReducer,
       authorisationData: authorisationReducers.userDataReducer,
+      modalLogoutOpen: isModalLogoutOpenReducer,
     }),
     userToken: persistReducer(
       userTokenPersistConfig,
