@@ -1,0 +1,112 @@
+.containerloginPages {
+  max-width: 1238px;
+  margin: 0 auto;
+}
+
+.loginPages {
+  position: relative;
+  background: #e5e5e5;
+  z-index: 1;
+}
+
+.loginPageName {
+  text-align: center;
+  z-index: 3;
+}
+
+@media (max-width: 767px) {
+  .loginPages {
+      display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .containerloginPages {
+      max-width: 768px;
+      position: relative;
+  
+  }
+
+  .loginPages {
+      padding-bottom: 511px;
+  }
+
+  .loginPagesImg {
+      display: none;
+  }
+
+  .logiPagedoxImg2 {
+      position: relative;
+      left: 50px;
+  }
+
+  .logiPagedoxImg1 {
+      position: relative;
+      left: 100px;
+      bottom: 180px;
+  }
+
+  .loginPageVrap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 618px;
+      min-height: 449px;
+      background-image: url(./images/backgroud.png);
+      background-repeat: no-repeat;
+      z-index: -1;
+  }
+
+  .loginPageName {
+      position: absolute;
+      right: 222px;
+      top: 143px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .containerloginPages {
+      display: flex;
+      max-width: 1238px;
+  }
+  
+  .loginPages {
+      width: 618px;
+      height: 720;
+      padding: 0;
+      z-index: 1;
+  }
+
+  .loginPageVrap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 618px;
+      min-height: 449px;
+      background-image: url(./images/backgroud.png);
+      background-repeat: no-repeat;
+      z-index: -1;
+  }
+  
+  .loginPagesImg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      padding-top: 150px;
+      z-index: 1;
+  }
+
+  .loginPageName {
+      position: absolute;
+      min-width: 150px;
+      left: 35%;
+      top: 615px;
+      margin: 0;
+      z-index: 3;
+  }
+
+  .logiPagedox {
+      display: none;
+  }
+}

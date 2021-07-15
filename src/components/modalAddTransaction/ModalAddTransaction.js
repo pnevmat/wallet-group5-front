@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import operation from '../../redux/operations/transactionOperations'
 import AddIcon from '@material-ui/icons/Add';
 import { createPortal } from 'react-dom';
 import s from './ModalAddTransaction.module.css';
@@ -8,13 +9,14 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import CategoryForm from './CategoryForm';
+import { connect } from "react-redux";
 import moment from 'moment';
-import { validate } from 'indicative/validator'
+import { validate } from 'indicative/validator';
 
-const schema = {
-  username: 'required|alpha',
-  password: 'required|min:4|max:40',
-}
+// const schema = {
+//   username: 'required|alpha',
+//   password: 'required|min:4|max:40',
+// };
 
 // import PropTypes from "prop-types";
 
@@ -24,7 +26,13 @@ class ModalAddTransaction extends Component {
   state = {
     status: true,
     currentDate: moment().format('YYYY-MM-DD'),
+    category: '',
+    transactionValue: '',
+    comments:'',
+  
+
   };
+
 
   componentDidMount() {
     document.addEventListener('keydown', this.onKeyClick);
@@ -57,14 +65,33 @@ class ModalAddTransaction extends Component {
     const currentlass = state ? class1 : class2;
     return currentlass;
   };
+  handleTransactionInfo = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({ [name]: value });
+  };
 
   handleSubmitForm = e => {
     e.preventDefault();
+    const { currentDate, transactionValue, category, comments, status  } = this.state;
+
+    const newTransaction = {
+      "date": currentDate,
+      "type": status ? "income":"cost",
+     "amount":  transactionValue,
+    "category":  category,
+    "comments":comments
+   };
+    console.log(newTransaction);
+    this.onClickClose();
+    this.props.addTransaction(newTransaction)
+  };
+  setCategory =( value) => {
+    this.setState({ category: value });
   };
 
   render() {
-    const { status, currentDate } = this.state;
-    console.log(this.currentDate);
+    const { status, currentDate, transactionValue, comments } = this.state;
+
     return (
       <div className={s.overlay} onClick={this.handleCloseModal}>
         <div className={s.modal}>
@@ -95,21 +122,33 @@ class ModalAddTransaction extends Component {
             </div>
             {status && (
               <div className={s.categoryContainer}>
-                <CategoryForm />
+                <CategoryForm categoryChange={this.setCategory} />
               </div>
             )}
 
             <div className={s.textField}>
-              <TextField autoComplete={'off'} label="0.00" margin="dense" />
+              <TextField
+                autoComplete={'off'}
+                label="0.00"
+                margin="dense"
+                name="transactionValue"
+                value={transactionValue}
+                onChange={this.handleTransactionInfo}
+              />
               <TextField
                 id="date"
                 label="Введите дату"
                 type="date"
+                name="currentDate"
+                value={currentDate}
                 defaultValue={`${currentDate}`}
                 className={s.textField}
+
+
                 InputLabelProps={{
                   shrink: true,
                 }}
+                onChange={this.handleTransactionInfo}
               />
             </div>
             <div className={s.textFieldcomments}>
@@ -119,6 +158,9 @@ class ModalAddTransaction extends Component {
                 label="Комментарий"
                 margin="dense"
                 type="textarea"
+                name="comments"
+                value={comments}
+                onChange={this.handleTransactionInfo}
               />
               <div />
             </div>
@@ -144,4 +186,12 @@ class ModalAddTransaction extends Component {
   }
 }
 
-export default ModalAddTransaction;
+const mapDispatchToProps={
+  addTransaction: operation.addTransaction,
+}
+
+
+
+
+
+export default  connect(null, mapDispatchToProps)(ModalAddTransaction);

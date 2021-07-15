@@ -1,20 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
 
-import selectors from "../../redux/selectors/authorisationSelectors";
+import FinanceAppBoyImg from './financeAppBoyImg/FinanceAppBoyImg';
+import FinanceAppGirlImg from './financeAppGirlImg/FinanceAppGirlImg';
 
-import UserMenu from "../UserMenu/UserMenu";
-import LoginForm from '../loginForm/loginForm';
-
-import s from "./appBar.module.css";
-
-
-export default function AppBar() {
-  const isAuthenticated = useSelector(selectors.getIsAuthorisation);
+export default function AppBar(props) {
+  const { path } = props.match;
 
   return (
-    <header className={s.AppBar}>
-      {isAuthenticated ? <LoginForm /> : <UserMenu /> }
-    </header>
+    <>
+      {path === '/' || path === '/login' ? (
+        <FinanceAppBoyImg />
+      ) : (
+        <FinanceAppGirlImg />
+      )}
+    </>
   );
 }

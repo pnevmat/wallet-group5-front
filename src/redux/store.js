@@ -7,6 +7,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import registrationReducers from './reducers/registrationReducers';
 import authorisationReducers from './reducers/authorisationReducer';
+import ModalLogoutReducer from './reducers/isModalLogoutOpenReducer';
 import logger from 'redux-logger';
 
 const userTokenPersistConfig = {
@@ -17,16 +18,17 @@ const userTokenPersistConfig = {
 
 const store = configureStore({
   reducer: {
-     userData: combineReducers({
+    userData: combineReducers({
+      modalLogoutOpen: ModalLogoutReducer,
       registrationData: registrationReducers.userDataReducer,
-      authorisationData: authorisationReducers.userDataReducer
+      authorisationData: authorisationReducers.userDataReducer,
     }),
     userToken: persistReducer(
       userTokenPersistConfig,
       combineReducers({
         registrationToken: registrationReducers.registrationReducer,
-        authorisationToken: authorisationReducers.authorisationReducer
-      })
+        authorisationToken: authorisationReducers.authorisationReducer,
+      }),
     ),
     session: combineReducers({
       isAuth: authorisationReducers.authReducer,
@@ -34,7 +36,7 @@ const store = configureStore({
     }),
   },
   middleware: [...getDefaultMiddleware(), logger],
-  devTools: process.env.NODE_ENV === 'development'
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 const persistor = persistStore(store);
