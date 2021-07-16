@@ -88,7 +88,9 @@ class ModalAddTransaction extends Component {
       "type": status ? "income":"cost",
      "amount":  transactionValue,
     "category":  category,
-    "comments":comments
+    "comments":comments,
+    
+ 
    };
     console.log(newTransaction);
     this.onClickClose();

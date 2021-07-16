@@ -7,11 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useDispatch, useSelector } from 'react-redux';
-import operation from '../../redux/operations/transactionOperations'
 import {getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors'
-import selectors from '../../redux/selectors/authorisationSelectors';
-
+import { useSelector } from 'react-redux';
+import Moment from 'react-moment';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -50,39 +48,38 @@ const useStyles = makeStyles({
 });
 
 export default function TransactionTable() {
-    const dispatch = useDispatch();
-    const token =useSelector(selectors.getUserToken);
-    useEffect(() => {
-        dispatch(operation.fetchTransaction(token));
-     }, [dispatch]);
+   
   const classes = useStyles();
-const rows=useSelector(getTransaction)
-console.log(rows)
+// const rows=useSelector(getTransaction)
+// console.log(rows)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Дата</StyledTableCell>
-            <StyledTableCell align="right">Тип</StyledTableCell>
+             <StyledTableCell align="right">Тип</StyledTableCell>
             <StyledTableCell align="right">Категория</StyledTableCell>
             <StyledTableCell align="right">Сумма</StyledTableCell>
+            <StyledTableCell align="right">Комментарии</StyledTableCell>
             <StyledTableCell align="right">Баланс</StyledTableCell>
           </TableRow>
         </TableHead>
-        {/* <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+        <TableBody>
+          {/* {rows.map((row) => (
+            <StyledTableRow key={row.date}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+              <Moment date= {row.date} />
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.type}</StyledTableCell>
+              <StyledTableCell align="right">{row.category}</StyledTableCell>
+              <StyledTableCell align="right">{row.amount}</StyledTableCell>
+              <StyledTableCell align="right">{row.comments}</StyledTableCell>
+              
+              <StyledTableCell align="right">{row.owner.balance}</StyledTableCell>
             </StyledTableRow>
-          ))}
-        </TableBody> */}
+          ))} */}
+        </TableBody>
       </Table>
     </TableContainer>
   );

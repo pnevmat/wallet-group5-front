@@ -45,10 +45,10 @@ export default function CategoryForm({ categoryChange }) {
             id: 'uncontrolled-native',
           }}
         >
+           <option></option>
           {categories.length > 0 &&
             categories.map(el => {
               return <> 
-               <option></option>
               <option>{el}</option>;</>
            
             })}
