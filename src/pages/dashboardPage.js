@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation/Navigation';
 import Balance from '../components/balance/balance';
 import AddTransactionButton from '../components/addTransactionButton/AddTransactionButton';
 import UserMenu from '../components/UserMenu/UserMenu';
+import TransactionTable from '../components/transactionTable/transactionTable'
 
 const DashboardPage = (props) => {
   const userBalance = useSelector(userBalanceSelector);
@@ -15,6 +16,7 @@ const DashboardPage = (props) => {
       <UserMenu />
       <Navigation />
       <Balance userBalance={userBalance} />
+      <TransactionTable/>
       <AddTransactionButton />
     </>
   );

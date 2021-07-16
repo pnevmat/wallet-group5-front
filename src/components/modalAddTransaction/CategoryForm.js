@@ -9,14 +9,17 @@ import { getCategories } from '../../redux/selectors/categorySelectors/categoryS
 import operation from '../../redux/operations/categoryOperations.js';
 import selectors from '../../redux/selectors/authorisationSelectors';
 
+
 export default function CategoryForm({ categoryChange }) {
   const dispatch = useDispatch();
   const token =useSelector(selectors.getUserToken);
   
+
   useEffect(() => {
      dispatch(operation.fetchCategory(token));
   }, [dispatch]);
 
+  
   const categories = useSelector(getCategories);
 
   console.log(categories);
@@ -42,10 +45,10 @@ export default function CategoryForm({ categoryChange }) {
             id: 'uncontrolled-native',
           }}
         >
+           <option></option>
           {categories.length > 0 &&
             categories.map(el => {
               return <> 
-               <option></option>
               <option>{el}</option>;</>
            
             })}
