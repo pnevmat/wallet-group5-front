@@ -6,7 +6,7 @@ import FinanceAppGirlImg from './financeAppGirlImg/FinanceAppGirlImg';
 
 export default function AppBar(props) {
   const {path} = props.match;
-
+  
   return (
     
     <>
