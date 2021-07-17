@@ -41,6 +41,10 @@ p {
   width: 280px;
   margin: 0;
   background: #4a56e2;
+  background-image: url('./images/kaskad.png');
+  background-repeat: no-repeat;
+  background-position-x: 62%;
+  background-position-y: -36%;
   border-radius: 0px 0px 30px 30px;
   padding-bottom: 10px;
   /* background:  linear-gradient(180deg, rgba(255, 255, 255, 0.2) -8.67%, rgba(255, 255, 255, 0) 116.22% ) */
@@ -78,6 +82,7 @@ p {
 
   .exchangeList {
     width: 334px;
+    background-position-y: -6%;
   }
 
   .exchangeListItem {
@@ -118,6 +123,7 @@ p {
 
   .exchangeList {
     padding-bottom: 149px;
+    background-position-y: 220%;
   }
 
   .linear{
