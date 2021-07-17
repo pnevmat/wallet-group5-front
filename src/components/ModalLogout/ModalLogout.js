@@ -6,23 +6,23 @@ import s from './modalLogout.module.css';
 import modalLogoutAction from '../../redux/actions/isModalLogoutOpenAction';
 import modalLogoutSelector from '../../redux/selectors/isModalLogoutOpenSelector';
 import logoutOperation from '../../redux/operations/logoutOperation';
-import ReactModal from 'react-modal';
+// import ReactModal from 'react-modal';
 
 
 const ModalLogout = () => {
-  const dispatch = useDispatch();
-  const isModalOpen = useSelector(state => modalLogoutSelector(state));
-  const onToggleModal = () => dispatch(modalLogoutAction());
+  // const dispatch = useDispatch();
+  // const isModalOpen = useSelector(state => modalLogoutSelector(state));
+  // const onToggleModal = () => dispatch(modalLogoutAction());
 
-  const logout = () => {
-    dispatch(logoutOperation());
-    onToggleModal();
-    console.log('you logout');
-  };
+  // const logout = () => {
+  //   dispatch(logoutOperation());
+  //   onToggleModal();
+  //   console.log('you logout');
+  // };
 
   return (
     <>
-      <ReactModal
+      {/* <ReactModal
         className={s.modal}
         isOpen={isModalOpen}
         onRequestClose={onToggleModal}
@@ -38,7 +38,7 @@ const ModalLogout = () => {
             No, stay here
           </button>
         </div>
-      </ReactModal>
+      </ReactModal> */}
     </>
   );
 };

@@ -16,7 +16,7 @@ const statisticsOperation = userToken => async dispatch => {
     try {
         token.set(userToken);
 
-        const response = await axios.post('/api/transactions/all-statistics');
+        const response = await axios.get('/api/transactions/all-statistics');
 
         dispatch(statisticsActions.statisticsSuccess(response.data));
     }catch(error) {

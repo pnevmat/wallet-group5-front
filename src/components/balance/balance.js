@@ -8,21 +8,21 @@ import operation from '../../redux/operations/transactionOperations'
 
 
 
-const Balance = () => {
-  const dispatch = useDispatch();
-  const token =useSelector(selectors.getUserToken);
-  useEffect(() => {
-      dispatch(operation.fetchTransaction(token));
-   }, [dispatch]);
+const Balance = (props) => {
+  // const dispatch = useDispatch();
+  // const token =useSelector(selectors.getUserToken);
+  // useEffect(() => {
+  //     dispatch(operation.fetchTransaction(token));
+  //  }, [dispatch]);
 
-    const transaction=useSelector(getTransaction)
-    console.log(transaction)
-   const currentBalance=transaction[0]
+  //   const transaction=useSelector(getTransaction)
+  //   console.log(transaction)
+  //  const currentBalance=transaction[0]
   //  console.log(currentBalance.owner.balance)
   return (
     <div className={s.conteiner}>
       <p className={s.title}>ВАШ БАЛАНС</p>
-     {/* { <p className={s.balance}>₴{currentBalance.owner.balance}</p>} */}
+     { <p className={s.balance}>₴{props.balance}</p>}
     </div>
   );
 };
