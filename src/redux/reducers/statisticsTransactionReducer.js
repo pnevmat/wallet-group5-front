@@ -5,7 +5,7 @@ import statisticsActions from '../actions/statisticsActions';
 const statisticsTransactionReducerInitialState = [];
 
 const statisticsTransactionReducer = createReducer(statisticsTransactionReducerInitialState, {
-    [statisticsActions.statisticsSuccess]: (_, {payload}) => payload,
+    [statisticsActions.statisticsSuccess]: (_, {payload}) => payload.data,
 });
 
 export default {statisticsTransactionReducer};
