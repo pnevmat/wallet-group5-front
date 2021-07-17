@@ -84,7 +84,7 @@ const RegistrationForm = props => {
         handleSubmit,
         dirty,
       }) => (
-        <div>
+        <div className={s.container}>
           <form
             className={s.form}
             onSubmit={e => {
@@ -92,7 +92,7 @@ const RegistrationForm = props => {
               handleSubmit(values);
             }}
           >
-            <FormAuth />
+            {/* <FormAuth /> */}
             <label htmlFor="" name="register" className={s.label}>
               <div className={s.input_email}></div>
               <input

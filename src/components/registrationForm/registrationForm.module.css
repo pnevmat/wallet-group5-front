@@ -1,16 +1,27 @@
 .form {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+
 }
 .input {
-  width: 100%;
+ 
+  width: 410px;
+
   border: none;
 
   padding-bottom: 10px;
+
+  color: #bdbdbd;
+  /* font-size: 15px; */
+
+  outline: none;
+  border: none;
+  /* border-bottom: 2px solid #e0e0e0; */
 }
 .label {
   line-height: 27px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   display: flex;
   border-bottom: 1px solid #e0e0e0;
   padding-left: 10px;
@@ -40,6 +51,7 @@
   margin-right: auto;
   margin-bottom: 20px;
   background: #24cca7;
+  border: none;
   border-radius: 20px;
   border-color: #24cca7;
 
@@ -87,4 +99,129 @@
 }
 .formik_container {
   position: relative;
+}
+
+
+/* медіа правила */
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 320;
+    padding: 0;
+  }
+
+  .logo {
+    padding-top: 100px;
+    padding-bottom: 52px;
+  }
+
+  .form {
+    width: 320;
+    border-radius: 0;
+    padding: 0px 20px;
+  }
+
+  .input__email {
+    width: 280px;
+    height: 34px;
+    margin-bottom: 30px;
+  }
+
+  .input__password {
+    width: 280px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit{
+    width: 280px;
+    height: 50px;
+  }
+
+  .button__registration{
+    width: 280px;
+    height: 50px;
+    margin-bottom: 110px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .container{
+    padding: 0 25px;
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: absolute;
+    top: 362px;
+    left: 110px;
+    z-index: 3;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 52px 85px 52px 95px;
+    max-width: 720px;
+    background-image: url(./gradient.png);
+    background-repeat: no-repeat;
+    height: 720px;
+    
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: inherit;
+    padding-bottom: 60px;
+  
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
 }

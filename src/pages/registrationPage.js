@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import s from '../components/AppBar/financeAppGirlImg/financeAppGirlImg.module.css';
+
 import registrationOperation from '../redux/operations/registrationOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
@@ -21,8 +23,11 @@ const RegistrationPage = (props) => {
 
   return (
     <>
-      <AppBar {...props} />
+    <div className={s.containerloginPages}>
+    <AppBar {...props} />
       <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
+    </div>
+      
     </>
   );
 };
