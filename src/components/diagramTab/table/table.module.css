@@ -1,0 +1,100 @@
+.container {
+    width: 100%;
+    max-width: 435px;
+    padding-right: 85px;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+.tableHeadersContainer {
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    border: 1px solid tomato;
+    border-radius: 25px;
+}
+
+.tableHeaderText {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.tableContainer {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 15px;
+    list-style: none;
+}
+
+.tableItem {
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    border-bottom: 1px solid #DCDCDF;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    /* transform: rotate(-90deg); */
+}
+
+.itemInnerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.itemTextContainer {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 260px;
+}
+
+.itemColorLable {
+    display: inline-block;
+    width: 100%;
+    max-width: 24px;
+    height: 24px;
+}
+
+.tableItemsText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.totalsGroupContainer {
+    width: 100%;
+    max-width: 350px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.totalsGroupContainer :not(:last-child) {
+    margin-bottom: 13px;
+}
+
+.totalsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.costTotalText {
+    font-weight: 700;
+    color: #FF6596;
+}
+
+.incomeTotalText {
+    font-weight: 700;
+    color: #24CCA7;
+}

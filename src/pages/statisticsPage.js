@@ -2,9 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import UserMenu from '../components/UserMenu/UserMenu';
-import Navigation from '../components/Navigation/Navigation';
-import Balance from '../components/balance/balance';
-import ExchangeBox from '../components/ExchangeBox/ExchangeBox';
+import StatisticsComponent from '../components/StatisticsComponent/StatisticsComponent';
 import DiagramTab from '../components/diagramTab/diagramTab';
 
 import authSelectors from '../redux/selectors/authorisationSelectors';
@@ -18,11 +16,7 @@ const StatisticsPage = () => {
     return (
         <>
             <UserMenu userName={userName} />
-            <div>
-                <Navigation />
-                <Balance balance={balance} />
-                <ExchangeBox />
-            </div>
+            <StatisticsComponent balance={balance} />
             <DiagramTab  />
         </>
     );

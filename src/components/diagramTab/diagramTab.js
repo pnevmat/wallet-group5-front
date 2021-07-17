@@ -9,6 +9,8 @@ import Table from './table/table';
 import authSelectors from '../../redux/selectors/authorisationSelectors';
 import statisticsSelector from '../../redux/selectors/statisticsSelector';
 
+import styles from './diagramTab.module.css';
+
 const DiagramTab = () => {
     const dispatch = useDispatch();
     
@@ -22,10 +24,14 @@ const DiagramTab = () => {
     console.log('Statistics page transactions', statistics);
 
     return (
-        <>
-        <ChartComponent chartPercentage={statistics.categories} />
-        <Table table={statistics.categories} />
-        </>
+        <div className={styles.container}>
+            <ChartComponent chartPercentage={statistics.categories} />
+            <Table 
+                table={statistics.categories}
+                cost={statistics.costBalance}
+                income={statistics.incomeBalance}
+            />
+        </div>
     );
 };
 
