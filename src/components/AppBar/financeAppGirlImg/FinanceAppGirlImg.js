@@ -6,15 +6,7 @@ import frame from './images/Frame.png';
 
 const FinanceAppGirlImg = () => {
 
-    let isMobileView = false;
-
-        if (window.screen.width >= 1024 ) {
-            console.log("1");
-            isMobileView = true;
-        } else {
-            console.log("2");
-            isMobileView = false;
-        }
+    
     return (
         <>
         <div className={s.containerloginPages}>
