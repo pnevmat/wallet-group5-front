@@ -2,22 +2,17 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
-
 }
 .input {
- 
   width: 410px;
 
   border: none;
 
   padding-bottom: 10px;
-
   color: #bdbdbd;
-  /* font-size: 15px; */
 
   outline: none;
   border: none;
-  /* border-bottom: 2px solid #e0e0e0; */
 }
 .label {
   line-height: 27px;
@@ -97,12 +92,10 @@
   position: absolute;
   left: 177px;
   top: -83px;
-
 }
 .formik_container {
   position: relative;
 }
-
 
 /* медіа правила */
 
@@ -112,10 +105,11 @@
     padding: 0;
   }
 
-  .formik{    
+  .formik {
     position: relative;
     left: 216px;
-    top: -74px;}
+    top: -74px;
+  }
 
   .logo {
     padding-top: 100px;
@@ -129,13 +123,13 @@
   }
 
   .input_email {
-background-repeat: no-repeat;
-width: 39px;
+    background-repeat: no-repeat;
+    width: 39px;
   }
 
-  .input_password{
+  .input_password {
     background-repeat: no-repeat;
-width: 39px;
+    width: 39px;
   }
 
   .input_name {
@@ -143,41 +137,38 @@ width: 39px;
     width: 39px;
   }
 
-
-  .button_entrance{
+  .button_entrance {
     width: 280px;
     height: 50px;
     margin-bottom: 110px;
   }
 
-  .button_registr{
+  .button_registr {
     width: 280px;
     height: 50px;
-    
   }
 }
 
-.progresBar{
-position: relative;
-top: -41px;
+.progresBar {
+  position: relative;
+  top: -41px;
   height: 5px;
   background-color: #fee6d5;
   margin-bottom: 15px;
   border-radius: 2px;
 }
 
-.progresBarFilter{
-  background:rgba(36, 204, 167, 0.5);
-    height: 100%;
-    border: 1px solid rgba(36, 204, 167, 0.5);
+.progresBarFilter {
+  background: rgba(36, 204, 167, 0.5);
+  height: 100%;
+  border: 1px solid rgba(36, 204, 167, 0.5);
 
-    transition: width .2s ease-in;
-    border-radius: 2px;
+  transition: width 0.2s ease-in;
+  border-radius: 2px;
 }
 
 @media (min-width: 768px) {
-
-  .container{
+  .container {
     padding: 0 25px;
   }
   .form {
@@ -221,15 +212,12 @@ top: -41px;
     background-image: url(./gradient.png);
     background-repeat: no-repeat;
     height: 720px;
-    
   }
   .form {
     max-width: 540px;
     padding: 0 65px;
     border-radius: 20px;
     position: inherit;
-
-  
   }
 
   .input__email {
