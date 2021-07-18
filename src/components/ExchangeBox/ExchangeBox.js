@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Loader from './Loader/Loader';
 import s from './ExchangeBox.module.css';
-
 
 export default class ExchangeBox extends Component {
   state = {
     persons: [],
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -16,6 +16,7 @@ export default class ExchangeBox extends Component {
         const persons = res.data;
         this.setState({ persons });
         console.log(persons.length);
+        this.setState({ isLoading: false });
       });
   }
 
@@ -38,23 +39,24 @@ export default class ExchangeBox extends Component {
             </ul>
           </div>
           <div className={s.exchangeListBox}>
-          <ul className={s.exchangeList}>
-            {this.state.persons.map(person => (
-              <li className={s.exchangeListItem}>
-                <p className={s.exchangeListItemName}>{person.ccy}</p>
-                <p className={s.exchangeListItemName}>
-                  {Math.round(person.buy * 100) / 100}
-                </p>
-                <p className={s.exchangeListItemName}>
-                  {Math.round(person.sale * 100) / 100}
-                </p>
-              </li>
-            ))}
-          </ul>
-          {/* <div className={s.linear}></div> */}
+            {this.state.isLoading ? (
+              <Loader />
+            ) : (
+              <ul className={s.exchangeList}>
+                {this.state.persons.map(person => (
+                  <li className={s.exchangeListItem}>
+                    <p className={s.exchangeListItemName}>{person.ccy}</p>
+                    <p className={s.exchangeListItemName}>
+                      {Math.round(person.buy * 100) / 100}
+                    </p>
+                    <p className={s.exchangeListItemName}>
+                      {Math.round(person.sale * 100) / 100}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-         
-         
         </div>
       </>
     );

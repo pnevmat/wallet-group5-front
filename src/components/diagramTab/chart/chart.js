@@ -7,33 +7,35 @@ Chart.register(...registerables);
 
 const ChartComponent = (props) => {
     useEffect(() => {
-        const {data} = props.chartPercentage;
-        const ctx = document.getElementById('myChart');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: data.categories.map(transaction => transaction.categorie),
-                datasets: [{
-                    label: '# of Votes',
-                    data: data.categories.map(transaction => transaction.amount),
-                    radius: 225,
-                    backgroundColor: data.categories.map(transaction => transaction.color),
-                    hoverOffset: 4,
-                    borderColor: data.categories.map(transaction => transaction.color),
-                    borderWidth: 2,
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false,
-                        labels: {
-                            color: '#000001'
+        const {chartPercentage} = props;
+        if (chartPercentage) {
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: chartPercentage.map(transaction => transaction.name),
+                    datasets: [{
+                        label: '# of Votes',
+                        data: chartPercentage.map(transaction => transaction.amount),
+                        radius: 225,
+                        backgroundColor: chartPercentage.map(transaction => transaction.color),
+                        hoverOffset: 4,
+                        borderColor: chartPercentage.map(transaction => transaction.color),
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false,
+                            labels: {
+                                color: '#000001'
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
+       }
     }, [])
     
     return (
