@@ -84,7 +84,7 @@ const RegistrationForm = props => {
         handleSubmit,
         dirty,
       }) => (
-        <div>
+        <div className={s.container}>
           <form
             className={s.form}
             onSubmit={e => {
@@ -140,6 +140,9 @@ const RegistrationForm = props => {
                 values={values.email}
               />
             </label>
+            <div className={s.progresBar}>
+              <div className={s.progresBarFilter}></div>
+            </div>
             {touched.repeatPassword && errors.repeatPassword && (
               <div className={s.formik_container}>
                 <p className={s.formik}>{errors.repeatPassword}</p>
