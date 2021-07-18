@@ -21,7 +21,7 @@
 }
 .label {
   line-height: 27px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   display: flex;
   border-bottom: 1px solid #e0e0e0;
   padding-left: 10px;
@@ -55,9 +55,9 @@
   border-radius: 20px;
   border-color: #24cca7;
 
-  font-family: Circe;
+  /* font-family: Circe;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; */
   font-size: 18px;
   line-height: 27px;
   text-align: center;
@@ -76,11 +76,12 @@
   border: 1px solid #4a56e2;
   box-sizing: border-box;
   border-radius: 20px;
+  margin-bottom: 60px;
 }
 .button_entrance > a {
-  font-family: Circe;
+  /* font-family: Circe;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; */
   font-size: 18px;
   line-height: 27px;
   text-align: center;
@@ -94,8 +95,9 @@
   color: red;
   margin: 0;
   position: absolute;
-  left: 200px;
-  top: -75px;
+  left: 177px;
+  top: -83px;
+
 }
 .formik_container {
   position: relative;
@@ -110,6 +112,11 @@
     padding: 0;
   }
 
+  .formik{    
+    position: relative;
+    left: 216px;
+    top: -74px;}
+
   .logo {
     padding-top: 100px;
     padding-bottom: 52px;
@@ -121,28 +128,51 @@
     padding: 0px 20px;
   }
 
-  .input__email {
-    width: 280px;
-    height: 34px;
-    margin-bottom: 30px;
+  .input_email {
+background-repeat: no-repeat;
+width: 39px;
   }
 
-  .input__password {
-    width: 280px;
-    height: 34px;
-    margin-bottom: 45px;
+  .input_password{
+    background-repeat: no-repeat;
+width: 39px;
   }
 
-  .button__submit{
-    width: 280px;
-    height: 50px;
+  .input_name {
+    background-repeat: no-repeat;
+    width: 39px;
   }
 
-  .button__registration{
+
+  .button_entrance{
     width: 280px;
     height: 50px;
     margin-bottom: 110px;
   }
+
+  .button_registr{
+    width: 280px;
+    height: 50px;
+    
+  }
+}
+
+.progresBar{
+position: relative;
+top: -41px;
+  height: 5px;
+  background-color: #fee6d5;
+  margin-bottom: 15px;
+  border-radius: 2px;
+}
+
+.progresBarFilter{
+  background:rgba(36, 204, 167, 0.5);
+    height: 100%;
+    border: 1px solid rgba(36, 204, 167, 0.5);
+
+    transition: width .2s ease-in;
+    border-radius: 2px;
 }
 
 @media (min-width: 768px) {
@@ -198,7 +228,7 @@
     padding: 0 65px;
     border-radius: 20px;
     position: inherit;
-    padding-bottom: 60px;
+
   
   }
 

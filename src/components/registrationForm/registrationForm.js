@@ -92,7 +92,7 @@ const RegistrationForm = props => {
               handleSubmit(values);
             }}
           >
-            {/* <FormAuth /> */}
+            <FormAuth />
             <label htmlFor="" name="register" className={s.label}>
               <div className={s.input_email}></div>
               <input
@@ -140,6 +140,9 @@ const RegistrationForm = props => {
                 values={values.email}
               />
             </label>
+            <div className={s.progresBar}>
+              <div className={s.progresBarFilter}></div>
+            </div>
             {touched.repeatPassword && errors.repeatPassword && (
               <div className={s.formik_container}>
                 <p className={s.formik}>{errors.repeatPassword}</p>
