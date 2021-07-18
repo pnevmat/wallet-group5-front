@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getStatisticsTransactions = state => state.statisticsTransactions.data;
+const getStatisticsTransactions = state => state.statisticsTransactions;
 
 const statisticsTransactionsSelector = createSelector([getStatisticsTransactions], data => {
   return data;
