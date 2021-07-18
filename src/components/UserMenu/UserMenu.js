@@ -4,7 +4,7 @@ import authSelector from '../../redux/selectors/authorisationSelectors';
 import logoutOperation from '../../redux/operations/logoutOperation';
 import s from './UserMenu.module.css';
 import defaultAvatar from './default-avatar.png';
-import ModalLogout from "../ModalLogout/ModalLogout";
+// import ModalLogout from "../ModalLogout/ModalLogout";
 
 export default function UserMenu() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function UserMenu() {
         <span className={s.exitSvg}></span>
         Logout
       </button>
-      <ModalLogout />
+      {/* <ModalLogout /> */}
     </div>
   );
 };

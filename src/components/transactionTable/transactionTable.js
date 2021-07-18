@@ -50,8 +50,8 @@ const useStyles = makeStyles({
 export default function TransactionTable() {
    
   const classes = useStyles();
-// const rows=useSelector(getTransaction)
-// console.log(rows)
+const rows=useSelector(getTransaction)
+console.log(rows)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
@@ -66,8 +66,8 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {rows.map((row) => (
-            <StyledTableRow key={row.date}>
+          {rows.map((row,i) => (
+            <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
               <Moment date= {row.date} />
               </StyledTableCell>
@@ -78,7 +78,7 @@ export default function TransactionTable() {
               
               <StyledTableCell align="right">{row.owner.balance}</StyledTableCell>
             </StyledTableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

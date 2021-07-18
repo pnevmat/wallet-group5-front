@@ -85,7 +85,7 @@ class ModalAddTransaction extends Component {
 
     const newTransaction = {
       "date": currentDate,
-      "type": status ? "income":"cost",
+      "type": status ? "cost" : "income",
      "amount":  transactionValue,
     "category":  category,
     "comments":comments,
