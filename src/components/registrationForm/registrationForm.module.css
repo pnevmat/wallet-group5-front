@@ -1,12 +1,18 @@
 .form {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 .input {
-  width: 100%;
+  width: 410px;
+
   border: none;
 
   padding-bottom: 10px;
+  color: #bdbdbd;
+
+  outline: none;
+  border: none;
 }
 .label {
   line-height: 27px;
@@ -40,12 +46,13 @@
   margin-right: auto;
   margin-bottom: 20px;
   background: #24cca7;
+  border: none;
   border-radius: 20px;
   border-color: #24cca7;
 
-  font-family: Circe;
+  /* font-family: Circe;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; */
   font-size: 18px;
   line-height: 27px;
   text-align: center;
@@ -64,11 +71,12 @@
   border: 1px solid #4a56e2;
   box-sizing: border-box;
   border-radius: 20px;
+  margin-bottom: 60px;
 }
 .button_entrance > a {
-  font-family: Circe;
+  /* font-family: Circe;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; */
   font-size: 18px;
   line-height: 27px;
   text-align: center;
@@ -82,9 +90,156 @@
   color: red;
   margin: 0;
   position: absolute;
-  left: 200px;
-  top: -75px;
+  left: 177px;
+  top: -83px;
 }
 .formik_container {
   position: relative;
+}
+
+/* медіа правила */
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 320;
+    padding: 0;
+  }
+
+  .formik {
+    position: relative;
+    left: 216px;
+    top: -74px;
+  }
+
+  .logo {
+    padding-top: 100px;
+    padding-bottom: 52px;
+  }
+
+  .form {
+    width: 320;
+    border-radius: 0;
+    padding: 0px 20px;
+  }
+
+  .input_email {
+    background-repeat: no-repeat;
+    width: 39px;
+  }
+
+  .input_password {
+    background-repeat: no-repeat;
+    width: 39px;
+  }
+
+  .input_name {
+    background-repeat: no-repeat;
+    width: 39px;
+  }
+
+  .button_entrance {
+    width: 280px;
+    height: 50px;
+    margin-bottom: 110px;
+  }
+
+  .button_registr {
+    width: 280px;
+    height: 50px;
+  }
+}
+
+.progresBar {
+  position: relative;
+  top: -41px;
+  height: 5px;
+  background-color: #fee6d5;
+  margin-bottom: 15px;
+  border-radius: 2px;
+}
+
+.progresBarFilter {
+  background: rgba(36, 204, 167, 0.5);
+  height: 100%;
+  border: 1px solid rgba(36, 204, 167, 0.5);
+
+  transition: width 0.2s ease-in;
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 25px;
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: absolute;
+    top: 362px;
+    left: 110px;
+    z-index: 3;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 52px 85px 52px 95px;
+    max-width: 720px;
+    background-image: url(./gradient.png);
+    background-repeat: no-repeat;
+    height: 720px;
+  }
+  .form {
+    max-width: 540px;
+    padding: 0 65px;
+    border-radius: 20px;
+    position: inherit;
+  }
+
+  .input__email {
+    width: 410px;
+    height: 34px;
+
+    margin-bottom: 35px;
+  }
+
+  .input__password {
+    width: 410px;
+    height: 34px;
+    margin-bottom: 45px;
+  }
+
+  .button__submit {
+    width: 300px;
+    height: 50px;
+  }
+
+  .button__registration {
+    width: 300px;
+    height: 50px;
+  }
 }
