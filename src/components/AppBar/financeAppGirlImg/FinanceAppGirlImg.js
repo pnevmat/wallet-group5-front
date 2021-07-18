@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './financeAppGirlImg.module.css'
-import eclipseTablet from './images/FrameTable.png';
-import frameTablet from './images/eclipseTablet.png';
+import eclipseTablet from './images/eclipseTablet.png';
+import frameTablet from './images/frameTablet.png';
 import frame from './images/frame.png';
 
 const FinanceAppGirlImg = () => {
