@@ -15,17 +15,23 @@
 }
 
 .modal {
+  position: relative;
   width: 540px;
   height: 540px;
   background-color: white;
   border-radius: 20px;
+
+  
 }
 
 .closeModalIcon {
   position: absolute;
   width: 16px;
   height: 16px;
-  right: 420px;
+  /* right: 420px; */
+top:15px;
+right:10px;
+border: 1px solid transparent;
 
   cursor: pointer;
 }
