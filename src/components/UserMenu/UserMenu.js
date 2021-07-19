@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import authSelector from '../../redux/selectors/authorisationSelectors';
 import logoutOperation from '../../redux/operations/logoutOperation';
@@ -15,18 +15,21 @@ export default function UserMenu() {
     dispatch(logoutOperation());
   }, [dispatch]);
 
-
   return (
     <div className={s.userMenuContainer}>
+      <div className={s.logo_container}>
+        <img src="/Group.svg" alt="кошелек" className={s.logo} />
+        <h1 className={s.title}>Wallet</h1>
+      </div>
       {/* <img src={defaultAvatar} alt="" width="32" className={s.avatar} /> */}
       <span className={s.name}> Welcome, {name}</span>
       <span className={s.verticalLine}></span>
 
       <button className={s.btnLogout} type="button" onClick={onLogout}>
         <span className={s.exitSvg}></span>
-        Logout
+        <span className={s.logoutTitle}>Logout</span>
       </button>
       {/* <ModalLogout /> */}
     </div>
   );
-};
+}
