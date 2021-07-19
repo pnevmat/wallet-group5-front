@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 
-
 import routes from '../src/routes';
 import Spinner from '../src/components/Spinner/Spinner';
 
@@ -25,15 +24,10 @@ const StatisticsPage = lazy(() =>
   import('./pages/statisticsPage' /* webpackChunkName: "Statistics-Page" */),
 );
 
-
-
 const FinanceApp = () => {
- 
-
   return (
     <Suspense fallback={<Spinner />}>
       <section>
-
         <Switch>
           <Route
             exact
