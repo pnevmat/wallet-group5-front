@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors'
+import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors'
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
@@ -29,8 +29,8 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(date, type,  category,  commentary,  summ, balance) {
-  return {date, type,  category,  commentary,  summ, balance };
+function createData(date, type, category, commentary, summ, balance) {
+  return { date, type, category, commentary, summ, balance };
 }
 
 // const rows = [
@@ -48,17 +48,17 @@ const useStyles = makeStyles({
 });
 
 export default function TransactionTable() {
-   
+
   const classes = useStyles();
-const rows=useSelector(getTransaction)
-console.log(rows)
+  const rows = useSelector(getTransaction)
+  console.log(rows)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Дата</StyledTableCell>
-             <StyledTableCell align="right">Тип</StyledTableCell>
+            <StyledTableCell align="right">Тип</StyledTableCell>
             <StyledTableCell align="right">Категория</StyledTableCell>
             <StyledTableCell align="right">Сумма</StyledTableCell>
             <StyledTableCell align="right">Комментарии</StyledTableCell>
@@ -66,17 +66,16 @@ console.log(rows)
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row,i) => (
+          {rows.map((row, i) => (
             <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
-              <Moment date= {row.date} />
+                <Moment date={row.transaction.date} />
               </StyledTableCell>
-              <StyledTableCell align="right">{row.type}</StyledTableCell>
-              <StyledTableCell align="right">{row.category}</StyledTableCell>
-              <StyledTableCell align="right">{row.amount}</StyledTableCell>
-              <StyledTableCell align="right">{row.comments}</StyledTableCell>
-              
-              <StyledTableCell align="right">{row.owner.balance}</StyledTableCell>
+              <StyledTableCell align="right">{row.transaction.type}</StyledTableCell>
+              <StyledTableCell align="right">{row.transaction.category}</StyledTableCell>
+              <StyledTableCell align="right">{row.transaction.amount}</StyledTableCell>
+              <StyledTableCell align="right">{row.transaction.comments}</StyledTableCell>
+              <StyledTableCell align="right">{row.transaction.balance}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

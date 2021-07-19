@@ -21,7 +21,6 @@ const DiagramTab = () => {
     }, []);
 
     const statistics = useSelector(statisticsSelector.statisticsTransactionsSelector);
-    console.log('Statistics page transactions', statistics);
 
     return (
         <div className={styles.container}>

@@ -24,6 +24,7 @@ export default function CategoryForm({ categoryChange }) {
 
   console.log(categories);
   const handleChange = e => {
+    console.log('Category form categirie input change: ', e.target.value);
     categoryChange(e.target.value);
   };
 
