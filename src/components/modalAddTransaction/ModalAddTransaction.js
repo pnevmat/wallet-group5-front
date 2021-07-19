@@ -35,7 +35,6 @@ class ModalAddTransaction extends Component {
   state = {
     status: true,
     currentDate: moment().format('YYYY-MM-DD'),
-    category: '',
     transactionValue: '',
     comments:'',
   

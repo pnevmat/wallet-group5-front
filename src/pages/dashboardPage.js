@@ -16,7 +16,7 @@ const DashboardPage = (props) => {
       <UserMenu />
       <Navigation />
       <Balance userBalance={userBalance} />
-      <TransactionTable/>
+      <TransactionTable />
       <AddTransactionButton />
     </>
   );

@@ -4,7 +4,6 @@ import styles from './table.module.css';
 
 const Table = (props) => {
     const {table, cost, income} = props;
-    console.log('Table component props: ', props);
     return (
         <div className={styles.container}>
             <form className={styles.form}>
