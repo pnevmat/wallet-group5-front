@@ -3,6 +3,7 @@
     max-width: 435px;
     padding-top: 65px;
     padding-right: 85px;
+    background: transparent;
 }
 
 .form {
@@ -24,7 +25,8 @@
     /* padding-right: 20px; */
     padding-bottom: 14px;
     padding-left: 21px;
-    border-radius: 25px;
+    border: 1px solid #000000;
+    border-radius: 30px;
     outline: none;
 }
 
@@ -43,8 +45,9 @@
     padding-right: 30px;
     padding-bottom: 15px;
     padding-left: 30px;
-    border: 1px solid tomato;
+    /* border: 1px solid tomato; */
     border-radius: 25px;
+    background-color: #ffffff;
 }
 
 .tableHeaderText {

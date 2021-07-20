@@ -4,26 +4,41 @@ import styles from './table.module.css';
 
 const Table = (props) => {
     const {table, cost, income} = props;
+
+    const todayDate = Date.now();
+    const normalDate = Intl.DateTimeFormat('en-US', {year: 'numeric'}).format(todayDate)
+
+    const numberOfYears = normalDate - 2000;
+
+    const years = []
+    
+    for (let i = 0; i <= numberOfYears; i += 1) {
+        years.push(2000 + i)
+    }
+    
     return (
         <div className={styles.container}>
             <form className={styles.form}>
                 <select className={styles.formSelect}>
                     <option className={styles.formMonthOptions} selected>Месяц</option>
-                    <option className={styles.formMonthOptions}>Январь</option>
-                    <option className={styles.formMonthOptions}>Февраль</option>
-                    <option className={styles.formMonthOptions}>Март</option>
-                    <option className={styles.formMonthOptions}>Апрель</option>
-                    <option className={styles.formMonthOptions}>Май</option>
-                    <option className={styles.formMonthOptions}>Июнь</option>
-                    <option className={styles.formMonthOptions}>Июль</option>
-                    <option className={styles.formMonthOptions}>Август</option>
-                    <option className={styles.formMonthOptions}>Сентябрь</option>
-                    <option className={styles.formMonthOptions}>Октябрь</option>
-                    <option className={styles.formMonthOptions}>Ноябрь</option>
-                    <option className={styles.formMonthOptions}>Декабрь</option>
+                    <option value='Jan' className={styles.formMonthOptions}>Январь</option>
+                    <option value='Feb' className={styles.formMonthOptions}>Февраль</option>
+                    <option value='Mar' className={styles.formMonthOptions}>Март</option>
+                    <option value='Apr' className={styles.formMonthOptions}>Апрель</option>
+                    <option value='May' className={styles.formMonthOptions}>Май</option>
+                    <option value='June' className={styles.formMonthOptions}>Июнь</option>
+                    <option value='July' className={styles.formMonthOptions}>Июль</option>
+                    <option value='Aug' className={styles.formMonthOptions}>Август</option>
+                    <option value='Sept' className={styles.formMonthOptions}>Сентябрь</option>
+                    <option value='Oct' className={styles.formMonthOptions}>Октябрь</option>
+                    <option value='Nov' className={styles.formMonthOptions}>Ноябрь</option>
+                    <option value='Dec' className={styles.formMonthOptions}>Декабрь</option>
                 </select>
                 <select className={styles.formSelect}>
                     <option>Год</option>
+                    {years.map((year, index) => {
+                        return (<option key={index}>{year}</option>)
+                    })}
                 </select>
             </form>
             <div className={styles.tableHeadersContainer}>

@@ -8,7 +8,9 @@ import styles from './statisticsPageContainer.module.css';
 const StatisticsPageContainer = (props) => {
     return (
         <div className={styles.statisticsContainer}>
-            <StatisticsComponent />
+            <StatisticsComponent
+                balance={props.balance}
+            />
             <DiagramTab />
         </div>
     );
