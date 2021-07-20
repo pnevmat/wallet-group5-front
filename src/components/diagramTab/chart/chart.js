@@ -40,6 +40,7 @@ const ChartComponent = (props) => {
     
     return (
         <div className={styles.chart_container}>
+            <span className={styles.chart_title}>Статистика</span>
             <canvas className={styles.canvas} id="myChart"></canvas>
         </div>
     );

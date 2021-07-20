@@ -7,8 +7,24 @@ const Table = (props) => {
     return (
         <div className={styles.container}>
             <form className={styles.form}>
-                <input />
-                <input />
+                <select className={styles.formSelect}>
+                    <option className={styles.formMonthOptions} selected>Месяц</option>
+                    <option className={styles.formMonthOptions}>Январь</option>
+                    <option className={styles.formMonthOptions}>Февраль</option>
+                    <option className={styles.formMonthOptions}>Март</option>
+                    <option className={styles.formMonthOptions}>Апрель</option>
+                    <option className={styles.formMonthOptions}>Май</option>
+                    <option className={styles.formMonthOptions}>Июнь</option>
+                    <option className={styles.formMonthOptions}>Июль</option>
+                    <option className={styles.formMonthOptions}>Август</option>
+                    <option className={styles.formMonthOptions}>Сентябрь</option>
+                    <option className={styles.formMonthOptions}>Октябрь</option>
+                    <option className={styles.formMonthOptions}>Ноябрь</option>
+                    <option className={styles.formMonthOptions}>Декабрь</option>
+                </select>
+                <select className={styles.formSelect}>
+                    <option>Год</option>
+                </select>
             </form>
             <div className={styles.tableHeadersContainer}>
                 <span className={styles.tableHeaderText}>Категория</span>

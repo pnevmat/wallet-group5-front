@@ -29,10 +29,12 @@ const FinanceApp = () => {
     <Suspense fallback={<Spinner />}>
       <section>
         <Switch>
-          <Route
+          <PublicRoute
             exact
             path={routes.home}
-            render={props => <HomePage {...props} />}
+            restricted
+            component={HomePage}
+            redirectTo="/dashboard"
           />
           <PublicRoute
             path="/register"
