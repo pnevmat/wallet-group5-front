@@ -8,8 +8,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors'
-import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
+import { useDispatch, useSelector } from 'react-redux';
+import selectors from '../../redux/selectors/authorisationSelectors';
+import operation from '../../redux/operations/transactionOperations'
+import moment from 'moment';
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -33,13 +37,7 @@ function createData(date, type, category, commentary, summ, balance) {
   return { date, type, category, commentary, summ, balance };
 }
 
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
+
 
 const useStyles = makeStyles({
   table: {
@@ -49,8 +47,19 @@ const useStyles = makeStyles({
 
 export default function TransactionTable() {
 
+  const dispatch = useDispatch();
+  const token =useSelector(selectors.getUserToken);
+  useEffect(() => {
+      dispatch(operation.fetchTransaction(token));
+   }, [dispatch]);
+
   const classes = useStyles();
   const rows = useSelector(getTransaction)
+  
+//   const newDate=(date)=>{
+// return moment(date,"D/MM/YY" )
+//   }
+
   console.log(rows)
   return (
     <TableContainer component={Paper}>
@@ -66,16 +75,16 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, i) => (
+          {rows.length>0 && rows.map((rows, i) => (
             <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
-                <Moment date={row.transaction.date} />
+                <Moment date={rows.date} />
               </StyledTableCell>
-              <StyledTableCell align="right">{row.transaction.type}</StyledTableCell>
-              <StyledTableCell align="right">{row.transaction.category}</StyledTableCell>
-              <StyledTableCell align="right">{row.transaction.amount}</StyledTableCell>
-              <StyledTableCell align="right">{row.transaction.comments}</StyledTableCell>
-              <StyledTableCell align="right">{row.transaction.balance}</StyledTableCell>
+              <StyledTableCell align="right">{rows.type}</StyledTableCell>
+              <StyledTableCell align="right">{rows.category}</StyledTableCell>
+              <StyledTableCell align="right">{rows.amount}</StyledTableCell>
+              <StyledTableCell align="right">{rows.comments}</StyledTableCell>
+              <StyledTableCell align="right">{rows.balance}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

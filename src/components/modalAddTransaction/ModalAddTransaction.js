@@ -83,7 +83,7 @@ class ModalAddTransaction extends Component {
     const { currentDate, transactionValue, category, comments, status  } = this.state;
 
     const newTransaction = {
-      "date": currentDate,
+      "date": `${currentDate} ${moment().format('HH:mm')}`,
       "type": status ? "cost" : "income",
      "amount":  transactionValue,
     "category":  category,
