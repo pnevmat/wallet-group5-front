@@ -13,7 +13,15 @@ const authorisationReducer = createReducer(authorisationInitialState, {
 });
 
 const userDataReducer = createReducer(authorisationInitialState, {
-  [loginActions.loginSuccess]: (_, { payload }) => payload.user,
+  [loginActions.loginSuccess]: (_, { payload }) => {
+    return {
+      avatarURL: payload.data.avatarURL,
+      balance: payload.data.balance,
+      email: payload.data.email,
+      id: payload.data.id,
+      name: payload.data.name
+    }
+  },
   [logoutActions.logoutSuccess]: () => authorisationInitialState,
 });
 
@@ -35,3 +43,5 @@ export default {
   authReducer,
   authErrorReducer,
 };
+
+// {avatarURL: payload.avatarURL, balance: payload.balance, email: payload.email, id: payload.id, name: payload.name}

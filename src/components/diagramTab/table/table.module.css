@@ -1,14 +1,44 @@
 .container {
     width: 100%;
     max-width: 435px;
+    padding-top: 65px;
     padding-right: 85px;
 }
 
 .form {
+    width: 100%;
+    max-width: 351px;
+    height: 50px;
     margin-bottom: 20px;
 }
 
+.form :not(:last-child) {
+    margin-right: 18px;
+}
+
+.formSelect {
+    width: 100%;
+    max-width: 166px;
+    height: 100%;
+    padding-top: 12px;
+    /* padding-right: 20px; */
+    padding-bottom: 14px;
+    padding-left: 21px;
+    border-radius: 25px;
+    outline: none;
+}
+
+.formMonthOptions {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
 .tableHeadersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-top: 15px;
     padding-right: 30px;
     padding-bottom: 15px;

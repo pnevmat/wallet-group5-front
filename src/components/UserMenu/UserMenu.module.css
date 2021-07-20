@@ -23,10 +23,12 @@
   }
 }
 
-/* .avatar {
-    margin-right: 4px;
-    border-radius: "50%";
-}; */
+.avatar {
+  margin-right: 4px;
+  margin-left: 4px;
+  border-radius: 50%;
+};
+
 .logo_container {
   display: flex;
   align-items: center;

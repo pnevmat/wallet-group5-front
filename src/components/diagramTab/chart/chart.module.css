@@ -6,6 +6,16 @@
     margin-right: 30px;
 }
 
+.chart_title {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+}
+
 .canvas {
     border-radius: 50%;
 }
