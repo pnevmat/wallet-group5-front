@@ -1,4 +1,11 @@
 .statisticsContainer {
     display: flex;
     align-items: flex-start;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+    background-image: url(./images/Ellipse2.png);
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position-x: 83%;
+    background-position-y: -20%;
 }

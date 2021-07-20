@@ -9,7 +9,7 @@ Chart.register(...registerables);
 
 const ChartComponent = (props) => {
     const {chartPercentage} = props;
-    console.log('Data that comes to diagram: ', chartPercentage);
+    // console.log('Data that comes to diagram: ', chartPercentage);
     
     useEffect(() => {
         const ctx = document.getElementById('myChart');
@@ -21,22 +21,10 @@ const ChartComponent = (props) => {
 
         return () => {
             if (MyChart) {
-                console.log('Will unmount chart: ', MyChart);
                 MyChart.chart.destroy();
             }
         }
     }, [chartPercentage]);
-    
-
-    // useEffect(() => {
-    //     if (chartPercentage && MyChart) {
-    //         MyChart.data.labels = chartPercentage.map(transaction => transaction.name);
-    //         MyChart.data.datasets[0].data = chartPercentage.map(transaction => transaction.amount);
-    //         MyChart.data.datasets[0].backgroundColor = chartPercentage.map(transaction => transaction.color);
-    //         MyChart.data.datasets[0].borderColor = chartPercentage.map(transaction => transaction.color);
-    //         MyChart.update();
-    //     }
-    // }, [chartPercentage]);
     
     return (
         <div className={styles.chart_container}>
