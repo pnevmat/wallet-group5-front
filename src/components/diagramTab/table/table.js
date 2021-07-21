@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import styles from './table.module.css';
 
 const Table = (props) => {
-    const {table, cost, income} = props;
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState(0);
+    const {table, cost, income, onSubmit} = props;
 
     const todayDate = Date.now();
     const normalDate = Intl.DateTimeFormat('en-US', {year: 'numeric'}).format(todayDate)
@@ -15,11 +17,41 @@ const Table = (props) => {
     for (let i = 0; i <= numberOfYears; i += 1) {
         years.push(2000 + i)
     }
+
+    const handleCange = (e) => {
+        const { name, value } = e.target;
+        switch (name) {
+            case 'month':
+                setMonth(value);
+                break;
+            case 'year':
+                setYear(value);
+                break;
+            default:
+                console.log('error');
+        };
+    };
+
+    useEffect(() => {
+        if (month !== '' && year !== 0) {
+            console.log('Handle submit called');
+            handleSubmit();
+        };
+    }, [month, year])
+    
+    const handleSubmit = () => {
+        console.log('Form submition started');
+        onSubmit({ month, year });
+    }
     
     return (
         <div className={styles.container}>
             <form className={styles.form}>
-                <select className={styles.formSelect}>
+                <select className={styles.formSelect} name="month"
+                    onChange={e => {
+                        handleCange(e)
+                    }}
+                >
                     <option className={styles.formMonthOptions} selected>Месяц</option>
                     <option value='Jan' className={styles.formMonthOptions}>Январь</option>
                     <option value='Feb' className={styles.formMonthOptions}>Февраль</option>
@@ -34,8 +66,12 @@ const Table = (props) => {
                     <option value='Nov' className={styles.formMonthOptions}>Ноябрь</option>
                     <option value='Dec' className={styles.formMonthOptions}>Декабрь</option>
                 </select>
-                <select className={styles.formSelect}>
-                    <option>Год</option>
+                <select className={styles.formSelect} name="year"
+                    onChange={e => {
+                        handleCange(e)
+                    }}
+                >
+                    <option selected>Год</option>
                     {years.map((year, index) => {
                         return (<option key={index}>{year}</option>)
                     })}
