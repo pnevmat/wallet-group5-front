@@ -8,7 +8,9 @@ import styles from './statisticsComponent.module.css';
 
 const StatisticsComponent = (props) => {
   return (
+   
     <div className={styles.container}>
+      
       <Navigation />
       <Balance balance={props.balance} />
       <ExchangeBox />

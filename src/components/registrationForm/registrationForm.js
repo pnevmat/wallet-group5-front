@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import FormAuth from '../FormAuth/FormAuth';
-import Example  from './ProgresBar/ProgresBar';
+
 
 import s from './registrationForm.module.css';
 
@@ -156,11 +156,10 @@ console.log('mmm',password);
               />
              
             </label>
-            {/* <div className={s.progresBarBox}>
-            <progress className={s.progresBarBox} value={values.repeatPassword.length} max="6"> 20% </progress>
-            </div> */}
+          
 
-<Example password={values.password} repeatPassword={values.repeatPassword} />
+
+
             <div className={s.progresBar}>
               <div className={s.progresBarFilter}></div>
             </div>
