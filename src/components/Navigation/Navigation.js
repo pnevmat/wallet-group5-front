@@ -7,7 +7,7 @@ import CurrencyIcon from './svg/CurrencyIcon/CurrencyIcon';
 
 const Navigation = () => {
   return (
-    <nav>
+    <nav className={s.container}>
       <ul className={s.navList}>
         <li className={s.navItem}>
           <NavLink

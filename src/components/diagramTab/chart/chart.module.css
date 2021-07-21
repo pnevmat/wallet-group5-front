@@ -2,13 +2,10 @@
     display: inline-block;
     width: 100%;
     max-width: 320px;
-    height: 320px;
-    margin-right: 30px;
 }
 
 .chart_title {
     display: inline-block;
-    margin-bottom: 20px;
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
@@ -18,5 +15,37 @@
 
 .canvas {
     border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+    .chart_container {
+        margin-bottom: 30px;
+    }
+
+    .chart_title {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    /* .chart_container {
+        margin-right: 34px;
+    } */
+
+    .chart_title {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .chart_container {
+        height: 320px;
+        margin-bottom: 30px;
+        margin-right: 30px;
+    }
+
+    .chart_title {
+        margin-bottom: 20px;
+    }
 }
 

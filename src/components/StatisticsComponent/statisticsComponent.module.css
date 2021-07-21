@@ -1,18 +1,42 @@
 .container {
   display: inline-block;
   width: 100%;
-  max-width: 465px;
-  height: 734px;
-  padding-top: 40px;
-  padding-right: 30px;
-  padding-left: 85px;
-  margin-right: 30px;
-  border-right: 1px solid #E7E5F2;
-  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
-  /* background: transparent; */
-  background-image: url(./images/Ellipse1.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position-x: -10%;
-  background-position-y: 120%;
+  background: transparent;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-top: 13px;
+    padding-right: 67px;
+    padding-left: 67px;
+    margin-bottom: 43px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .container {
+   padding-top: 35px;
+   padding-right: 40px;
+   padding-left: 43px;
+  }
+
+  .tabletContainer {
+    display: inline-block;
+    width: 100%;
+    max-width: 332px;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 465px;
+    height: 734px;
+    padding-top: 40px;
+    padding-right: 30px;
+    padding-left: 85px;
+    margin-right: 30px;
+    border-right: 1px solid #E7E5F2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
 }
