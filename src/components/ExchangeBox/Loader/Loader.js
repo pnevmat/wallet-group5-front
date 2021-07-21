@@ -10,10 +10,10 @@ export default class App extends Component {
         <Spinner
           type="ThreeDots"
           color="#00BFFF"
-          loading="true"
+          // loading="true"
           height={80}
           width={80}
-          timeout={2500} //3 secs
+       
         />
       </div>
     );

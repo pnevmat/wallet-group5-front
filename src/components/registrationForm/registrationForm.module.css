@@ -39,6 +39,15 @@
   height: 18px;
   margin-right: 12px;
 }
+
+.progresBarBox{
+background-color: #fff;
+  appearance: none;
+  width: 250px;
+  height: 8px;
+
+
+}
 .button_registr {
   width: 300px;
   height: 50px;
@@ -86,6 +95,7 @@
 
   color: #4a56e2;
 }
+
 .formik {
   color: red;
   margin: 0;
@@ -93,6 +103,7 @@
   left: 177px;
   top: -83px;
 }
+
 .formik_container {
   position: relative;
 }

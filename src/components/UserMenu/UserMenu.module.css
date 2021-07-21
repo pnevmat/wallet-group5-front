@@ -1,74 +1,52 @@
 .userMenuContainer {
+  /* width: 320px; */
+  padding: 0 20px 0 20px;
   display: flex;
   align-items: center;
   margin: 0;
   justify-content: space-between;
   text-align: center;
-  border-bottom: 3px solid rgb(202, 197, 197);
+  background-color: #fff;
   line-height: 1.5;
   height: 60px;
+  margin: 0 auto;
 }
-@media screen and (min-width: 767px) {
-  .userMenuContainer {
-    height: 80px;
-  }
+
+.title {
+  padding: 0px 20px 0 0;
 }
+
+.logo_container {
+  width: 129px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .title {
   font-size: 20px;
   margin: 0;
 }
-@media screen and (min-width: 767px) {
-  .title {
-    font-size: 30px;
-  }
+
+.name {
+  font-weight: 400;
+  font-size: 18px;
+
+  color: #bdbdbd;
 }
 
 .avatar {
   margin-right: 4px;
   margin-left: 4px;
   border-radius: 50%;
-};
+}
 
-.logo_container {
+.containerLogout {
+  max-width: 250px;
   display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 0;
 }
-.logo {
-  margin-left: 20px;
-  margin-right: 17px;
-}
-@media screen and (min-width: 767px) {
-  .logo {
-    width: 40px;
-    height: 40px;
-    margin-left: 40px;
-    margin-right: 23px;
-  }
-}
-@media screen and (min-width: 1279px) {
-  .logo {
-    margin-left: 85px;
-    margin-right: 23px;
-  }
-}
-.name {
-  font-weight: 400;
-  font-size: 18px;
-  margin-left: 70px;
-  color: #bdbdbd;
-}
-@media screen and (min-width: 767px) {
-  .name {
-    margin-left: 330px;
-  }
-}
-@media screen and (min-width: 1279px) {
-  .name {
-    margin-left: 750px;
-  }
-}
+
 .btnLogout {
   color: #bdbdbd;
   border: none;
@@ -85,42 +63,61 @@
 }
 .logoutTitle {
   display: none;
-  margin-right: 40px;
 }
-@media screen and (min-width: 767px) {
-  .logoutTitle {
-    display: inline-block;
-  }
-}
-@media screen and (min-width: 1279px) {
-  .logoutTitle {
-    margin-right: 87px;
-  }
-}
+
 .verticalLine {
   display: none;
   height: 30px;
   width: 1px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 0 10px 0 17px;
+
   color: #bdbdbd;
   background-image: url(./Vector.svg);
 }
-@media screen and (min-width: 767px) {
-  .verticalLine {
-    display: flex;
-  }
-}
+
 .exitSvg {
   display: flex;
   width: 18px;
   height: 18px;
   color: #bdbdbd;
-  margin-right: 20px;
   background-image: url(./exit.svg);
 }
+
 @media screen and (min-width: 767px) {
+  .userMenuContainer {
+    height: 80px;
+    padding: 0 40px 0 40px;
+  }
+
+  .logo_container {
+    width: 181px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logoutTitle {
+    display: inline-block;
+  }
+
+  .verticalLine {
+    display: flex;
+  }
+
   .exitSvg {
     margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .userMenuContainer {
+    max-width: 1280px;
+    padding: 0 80px 0 80px;
   }
 }

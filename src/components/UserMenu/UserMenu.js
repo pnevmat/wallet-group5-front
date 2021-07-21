@@ -18,22 +18,26 @@ export default function UserMenu(props) {
 
   return (
     <div className={s.userMenuContainer}>
+     
       <div className={s.logo_container}>
         <img src="/Group.svg" alt="кошелек" className={s.logo} />
         <h1 className={s.title}>Wallet</h1>
       </div>
+      <div className={s.containerLogout}>
       <span className={s.name}>
-        Welcome,
-        <img src={avatar ? avatar : defaultAvatar} alt="" width="32" className={s.avatar} />
+        
+        {/* <img src={avatar ? avatar : defaultAvatar} alt="" width="32" className={s.avatar} /> */}
         {name}
       </span>
       <span className={s.verticalLine}></span>
 
       <button className={s.btnLogout} type="button" onClick={onLogout}>
         <span className={s.exitSvg}></span>
-        <span className={s.logoutTitle}>Logout</span>
+        <span className={s.logoutTitle}>Вийти</span>
       </button>
+      </div>
       {/* <ModalLogout /> */}
+     
     </div>
   );
 }
