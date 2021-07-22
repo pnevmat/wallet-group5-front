@@ -8,6 +8,7 @@ import styles from './statisticsComponent.module.css';
 
 const StatisticsComponent = (props) => {
   return (
+   
     <div className={styles.container}>
       <div className={styles.tabletContainer}>
         <Navigation />

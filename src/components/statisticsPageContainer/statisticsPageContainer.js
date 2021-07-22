@@ -11,6 +11,7 @@ const StatisticsPageContainer = (props) => {
             <StatisticsComponent
                 balance={props.balance}
             />
+            
             <DiagramTab />
         </div>
     );

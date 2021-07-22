@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Loader from './Loader/Loader';
 import s from './ExchangeBox.module.css';
-
+import fetch from './fetch';
 export default class ExchangeBox extends Component {
   state = {
     persons: [],
-    isLoading: true,
+    isLoading: false,
   };
 
   componentDidMount() {
-    axios
-      .get(`https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11`)
-      .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
-        console.log(persons.length);
-        this.setState({ isLoading: false });
-      });
+    // let user = await  axios.get(`https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11`)
+    fetch().then(res => this.setState({ persons: res.data }));
+
+    // this.setState({ isLoading: false });
+
+    // this.setState({ persons });
   }
 
   render() {
+    console.log(this.state.persons);
     return (
       <>
         <div className={s.exchangeContainer}>

@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import FormAuth from '../FormAuth/FormAuth';
 
+
 import s from './registrationForm.module.css';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
+
 
 const RegistrationForm = props => {
   const [email, setEmail] = useState('');
@@ -61,6 +63,16 @@ const RegistrationForm = props => {
     name: yup.string().min(1).max(12).required('Обязательное поле'),
   });
 
+const val = ()=>{
+ let ttt
+  if(password===repeatPassword && password >=6){
+ttt = repeatPassword.length
+  }
+  return ttt
+}
+
+console.log('mmm',password);
+
   return (
     <Formik
       initialValues={{
@@ -75,6 +87,7 @@ const RegistrationForm = props => {
       onSubmit={handleSubmit}
     >
       {({
+   
         values,
         errors,
         touched,
@@ -92,6 +105,8 @@ const RegistrationForm = props => {
               handleSubmit(values);
             }}
           >
+
+            
             <FormAuth />
             <label htmlFor="" name="register" className={s.label}>
               <div className={s.input_email}></div>
@@ -139,7 +154,12 @@ const RegistrationForm = props => {
                 onBlur={handleBlur}
                 values={values.email}
               />
+             
             </label>
+          
+
+
+
             <div className={s.progresBar}>
               <div className={s.progresBarFilter}></div>
             </div>
