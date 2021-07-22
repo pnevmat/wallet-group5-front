@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import statisticsOperation from '../../redux/operations/statisticsOperation';
+import limitedStatisticsOperation from '../../redux/operations/limitedStatisticsOperation';
 
 import ChartComponent from './chart/chart';
 import Table from './table/table';
@@ -20,6 +21,8 @@ const DiagramTab = () => {
         dispatch(statisticsOperation(userToken))
     }, []);
 
+    const onMonthYearSubmit = transactionData => dispatch(limitedStatisticsOperation(userToken, transactionData));
+
     const statistics = useSelector(statisticsSelector.statisticsTransactionsSelector);
 
     return (
@@ -29,6 +32,7 @@ const DiagramTab = () => {
                 table={statistics.categories}
                 cost={statistics.costBalance}
                 income={statistics.incomeBalance}
+                onSubmit={onMonthYearSubmit}
             />
         </div>
     );

@@ -10,9 +10,10 @@ const StatisticsComponent = (props) => {
   return (
    
     <div className={styles.container}>
-      
-      <Navigation />
-      <Balance balance={props.balance} />
+      <div className={styles.tabletContainer}>
+        <Navigation />
+        <Balance balance={props.balance} />
+      </div>
       <ExchangeBox />
     </div>
   );

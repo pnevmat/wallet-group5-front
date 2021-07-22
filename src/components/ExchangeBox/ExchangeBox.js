@@ -33,7 +33,7 @@ export default class ExchangeBox extends Component {
                 <p className={s.exchangeListAtemTitleName}>Покупка</p>
               </li>
               <li className={s.exchangeListAtem}>
-                <p className={s.exchangeListAtemTitleName}>Продаж</p>
+                <p className={s.exchangeListAtemTitleName}>Продажа</p>
               </li>
             </ul>
           </div>

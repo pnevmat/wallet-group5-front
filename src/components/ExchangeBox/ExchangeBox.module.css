@@ -68,12 +68,18 @@ p {
 }
 
 
-
-
-
-@media (min-width: 767px) {
+@media (max-width: 767px) {
   .exchangeContainer {
-    width: 334px;
+    display: none;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .exchangeContainer {
+    display: inline-block;
+    width: 100%;
+    max-width: 332px;
   }
 
   .exchangeListTitle {

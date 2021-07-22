@@ -1,11 +1,40 @@
 .statisticsContainer {
-    display: flex;
-    align-items: flex-start;
+    width: 100%;
+    max-width: 1280px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
-    background-image: url(./images/Ellipse2.png);
-    background-repeat: no-repeat;
-    background-size: 40%;
-    background-position-x: 83%;
-    background-position-y: -20%;
+}
+
+@media (max-width: 767px) {
+    .statisticsContainer {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 767px) {
+    .statisticsContainer {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .statisticsContainer {
+        max-width: 768px;
+        background-image: url(./images/statisticsBackgroundTablet.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media (min-width: 1280px) {
+    .statisticsContainer {
+        display: flex;
+        align-items: flex-start;
+        background-image: url(./images/statisticsBackgroundPc.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }

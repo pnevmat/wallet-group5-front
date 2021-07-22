@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import registrationActions from '../actions/registrationAction';
 import loginActions from '../actions/loginActions';
 import logoutActions from '../actions/logoutActions';
+import limitedStatisticsActions from '../actions/limitedStatisticsActions';
 
 const authorisationInitialState = {};
 const authReducerInitialState = false;
@@ -35,6 +36,7 @@ const authErrorReducer = createReducer(authorisationInitialState, {
   [registrationActions.registrationError]: (_, { payload }) => payload.message,
   [loginActions.loginError]: (_, { payload }) => payload.message,
   [logoutActions.logoutError]: (_, { payload }) => payload.message,
+  [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message
 });
 
 export default {
