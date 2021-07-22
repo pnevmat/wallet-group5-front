@@ -21,19 +21,17 @@ export default class ExchangeBox extends Component {
   render() {
     console.log(this.state.persons);
     return (
-      <>
         <div className={s.exchangeContainer}>
           <div className={s.exchangeTitleBox}>
             <ul className={s.exchangeListTitle}>
               <li className={s.exchangeListAtemTitle}>
-                <p className={s.exchangeListAtemTitleName}>Валюта</p>
+                <span className={s.exchangeListAtemTitleName}>Валюта</span>
               </li>
-
               <li className={s.exchangeListAtemTitle}>
-                <p className={s.exchangeListAtemTitleName}>Покупка</p>
+                <span className={s.exchangeListAtemTitleName}>Покупка</span>
               </li>
               <li className={s.exchangeListAtem}>
-                <p className={s.exchangeListAtemTitleName}>Продажа</p>
+                <span className={s.exchangeListAtemTitleName}>Продажа</span>
               </li>
             </ul>
           </div>
@@ -57,7 +55,6 @@ export default class ExchangeBox extends Component {
             )}
           </div>
         </div>
-      </>
     );
   }
 }

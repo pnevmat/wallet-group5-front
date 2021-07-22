@@ -1,0 +1,73 @@
+.container {
+    width: 100%;
+    max-width: 785px;
+    padding-top: 45px;
+    padding-right: 85px;
+    border-left: none;
+    background: transparent;
+}
+
+.tableHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    border-radius: 30px;
+    background: #ffffff;
+    list-style: none;
+}
+
+.tableHeadText {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.tableRowContainer {
+    list-style: none;
+}
+
+.tableRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid #DCDCDF;
+    background: transparent;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.tableRowText {
+    width: 100%;
+    max-width: 60px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.tableRowCategorie {
+    width: 100%;
+    max-width: 100px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.tableRowComment {
+    width: 100%;
+    max-width: 118px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}

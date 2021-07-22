@@ -14,7 +14,15 @@ const getUserName = state => {
 
 const getUserEmail = state => state.auserDatauth.user.email;
 
-const getUserBalance = state => state.userData.registrationData.balance;
+const getUserBalance = state => {
+  const regBalance = state.userData.registrationData.balance;
+  const authBalance = state.userData.authorisationData.balance;
+  if (regBalance) {
+    return regBalance;
+  } else if (authBalance) {
+    return authBalance;
+  }
+};
 
 const getUserToken = state=> {
   if (state.userToken.authorisationToken!=={})

@@ -6,7 +6,7 @@ import {
 
 const transactionReducer = createReducer([], {
   [fetchTransactionSuccess]: (_, { payload }) => payload,
-  [addTransactionSuccess]: (state, {payload }) => [...state, payload.transaction],
+  [addTransactionSuccess]: (state, {payload }) => [payload.transaction, ...state],
 });
 
 export default { transactionReducer };
