@@ -1,0 +1,40 @@
+.dashboardContainer {
+    width: 100%;
+    max-width: 1280px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+}
+
+@media (max-width: 767px) {
+    .dashboardContainer {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 767px) {
+    .dashboardContainer {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .dashboardContainer {
+        max-width: 768px;
+        background-image: url(./images/dashboardBackgroundTablet.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media (min-width: 1280px) {
+    .dashboardContainer {
+        display: flex;
+        align-items: flex-start;
+        background-image: url(./images/dashboardBackgroundPc.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

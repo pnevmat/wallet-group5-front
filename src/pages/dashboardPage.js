@@ -1,23 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import userBalanceSelector from '../components/balance/balance';
+import authorisationSelectors from '../redux/selectors/authorisationSelectors';
 
-import Navigation from '../components/Navigation/Navigation';
-import Balance from '../components/balance/balance';
-import AddTransactionButton from '../components/addTransactionButton/AddTransactionButton';
+
 import UserMenu from '../components/UserMenu/UserMenu';
-import TransactionTable from '../components/transactionTable/transactionTable'
+import DashboardPageContainer from '../components/dashboardPageContainer/dashboardPageContainer';
 
-const DashboardPage = (props) => {
-  const userBalance = useSelector(userBalanceSelector);
+const DashboardPage = () => {
+  const userBalance = useSelector(authorisationSelectors.getUserBalance);
+  console.log('User balance', userBalance);
   return (
     <>
       <UserMenu />
-      <Navigation />
-      <Balance userBalance={userBalance} />
-      <TransactionTable />
-      <AddTransactionButton />
+      <DashboardPageContainer balance={userBalance} />
     </>
   );
 };
