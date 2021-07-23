@@ -11,11 +11,12 @@ import Modal from 'react-modal';
 import operation from '../../redux/operations/logoutOperation';
 import { connect } from "react-redux";
 
+
 const ModalLogout = () => {
   const dispatch = useDispatch();
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
   }
 
@@ -24,9 +25,8 @@ const ModalLogout = () => {
   //   subtitle.style.color = '#f00';
   // }
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-    const onToggleModal = dispatch(modalLogoutAction());
   }
   // const isModalOpen = useSelector((state) => modalLogoutSelector(state));
   // const onToggleModal = dispatch(modalLogoutAction());
@@ -35,11 +35,6 @@ const ModalLogout = () => {
     dispatch(logoutOperation());
   }, [dispatch]);
 
-  const handleCloseModal = e => {
-    if (e.target === e.currentTarget) {
-      this.props.onToggleModal();
-    }
-  };
 
   return (
     <>
