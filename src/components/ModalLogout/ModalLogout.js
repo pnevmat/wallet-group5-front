@@ -1,51 +1,5 @@
-<<<<<<< HEAD
-// import { useDispatch, useSelector } from 'react-redux';
-// // import { Component } from "react";
-// // import { createPortal } from "react-dom";
-// // const modalRoot = document.querySelector("#modal-root");
-// import s from './modalLogout.module.css';
-// import modalLogoutAction from '../../redux/actions/isModalLogoutOpenAction';
-// import modalLogoutSelector from '../../redux/selectors/isModalLogoutOpenSelector';
-// import logoutOperation from '../../redux/operations/logoutOperation';
-// import ReactModal from 'react-modal';
-
-
-// const ModalLogout = () => {
-//   const dispatch = useDispatch();
-//   const isModalOpen = useSelector(state => modalLogoutSelector(state));
-//   const onToggleModal = dispatch(modalLogoutAction());
-
-//   const logout = () => {
-//     dispatch(logoutOperation());
-//     onToggleModal();
-//     console.log('you logout');
-//   };
-
-//   return (
-//     <>
-//       <ReactModal
-//         className={s.modal}
-//         isOpen={isModalOpen}
-//         onRequestClose={onToggleModal}
-//         contentLabel="Example Modal"
-//         ariaHideApp={false}
-//       >
-//         <h2 className={s.modalExit}>Do you realy want to exit?</h2>
-//         <div className={s.modalBtn}>
-//           <button className={s.modalExitSucsess} onClick={logout}>
-//             Yes
-//           </button>
-//           <button className={s.modalExitCancel} onClick={onToggleModal}>
-//             No, stay here
-//           </button>
-//         </div>
-//       </ReactModal>
-//     </>
-//   );
-// };
-// export default ModalLogout;
-=======
 import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
 // import { Component } from "react";
 // import { createPortal } from "react-dom";
 // const modalRoot = document.querySelector("#modal-root");
@@ -53,44 +7,64 @@ import s from './modalLogout.module.css';
 import modalLogoutAction from '../../redux/actions/isModalLogoutOpenAction';
 import modalLogoutSelector from '../../redux/selectors/isModalLogoutOpenSelector';
 import logoutOperation from '../../redux/operations/logoutOperation';
-// import ReactModal from 'react-modal';
+import Modal from 'react-modal';
+import operation from '../../redux/operations/logoutOperation';
+import { connect } from "react-redux";
 
 
 const ModalLogout = () => {
-  // const dispatch = useDispatch();
-  // const isModalOpen = useSelector(state => modalLogoutSelector(state));
-  // const onToggleModal = () => dispatch(modalLogoutAction());
+  const dispatch = useDispatch();
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  // const logout = () => {
-  //   dispatch(logoutOperation());
-  //   onToggleModal();
-  //   console.log('you logout');
-  // };
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  // function afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   subtitle.style.color = '#f00';
+  // }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+  // const isModalOpen = useSelector((state) => modalLogoutSelector(state));
+  // const onToggleModal = dispatch(modalLogoutAction());
+
+  const logout = useCallback(() => {
+    dispatch(logoutOperation());
+  }, [dispatch]);
+
 
   return (
     <>
-      {/* <ReactModal
+      <Modal
         className={s.modal}
-        isOpen={isModalOpen}
-        onRequestClose={onToggleModal}
+        isOpen={openModal}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <h2 className={s.modalExit}>Do you realy want to exit?</h2>
+        <h2 className={s.modalExit}>Ты дествительно хочеш выйти?</h2>
         <div className={s.modalBtn}>
           <button className={s.modalExitSucsess} onClick={logout}>
-            Yes
+            Да
           </button>
-          <button className={s.modalExitCancel} onClick={onToggleModal}>
-            No, stay here
+          <button className={s.modalExitCancel} onClick={closeModal}>
+            Нет
           </button>
         </div>
-      </ReactModal> */}
+      </Modal>
     </>
   );
 };
-export default ModalLogout;
->>>>>>> e4d826ba8f1772cbd2e606006cee00db52ede0fb
+
+const mapDispatchToProps = {
+  logoutOperation: operation.logoutOperation,
+}
+
+export default connect(null, mapDispatchToProps)(ModalLogout);
 
 
 /*
