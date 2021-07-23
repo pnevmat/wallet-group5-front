@@ -1,7 +1,11 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch } from 'react-router-dom';
+
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
+
+import getUserDataOperation from './redux/operations/getUserDataOperation';
 
 import routes from '../src/routes';
 import Spinner from '../src/components/Spinner/Spinner';
@@ -25,6 +29,14 @@ const StatisticsPage = lazy(() =>
 );
 
 const FinanceApp = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserDataOperation());
+    
+  }, [dispatch]);
+
   return (
     <Suspense fallback={<Spinner />}>
       <section>

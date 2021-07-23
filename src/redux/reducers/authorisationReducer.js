@@ -4,6 +4,7 @@ import registrationActions from '../actions/registrationAction';
 import loginActions from '../actions/loginActions';
 import logoutActions from '../actions/logoutActions';
 import limitedStatisticsActions from '../actions/limitedStatisticsActions';
+import getUserDataActions from '../actions/getUserDataActions';
 
 const authorisationInitialState = {};
 const authReducerInitialState = false;
@@ -23,12 +24,22 @@ const userDataReducer = createReducer(authorisationInitialState, {
       name: payload.data.name
     }
   },
+  [getUserDataActions.getUserDataSuccess]: (_, { payload }) => {
+    return {
+      avatarURL: payload.user.avatarURL,
+      balance: payload.user.balance,
+      email: payload.user.email,
+      id: payload.user.id,
+      name: payload.user.name
+    }
+  },
   [logoutActions.logoutSuccess]: () => authorisationInitialState,
 });
 
 const authReducer = createReducer(authReducerInitialState, {
   [registrationActions.registrationSuccess]: () => true,
   [loginActions.loginSuccess]: () => true,
+  [getUserDataActions.getUserDataSuccess]: () => true,
   [logoutActions.logoutSuccess]: () => false,
 });
 
@@ -36,7 +47,8 @@ const authErrorReducer = createReducer(authorisationInitialState, {
   [registrationActions.registrationError]: (_, { payload }) => payload.message,
   [loginActions.loginError]: (_, { payload }) => payload.message,
   [logoutActions.logoutError]: (_, { payload }) => payload.message,
-  [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message
+  [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message,
+  [getUserDataActions.getUserDataSuccess]: (_, { payload }) => payload.message
 });
 
 export default {
