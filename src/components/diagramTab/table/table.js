@@ -34,13 +34,11 @@ const Table = (props) => {
 
     useEffect(() => {
         if (month !== '' && year !== 0) {
-            console.log('Handle submit called');
             handleSubmit();
         };
     }, [month, year])
     
     const handleSubmit = () => {
-        console.log('Form submition started');
         onSubmit({ month, year });
     }
     

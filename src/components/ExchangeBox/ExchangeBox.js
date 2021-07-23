@@ -21,7 +21,6 @@ export default class ExchangeBox extends Component {
   }
 
   render() {
-    console.log(this.state.persons);
     return (
         <div className={s.exchangeContainer}>
           <div className={s.exchangeTitleBox}>

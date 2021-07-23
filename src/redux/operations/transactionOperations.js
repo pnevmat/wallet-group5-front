@@ -23,7 +23,6 @@ const fetchTransaction = (userToken) => async (dispatch) => {
       token.set(userToken);
       const { data } = await axios.get("/api/transactions");
       dispatch( fetchTransactionSuccess(data.data.transactions));
-      console.log(data)
     } catch (error) {
       dispatch( fetchTransactionError(error.message));
     }

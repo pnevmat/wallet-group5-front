@@ -89,7 +89,6 @@ class ModalAddTransaction extends Component {
     
  
    };
-    console.log(newTransaction);
     this.onClickClose();
     this.props.addTransaction(newTransaction)
   };

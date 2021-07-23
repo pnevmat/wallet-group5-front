@@ -15,7 +15,6 @@ const RegistrationPage = (props) => {
     dispatch(registrationOperation(userData));
 
   const error = useSelector(selectors.registrationSelector);
-  console.log(error);
 
   if (error && typeof error === 'string') {
     alert(`${error}`);

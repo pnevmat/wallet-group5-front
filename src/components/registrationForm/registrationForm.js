@@ -17,7 +17,6 @@ const RegistrationForm = props => {
   const [name, setName] = useState('');
 
   const handleChange = e => {
-    console.log('registration email: ', email);
     const { name, value } = e.target;
     switch (name) {
       case 'email':
@@ -70,8 +69,6 @@ ttt = repeatPassword.length
   }
   return ttt
 }
-
-console.log('mmm',password);
 
   return (
     <Formik

@@ -18,10 +18,8 @@ const getUserDataOperation = () => async (dispatch, getState) => {
     dispatch(getUserDataActions.getUserDataRequest());
 
     if (typeof userToken.registrationToken === 'string') {
-        console.log('Registration token was set: ', userToken.registrationToken);
         token.set(userToken.registrationToken);
     } else if (typeof userToken.authorisationToken === 'string') {
-        console.log('Authorisation token was set: ', userToken.authorisationToken);
         token.set(userToken.authorisationToken);
     } else {
         return;
@@ -29,7 +27,6 @@ const getUserDataOperation = () => async (dispatch, getState) => {
 
     try {
         const response = await axios.get('api/users/getUserData');
-        console.log('Response from getUserData: ', response);
 
         dispatch(getUserDataActions.getUserDataSuccess(response.data));
     } catch(error) {

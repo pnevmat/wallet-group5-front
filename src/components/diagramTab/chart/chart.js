@@ -9,7 +9,6 @@ Chart.register(...registerables);
 
 const ChartComponent = (props) => {
     const {chartPercentage} = props;
-    // console.log('Data that comes to diagram: ', chartPercentage);
     
     useEffect(() => {
         const ctx = document.getElementById('myChart');

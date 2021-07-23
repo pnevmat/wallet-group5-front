@@ -15,9 +15,9 @@ const limitedStatisticsOperation = (userToken, transactionData) => async dispatc
     dispatch(limitedStatisticsActions.limitedStatisticsRequest());
     try {
         token.set(userToken);
-        console.log('Object received from form: ', transactionData);
+        
         const response = await axios.post('/api/transactions/statistics', transactionData);
-        console.log('Response from backend: ', response);
+        
         dispatch(limitedStatisticsActions.limitedStatisticsSuccess(response.data));
     }catch(error) {
         dispatch(limitedStatisticsActions.limitedStatisticsError(error));

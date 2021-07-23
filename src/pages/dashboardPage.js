@@ -17,9 +17,8 @@ const DashboardPage = () => {
   }, [dispatch]);
 
   const userRegBalance = useSelector(authorisationSelectors.getUserRegBalance);
-  console.log('User reg balance: ', userRegBalance);
   const userAuthBalance = useSelector(authorisationSelectors.getUserAuthBalance);
-  console.log('User auth balance: ');
+  
   return (
     <>
       <UserMenu />
