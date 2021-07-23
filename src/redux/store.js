@@ -48,7 +48,7 @@ const store = configureStore({
     statisticsTransactions: statisticsTransactionReducer.statisticsTransactionReducer
 
   },
-  middleware: [...getDefaultMiddleware(), logger],
+  middleware: [...getDefaultMiddleware({ serializableCheck: false }), logger],
   devTools: process.env.NODE_ENV === 'development',
 });
 

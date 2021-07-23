@@ -40,8 +40,8 @@ export default class ExchangeBox extends Component {
               <Loader />
             ) : (
               <ul className={s.exchangeList}>
-                {this.state.persons.map(person => (
-                  <li className={s.exchangeListItem}>
+                {this.state.persons.map((person, i) => (
+                  <li className={s.exchangeListItem} key={i}>
                     <p className={s.exchangeListItemName}>{person.ccy}</p>
                     <p className={s.exchangeListItemName}>
                       {Math.round(person.buy * 100) / 100}

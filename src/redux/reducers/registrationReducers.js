@@ -5,7 +5,7 @@ import registrationActions from '../actions/registrationAction';
 const registrationInitialState = {};
 
 const registrationReducer = createReducer(registrationInitialState, {
-    [registrationActions.registrationSuccess]: (_, payload) => payload.token
+    [registrationActions.registrationSuccess]: (_, {payload}) => payload.user.token
 });
 
 const userDataReducer = createReducer(registrationInitialState, {
