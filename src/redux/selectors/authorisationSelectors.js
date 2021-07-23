@@ -14,22 +14,16 @@ const getUserName = state => {
 
 const getUserEmail = state => state.auserDatauth.user.email;
 
-const getUserBalance = state => {
-  const regBalance = state.userData.registrationData.balance;
-  const authBalance = state.userData.authorisationData.balance;
-  if (regBalance) {
-    return regBalance;
-  } else if (authBalance) {
-    return authBalance;
-  }
-};
+const getUserRegBalance = state => state.userData.registrationData.balance;
+
+const getUserAuthBalance = state => state.userData.authorisationData.balance;
 
 const getUserToken = state=> {
-  if (state.userToken.authorisationToken!=={})
+  if (typeof state.userToken.registrationToken !== 'object')
   {
-    return state.userToken.authorisationToken;
-  } else {
     return state.userToken.registrationToken;
+  } else {
+    return state.userToken.authorisationToken;
   };
 };
 
@@ -55,7 +49,11 @@ const userNameSelector = createSelector([getUserName], userName => {
   return userName;
 });
 
-const userBalanceSelector = createSelector([getUserBalance], balace => {
+const userRegBalanceSelector = createSelector([getUserRegBalance], balace => {
+  return balace;
+});
+
+const userAuthBalanceSelector = createSelector([getUserAuthBalance], balace => {
   return balace;
 });
 
@@ -63,12 +61,14 @@ export default {
   getIsAuthorisation,
   getUserName,
   getUserEmail,
-  getUserBalance,
+  getUserRegBalance,
+  getUserAuthBalance,
   getUserToken,
   getUserAvatar,
   authorisationSelector,
   userNameSelector,
-  userBalanceSelector,
+  userRegBalanceSelector,
+  userAuthBalanceSelector,
   userTokenSelector,
   
 };

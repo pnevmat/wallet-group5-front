@@ -61,7 +61,7 @@ const LoginForm = props => {
             }}
           />
         </label>
-        <button className={s.button__submit}  activeClassName={s.active} type="submit">
+        <button className={s.button__submit}   type="submit">
           Вход
         </button>
         <NavLink 

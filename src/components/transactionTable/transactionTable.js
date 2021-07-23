@@ -9,10 +9,6 @@ import { getTransaction } from '../../redux/selectors/transactionSelectors/trans
 
 import styles from './transactionTable.module.css';
 
-function createData(date, type, category, commentary, summ, balance) {
-  return { date, type, category, commentary, summ, balance };
-}
-
 export default function TransactionTable() {
 
   const dispatch = useDispatch();
