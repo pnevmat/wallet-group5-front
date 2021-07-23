@@ -6,12 +6,14 @@ import fetch from './fetch';
 export default class ExchangeBox extends Component {
   state = {
     persons: [],
-    isLoading: false,
+    isLoading:true,
   };
 
   componentDidMount() {
     // let user = await  axios.get(`https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11`)
-    fetch().then(res => this.setState({ persons: res.data }));
+    // this.state()
+    fetch().then(res => this.setState({ persons: res.data,sLoading:false }));
+    
 
     // this.setState({ isLoading: false });
 

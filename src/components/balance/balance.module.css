@@ -23,7 +23,9 @@
 
 @media (max-width: 767px) {
   .conteiner {
-    display: none;
+    /* display: none; */
+    position: relative;
+    right: 7px;
   }
 }
 

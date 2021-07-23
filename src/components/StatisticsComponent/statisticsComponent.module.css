@@ -7,9 +7,9 @@
 @media (max-width: 767px) {
   .container {
     padding-top: 13px;
-    padding-right: 67px;
-    padding-left: 67px;
-    margin-bottom: 43px;
+    /* padding-right: 67px;
+    padding-left: 67px; */
+    /* margin-bottom: 43px; */
   }
 }
 

@@ -20,7 +20,7 @@
 }
 
 .navLastItem {
-  margin-top: 13px;
+  /* margin-top: 13px; */
 }
 .navList {
   width: 100%;
@@ -34,6 +34,11 @@
 
   .navList {
     display: flex;
+    justify-content: space-around;
+    width: 190px;
+    margin: 0 auto;
+    padding-bottom: 14px;
+
   }
 }
 
