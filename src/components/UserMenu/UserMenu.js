@@ -1,30 +1,26 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import authSelector from '../../redux/selectors/authorisationSelectors';
-// import logoutOperation from '../../redux/operations/logoutOperation';
 import s from './UserMenu.module.css';
-import modalLogoutAction from '../../redux/actions/isModalLogoutOpenAction';
 import defaultAvatar from './default-avatar.png';
 import ModalLogout from "../ModalLogout/ModalLogout";
 
 export default function UserMenu(props) {
-  // const dispatch = useDispatch();
 
   const name = useSelector(authSelector.getUserName);
   const avatar = useSelector(authSelector.getUserAvatar);
 
-  const [isModalLogoutOpenActions, setIsModalLogoutOpenActions] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setIsModalLogoutOpenActions(true);
+    setIsOpen(true);
   };
 
-
-  // const onLogout = useCallback(() => {
-  //   dispatch(logoutOperation());
-  // }, [dispatch]);
-
+  const closeModal = () => {
+    setIsOpen(false)
+  }
   return (
+
     <div className={s.userMenuContainer}>
 
       <div className={s.logo_container}>
@@ -43,7 +39,7 @@ export default function UserMenu(props) {
           <span className={s.exitSvg}></span>
           <span className={s.logoutTitle}>Вийти</span>
         </button>
-        {isModalLogoutOpenActions && <ModalLogout />}
+        {modalIsOpen && <ModalLogout closeModal={closeModal} />}
       </div>
     </div>
   );
