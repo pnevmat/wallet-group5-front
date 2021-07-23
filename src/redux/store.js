@@ -19,7 +19,7 @@ import logger from 'redux-logger';
 const userTokenPersistConfig = {
   key: 'token',
   storage,
-  whitelist: 'userToken',
+  whitelist: ['registrationToken', 'authorisationToken'],
 };
 
 const store = configureStore({
