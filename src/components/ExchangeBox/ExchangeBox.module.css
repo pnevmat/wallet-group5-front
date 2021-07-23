@@ -75,7 +75,10 @@ p {
   .exchangeContainer {
     display: inline-block;
     width: 100%;
-    width: 332px;
+    width: 334px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
   }
 
   .exchangeListTitle {
@@ -85,6 +88,7 @@ p {
   .exchangeList {
     width: 334px;
     background-position-y: -6%;
+    min-height: 111px;
   }
 
   .exchangeListItem {
@@ -106,6 +110,7 @@ p {
 @media (min-width: 1280px) {
   .exchangeContainer {
     width: 348px;
+    position: inherit;
   }
 
   .exchangeList {

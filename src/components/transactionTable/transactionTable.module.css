@@ -50,6 +50,7 @@
     font-size: 16px;
     line-height: 24px;
     text-align: left;
+    margin-bottom: 2px;
 }
 
 .tableRowCategorie {
@@ -70,4 +71,52 @@
     font-size: 16px;
     line-height: 24px;
     text-align: left;
+    
+}
+
+@media (max-width: 767px) {
+.container{
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0px 0 0px;
+    background: #FFFFFF;
+border-radius: 10px;
+margin: 0 auto;
+box-shadow: inherit;
+margin-top: 29px;
+
+}
+
+    .tableHead{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+       border-radius: inherit;
+        background-color: inherit;
+        border-left: 5px solid #FF6596;;
+    }
+    .tableRow{
+        display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: center;
+
+    }
+
+    .tableRow{
+        padding: 0;
+    }
+}
+
+@media(min-width:768px) and  (max-width:1279px) {
+    .container{max-width: 768px;
+        padding-top: 45px;
+        padding-right: 40px;
+        border-left: none;
+        background: transparent;
+        margin: 0 auto;
+        padding-left: 40px;}
+
 }
