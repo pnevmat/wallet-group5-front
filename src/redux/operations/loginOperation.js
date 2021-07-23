@@ -20,7 +20,6 @@ const loginOperation = userData => async dispatch => {
         validate(userData, validation.rules, validation.messages)
         .then(result => result)
         .catch(error => {
-            console.log('Error', error);
             const err = error[0];
             dispatch(loginActions.loginError(err));
             return;

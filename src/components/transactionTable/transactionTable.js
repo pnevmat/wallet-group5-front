@@ -35,9 +35,6 @@ export default function TransactionTable() {
     }
   });
 
-  console.log('Modified rows', modifiedRows);
-
-  console.log(rows)
   return (
     <div className={styles.container}>
       <ul className={styles.tableHead}>

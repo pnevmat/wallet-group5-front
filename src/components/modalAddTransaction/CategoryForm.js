@@ -22,9 +22,7 @@ export default function CategoryForm({ categoryChange }) {
   
   const categories = useSelector(getCategories);
 
-  console.log(categories);
   const handleChange = e => {
-    console.log('Category form categirie input change: ', e.target.value);
     categoryChange(e.target.value);
   };
 

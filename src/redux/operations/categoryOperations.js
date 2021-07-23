@@ -18,12 +18,10 @@ const fetchCategory = ( userToken) => async (dispatch) => {
  
     try {
       token.set(userToken);
-      console.log(userToken)
+
       const { data } = await axios.get("/api/users/category");
-      console.log(data)
   
       dispatch(fetchcategorySuccess(data.user.categories));
-      
       
     } catch (error) {
       dispatch(fetchcategoryError(error.message));
