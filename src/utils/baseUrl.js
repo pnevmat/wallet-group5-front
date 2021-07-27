@@ -1,3 +1,3 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://wallet-group5-back.herokuapp.com/';
 
 export default BASE_URL;
