@@ -3,6 +3,7 @@ import axios from 'axios';
 import Loader from './Loader/Loader';
 import s from './ExchangeBox.module.css';
 import fetch from './fetch';
+
 export default class ExchangeBox extends Component {
   state = {
     persons: [],
@@ -10,6 +11,15 @@ export default class ExchangeBox extends Component {
   };
 
   componentDidMount() {
+    if (this.props.props !== undefined) {
+      const {url} = this.props.props.props.match;
+      if (url === '/currency') {
+        const exchangeBox = document.getElementById('exchange');
+        exchangeBox.classList.add(s.visible);
+      }
+    }
+    
+    console.log(this.props);
     // let user = await  axios.get(`https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11`)
     // this.state()
     fetch().then(res => this.setState({ persons: res.data,sLoading:false }));
@@ -22,7 +32,7 @@ export default class ExchangeBox extends Component {
 
   render() {
     return (
-        <div className={s.exchangeContainer}>
+        <div className={s.exchangeContainer} id='exchange'>
           <div className={s.exchangeTitleBox}>
             <ul className={s.exchangeListTitle}>
               <li className={s.exchangeListAtemTitle}>

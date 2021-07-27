@@ -33,7 +33,14 @@ const Navigation = () => {
         </li>
 
         <li className={s.navLastItem}>
-          <CurrencyIcon />
+        <NavLink
+            exact
+            className={s.links}
+            activeClassName={s.activeLinks}
+            to={'/currency'}
+          >
+            <CurrencyIcon />
+          </NavLink>
         </li>
       </ul>
     </nav>

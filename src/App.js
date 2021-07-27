@@ -27,6 +27,9 @@ const DashboardPage = lazy(() =>
 const StatisticsPage = lazy(() =>
   import('./pages/statisticsPage' /* webpackChunkName: "Statistics-Page" */),
 );
+const CurrencyPage = lazy(() =>
+    import('./pages/CurrencyPage' /* webpackChunkName: "Currency-Page" */)
+);
 
 const FinanceApp = () => {
 
@@ -70,6 +73,12 @@ const FinanceApp = () => {
             path="/statistics"
             restricted
             component={StatisticsPage}
+            redirectTo="/login"
+          />
+          <PrivateRoute
+            path="/currency"
+            restricted
+            component={CurrencyPage}
             redirectTo="/login"
           />
         </Switch>

@@ -9,6 +9,8 @@
     .statisticsContainer {
         width: 100%;
         max-width: 320px;
+        margin-right: auto;
+        margin-left: auto;
         text-align: center;
     }
 }
