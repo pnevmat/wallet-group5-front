@@ -9,7 +9,7 @@ const chartConfig = (data) => {
             datasets: [{
                 label: '# of Votes',
                 data: data.map(transaction => transaction.amount),
-                radius: 225,
+                radius: 215,
                 backgroundColor: data.map(transaction => transaction.color),
                 hoverOffset: 4,
                 borderColor: data.map(transaction => transaction.color),
@@ -28,5 +28,5 @@ const chartConfig = (data) => {
         }
     }
 };
-
+// 225
 export default chartConfig;
