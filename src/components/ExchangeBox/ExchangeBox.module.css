@@ -76,9 +76,6 @@ p {
     display: inline-block;
     width: 100%;
     width: 334px;
-    position: absolute;
-    top: 20px;
-    right: 40px;
   }
 
   .exchangeListTitle {

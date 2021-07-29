@@ -1,6 +1,5 @@
 .conteiner {
   display: inline-block;
-  width: 280px;
   height: 80px;
 
   background: #FFFFFF;
@@ -23,9 +22,10 @@
 
 @media (max-width: 767px) {
   .conteiner {
-    /* display: none; */
     position: relative;
     right: 7px;
+    width: 280px;
+    text-align: left;
   }
 }
 
