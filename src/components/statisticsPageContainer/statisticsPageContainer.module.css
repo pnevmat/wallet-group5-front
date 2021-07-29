@@ -1,8 +1,6 @@
 .statisticsContainer {
     width: 100%;
     max-width: 1280px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(50px);
 }
 
 @media (max-width: 767px) {
@@ -11,6 +9,7 @@
         max-width: 320px;
         margin-right: auto;
         margin-left: auto;
+        background-color: #e5e5e5;
         text-align: center;
     }
 }
