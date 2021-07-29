@@ -45,17 +45,45 @@ export default function TransactionTable() {
         <li className={styles.tableHeadText}>Сумма</li>
         <li className={styles.tableHeadText}>Баланс</li>
       </ul>
-      <ul className={styles.tableRowContainer}>
+      <ul className={styles.tableRowList}>
         {rows.length>0 ? modifiedRows.map((rows, i) => {
           return (
-            <li className={styles.tableRow} key={i}>
-              <span className={styles.tableRowText}>{rows.date}</span>
-              <span className={styles.tableRowText}>{rows.type}</span>
-              <span className={styles.tableRowCategorie}>{rows.category}</span>
-              <span className={styles.tableRowComment}>{rows.comments}</span>
-              <span className={styles.tableRowText}>{rows.amount}</span>
-              <span className={styles.tableRowText}>{rows.balance}</span>
-            </li>
+            <div className={styles.tableRowContainer}>
+              <li className={styles.tableRow} key={i}>
+                <span className={styles.tableRowText}>{rows.date}</span>
+                <span className={styles.tableRowText}>{rows.type}</span>
+                <span className={styles.tableRowCategorie}>{rows.category}</span>
+                <span className={styles.tableRowComment}>{rows.comments}</span>
+                <span className={styles.tableRowText}>{rows.amount}</span>
+                <span className={styles.tableRowText}>{rows.balance}</span>
+              </li>
+              <li className={styles.mobileTableRow} key={i}>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Дата</span>
+                  <span className={styles.tableRowText}>{rows.date}</span>
+                </div>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Тип</span>
+                  <span className={styles.tableRowText}>{rows.type}</span>
+                </div>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Категория</span>
+                  <span className={styles.tableRowCategorie}>{rows.category}</span>
+                </div>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Комментарии</span>
+                  <span className={styles.tableRowComment}>{rows.comments}</span>
+                </div>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Сумма</span>
+                  <span className={styles.tableRowText}>{rows.amount}</span>
+                </div>
+                <div className={styles.mobileTableRowItemsContainer}>
+                  <span className={styles.tableHeadText}>Баланс</span>
+                  <span className={styles.tableRowText}>{rows.balance}</span>
+                </div>
+              </li>
+            </div>
           )
         }) : ''}
       </ul>

@@ -1,8 +1,6 @@
 .container {
     width: 100%;
     max-width: 785px;
-    padding-top: 45px;
-    padding-right: 85px;
     border-left: none;
     background: transparent;
 }
@@ -27,7 +25,7 @@
     line-height: 27px;
 }
 
-.tableRowContainer {
+.tableRowList {
     list-style: none;
 }
 
@@ -49,7 +47,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    text-align: left;
     margin-bottom: 2px;
 }
 
@@ -60,7 +57,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    text-align: left;
 }
 
 .tableRowComment {
@@ -70,53 +66,126 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    text-align: left;
-    
 }
 
 @media (max-width: 767px) {
-.container{
-    width: 280px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 0px 0 0px;
-    background: #FFFFFF;
-border-radius: 10px;
-margin: 0 auto;
-box-shadow: inherit;
-margin-top: 29px;
-
-}
+    .container{
+        width: 280px;
+        display: inline-flex;
+        justify-content: space-between;
+        margin-top: 29px;
+        background: transparent;
+        border-radius: 10px;
+        box-shadow: inherit;
+    }
 
     .tableHead{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0;
-       border-radius: inherit;
-        background-color: inherit;
-        border-left: 5px solid #FF6596;;
-    }
-    .tableRow{
-        display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    align-self: center;
-
+        display: none;
     }
 
     .tableRow{
+        display: none;
+    }
+
+    .tableRowList {
+        margin-bottom: 10px;
+    }
+
+    .mobileTableRow {
         padding: 0;
+    }
+
+    .mobileTableRowItemsContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        border: 1px solid #DCDCDF;
+    }
+
+    .tableRowContainer {
+        border-left: 5px solid #FF6596;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+
+    .tableRowContainer:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .tableRowText {
+        text-align: right;
+    }
+
+    .tableRowCategorie {
+        text-align: right;
+    }
+
+    .tableRowComment {
+        text-align: right;
     }
 }
 
 @media(min-width:768px) and  (max-width:1279px) {
-    .container{max-width: 768px;
+    .container{
+        max-width: 768px;
         padding-top: 45px;
         padding-right: 40px;
         border-left: none;
         background: transparent;
         margin: 0 auto;
-        padding-left: 40px;}
+        padding-left: 40px;
+    }
 
+    .mobileTableRow {
+        display: none;
+    }
+
+    .tableRowText {
+        text-align: right;
+    }
+
+    .tableRowCategorie {
+        text-align: left;
+    }
+
+    .tableRowComment {
+        text-align: left;
+    }
 }
+
+@media(min-width: 1280px) {
+    .container {
+        padding-top: 45px;
+        padding-right: 85px;
+    }
+
+    .mobileTableRow {
+        display: none;
+    }
+
+    .tableRowText {
+        text-align: left;
+    }
+
+    .tableRowCategorie {
+        text-align: left;
+    }
+
+    .tableRowComment {
+        text-align: left;
+    }
+}
+
+/* .tableHead{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    border-radius: inherit;
+    background-color: inherit;
+    border-left: 5px solid #FF6596;
+} */
