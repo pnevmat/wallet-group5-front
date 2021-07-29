@@ -21,36 +21,10 @@ const LoginPage = (props) => {
   }
 
   return (
-    <>
-    {/* Эту разметку и ее стили нужно вынести в отдельный компонент
-    так как он переиспользуется на странице регистрации */}
-    {/* ======= */}
-      <div className={s.containerloginPages}>
-        {/* <div className={s.loginPages}>
-          <div className={s.logiPagedox}>
-            <img
-              className={s.logiPagedoxImg1}
-              src={eclipseTablet}
-              alt="gfgfg"
-            />
-            <img className={s.logiPagedoxImg2} src={frameTablet} alt="gklg" />
-          </div>
-
-          <div className={s.loginPageVrap}></div>
-          <img
-            className={s.loginPagesImg}
-            src={frame}
-            alt="кошелек"
-            width="436"
-            height="420"
-          />
-          <h1 className={s.loginPageName}>Finance App</h1>
-        </div> */}
-      {/* ========= */}
-        <AppBar {...props} />
-        <LoginForm onLoginSubmit={onLoginSubmit} />
-      </div>
-    </>
+    <div className={s.containerloginPages}>
+      <AppBar {...props} />
+      <LoginForm onLoginSubmit={onLoginSubmit} />
+    </div>
   );
 };
 

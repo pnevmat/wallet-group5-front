@@ -1,112 +1,96 @@
-.containerloginPages {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.loginPages {
-    position: relative;
-    background: #e5e5e5;
-    z-index: 1;
-}
-
-.loginPageName {
+.container {
+    background-color: #e5e5e5;
     text-align: center;
-    z-index: 3;
 }
 
 @media (max-width: 767px) {
-    .loginPages {
+    .container {
         display: none;
     }
 }
 
-@media (min-width: 768px) {
-    .containerloginPages {
-        max-width: 768px;
+@media (min-width: 768px) and (max-width: 1279px) {
+    .headContainer {
+        background-color: #e5e5e5;
+        text-align: right;
+    }
+
+    .headImg1 {
         position: relative;
-    
+        top: -175px;
+        left: 8%;
+        display: inline-block;
+        width: 100%;
+        max-width: 274px;
     }
 
-    .loginPages {
-        padding-bottom: 511px;
+    .headImg2 {
+        display: inline-block;
+        width: 100%;
+        max-width: 456px;
+        height: 486px;
     }
 
-    .loginPagesImg {
+    .desktopImg {
         display: none;
     }
 
-    .logiPagedoxImg2 {
-        position: relative;
-        left: 38px;
-    }
-
-    .logiPagedoxImg1 {
-        position: relative;
-        left: 100px;
-        bottom: 180px;
-    }
-
-    .loginPageVrap {
+    .headTitle {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 618px;
-        min-height: 449px;
+        top: 30%;
+        left: 53%;
+        display: inline-block;
+    }
+
+    .bottomBackgroundImg {
+        position: relative;
+        top: -25%;
+        left: -9.6%;
+        display: inline-block;
+        width: 100%;
+        max-width: 618px;
+        min-height: 517px;
         background-image: url(./images/backgroud.png);
+        background-size: cover;
         background-repeat: no-repeat;
-        z-index: -1;
-    }
-
-    .loginPageName {
-        position: absolute;
-        right: 222px;
-        top: 143px;
     }
 }
 
 @media (min-width: 1280px) {
-    .containerloginPages {
-        display: flex;
-        max-width: 1280px;
-    }
-    
-    .loginPages {
-        width: 560px;
-        height: 720;
-        padding: 0;
-        z-index: 1;
+    .container {
+        display: inline-block;
+        width: 100%;
+        max-width: 560px;
+        padding-top: 153px;
     }
 
-    .loginPageVrap {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 618px;
-        min-height: 449px;
-        background-image: url(./images/backgroud.png);
-        background-repeat: no-repeat;
-        z-index: -1;
-    }
-    
-    .loginPagesImg {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-        padding-top: 150px;
-        z-index: 1;
-    }
-
-    .loginPageName {
-        position: absolute;
-        min-width: 150px;
-        left: 35%;
-        top: 615px;
-        margin: 0;
-        z-index: 3;
-    }
-
-    .logiPagedox {
+    .headImg1 {
         display: none;
+    }
+
+    .headImg2 {
+        display: none;
+    }
+
+    .desktopImg {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        width: 100%;
+        max-width: 410px;
+    }
+
+    .bottomBackgroundImg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-128%, -28%);
+        display: inline-block;
+        width: 100%;
+        max-width: 500px;
+        min-height: 450px;
+        background-image: url(./images/backgroud.png);
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 }

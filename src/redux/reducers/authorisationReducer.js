@@ -48,7 +48,7 @@ const authErrorReducer = createReducer(authorisationInitialState, {
   [loginActions.loginError]: (_, { payload }) => payload.message,
   [logoutActions.logoutError]: (_, { payload }) => payload.message,
   [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message,
-  [getUserDataActions.getUserDataSuccess]: (_, { payload }) => payload.message
+  [getUserDataActions.getUserDataError]: (_, { payload }) => payload.message
 });
 
 export default {
@@ -57,5 +57,3 @@ export default {
   authReducer,
   authErrorReducer,
 };
-
-// {avatarURL: payload.avatarURL, balance: payload.balance, email: payload.email, id: payload.id, name: payload.name}
