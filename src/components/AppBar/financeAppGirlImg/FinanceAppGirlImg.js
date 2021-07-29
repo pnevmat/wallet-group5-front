@@ -6,31 +6,26 @@ import frame from './images/frame.png';
 
 const FinanceAppGirlImg = () => {
 
-    
     return (
-        <>
-        <div className={s.containerloginPages}>
-            <div className={s.loginPages}>
-                <div className={s.logiPagedox}>
-                    <img
-                    className={s.logiPagedoxImg1}
-                    src={eclipseTablet}
-                    alt="gfgfg"
-                    />
-                    <img className={s.logiPagedoxImg2} src={frameTablet} alt="gklg" />
-                </div>
-                <div className={s.loginPageVrap}></div>
+        <div className={s.container}>
+            <div className={s.headContainer}>
+                <img className={s.headImg1} src={frameTablet} alt="gklg" />
                 <img
-                    className={s.loginPagesImg}
-                    src={frame}
-                    alt="кошелек"
-                    width="436"
-                    height="420"
+                className={s.headImg2}
+                src={eclipseTablet}
+                alt="gfgfg"
                 />
-                <h1 className={s.loginPageName}>Finance App</h1>
             </div>
+            <div className={s.bottomBackgroundImg}></div>
+            <img
+                className={s.desktopImg}
+                src={frame}
+                alt="кошелек"
+                width="436"
+                height="420"
+            />
+            <h1 className={s.headTitle}>Finance App</h1>
         </div>
-        </>
     );
 };
 

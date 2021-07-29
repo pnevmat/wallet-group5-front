@@ -178,7 +178,7 @@ background-color: #fff;
   border-radius: 2px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .container {
     padding: 0 25px;
   }
@@ -187,8 +187,9 @@ background-color: #fff;
     padding: 0 65px;
     border-radius: 20px;
     position: absolute;
-    top: 362px;
-    left: 110px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
     z-index: 3;
   }
 
@@ -218,6 +219,7 @@ background-color: #fff;
 
 @media (min-width: 1280px) {
   .container {
+    display: inline-block;
     padding: 52px 85px 52px 95px;
     max-width: 720px;
     background-image: url(./gradient.png);
@@ -228,7 +230,7 @@ background-color: #fff;
     max-width: 540px;
     padding: 0 65px;
     border-radius: 20px;
-    position: inherit;
+    /* position: inherit; */
   }
 
   .input__email {

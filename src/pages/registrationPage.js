@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import s from '../components/AppBar/financeAppGirlImg/financeAppGirlImg.module.css';
 
 import registrationOperation from '../redux/operations/registrationOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
 import RegistrationForm from '../components/registrationForm/registrationForm';
+
+import s from '../components/RegistrationPage/registrationPage.module.css';
 
 const RegistrationPage = (props) => {
   const dispatch = useDispatch();
@@ -21,13 +22,10 @@ const RegistrationPage = (props) => {
   }
 
   return (
-    <>
-    <div className={s.containerloginPages}>
-    <AppBar {...props} />
+    <div className={s.container}>
+      <AppBar {...props} />
       <RegistrationForm onRegistrationSubmit={onRegistrationSubmit} />
     </div>
-      
-    </>
   );
 };
 
