@@ -10,8 +10,12 @@
 }
 
 .loginPageName {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
     text-align: center;
-    z-index: 3;
 }
 
 @media (max-width: 767px) {
@@ -59,8 +63,9 @@
 
     .loginPageName {
         position: absolute;
-        right: 222px;
-        top: 143px;
+        right: 10%;
+        top: 16%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -99,11 +104,10 @@
 
     .loginPageName {
         position: absolute;
-        min-width: 150px;
-        left: 35%;
+        width: 100%;
+        left: 50%;
         top: 615px;
         margin: 0;
-        z-index: 3;
     }
 
     .logiPagedox {
