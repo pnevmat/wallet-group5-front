@@ -51,7 +51,7 @@ export default function TransactionTable() {
             <div className={styles.tableRowContainer}>
               <li className={styles.tableRow} key={i}>
                 <span className={styles.tableRowText}>{rows.date}</span>
-                <span className={styles.tableRowText}>{rows.type}</span>
+                <span className={styles.tableRowText}>{rows.type==='cost' ? '-' : '+'}</span>
                 <span className={styles.tableRowCategorie}>{rows.category}</span>
                 <span className={styles.tableRowComment}>{rows.comments}</span>
                 <span className={styles.tableRowText}>{rows.amount}</span>
@@ -64,7 +64,7 @@ export default function TransactionTable() {
                 </div>
                 <div className={styles.mobileTableRowItemsContainer}>
                   <span className={styles.tableHeadText}>Тип</span>
-                  <span className={styles.tableRowText}>{rows.type}</span>
+                  <span className={styles.tableRowText}>{rows.type }</span>
                 </div>
                 <div className={styles.mobileTableRowItemsContainer}>
                   <span className={styles.tableHeadText}>Категория</span>

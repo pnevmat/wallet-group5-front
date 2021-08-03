@@ -6,12 +6,12 @@ import s from './ModalAddTransaction.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
 import RemoveIcon from '@material-ui/icons/Remove';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import TextField from '@material-ui/core/TextField';
 import CategoryForm from './CategoryForm';
 import { connect } from "react-redux";
 import moment from 'moment';
-import { validate } from 'indicative/validator'
+
 
 const rules = {
   category: 'required|alpha',
