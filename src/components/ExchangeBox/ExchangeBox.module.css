@@ -6,6 +6,7 @@ p {
 
 .exchangeContainer {
   width: 280px;
+  height: auto;
   font-size: 18px;
   color: #fff;
 }
@@ -28,6 +29,7 @@ p {
 
 .exchangeListAtemTitle {
   /* margin-right: 15px; */
+
 }
 
 .exchangeListBox {
@@ -36,6 +38,7 @@ p {
 
 .exchangeList {
   width: 280px;
+
   margin: 0;
   background: #4a56e2;
   background-image: url('./images/kaskad.png');
@@ -61,6 +64,7 @@ p {
 
 .exchangeListItemName {
   margin-right: 15px;
+  margin-top: 10px;
 }
 
 
