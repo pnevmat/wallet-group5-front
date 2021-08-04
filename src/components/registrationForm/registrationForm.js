@@ -62,14 +62,6 @@ const RegistrationForm = props => {
     name: yup.string().min(1).max(12).required('Обязательное поле'),
   });
 
-const val = ()=>{
- let ttt
-  if(password===repeatPassword && password >=6){
-ttt = repeatPassword.length
-  }
-  return ttt
-}
-
   return (
     <Formik
       initialValues={{
