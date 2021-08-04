@@ -44,8 +44,8 @@ const authReducer = createReducer(authReducerInitialState, {
 });
 
 const authErrorReducer = createReducer(authorisationInitialState, {
-  [registrationActions.registrationError]: (_, { payload }) => payload.message,
-  [loginActions.loginError]: (_, { payload }) => payload.message,
+  [registrationActions.registrationError]: (_, { payload }) => payload.response.data.message,
+  [loginActions.loginError]: (_, { payload }) => payload.response.data.message,
   [logoutActions.logoutError]: (_, { payload }) => payload.message,
   [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message,
   [getUserDataActions.getUserDataError]: (_, { payload }) => payload.message

@@ -5,23 +5,20 @@ import BASE_URL from '../../utils/baseUrl'
 
 axios.defaults.baseURL = BASE_URL;
 
-// const token = {
-//     set(token) {
-//         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     }
-// };
-
 const registerOperation = userData => async dispatch => {
     dispatch(registrationAction.registrationRequest());
+
     try {
         const response = await axios.post('/api/users/register', userData);
         
-        // token.set(response.data.token);
-
-        dispatch(registrationAction.registrationSuccess(response.data));
-    }catch(error) {
+        if (response) {
+            dispatch(registrationAction.registrationSuccess(response.data));
+        } else {
+            dispatch(registrationAction.registrationError(response.message));
+        }
+    } catch(error) {
         dispatch(registrationAction.registrationError(error));
-    };
+    }
 };
 
 export default registerOperation;

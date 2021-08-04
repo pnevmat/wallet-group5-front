@@ -24,11 +24,17 @@ const loginOperation = userData => async dispatch => {
             dispatch(loginActions.loginError(err));
             return;
         });
+
         const response = await axios.post('/api/users/login', userData);
 
-        token.set(response.data.token);
+        if (response) {
+            token.set(response.data.token);
 
-        dispatch(loginActions.loginSuccess(response.data));
+            dispatch(loginActions.loginSuccess(response.data));
+        } else {
+            dispatch(loginActions.loginError(response));
+        }
+
     }catch(error) {
         dispatch(loginActions.loginError(error));
     };
