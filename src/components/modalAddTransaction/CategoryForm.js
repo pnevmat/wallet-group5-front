@@ -36,7 +36,15 @@ export default function CategoryForm({ categoryChange }) {
         >
           Выберите категорию
         </InputLabel>
+
+        
         <NativeSelect
+          fullWidth
+         validators={['required', ]}
+         errorMessages={[
+           'this field is required',
+         
+         ]}
           name="category"
           onChange={handleChange}
             defaultValue=''
@@ -48,7 +56,7 @@ export default function CategoryForm({ categoryChange }) {
           {categories.length > 0 &&
             categories.map(el => {
               return <> 
-              <option>{el}</option>;</>
+              <option>{el}</option></>
            
             })}
           

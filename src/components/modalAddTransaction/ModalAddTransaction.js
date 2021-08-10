@@ -1,31 +1,16 @@
 import React, { Component } from 'react';
-import operation from '../../redux/operations/transactionOperations'
+import operation from '../../redux/operations/transactionOperations';
 import AddIcon from '@material-ui/icons/Add';
 import { createPortal } from 'react-dom';
 import s from './ModalAddTransaction.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
 import RemoveIcon from '@material-ui/icons/Remove';
-
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import TextField from '@material-ui/core/TextField';
 import CategoryForm from './CategoryForm';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import moment from 'moment';
-
-
-const rules = {
-  category: 'required|alpha',
-  transactionValue: 'required|email',
-  currentDate: 'required|min:4',
-}
-
-const messages = {
-  required: (field) => `${field} is required`,
-  ' category': 'This field is required',
-  'transactionValue': 'This field is required',
-  'currentDate': 'This field is required',
-}
-
 
 // import PropTypes from "prop-types";
 
@@ -35,10 +20,8 @@ class ModalAddTransaction extends Component {
   state = {
     status: true,
     currentDate: moment().format('YYYY-MM-DD'),
-    transactionValue: '', 
-
+    transactionValue: '',
   };
-
 
   componentDidMount() {
     document.addEventListener('keydown', this.onKeyClick);
@@ -78,21 +61,20 @@ class ModalAddTransaction extends Component {
 
   handleSubmitForm = e => {
     e.preventDefault();
-    const { currentDate, transactionValue, category, comments, status  } = this.state;
+    const { currentDate, transactionValue, category, comments, status } =
+      this.state;
 
     const newTransaction = {
-      "date": `${currentDate} ${moment().format('HH:mm')}`,
-      "type": status ? "cost" : "income",
-     "amount":  transactionValue,
-    "category":  category,
-    "comments":comments,
-    
- 
-   };
+      date: `${currentDate} ${moment().format('HH:mm')}`,
+      type: status ? 'cost' : 'income',
+      amount: transactionValue,
+      category: category,
+      comments: comments,
+    };
     this.onClickClose();
-    this.props.addTransaction(newTransaction)
+    this.props.addTransaction(newTransaction);
   };
-  setCategory =( value) => {
+  setCategory = value => {
     this.setState({ category: value });
   };
 
@@ -103,7 +85,11 @@ class ModalAddTransaction extends Component {
       <div className={s.overlay} onClick={this.handleCloseModal}>
         <div className={s.modal}>
           <CloseIcon className={s.closeModalIcon} onClick={this.onClickClose} />
-          <form type="submit">
+          <ValidatorForm
+            ref="form"
+            onSubmit={this.handleSubmitForm}
+            onError={errors => console.log(errors)}
+          >
             <h2 className={s.title}>Добавить транзакцию</h2>
             <div className={s.switchContainer}>
               <p
@@ -129,12 +115,17 @@ class ModalAddTransaction extends Component {
             </div>
             {status && (
               <div className={s.categoryContainer}>
-                <CategoryForm categoryChange={this.setCategory} />
+                <CategoryForm  categoryChange={this.setCategory} />
               </div>
             )}
 
             <div className={s.textField}>
-              <TextField
+              <TextValidator
+                validators={['required', 'isNumber']}
+                errorMessages={[
+                  'this field is required',
+                 'pls enter only numbers'
+                ]}
                 autoComplete={'off'}
                 label="0.00"
                 margin="dense"
@@ -142,7 +133,8 @@ class ModalAddTransaction extends Component {
                 value={transactionValue}
                 onChange={this.handleTransactionInfo}
               />
-              <TextField
+              <TextValidator
+              
                 id="date"
                 label="Введите дату"
                 type="date"
@@ -150,8 +142,6 @@ class ModalAddTransaction extends Component {
                 value={currentDate}
                 defaultValue={`${currentDate}`}
                 className={s.textField}
-
-
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -173,7 +163,7 @@ class ModalAddTransaction extends Component {
             </div>
             <button
               className={s.submitButton}
-              onClick={this.handleSubmitForm}
+              // onClick={this.handleSubmitForm}
               type="submit"
             >
               Добавить
@@ -185,7 +175,7 @@ class ModalAddTransaction extends Component {
             >
               Отмена
             </button>
-          </form>
+          </ValidatorForm>
         </div>
       </div>
       //   modalRef
@@ -193,13 +183,8 @@ class ModalAddTransaction extends Component {
   }
 }
 
-
-const mapDispatchToProps={
+const mapDispatchToProps = {
   addTransaction: operation.addTransaction,
-}
+};
 
-
-
-
-
-export default  connect(null, mapDispatchToProps)(ModalAddTransaction);
+export default connect(null, mapDispatchToProps)(ModalAddTransaction);
