@@ -123,8 +123,8 @@ class ModalAddTransaction extends Component {
               <TextValidator
                 validators={['required', 'isNumber']}
                 errorMessages={[
-                  'this field is required',
-                 'pls enter only numbers'
+                  'это поле обязательно для заполнения',
+                 'пожалуйста, введите число'
                 ]}
                 autoComplete={'off'}
                 label="0.00"
