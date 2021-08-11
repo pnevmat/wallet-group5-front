@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
 import loginOperation from '../redux/operations/loginOperation';
+import errorCleanOperation from '../redux/operations/errorCleanOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
@@ -10,6 +11,7 @@ import LoginForm from '../components/loginForm/loginForm';
 
 import 'react-toastify/dist/ReactToastify.css';
 import s from '../components/AppBar/financeAppBoyImg/financeAppBoyImg.module.css';
+import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const LoginPage = (props) => {
   const dispatch = useDispatch();
@@ -18,10 +20,21 @@ const LoginPage = (props) => {
 
   const error = useSelector(selectors.registrationSelector);
 
-  if (error && typeof error === 'string') {
-    const notify = () => toast(`${error}`);
-    notify();
-  }
+  useEffect(() => {
+    if (error && typeof error === 'string') {
+      const toastId = 2
+      const notify = () => {
+        toast(`${error}`,{
+          toastId: toastId,
+          className: ts.error
+        });
+      }
+      notify();
+    }
+    return () => {
+      dispatch(errorCleanOperation());
+    }
+  }, [onLoginSubmit]);
 
   return (
     <div className={s.containerloginPages}>

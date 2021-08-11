@@ -5,6 +5,7 @@ import loginActions from '../actions/loginActions';
 import logoutActions from '../actions/logoutActions';
 import limitedStatisticsActions from '../actions/limitedStatisticsActions';
 import getUserDataActions from '../actions/getUserDataActions';
+import cleaningActions from '../actions/errorCleaningActions';
 
 const authorisationInitialState = {};
 const authReducerInitialState = false;
@@ -45,10 +46,19 @@ const authReducer = createReducer(authReducerInitialState, {
 
 const authErrorReducer = createReducer(authorisationInitialState, {
   [registrationActions.registrationError]: (_, { payload }) => payload.response.data.message,
-  [loginActions.loginError]: (_, { payload }) => payload.response.data.message,
+  [loginActions.loginError]: (_, { payload }) => {
+    if (typeof payload === 'string') {
+      return payload
+    } else if(typeof payload === 'object') {
+      return payload.message
+    } else {
+      return payload.response.data.message
+    }
+  },
   [logoutActions.logoutError]: (_, { payload }) => payload.message,
   [limitedStatisticsActions.limitedStatisticsError]: (_, {payload}) => payload.message,
-  [getUserDataActions.getUserDataError]: (_, { payload }) => payload.message
+  [getUserDataActions.getUserDataError]: (_, { payload }) => payload.message,
+  [cleaningActions.cleaningSuccess]: () => authorisationInitialState
 });
 
 export default {
