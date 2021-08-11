@@ -61,7 +61,7 @@
         width: 100%;
         max-width: 618px;
         min-height: 517px;
-        background-image: url(./images/backgroud.png);
+        background-image: url(../../../utils/images/backgroud.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -105,7 +105,7 @@
         width: 100%;
         max-width: 500px;
         min-height: 450px;
-        background-image: url(./images/backgroud.png);
+        background-image: url(../../../utils/images/backgroud.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
