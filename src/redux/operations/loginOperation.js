@@ -31,12 +31,14 @@ const loginOperation = userData => async dispatch => {
             token.set(response.data.token);
 
             dispatch(loginActions.loginSuccess(response.data));
-        } else {
+        } else if (response) {
             dispatch(loginActions.loginError(response));
+        } else {
+            return
         }
 
     }catch(error) {
-        dispatch(loginActions.loginError(error));
+        dispatch(loginActions.loginError('Неверный логин или пароль'));
     };
 };
 

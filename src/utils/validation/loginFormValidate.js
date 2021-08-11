@@ -7,7 +7,7 @@ const rules = {
 const messages = {
   required: (field) => `${field} is required`,
   'email.email': 'Please enter a valid email address',
-  'password.min': 'Password is too short',
+  'password.min': 'Пароль должен быть минимум 6 символов',
 }
 
 export default {rules, messages}
