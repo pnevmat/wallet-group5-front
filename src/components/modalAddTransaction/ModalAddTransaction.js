@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import operation from '../../redux/operations/transactionOperations';
 import AddIcon from '@material-ui/icons/Add';
+<<<<<<< HEAD
 // import { createPortal } from 'react-dom';
+=======
+>>>>>>> 5757ed8b7d2330da40fc4cd6c606e6650370d006
 import s from './ModalAddTransaction.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
@@ -11,10 +14,6 @@ import TextField from '@material-ui/core/TextField';
 import CategoryForm from './CategoryForm';
 import { connect } from 'react-redux';
 import moment from 'moment';
-
-// import PropTypes from "prop-types";
-
-// const modalRef = document.getElementById("modal-root");
 
 class ModalAddTransaction extends Component {
   state = {
@@ -80,7 +79,7 @@ class ModalAddTransaction extends Component {
 
   render() {
     const { status, currentDate, transactionValue, comments } = this.state;
-
+    // Подключить тостифай вместо консоль лога
     return (
       <div className={s.overlay} onClick={this.handleCloseModal}>
         <div className={s.modal}>
@@ -163,7 +162,6 @@ class ModalAddTransaction extends Component {
             </div>
             <button
               className={s.submitButton}
-              // onClick={this.handleSubmitForm}
               type="submit"
             >
               Добавить
@@ -178,7 +176,6 @@ class ModalAddTransaction extends Component {
           </ValidatorForm>
         </div>
       </div>
-      //   modalRef
     );
   }
 }

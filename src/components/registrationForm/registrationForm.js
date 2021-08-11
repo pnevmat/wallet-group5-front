@@ -145,10 +145,6 @@ const RegistrationForm = props => {
               />
              
             </label>
-          
-
-
-
             <div className={s.progresBar}>
               <div className={s.progresBarFilter}></div>
             </div>

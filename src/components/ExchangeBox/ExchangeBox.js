@@ -4,7 +4,6 @@ import Loader from './Loader/Loader';
 import s from './ExchangeBox.module.css';
 import fetchCurrency from '../../api/apiPrivatbank';
 
-// console.log(fetchCurrency())
 export default class ExchangeBox extends Component {
   state = {
     persons: [],
@@ -23,16 +22,6 @@ export default class ExchangeBox extends Component {
         exchangeBox.classList.add(s.visible);
       }
     }
-
-    // console.log(this.state.persons)
-
-    // let user = await  axios.get(`https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11`)
-    // this.state()
-    // fetch().then(res => this.setState({ persons: res.data,sLoading:false }));
-
-    // this.setState({ isLoading: false });
-
-    // this.setState({ persons });
   }
 
   render() {
