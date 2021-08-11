@@ -56,7 +56,7 @@
         left: 0;
         width: 618px;
         min-height: 449px;
-        background-image: url(./images/backgroud.png);
+        background-image: url(../../../utils/images/backgroud.png);
         background-repeat: no-repeat;
         z-index: -1;
     }
@@ -88,7 +88,7 @@
         left: 0;
         width: 618px;
         min-height: 449px;
-        background-image: url(./images/backgroud.png);
+        background-image: url(../../../utils/images/backgroud.png);
         background-repeat: no-repeat;
         z-index: -1;
     }

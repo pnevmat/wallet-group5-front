@@ -50,6 +50,7 @@
 .btnLogout {
   color: #bdbdbd;
   border: none;
+  border-radius: 10px;
   background-color: inherit;
   display: flex;
   align-items: center;
