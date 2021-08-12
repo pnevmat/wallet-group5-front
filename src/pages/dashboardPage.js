@@ -25,7 +25,6 @@ const DashboardPage = () => {
     if (userRegBalance || userRegBalance === 0 && !userTransactionBalance) {
       return userRegBalance 
     } else if (userTransactionBalance.length !== 0) {
-      console.log('Balance from user transactions: ', userTransactionBalance);
       return userTransactionBalance[0].balance
     } else {
       return userAuthBalance
