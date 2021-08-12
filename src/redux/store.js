@@ -50,6 +50,7 @@ const store = configureStore({
   },
   middleware: [...getDefaultMiddleware({ serializableCheck: false }), logger],
   devTools: process.env.NODE_ENV === 'development',
+  logger: process.env.NODE_ENV === 'development'
 });
 
 const persistor = persistStore(store);
