@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import operation from '../../redux/operations/transactionOperations';
 import AddIcon from '@material-ui/icons/Add';
-<<<<<<< HEAD
 // import { createPortal } from 'react-dom';
-=======
->>>>>>> 5757ed8b7d2330da40fc4cd6c606e6650370d006
 import s from './ModalAddTransaction.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
