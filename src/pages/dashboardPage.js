@@ -24,12 +24,12 @@ const DashboardPage = () => {
   const balance = () => {
     if (userRegBalance || userRegBalance === 0 && !userTransactionBalance) {
       return userRegBalance 
-    } else if (userTransactionBalance) {
+    } else if (userTransactionBalance.length !== 0) {
       return userTransactionBalance[0].balance
     } else {
       return userAuthBalance
-    }
-  }
+    };
+  };
   
   return (
     <>
