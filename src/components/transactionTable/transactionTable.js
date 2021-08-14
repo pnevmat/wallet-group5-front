@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
@@ -19,6 +19,13 @@ export default function TransactionTable() {
   }, [dispatch]);
 
   const rows = useSelector(getTransaction);
+  console.log(rows)
+  const onClickDelete = useCallback((id) => {
+    dispatch(operation.deleteTransaction(id));
+   
+  }, [dispatch]);
+
+
 
   const newDate = date => {
     return moment(date).format('D.MM.YY');
@@ -33,6 +40,7 @@ export default function TransactionTable() {
       comments: row.comments,
       date: modifiedDate,
       type: row.type,
+      id: row.id,
     };
   });
 
@@ -97,7 +105,8 @@ export default function TransactionTable() {
                       </span>
                     </div>
                   </li>
-                  <button type="button">
+                  <button type="button"
+                  onClick={() => onClickDelete(rows.id)}>
                     <DeleteIcon color="primary" />
                   </button>
                   <button type="button">

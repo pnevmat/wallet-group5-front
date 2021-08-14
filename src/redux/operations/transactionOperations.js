@@ -6,7 +6,9 @@ import {
     addTransactionRequest,
     addTransactionSuccess ,
     addTransactionError,
-
+    deleteTransactionRequest,
+    deleteTransactionSuccess,
+    deleteTransactionError,
 
   } from '../actions/transaction/transactionActions.js';
 
@@ -38,6 +40,22 @@ const fetchTransaction = (userToken) => async (dispatch) => {
       dispatch(addTransactionError(error.message));
     }
   };
+   
+  const deleteTransaction = (transacionId) => async (dispatch) => {
+    dispatch( deleteTransactionRequest());
   
+    try {
+      await axios.delete(`/api/transactions/${transacionId}`);
+      dispatch(deleteTransactionSuccess(transacionId));
+    } catch (error) {
+      dispatch(deleteTransactionError(error.message));
+    }
+  };
 
-  export default {fetchTransaction, addTransaction}
+
+
+
+
+
+
+  export default {fetchTransaction, addTransaction, deleteTransaction}
