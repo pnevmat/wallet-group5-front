@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import operation from '../../redux/operations/transactionOperations';
 import AddIcon from '@material-ui/icons/Add';
+// import { createPortal } from 'react-dom';
 import s from './ModalAddTransaction.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 import Switch from '@material-ui/core/Switch';
@@ -60,7 +61,7 @@ class ModalAddTransaction extends Component {
       this.state;
 
     const newTransaction = {
-      date: `${currentDate} ${moment().format('HH:mm')}`,
+      date: `${currentDate} ${moment().format('HH:mm:ss')}`,
       type: status ? 'cost' : 'income',
       amount: transactionValue,
       category: category,
@@ -68,6 +69,7 @@ class ModalAddTransaction extends Component {
     };
     this.onClickClose();
     this.props.addTransaction(newTransaction);
+    
   };
   setCategory = value => {
     this.setState({ category: value });

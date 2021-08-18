@@ -1,6 +1,8 @@
-import React, {useEffect } from 'react';
+import React, { useEffect, useCallback  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import operation from '../../redux/operations/transactionOperations';
 
@@ -10,18 +12,24 @@ import { getTransaction } from '../../redux/selectors/transactionSelectors/trans
 import styles from './transactionTable.module.css';
 
 export default function TransactionTable() {
-
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
   useEffect(() => {
-      dispatch(operation.fetchTransaction(token));
-   }, [dispatch]);
+    dispatch(operation.fetchTransaction(token));
+  }, [dispatch]);
 
-  const rows = useSelector(getTransaction)
+  const rows = useSelector(getTransaction);
+  console.log(rows)
+  const onClickDelete = useCallback((id) => {
+    dispatch(operation.deleteTransaction(id));
+   
+  }, [dispatch]);
 
-  const newDate = (date)=>{
-    return moment(date).format('D.MM.YY')
-  }
+
+
+  const newDate = date => {
+    return moment(date).format('D.MM.YY');
+  };
 
   const modifiedRows = rows.map(row => {
     let modifiedDate = newDate(row.date);
@@ -31,8 +39,9 @@ export default function TransactionTable() {
       category: row.category,
       comments: row.comments,
       date: modifiedDate,
-      type: row.type
-    }
+      type: row.type,
+      id: row.id,
+    };
   });
 
   return (
@@ -46,47 +55,68 @@ export default function TransactionTable() {
         <li className={styles.tableHeadText}>Баланс</li>
       </ul>
       <ul className={styles.tableRowList}>
-        {rows.length>0 ? modifiedRows.map((rows, i) => {
-          return (
-            <div className={styles.tableRowContainer}>
-              <li className={styles.tableRow} key={i}>
-                <span className={styles.tableRowText}>{rows.date}</span>
-                <span className={styles.tableRowText}>{rows.type==='cost' ? '-' : '+'}</span>
-                <span className={styles.tableRowCategorie}>{rows.category}</span>
-                <span className={styles.tableRowComment}>{rows.comments}</span>
-                <span className={styles.tableRowText}>{rows.amount}</span>
-                <span className={styles.tableRowText}>{rows.balance}</span>
-              </li>
-              <li className={styles.mobileTableRow} key={i}>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Дата</span>
-                  <span className={styles.tableRowText}>{rows.date}</span>
+        {rows.length > 0
+          ? modifiedRows.map((rows, i) => {
+              return (
+                <div className={styles.tableRowContainer}>
+                  <li className={styles.tableRow} key={i}>
+                    <span className={styles.tableRowText}>{rows.date}</span>
+                    <span className={styles.tableRowText}>
+                      {rows.type === 'cost' ? '-' : '+'}
+                    </span>
+                    <span className={styles.tableRowCategorie}>
+                      {rows.category}
+                    </span>
+                    <span className={styles.tableRowComment}>
+                      {rows.comments}
+                    </span>
+                    <span className={styles.tableRowText}>{rows.amount}</span>
+                    <span className={styles.tableRowText}>{rows.balance}</span>
+                  </li>
+                  <li className={styles.mobileTableRow} key={i}>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Дата</span>
+                      <span className={styles.tableRowText}>{rows.date}</span>
+                    </div>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Тип</span>
+                      <span className={styles.tableRowText}>{rows.type}</span>
+                    </div>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Категория</span>
+                      <span className={styles.tableRowCategorie}>
+                        {rows.category}
+                      </span>
+                    </div>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Комментарии</span>
+                      <span className={styles.tableRowComment}>
+                        {rows.comments}
+                      </span>
+                    </div>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Сумма</span>
+                      <span className={styles.tableRowText}>{rows.amount}</span>
+                    </div>
+                    <div className={styles.mobileTableRowItemsContainer}>
+                      <span className={styles.tableHeadText}>Баланс</span>
+                      <span className={styles.tableRowText}>
+                        {rows.balance}
+                      </span>
+                    </div>
+                  </li>
+                  <button type="button"
+                  onClick={() => onClickDelete(rows.id)}>
+                    <DeleteIcon color="primary" />
+                  </button>
+                  <button type="button">
+                    <EditIcon color="primary" />
+                  </button>
                 </div>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Тип</span>
-                  <span className={styles.tableRowText}>{rows.type }</span>
-                </div>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Категория</span>
-                  <span className={styles.tableRowCategorie}>{rows.category}</span>
-                </div>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Комментарии</span>
-                  <span className={styles.tableRowComment}>{rows.comments}</span>
-                </div>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Сумма</span>
-                  <span className={styles.tableRowText}>{rows.amount}</span>
-                </div>
-                <div className={styles.mobileTableRowItemsContainer}>
-                  <span className={styles.tableHeadText}>Баланс</span>
-                  <span className={styles.tableRowText}>{rows.balance}</span>
-                </div>
-              </li>
-            </div>
-          )
-        }) : ''}
+              );
+            })
+          : ''}
       </ul>
     </div>
   );
-};
+}

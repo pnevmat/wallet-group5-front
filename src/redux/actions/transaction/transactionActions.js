@@ -11,6 +11,18 @@ export const fetchTransactionRequest = createAction(
     "fetchTransactionError"
   );
   
+  export const deleteTransactionRequest = createAction(
+    "deleteTransactionRequest"
+  );
+  export const  deleteTransactionSuccess = createAction(
+    "deleteTransactionSuccess"
+  );
+  export const  deleteTransactionError = createAction(
+    "deleteTransactionError"
+  );
+
+
+
 
 
 export const addTransactionRequest = createAction("addTransactionRequest");
