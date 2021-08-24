@@ -43,6 +43,30 @@ const Navigation = () => {
           </NavLink>
         </li>
       </ul>
+      <ul className={s.navList}>
+        <li className={s.navItem}>
+          <NavLink
+            exact
+            className={s.links}
+            activeClassName={s.activeLinks}
+            to={'/budget'}
+          >
+            <HomeIcon />
+            <span className={s.navTitle}>Бюджет</span>
+          </NavLink>
+        </li>
+        <li className={s.navItem}>
+          <NavLink
+            exact
+            className={s.links}
+            activeClassName={s.activeLinks}
+            to={'/reports'}
+          >
+            <HomeIcon />
+            <span className={s.navTitle}>Отчеты</span>
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 };

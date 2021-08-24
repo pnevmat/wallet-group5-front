@@ -1,0 +1,92 @@
+.container {
+    width: 100%;
+    padding-top: 30px;
+    padding-right: 85px;
+}
+
+.actionsContainer {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.budgetContainer {
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.formMonthOptions {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.budgetTitle {
+    margin-bottom: 20px;
+    display: inline-block;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.budgetList {
+    margin-bottom: 20px;
+    list-style-type: none;
+    text-align: left;
+}
+
+.budgetList :not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.budgetListItem {
+    max-width: 400px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+.budgetItemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.budgetItemPlanAmmount {
+    color: #4A56E2;;
+}
+
+.progressBar {
+    display: inline-block;
+    height: 20px;
+}
+
+.summaryContainer {
+    padding-left: 120px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+}
+
+.summaryAmountOverspent {
+    color: #FF6596;
+}
+
+.summaryAmountRegular {
+    color: #24CCA7;
+}

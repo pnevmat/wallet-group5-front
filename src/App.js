@@ -31,6 +31,14 @@ const CurrencyPage = lazy(() =>
     import('./pages/CurrencyPage' /* webpackChunkName: "Currency-Page" */)
 );
 
+const BudgetPage = lazy(() =>
+  import('./pages/BudgetPage' /* webpackChunkName: "Budget-Page" */),
+);
+
+const ReportsPage = lazy(() =>
+  import('./pages/ReportsPage' /* webpackChunkName: "Reports-Page" */),
+);
+
 const FinanceApp = () => {
 
   const dispatch = useDispatch();
@@ -79,6 +87,18 @@ const FinanceApp = () => {
             path="/currency"
             restricted
             component={CurrencyPage}
+            redirectTo="/login"
+          />
+          <PrivateRoute
+            path="/budget"
+            restricted
+            component={BudgetPage}
+            redirectTo="/login"
+          />
+          <PrivateRoute
+            path="/reports"
+            restricted
+            component={ReportsPage}
             redirectTo="/login"
           />
         </Switch>
