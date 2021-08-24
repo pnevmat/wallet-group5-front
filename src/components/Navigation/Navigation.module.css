@@ -35,16 +35,22 @@
   .navList {
     display: flex;
     justify-content: space-around;
-    width: 190px;
-    margin: 0 auto;
     padding-bottom: 14px;
+    padding-left: 90px;
+    padding-right: 90px;
 
   }
 }
 
 @media screen and (min-width: 768px) {
   .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navList {
     display: inline-block;
+    max-width: 140px;
   }
 
   .navTitle {
