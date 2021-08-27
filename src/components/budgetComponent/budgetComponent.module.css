@@ -1,10 +1,13 @@
 .container {
     width: 100%;
-    padding-top: 30px;
+    padding-top: 40px;
     padding-right: 85px;
 }
 
 .actionsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -16,6 +19,40 @@
     border: 1px solid #000000;
     border-radius: 15px;
     text-align: center;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    background: #24cca7;
+    text-transform: uppercase;
+}
+
+.form {
+    width: 100%;
+    /* max-width: 351px; */
+    margin-bottom: 20px;
+}
+
+.form :not(:last-child) {
+    margin-right: 18px;
+}
+
+.formSelect {
+    width: 100%;
+    max-width: 166px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+    padding-left: 21px;
+    border: 1px solid #000000;
+    border-radius: 30px;
+    outline: none;
 }
 
 .formMonthOptions {
@@ -41,18 +78,18 @@
     text-align: left;
 }
 
-.budgetList :not(:last-child) {
+/* .budgetList :not(:last-child) {
     margin-bottom: 10px;
-}
+} */
 
 .budgetListItem {
-    max-width: 400px;
     padding-top: 10px;
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px;
-    border-radius: 15px;
-    background-color: #ffffff;
+    border-bottom: 1px solid #DCDCDF;
+    background: transparent;
+    box-shadow: 0px 1px 0px rgb(255 255 255 / 60%);
 }
 
 .budgetItemContainer {
@@ -69,13 +106,12 @@
     color: #4A56E2;;
 }
 
-.progressBar {
-    display: inline-block;
-    height: 20px;
-}
-
 .summaryContainer {
-    padding-left: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
