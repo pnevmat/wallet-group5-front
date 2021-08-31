@@ -1,6 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import ProgressBar from './progressBarComponent/progressBar';
+import AddBudgetButton from '../addBudgetButton/addBudgetButton';
 
 import styles from './budgetComponent.module.css';
 
@@ -19,7 +20,7 @@ const BudgetComponent = () => {
         years.push(2000 + i)
     }
 
-    const handleCange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         switch (name) {
             case 'month':
@@ -58,16 +59,19 @@ const BudgetComponent = () => {
     
     return (
         <div className={styles.container}>
-            {/* <ProgressBar props={budgetItemsArray[0]} /> */}
             <div className={styles.actionsContainer}>
-                <button className={styles.button} type='button'>Создать бюджет</button>
+                <AddBudgetButton />
                 <button className={styles.button} type='button'>Редактировать</button>
                 <button className={styles.button} type='button'>Удалить</button>
             </div>
             <div className={styles.budgetContainer}>
                 <span className={styles.budgetTitle}>Бюджет на месяц</span>
                 <form className={styles.form}>
-                    <select className={styles.formSelect} name="month">
+                    <select className={styles.formSelect} name="month"
+                        onChange={e => {
+                            handleChange(e)
+                        }}
+                    >
                         <option className={styles.formMonthOptions} selected>Месяц</option>
                         <option value='Jan' className={styles.formMonthOptions}>Январь</option>
                         <option value='Feb' className={styles.formMonthOptions}>Февраль</option>
@@ -84,7 +88,7 @@ const BudgetComponent = () => {
                     </select>
                     <select className={styles.formSelect} name="year"
                         onChange={e => {
-                            handleCange(e)
+                            handleChange(e)
                         }}
                     >
                         <option selected>Год</option>
@@ -95,7 +99,7 @@ const BudgetComponent = () => {
                 </form>
                 <ul className={styles.budgetList}>
                     {budgetItemsArray.map(item => 
-                        <li className={styles.budgetListItem}>
+                        <li key={item.id} className={styles.budgetListItem}>
                             <div className={styles.budgetItemContainer}>
                                 <span>{item.categorie}</span>
                                 <span className={styles.budgetItemPlanAmmount}>{item.planAmmount}</span>
@@ -116,45 +120,9 @@ const BudgetComponent = () => {
                     <span className={styles.budgetItemPlanAmmount}>{total}</span>
                 </div>
             </div>
+            {/* <ModalAddBudget /> */}
         </div>
     );
 };
 
 export default BudgetComponent;
-
-// import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import LinearProgress from '@material-ui/core/LinearProgress';
-
-// const useStyles = makeStyles({
-//   root: {
-//     width: '100%',
-//   },
-// });
-
-// export default function LinearDeterminate() {
-//   const classes = useStyles();
-//   const [progress, setProgress] = React.useState(0);
-
-//   React.useEffect(() => {
-//     const timer = setInterval(() => {
-//       setProgress((oldProgress) => {
-//         if (oldProgress === 100) {
-//           return 0;
-//         }
-//         const diff = Math.random() * 10;
-//         return Math.min(oldProgress + diff, 100);
-//       });
-//     }, 500);
-
-//     return () => {
-//       clearInterval(timer);
-//     };
-//   }, []);
-
-//   return (
-//     <div className={classes.root}>
-//       <LinearProgress variant="determinate" value={progress} />
-//     </div>
-//   );
-// }

@@ -19,7 +19,7 @@ export default function TransactionTable() {
   }, [dispatch]);
 
   const rows = useSelector(getTransaction);
-  console.log(rows)
+
   const onClickDelete = useCallback((id) => {
     dispatch(operation.deleteTransaction(id));
    
