@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const ProgressBar = ({props}) => {
-    console.log('Progress bar props: ', props);
     const barStyles = makeStyles({
         root: {
             display: 'inline-block',
@@ -22,7 +21,6 @@ const ProgressBar = ({props}) => {
 
     const classes = barStyles();
     const [progress, setProgress] = useState(0);
-    console.log('Progress value of progressBar: ', progress);
 
     useEffect(() => {
         setProgress((oldProgress) => {
