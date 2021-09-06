@@ -19,7 +19,6 @@ const AddButton =()=>{
    
   return(
    <div className={s.btnContainer}>
-     
       <button className={s.addBtn} type="button" onClick={handleOpenModal} >
         <AddIcon />
       </button>

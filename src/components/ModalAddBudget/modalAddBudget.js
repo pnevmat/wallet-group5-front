@@ -18,11 +18,11 @@ import s from './modalAddBudget.module.css';
 const ModalAddBudget = (props) => {
   // Переписать модалку на хуки и изменить под нужды модалки создани бюджета
 
-  const [status, setStatus] = useState(true);
+  const [category, setCategory] = useState({})
+  const [transactionValue, setTransactionValue] = useState('');
   const dateFormat = moment().format('YYYY-MM-DD');
   const [currentDate, setCurrentDate] = useState(dateFormat);
-  const [transactionValue, setTransactionValue] = useState('');
-  const [category, setCategory] = useState({})
+  const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([1]);
 
   // useEffect(() => {
   //   document.addEventListener('keydown', onKeyClick);
@@ -48,7 +48,7 @@ const ModalAddBudget = (props) => {
   };
 
   const onChangeStatus = () => {
-    setStatus(!status)
+  
   };
 
   const changeClass = (state, class1, class2) => {
@@ -59,7 +59,6 @@ const ModalAddBudget = (props) => {
   const handleTransactionInfo = e => {
     const { name, value } = e.currentTarget;
     setTransactionValue({ [name]: value })
-    // this.setState({ [name]: value });
   };
 
   const handleSubmitForm = e => {
@@ -80,97 +79,74 @@ const ModalAddBudget = (props) => {
   };
   const onSetCategory = value => {
     setCategory({ category: value })
-    // this.setState({ category: value });
   };
 
-  // const { status, currentDate, transactionValue, comments } = this.state;
+  const handleAddBudgetField = () => {
+    setBudgetFieldsCounter([...budgetFieldsCounter, budgetFieldsCounter.length]);
+  }
+
+  // const { сurrentDate, transactionValue, comments } = this.state;
     
   // Подключить тостифай вместо консоль лога
   return (
     <div className={s.overlay} onClick={handleCloseModal}>
       <div className={s.modal}>
         <CloseIcon className={s.closeModalIcon} onClick={onClickClose} />
-        {/* <ValidatorForm
-          ref="form"
+        <ValidatorForm
+          // ref="form"
           onSubmit={handleSubmitForm}
           onError={errors => console.log(errors)}
-        > */}
-          <h2 className={s.title}>Добавить транзакцию</h2>
-          <div className={s.switchContainer}>
-            <p
-              // className={changeClass(status, s.unactive, s.activeIncome)}
-            >
-              Доход
-            </p>
-            {/* <Switch
-              checkedIcon={<RemoveIcon className={s.removeIcon} />}
-              icon={<AddIcon className={s.addIcon} />}
-              checked={status}
-              onChange={onChangeStatus}
-            /> */}
-            {/* <p
-              className={changeClass(
-                status,
-                s.activeInvoice,
-                s.unactive,
-              )}
-            >
-              Расход
-            </p> */}
+        >
+          <h2 className={s.title}>Запланировать бюджет</h2>
+          <div className={s.formFieldsContainer}>
+            {budgetFieldsCounter.map(item => {
+              return (
+                <div key={item} >
+                  <div className={s.categoryContainer}>
+                    <CategoryForm categoryChange={onSetCategory} />
+                  </div>
+                  <div className={s.textField}>
+                    <TextValidator
+                      validators={['required', 'isNumber']}
+                      errorMessages={[
+                        'это поле обязательно для заполнения',
+                        'пожалуйста, введите число'
+                      ]}
+                      autoComplete={'off'}
+                      label="0.00"
+                      margin="dense"
+                      name="transactionValue"
+                      value={transactionValue}
+                      onChange={handleTransactionInfo}
+                    />
+                    <TextValidator
+                      id="date"
+                      label="Введите дату"
+                      type="date"
+                      name="currentDate"
+                      value={currentDate}
+                      defaultValue={`${currentDate}`}
+                      className={s.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={handleTransactionInfo}
+                    />
+                  </div>
+                </div>
+              )
+            })}
           </div>
-          {/* {status && (
-            <div className={s.categoryContainer}>
-              <CategoryForm  categoryChange={onSetCategory} />
-            </div>
-          )} */}
-
-          <div className={s.textField}>
-            {/* <TextValidator
-              validators={['required', 'isNumber']}
-              errorMessages={[
-                'это поле обязательно для заполнения',
-                'пожалуйста, введите число'
-              ]}
-              autoComplete={'off'}
-              label="0.00"
-              margin="dense"
-              name="transactionValue"
-              value={transactionValue}
-              onChange={handleTransactionInfo}
-            /> */}
-            {/* <TextValidator
-            
-              id="date"
-              label="Введите дату"
-              type="date"
-              name="currentDate"
-              value={currentDate}
-              defaultValue={`${currentDate}`}
-              className={s.textField}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onChange={handleTransactionInfo}
-            /> */}
-          </div>
-          <div className={s.textFieldcomments}>
-            {/* <TextField
-              className={s.categoryPlaceholder}
-              autoComplete={'off'}
-              label="Комментарий"
-              margin="dense"
-              type="textarea"
-              name="comments"
-              // value={comments}
-              onChange={handleTransactionInfo}
-            /> */}
-            <div />
+          <div className={s.btnContainer}>
+            <button className={s.addBtn} type="button" onClick={handleAddBudgetField} >
+              <AddIcon />
+            </button>
           </div>
           <button
             className={s.submitButton}
             type="submit"
           >
-            Добавить
+            Сохранить
           </button>
           <button
             className={s.closeButton}
@@ -179,7 +155,7 @@ const ModalAddBudget = (props) => {
           >
             Отмена
           </button>
-        {/* </ValidatorForm> */}
+        </ValidatorForm>
       </div>
     </div>
   );

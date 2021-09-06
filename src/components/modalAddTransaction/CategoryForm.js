@@ -21,6 +21,7 @@ export default function CategoryForm({ categoryChange }) {
 
   
   const categories = useSelector(getCategories);
+  console.log('Categories in Category form: ', categories);
 
   const handleChange = e => {
     categoryChange(e.target.value);
@@ -54,10 +55,10 @@ export default function CategoryForm({ categoryChange }) {
         >
            <option></option>
           {categories.length > 0 &&
-            categories.map(el => {
-              return <> 
-              <option>{el}</option></>
-           
+            categories.map((el, i) => {
+              return (
+                <option key={i}>{el}</option>
+              )
             })}
           
         </NativeSelect>
