@@ -10,3 +10,7 @@
     background: #24cca7;
     text-transform: uppercase;
 }
+
+.button:focus {
+    outline: none;
+}

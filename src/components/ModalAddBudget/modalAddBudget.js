@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import { createPortal } from 'react-dom';
 
 import CategoryForm from './CategoryForm';
@@ -6,12 +6,9 @@ import moment from 'moment';
 
 // import transactionOperation from '../../redux/operations/transactionOperations';
 
-import Switch from '@material-ui/core/Switch';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
-import RemoveIcon from '@material-ui/icons/Remove';
 
 import s from './modalAddBudget.module.css';
 
@@ -19,18 +16,20 @@ const ModalAddBudget = (props) => {
   // Переписать модалку на хуки и изменить под нужды модалки создани бюджета
 
   const [category, setCategory] = useState({})
-  const [transactionValue, setTransactionValue] = useState('');
+  const [budgetPlanAmmount, setBudgetPlanAmmount] = useState({budgetPlanAmmount0: 0.00});
   const dateFormat = moment().format('YYYY-MM-DD');
   const [currentDate, setCurrentDate] = useState(dateFormat);
-  const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([1]);
+  const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([0]);
 
-  // useEffect(() => {
-  //   document.addEventListener('keydown', onKeyClick);
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyClick);
 
-  //   return () => {
-  //     document.removeEventListener('keydown', onKeyClick);
-  //   }
-  // }, []);
+    return () => {
+      document.removeEventListener('keydown', onKeyClick);
+    }
+  }, []);
+
+  const formRef = useRef("form");
 
   const handleCloseModal = e => {
     if (e.target === e.currentTarget) {
@@ -47,45 +46,58 @@ const ModalAddBudget = (props) => {
     props.closeModal();
   };
 
-  const onChangeStatus = () => {
+  // const onChangeStatus = () => {
   
-  };
+  // };
 
-  const changeClass = (state, class1, class2) => {
-    const currentClass = state ? class1 : class2;
-    return currentClass;
-  };
+  // const changeClass = (state, class1, class2) => {
+  //   const currentClass = state ? class1 : class2;
+  //   return currentClass;
+  // };
 
-  const handleTransactionInfo = e => {
+  const handleBudgetPlanAmmount = e => {
     const { name, value } = e.currentTarget;
-    setTransactionValue({ [name]: value })
+    const newbudgetPlanAmmount = {...budgetPlanAmmount, [name]: Number(value)}
+    setBudgetPlanAmmount(newbudgetPlanAmmount);
+    console.log(budgetPlanAmmount);
+  };
+
+  const onSetCategory = e => {
+    const {name, value} = e.target;
+    const newCategories = {...category, [name]: value}
+    setCategory(newCategories)
   };
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    // const { currentDate, transactionValue, category, comments, status } =
-    //   this.state;
+    let budgetFields = []
 
-    // const newTransaction = {
-    //   date: `${currentDate} ${moment().format('HH:mm:ss')}`,
-    //   type: status ? 'cost' : 'income',
-    //   amount: transactionValue,
-    //   category: category,
-    //   comments: comments,
-    // };
-    // this.onClickClose();
-    // this.props.addTransaction(newTransaction);
+    for (const categoryKey in category) {
+      for (const budgetPlanAmmountKey in budgetPlanAmmount) {
+        if (categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1)) {
+          budgetFields.push({
+            [categoryKey]: category[categoryKey],
+            [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey]
+          })
+        }
+      }
+    }
+
+    console.log('On submit data array: ', budgetFields);
+
+    const newBudgetPlan = {
+      date: currentDate,
+      type: 'budget',
+      data: budgetFields
+    };
+    onClickClose();
+    // this.props.addTransaction(newBudgetPlan);
     
-  };
-  const onSetCategory = value => {
-    setCategory({ category: value })
   };
 
   const handleAddBudgetField = () => {
     setBudgetFieldsCounter([...budgetFieldsCounter, budgetFieldsCounter.length]);
   }
-
-  // const { сurrentDate, transactionValue, comments } = this.state;
     
   // Подключить тостифай вместо консоль лога
   return (
@@ -93,45 +105,48 @@ const ModalAddBudget = (props) => {
       <div className={s.modal}>
         <CloseIcon className={s.closeModalIcon} onClick={onClickClose} />
         <ValidatorForm
-          // ref="form"
+          ref={formRef}
           onSubmit={handleSubmitForm}
           onError={errors => console.log(errors)}
         >
           <h2 className={s.title}>Запланировать бюджет</h2>
-          <div className={s.formFieldsContainer}>
+          <div className={s.formContainer}>
+            <div className={s.formDateContainer}>
+              <TextValidator
+                id="date"
+                label="Введите дату"
+                type="date"
+                name="currentDate"
+                value={currentDate}
+                defaultValue={`${currentDate}`}
+                className={s.textField}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={setCurrentDate}
+              />
+            </div>
             {budgetFieldsCounter.map(item => {
               return (
-                <div key={item} >
+                <div key={item} className={s.formFieldContainer}>
                   <div className={s.categoryContainer}>
-                    <CategoryForm categoryChange={onSetCategory} />
+                      <CategoryForm categorieCounter={item} categoryChange={onSetCategory} />
                   </div>
-                  <div className={s.textField}>
+                  <div className={s.formTextContainer}>
                     <TextValidator
-                      validators={['required', 'isNumber']}
+                      label="0.00"
+                      name={"budgetPlanAmmount" + item}
+                      value={budgetPlanAmmount[budgetPlanAmmount + item]}
+                      autoComplete={'off'}
+                      margin="dense"
+                      // validators={['required', 'isNumber']}
                       errorMessages={[
                         'это поле обязательно для заполнения',
                         'пожалуйста, введите число'
                       ]}
-                      autoComplete={'off'}
-                      label="0.00"
-                      margin="dense"
-                      name="transactionValue"
-                      value={transactionValue}
-                      onChange={handleTransactionInfo}
-                    />
-                    <TextValidator
-                      id="date"
-                      label="Введите дату"
-                      type="date"
-                      name="currentDate"
-                      value={currentDate}
-                      defaultValue={`${currentDate}`}
                       className={s.textField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={handleTransactionInfo}
-                    />
+                      onChange={handleBudgetPlanAmmount}
+                      />
                   </div>
                 </div>
               )

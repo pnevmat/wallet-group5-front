@@ -8,15 +8,15 @@ import styles from './AddBudgetButton.module.css';
 
 const AddBudgetButton =()=>{
    
-  const [isModalAddBudgetOpen, setIsModalAddBudgetOpen]=useState(false)
+  const [isModalAddBudgetOpen, setIsModalAddBudgetOpen] = useState(false);
 
  const handleOpenModal=()=>{
     setIsModalAddBudgetOpen(true)
-  }
+  };
 
   const closeModal=()=>{
     setIsModalAddBudgetOpen(false)
-  }
+  };
    
   return(
    <>
