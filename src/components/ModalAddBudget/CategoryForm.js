@@ -13,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import s from './modalAddBudget.module.css';
 
 
-export default function CategoryForm({ categoryChange }) {
+export default function CategoryForm({ categorieCounter, categoryChange }) {
   const dispatch = useDispatch();
   const token =useSelector(selectors.getUserToken);
   
@@ -26,7 +26,7 @@ export default function CategoryForm({ categoryChange }) {
   const categories = useSelector(getCategories);
 
   const handleChange = e => {
-    categoryChange(e.target.value);
+    categoryChange(e);
   };
 
   return (
@@ -43,14 +43,13 @@ export default function CategoryForm({ categoryChange }) {
         
         <NativeSelect
           fullWidth
-         validators={['required', ]}
-         errorMessages={[
+          validators={['required', ]}
+          errorMessages={[
            'this field is required',
-         
          ]}
-          name="category"
+          name={"category" + categorieCounter}
           onChange={handleChange}
-            defaultValue=''
+          defaultValue=''
           inputProps={{
             id: 'uncontrolled-native',
           }}
