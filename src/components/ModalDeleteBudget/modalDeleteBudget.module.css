@@ -1,0 +1,84 @@
+.modal {
+    position: absolute;
+    width: 100%;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 20px;
+    outline: none;
+    padding: 20px;
+}
+  
+.modalExit {
+    text-align: center;
+    margin-bottom: 20px;
+}
+  
+.modalBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.modalExitSucsess {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    color: #ffffff;
+    background: #24CCA7;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+  
+.modalExitCancel {
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    border: 1px solid #4A56E2;
+    border-radius: 20px;
+    color: #4A56E2;
+    background-color: #ffffff;
+  
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+  
+@media (max-width: 767px) {
+    .modal {
+      max-width: 320px;
+      inset: 20% auto auto 20%;
+      transform: translate(-10%, -10%);
+    }
+}
+  
+@media (min-width: 768px) and (max-width: 1279px) {
+    .modal {
+      inset: 25% auto auto 25%;
+      transform: translate(-10%, -10%);
+      max-width: 450px;
+    }
+}
+  
+@media (min-width: 1280px) {
+    .modal {
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      max-width: 450px;
+      margin-right: -50%;
+    }
+}  

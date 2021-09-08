@@ -21,26 +21,8 @@
     text-align: center;
 }
 
-.button {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-    text-decoration: none;
-    color: #fff;
-    background: #24cca7;
-    text-transform: uppercase;
-}
-
-.button:focus {
-    outline: none;
-}
-
 .form {
     width: 100%;
-    /* max-width: 351px; */
     margin-bottom: 20px;
 }
 
@@ -81,10 +63,6 @@
     list-style-type: none;
     text-align: left;
 }
-
-/* .budgetList :not(:last-child) {
-    margin-bottom: 10px;
-} */
 
 .budgetListItem {
     padding-top: 10px;

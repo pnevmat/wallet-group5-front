@@ -1,0 +1,16 @@
+.button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    background: #24cca7;
+    text-transform: uppercase;
+}
+
+.button:focus {
+    outline: none;
+}

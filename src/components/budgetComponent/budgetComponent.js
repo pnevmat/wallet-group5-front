@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import ProgressBar from './progressBarComponent/progressBar';
 import AddBudgetButton from '../addBudgetButton/addBudgetButton';
 import EditBudgetButton from '../editBudgetButton/editBudgetButton';
+import DeleteBudgetButton from '../deleteBudgetButton/deleteBudgetButton';
 
 import styles from './budgetComponent.module.css';
 
@@ -63,7 +64,7 @@ const BudgetComponent = () => {
             <div className={styles.actionsContainer}>
                 <AddBudgetButton />
                 <EditBudgetButton />
-                <button className={styles.button} type='button'>Удалить</button>
+                <DeleteBudgetButton />
             </div>
             <div className={styles.budgetContainer}>
                 <span className={styles.budgetTitle}>Бюджет на месяц</span>
