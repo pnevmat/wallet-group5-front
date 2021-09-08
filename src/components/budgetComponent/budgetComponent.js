@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import ProgressBar from './progressBarComponent/progressBar';
 import AddBudgetButton from '../addBudgetButton/addBudgetButton';
+import EditBudgetButton from '../editBudgetButton/editBudgetButton';
 
 import styles from './budgetComponent.module.css';
 
@@ -61,7 +62,7 @@ const BudgetComponent = () => {
         <div className={styles.container}>
             <div className={styles.actionsContainer}>
                 <AddBudgetButton />
-                <button className={styles.button} type='button'>Редактировать</button>
+                <EditBudgetButton />
                 <button className={styles.button} type='button'>Удалить</button>
             </div>
             <div className={styles.budgetContainer}>
