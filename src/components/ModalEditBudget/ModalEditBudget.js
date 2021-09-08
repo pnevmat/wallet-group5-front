@@ -10,15 +10,42 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 
-import s from './modalAddBudget.module.css';
+import s from './ModalEditBudget.module.css';
 
-const ModalAddBudget = (props) => {
+const ModalEditBudget = (props) => {
 
-  const [category, setCategory] = useState({})
-  const [budgetPlanAmmount, setBudgetPlanAmmount] = useState({budgetPlanAmmount0: 0.00});
+  const budgetItemsArray = [
+    {id: 1, categorie: 'Основные расходы', planAmmount: 1000, factAmmount: 500},
+    {id: 2, categorie: 'Продукты', planAmmount: 500, factAmmount: 500},
+    {id: 3, categorie: 'Машина', planAmmount: 2000, factAmmount: 700},
+    {id: 4, categorie: 'Забота о себе', planAmmount: 3000, factAmmount: 1500},
+    {id: 5, categorie: 'Забота о детях', planAmmount: 700, factAmmount: 800},
+    {id: 6, categorie: 'Товары для дома', planAmmount: 1500, factAmmount: 1500},
+    {id: 7, categorie: 'Образование', planAmmount: 1900, factAmmount: 1500}
+  ]
+
+  const categorieInitialState = () => {
+    let categories = {}
+    budgetItemsArray.map((item, i) => {
+      categories = {...categories, ['category' + i]: item.categorie}
+    })
+    return categories
+  }
+  const [category, setCategory] = useState(categorieInitialState)
+
+  const budgetPlanAmmountInitialState = () => {
+    let planAmmounts = {}
+    budgetItemsArray.map((item, i) => {
+      planAmmounts = {...planAmmounts, ['budgetPlanAmmount' + i]: item.planAmmount}
+    })
+    return planAmmounts
+  }
+  const [budgetPlanAmmount, setBudgetPlanAmmount] = useState(budgetPlanAmmountInitialState);
+
+//   Заменить dateFormat на дату полученную из store
   const dateFormat = moment().format('YYYY-MM-DD');
-  const [currentDate, setCurrentDate] = useState(dateFormat);
-  const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([0]);
+  const [budgetDate, setBudgetDate] = useState(dateFormat);
+  const [budgetFieldsCounter, setBudgetFieldsCounter] = useState(budgetItemsArray.length);
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyClick);
@@ -49,7 +76,6 @@ const ModalAddBudget = (props) => {
     const { name, value } = e.currentTarget;
     const newbudgetPlanAmmount = {...budgetPlanAmmount, [name]: Number(value)}
     setBudgetPlanAmmount(newbudgetPlanAmmount);
-    console.log(budgetPlanAmmount);
   };
 
   const onSetCategory = e => {
@@ -76,8 +102,8 @@ const ModalAddBudget = (props) => {
     console.log('On submit data array: ', budgetFields);
 
     const newBudgetPlan = {
-      date: currentDate,
-      type: 'budget',
+      date: budgetDate,
+      type: 'editBudget',
       data: budgetFields
     };
     onClickClose();
@@ -85,7 +111,7 @@ const ModalAddBudget = (props) => {
     
   };
 
-  const handleAddBudgetField = () => {
+  const handleEditBudgetField = () => {
     setBudgetFieldsCounter([...budgetFieldsCounter, budgetFieldsCounter.length]);
   }
     
@@ -99,34 +125,19 @@ const ModalAddBudget = (props) => {
           onSubmit={handleSubmitForm}
           onError={errors => console.log(errors)}
         >
-          <h2 className={s.title}>Запланировать бюджет</h2>
+          <h2 className={s.title}>Редактировать бюджет</h2>
           <div className={s.formContainer}>
-            <div className={s.formDateContainer}>
-              <TextValidator
-                id="date"
-                label="Введите дату"
-                type="date"
-                name="currentDate"
-                value={currentDate}
-                defaultValue={`${currentDate}`}
-                className={s.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={setCurrentDate}
-              />
-            </div>
-            {budgetFieldsCounter.map(item => {
+            {budgetItemsArray.map((item, i) => {
               return (
-                <div key={item} className={s.formFieldContainer}>
+                <div key={item.id} className={s.formFieldContainer}>
                   <div className={s.categoryContainer}>
-                      <CategoryForm categorieCounter={item} categoryChange={onSetCategory} />
+                      <CategoryForm categorie={item.categorie} categorieCounter={i} categoryChange={onSetCategory} />
                   </div>
                   <div className={s.formTextContainer}>
                     <TextValidator
-                      label="0.00"
-                      name={"budgetPlanAmmount" + item}
-                      value={budgetPlanAmmount[budgetPlanAmmount + item]}
+                      label={item.planAmmount}
+                      name={"budgetPlanAmmount" + i}
+                      value={budgetPlanAmmount[budgetPlanAmmount + i]}
                       autoComplete={'off'}
                       margin="dense"
                       // validators={['required', 'isNumber']}
@@ -143,7 +154,7 @@ const ModalAddBudget = (props) => {
             })}
           </div>
           <div className={s.btnContainer}>
-            <button className={s.addBtn} type="button" onClick={handleAddBudgetField} >
+            <button className={s.addBtn} type="button" onClick={handleEditBudgetField} >
               <AddIcon />
             </button>
           </div>
@@ -166,4 +177,4 @@ const ModalAddBudget = (props) => {
   );
 }
 
-export default ModalAddBudget;
+export default ModalEditBudget;
