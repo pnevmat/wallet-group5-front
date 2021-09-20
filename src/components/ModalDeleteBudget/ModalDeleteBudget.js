@@ -1,15 +1,12 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
-
-// import logoutOperation from '../../redux/operations/logoutOperation';
 
 import s from './modalDeleteBudget.module.css';
 
 
 
-const ModalDeleteBudget = ({ closeModal }) => {
-  const dispatch = useDispatch();
+const ModalDeleteBudget = ({ closeModal, onSubmit }) => {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -20,9 +17,14 @@ const ModalDeleteBudget = ({ closeModal }) => {
     closeModal(false)
   }
 
-//   const logout = useCallback(() => {
-//     dispatch(logoutOperation());
-//   }, [dispatch]);
+  const handleSubmit = () => {
+    const budget = {
+      type: 'deleteBudget',
+      // date: currentDate,
+    }
+
+    onSubmit(budget)
+  }
 
   return (
     <>
@@ -35,8 +37,7 @@ const ModalDeleteBudget = ({ closeModal }) => {
       >
         <h2 className={s.modalExit}>Ты действительно хочеш удалить?</h2>
         <div className={s.modalBtn}>
-        {/* onClick={logout} */}
-          <button className={s.modalExitSucsess} >
+          <button className={s.modalExitSucsess} onClick={handleSubmit}>
             Да
           </button>
           <button className={s.modalExitCancel} onClick={handleCloseModal}>

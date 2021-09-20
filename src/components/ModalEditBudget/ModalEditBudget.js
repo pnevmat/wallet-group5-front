@@ -4,8 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import CategoryForm from './CategoryForm';
 import moment from 'moment';
 
-// import transactionOperation from '../../redux/operations/transactionOperations';
-
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
@@ -90,14 +88,28 @@ const ModalEditBudget = (props) => {
 
     for (const categoryKey in category) {
       for (const budgetPlanAmmountKey in budgetPlanAmmount) {
-        if (categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1)) {
-          budgetFields.push({
-            [categoryKey]: category[categoryKey],
-            [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey]
-          })
-        }
+        categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1) &&
+        budgetFields.push({
+          [categoryKey]: category[categoryKey],
+          [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey]
+        })
       }
     }
+
+    budgetFields.sort((nextItem, prevItem) => {
+      const stringPrevItem = JSON.stringify(prevItem);
+      const stringNextItem = JSON.stringify(nextItem);
+
+      if (stringPrevItem > stringNextItem) {
+        return -1
+      };
+
+      if (stringPrevItem < stringNextItem) {
+        return 1
+      };
+        
+      return 0
+    });
 
     console.log('On submit data array: ', budgetFields);
 
@@ -107,7 +119,7 @@ const ModalEditBudget = (props) => {
       data: budgetFields
     };
     onClickClose();
-    // this.props.addTransaction(newBudgetPlan);
+    props.addTransaction(newBudgetPlan);
     
   };
 
