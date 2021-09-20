@@ -14,7 +14,7 @@ import s from './modalAddBudget.module.css';
 
 const ModalAddBudget = (props) => {
 
-  const [category, setCategory] = useState({})
+  const [category, setCategory] = useState({});
   const [budgetPlanAmmount, setBudgetPlanAmmount] = useState({budgetPlanAmmount0: 0.00});
   const dateFormat = moment().format('YYYY-MM-DD');
   const [currentDate, setCurrentDate] = useState(dateFormat);
@@ -47,42 +47,53 @@ const ModalAddBudget = (props) => {
 
   const handleBudgetPlanAmmount = e => {
     const { name, value } = e.currentTarget;
-    const newbudgetPlanAmmount = {...budgetPlanAmmount, [name]: Number(value)}
+    const newbudgetPlanAmmount = {...budgetPlanAmmount, [name]: Number(value)};
     setBudgetPlanAmmount(newbudgetPlanAmmount);
     console.log(budgetPlanAmmount);
   };
 
   const onSetCategory = e => {
     const {name, value} = e.target;
-    const newCategories = {...category, [name]: value}
-    setCategory(newCategories)
+    const newCategories = {...category, [name]: value};
+    setCategory(newCategories);
   };
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    let budgetFields = []
+    let budgetFields = [];
 
     for (const categoryKey in category) {
       for (const budgetPlanAmmountKey in budgetPlanAmmount) {
-        if (categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1)) {
-          budgetFields.push({
-            [categoryKey]: category[categoryKey],
-            [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey]
-          })
-        }
+        categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1) &&
+        budgetFields.push({
+          [categoryKey]: category[categoryKey],
+          [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey]
+        })
       }
-    }
+    };
 
-    console.log('On submit data array: ', budgetFields);
+    budgetFields.sort((nextItem, prevItem) => {
+      const stringPrevItem = JSON.stringify(prevItem);
+      const stringNextItem = JSON.stringify(nextItem);
+
+      if (stringPrevItem > stringNextItem) {
+        return -1
+      };
+
+      if (stringPrevItem < stringNextItem) {
+        return 1
+      };
+        
+      return 0
+    });
 
     const newBudgetPlan = {
+      type: 'addBudget',
       date: currentDate,
-      type: 'budget',
       data: budgetFields
     };
     onClickClose();
-    // this.props.addTransaction(newBudgetPlan);
-    
+    props.onSubmit(newBudgetPlan);
   };
 
   const handleAddBudgetField = () => {

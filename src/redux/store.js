@@ -12,6 +12,7 @@ import categoryReducer from './reducers/categoryReducer/categoryReducer';
 import transactionReducer from './reducers/transactionReducer/transactionReducer';
 import statisticsTransactionReducer from './reducers/statisticsTransactionReducer';
 import isModalLogoutOpenReducer from './reducers/isModalLogoutOpenReducer';
+import budgetReducer from './reducers/budgetReducer';
 
 import logger from 'redux-logger';
 
@@ -45,7 +46,9 @@ const store = configureStore({
 
     transactions: transactionReducer.transactionReducer,
 
-    statisticsTransactions: statisticsTransactionReducer.statisticsTransactionReducer
+    statisticsTransactions: statisticsTransactionReducer.statisticsTransactionReducer,
+
+    budget: budgetReducer.budgetReducer
 
   },
   middleware: process.env.NODE_ENV === 'development' ?

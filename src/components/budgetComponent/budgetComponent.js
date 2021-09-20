@@ -1,4 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+
+import getBudgetOperation from '../../redux/operations/budgetOperations/getBudgetOperation';
+import addBudgetOperation from '../../redux/operations/budgetOperations/addBudgetOperation';
+import editBudgetOperation from '../../redux/operations/budgetOperations/editBudgetOperation';
+import deleteBudgetOperation from '../../redux/operations/budgetOperations/deleteBudgetOperation';
 
 import ProgressBar from './progressBarComponent/progressBar';
 import AddBudgetButton from '../addBudgetButton/addBudgetButton';
@@ -8,11 +14,17 @@ import DeleteBudgetButton from '../deleteBudgetButton/deleteBudgetButton';
 import styles from './budgetComponent.module.css';
 
 const BudgetComponent = () => {
-    const [month, setMonth] = useState('');
-    const [year, setYear] = useState(0);
+    const dispatch = useDispatch();
 
     const todayDate = Date.now();
+    const monthDefault = Intl.DateTimeFormat('en-US', {month: 'short'}).format(todayDate);
+    const yearDefault = Intl.DateTimeFormat('en-US', {year: 'numeric'}).format(todayDate);
+
+    const [month, setMonth] = useState(monthDefault);
+    const [year, setYear] = useState(yearDefault);
+
     const normalDate = Intl.DateTimeFormat('en-US', {year: 'numeric'}).format(todayDate)
+    console.log('Normal date: ', normalDate);
 
     const numberOfYears = normalDate - 2000;
 
@@ -42,8 +54,33 @@ const BudgetComponent = () => {
         };
     }, [month, year])
     
-    const handleSubmit = () => {
-        // onSubmit({ month, year });
+    const handleSubmit = (object) => {
+        if (object) {
+            switch (object.type) {
+                case 'addBudget':
+                    // запрос на добавление бюджета
+                    dispatch(addBudgetOperation(object));
+                    break;
+                case 'editBudget':
+                    // запрос на редактирование бюджета
+                    dispatch(editBudgetOperation(object));
+                    break;
+                case 'deleteBudget':
+                    // запрос на удаление бюджета
+                    dispatch(deleteBudgetOperation(object.id));
+                    break;
+            
+                default:
+                    break;
+            }
+        } else {
+            // обработка ивента и запрос на поиск бюджета
+            dispatch(getBudgetOperation({ month, year }));
+            // console.log(month);
+            // console.log(year);
+            // console.log('Get budget started');
+        }
+        
     };
 
     const budgetItemsArray = [
@@ -62,9 +99,9 @@ const BudgetComponent = () => {
     return (
         <div className={styles.container}>
             <div className={styles.actionsContainer}>
-                <AddBudgetButton />
-                <EditBudgetButton />
-                <DeleteBudgetButton />
+                <AddBudgetButton onSubmit={handleSubmit} />
+                <EditBudgetButton onSubmit={handleSubmit} />
+                <DeleteBudgetButton onSubmit={handleSubmit} />
             </div>
             <div className={styles.budgetContainer}>
                 <span className={styles.budgetTitle}>Бюджет на месяц</span>
@@ -122,7 +159,6 @@ const BudgetComponent = () => {
                     <span className={styles.budgetItemPlanAmmount}>{total}</span>
                 </div>
             </div>
-            {/* <ModalAddBudget /> */}
         </div>
     );
 };

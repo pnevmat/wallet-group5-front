@@ -23,7 +23,7 @@ const DeleteBudgetButton =()=>{
       <button className={styles.button}  type="button" onClick={handleOpenModal} >
         Удалить
       </button>
-      { isModalAddBudgetOpen && <ModalDeleteBudget closeModal={closeModal}/>}
+      { isModalAddBudgetOpen && <ModalDeleteBudget closeModal={closeModal} />}
     </>
    
   )
