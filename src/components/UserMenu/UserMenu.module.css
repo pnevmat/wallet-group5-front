@@ -84,7 +84,7 @@
   background-image: url(./exit.svg);
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .userMenuContainer {
     width: 768px;
     height: 80px;
@@ -117,7 +117,7 @@
   }
 }
 
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 1280px) {
   .userMenuContainer {
     width: 1280px;
     padding: 0 80px 0 80px;
