@@ -2,7 +2,7 @@
   display: inline-block;
   height: 80px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 30px;
 }
 .title {
@@ -22,8 +22,6 @@
 
 @media (max-width: 767px) {
   .conteiner {
-    position: relative;
-    right: 7px;
     width: 280px;
     text-align: left;
   }

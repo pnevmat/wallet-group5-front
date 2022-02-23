@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import authSelector from '../../redux/selectors/authorisationSelectors';
 import s from './UserMenu.module.css';
 import defaultAvatar from './default-avatar.png';
-import ModalLogout from "../ModalLogout/ModalLogout";
+import ModalLogout from '../ModalLogout/ModalLogout';
 
 export default function UserMenu(props) {
-
   const name = useSelector(authSelector.getUserName);
   const avatar = useSelector(authSelector.getUserAvatar);
 
@@ -17,19 +16,16 @@ export default function UserMenu(props) {
   };
 
   const closeModal = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
   return (
-
     <div className={s.userMenuContainer}>
-
       <div className={s.logo_container}>
         <img src="/Group.svg" alt="кошелек" className={s.logo} />
         <h1 className={s.title}>Wallet</h1>
       </div>
       <div className={s.containerLogout}>
         <span className={s.name}>
-
           {/* <img src={avatar ? avatar : defaultAvatar} alt="" width="32" className={s.avatar} /> */}
           {name}
         </span>

@@ -20,7 +20,6 @@ const Navigation = () => {
             <span className={s.navTitle}>Главная</span>
           </NavLink>
         </li>
-
         <li className={s.navItem}>
           <NavLink
             exact
@@ -31,9 +30,8 @@ const Navigation = () => {
             <StatisticsIcon /> <span className={s.navTitle}>Статистика</span>
           </NavLink>
         </li>
-
         <li className={s.navLastItem}>
-        <NavLink
+          <NavLink
             exact
             className={s.links}
             activeClassName={s.activeLinks}
@@ -43,7 +41,7 @@ const Navigation = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className={s.navList}>
+      <ul className={s.navBottomList}>
         <li className={s.navItem}>
           <NavLink
             exact

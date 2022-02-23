@@ -1,5 +1,4 @@
 .button {
-  display: block;
   width: 100%;
   max-width: 200px;
   height: 40px;
@@ -17,4 +16,16 @@
 
 .button:hover {
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .button {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 768px) {
+  .button {
+    display: block;
+  }
 }
