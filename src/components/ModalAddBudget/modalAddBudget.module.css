@@ -1,71 +1,107 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  max-height: 580px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  background-color: white;
 }
 
 .title {
   text-align: center;
 }
 
-.modal {
+.formContainer {
+  max-height: 283px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
+
+.formContainer::-webkit-scrollbar {
+  width: 6px;
+  height: 117px;
+}
+
+.formContainer::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #b0b0b040;
+}
+
+.formContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #1b1d2a;
+}
+
+.formFieldWrapper {
+  padding-right: 10px;
+}
+
+.formDateContainer {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.textField {
   width: 100%;
-  height: 100%;
-  padding-bottom: 20px;
-  overflow-y: scroll;
-  background-color:  white;
+  max-width: 440px;
 }
 
-.closeModalIcon{
-  visibility: hidden
-}
-  
-@media (min-width: 768px) {
-  .modal {
-    position: relative;
-    width: 540px;
-    height: 540px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.35);
-  }
-
-  .closeModalIcon {
-    visibility: visible;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top:15px;
-    right:10px;
-    border: 1px solid transparent;
-    
-    cursor: pointer;
-  }
+.textField:hover,
+.textField > div > input:hover {
+  cursor: pointer;
 }
 
-.track {
-  background-color: white;
+.formFieldContainer {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.unactive {
-  color:#E0E0E0;
-}
-  
-.activeInvoice {
-  color: #ff6596;
+.formFieldContainer:last-child {
+  margin-bottom: 0;
 }
 
-.activeIncome{
-  color: #24cca7;
+.categoryContainer {
+  display: inline-block;
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
 }
-  
+
+.formTextContainer {
+  text-align: center;
+}
+
+/* Стили кнопки добавления новой статьи бюджета в модалку */
+.btnContainer {
+  display: block;
+  text-align: left;
+}
+
+.addBtn {
+  width: 44px;
+  height: 44px;
+  color: white;
+  background-color: #24cca7;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  border-radius: 50%;
+  border-style: none;
+  cursor: pointer;
+}
+
 .addIcon {
   width: 44px;
   height: 44px;
@@ -76,109 +112,73 @@
   border-style: none;
   cursor: pointer;
 }
-  
-.removeIcon {
-  width: 44px;
-  height: 44px;
-  color: white;
-  background-color: #ff6596;
-  border-radius: 50%;
-  border-style: none;
-  cursor: pointer;
-}
-
-.switchContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-  
-.categoryContainer{
-  display: flex;
-  justify-content: center;
-}
-  
-.categoryInput{
-  width:440px;
-  align-items: center;
-  text-align: center;
-}
-  
-.categoryPlaceholder{
-  width:440px;
-}
-
-.formContainer {
-  margin-bottom: 20px;
-}
-
-.formFieldContainer {
-  margin-bottom: 20px;
-}
-
-.formFieldContainer:last-child {
-  margin-bottom: 0;
-}
-
-.formDateContainer {
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-.formTextContainer {
-  text-align: center;
-}
-
-.textField{
-  width: 100%;
-  max-width: 440px;
-}
-
-.textFieldcomments{
-  display: flex;
-  justify-content:center;
-  margin-top: 20px;
-}
-
-/* Стили кнопки добавления новой статьи бюджета в модалку */
-.btnContainer {
-  display: block;
-  padding-left: 45px;
-  text-align: left;
-}
-
-.addBtn {
-  width: 44px;
-  height: 44px;
-  color:white;
-  background-color: #24CCA7;
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-  border-radius:50%;
-  border-style:none;
-  cursor: pointer;
-}
 
 /* Стили кнопок сабмита формы и отмена */
-.submitButton{
+.submitButton {
   display: block;
   width: 300px;
   height: 50px;
-  background-color: #24CCA7;
+  background-color: #24cca7;
   border-radius: 20px;
   border-style: none;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
 }
-  
-.closeButton{
+
+.closeButton {
   display: block;
   width: 300px;
   height: 50px;
-  background-color:#FFFFFF;
-  border: 1px solid #4A56E2;
+  background-color: #ffffff;
+  border: 1px solid #4a56e2;
   border-radius: 20px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+}
+
+@media (max-width: 339px) {
+  .submitButton {
+    width: 100%;
+  }
+
+  .closeButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 539px) {
+  .closeModalIcon {
+    display: none;
+  }
+}
+
+@media (min-width: 540px) {
+  .modal {
+    position: relative;
+    max-width: 540px;
+    border-radius: 20px;
+  }
+
+  .closeModalIcon {
+    visibility: visible;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 15px;
+    right: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btnContainer {
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal {
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.35);
+  }
 }
