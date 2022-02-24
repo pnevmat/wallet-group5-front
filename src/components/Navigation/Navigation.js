@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
-import HomeIcon from './svg/HomeIcon/HomeIcon';
+// import HomeIcon from './svg/HomeIcon/HomeIcon';
+import HomeIcon from '@mui/icons-material/Home';
 import StatisticsIcon from './svg/StatisticsIcon/StatisticsIcon';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import CurrencyIcon from './svg/CurrencyIcon/CurrencyIcon';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 const Navigation = () => {
   return (
@@ -16,7 +20,11 @@ const Navigation = () => {
             activeClassName={s.activeLinks}
             to={'/dashboard'}
           >
-            <HomeIcon />
+            <div className={s.iconWrapper}>
+              <div className={s.iconContainer}>
+                <HomeIcon />
+              </div>
+            </div>
             <span className={s.navTitle}>Главная</span>
           </NavLink>
         </li>
@@ -27,7 +35,12 @@ const Navigation = () => {
             activeClassName={s.activeLinks}
             to={'/statistics'}
           >
-            <StatisticsIcon /> <span className={s.navTitle}>Статистика</span>
+            <div className={s.iconWrapper}>
+              <div className={s.iconContainer}>
+                <TimelineIcon />
+              </div>
+            </div>
+            <span className={s.navTitle}>Статистика</span>
           </NavLink>
         </li>
         <li className={s.navLastItem}>
@@ -42,25 +55,25 @@ const Navigation = () => {
         </li>
       </ul>
       <ul className={s.navBottomList}>
-        <li className={s.navItem}>
+        <li className={s.budgetNavItem}>
           <NavLink
             exact
-            className={s.links}
+            className={s.budgetLinks}
             activeClassName={s.activeLinks}
             to={'/budget'}
           >
-            <HomeIcon />
+            <CalculateIcon />
             <span className={s.navTitle}>Бюджет</span>
           </NavLink>
         </li>
         <li className={s.navItem}>
           <NavLink
             exact
-            className={s.links}
+            className={s.reportsLinks}
             activeClassName={s.activeLinks}
             to={'/reports'}
           >
-            <HomeIcon />
+            <AnalyticsIcon />
             <span className={s.navTitle}>Отчеты</span>
           </NavLink>
         </li>
