@@ -88,6 +88,21 @@ const BudgetComponent = () => {
     }
   };
 
+  const months = [
+    { id: 1, value: 'Jan', text: 'Январь' },
+    { id: 2, value: 'Feb', text: 'Февраль' },
+    { id: 3, value: 'Mar', text: 'Март' },
+    { id: 4, value: 'Apr', text: 'Апрель' },
+    { id: 5, value: 'May', text: 'Май' },
+    { id: 6, value: 'June', text: 'Июнь' },
+    { id: 7, value: 'July', text: 'Июль' },
+    { id: 8, value: 'Aug', text: 'Август' },
+    { id: 9, value: 'Sept', text: 'Сентябрь' },
+    { id: 10, value: 'Oct', text: 'Октябрь' },
+    { id: 11, value: 'Nov', text: 'Ноябрь' },
+    { id: 12, value: 'Dec', text: 'Декабрь' },
+  ];
+
   const budgetItemsArray = [
     { id: 1, categorie: 'Категория1', planAmmount: 1000, factAmmount: 500 },
     { id: 2, categorie: 'Категория2', planAmmount: 500, factAmmount: 500 },
@@ -121,42 +136,15 @@ const BudgetComponent = () => {
             <option className={styles.formMonthOptions} selected>
               Месяц
             </option>
-            <option value="Jan" className={styles.formMonthOptions}>
-              Январь
-            </option>
-            <option value="Feb" className={styles.formMonthOptions}>
-              Февраль
-            </option>
-            <option value="Mar" className={styles.formMonthOptions}>
-              Март
-            </option>
-            <option value="Apr" className={styles.formMonthOptions}>
-              Апрель
-            </option>
-            <option value="May" className={styles.formMonthOptions}>
-              Май
-            </option>
-            <option value="June" className={styles.formMonthOptions}>
-              Июнь
-            </option>
-            <option value="July" className={styles.formMonthOptions}>
-              Июль
-            </option>
-            <option value="Aug" className={styles.formMonthOptions}>
-              Август
-            </option>
-            <option value="Sept" className={styles.formMonthOptions}>
-              Сентябрь
-            </option>
-            <option value="Oct" className={styles.formMonthOptions}>
-              Октябрь
-            </option>
-            <option value="Nov" className={styles.formMonthOptions}>
-              Ноябрь
-            </option>
-            <option value="Dec" className={styles.formMonthOptions}>
-              Декабрь
-            </option>
+            {months.map(month => (
+              <option
+                key={month.id}
+                value={month.value}
+                className={styles.formMonthOptions}
+              >
+                {month.text}
+              </option>
+            ))}
           </select>
           <select
             className={styles.formSelect}

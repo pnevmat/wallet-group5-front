@@ -60,9 +60,10 @@
     justify-content: space-between;
   }
 
-  .navList {
+  .navList,
+  .navBottomList {
     display: inline-block;
-    max-width: 140px;
+    width: 140px;
   }
 
   .navTitle {
