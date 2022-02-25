@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback  } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
@@ -20,12 +20,12 @@ export default function TransactionTable() {
 
   const rows = useSelector(getTransaction);
 
-  const onClickDelete = useCallback((id) => {
-    dispatch(operation.deleteTransaction(id));
-   
-  }, [dispatch]);
-
-
+  const onClickDelete = useCallback(
+    id => {
+      dispatch(operation.deleteTransaction(id));
+    },
+    [dispatch],
+  );
 
   const newDate = date => {
     return moment(date).format('D.MM.YY');
@@ -60,7 +60,7 @@ export default function TransactionTable() {
               return (
                 <div className={styles.tableRowContainer}>
                   <li className={styles.tableRow} key={i}>
-                    <span className={styles.tableRowText}>{rows.date}</span>
+                    <span className={styles.tableDateText}>{rows.date}</span>
                     <span className={styles.tableRowText}>
                       {rows.type === 'cost' ? '-' : '+'}
                     </span>
@@ -70,8 +70,12 @@ export default function TransactionTable() {
                     <span className={styles.tableRowComment}>
                       {rows.comments}
                     </span>
-                    <span className={styles.tableRowText}>{rows.amount}</span>
-                    <span className={styles.tableRowText}>{rows.balance}</span>
+                    <span className={styles.tableAmmountText}>
+                      {rows.amount}
+                    </span>
+                    <span className={styles.tableBalanceText}>
+                      {rows.balance}
+                    </span>
                   </li>
                   <li className={styles.mobileTableRow} key={i}>
                     <div className={styles.mobileTableRowItemsContainer}>
@@ -105,13 +109,18 @@ export default function TransactionTable() {
                       </span>
                     </div>
                   </li>
-                  <button type="button"
-                  onClick={() => onClickDelete(rows.id)}>
-                    <DeleteIcon color="primary" />
-                  </button>
-                  <button type="button">
-                    <EditIcon color="primary" />
-                  </button>
+                  <div className={styles.btnContainer}>
+                    <button className={styles.actionButtons} type="button">
+                      <EditIcon color="primary" />
+                    </button>
+                    <button
+                      className={styles.actionButtons}
+                      type="button"
+                      onClick={() => onClickDelete(rows.id)}
+                    >
+                      <DeleteIcon color="primary" />
+                    </button>
+                  </div>
                 </div>
               );
             })
