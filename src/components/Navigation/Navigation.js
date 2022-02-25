@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 // import HomeIcon from './svg/HomeIcon/HomeIcon';
 import HomeIcon from '@mui/icons-material/Home';
-import StatisticsIcon from './svg/StatisticsIcon/StatisticsIcon';
+// import StatisticsIcon from './svg/StatisticsIcon/StatisticsIcon';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import CurrencyIcon from './svg/CurrencyIcon/CurrencyIcon';
 import CalculateIcon from '@mui/icons-material/Calculate';
