@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import Box from '@material-ui/core/Box';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import s from './ModalAddTransaction.module.css';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../redux/selectors/categorySelectors/categorySelectors';
 import operation from '../../redux/operations/categoryOperations.js';
 import selectors from '../../redux/selectors/authorisationSelectors';
+
+import s from './ModalAddTransaction.module.css';
 
 
 export default function CategoryForm({ categoryChange }) {

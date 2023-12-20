@@ -1,5 +1,5 @@
 import React, {  useState  } from "react";
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@mui/icons-material/Add';
 // import PropTypes from "prop-types"
 import s from './AddTransactionButton.module.css'
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction'

@@ -5,10 +5,10 @@ import operation from '../../redux/operations/categoryOperations.js';
 import { getCategories } from '../../redux/selectors/categorySelectors/categorySelectors';
 import selectors from '../../redux/selectors/authorisationSelectors';
 
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import Box from '@material-ui/core/Box';
-import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
 
 import s from './ModalEditBudget.module.css';
 

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import operation from '../../redux/operations/transactionOperations';
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@mui/icons-material/Add';
 // import { createPortal } from 'react-dom';
-import s from './ModalAddTransaction.module.css';
-import CloseIcon from '@material-ui/icons/Close';
-import Switch from '@material-ui/core/Switch';
-import RemoveIcon from '@material-ui/icons/Remove';
+import CloseIcon from '@mui/icons-material/Close';
+import Switch from '@mui/material/Switch';
+import RemoveIcon from '@mui/icons-material/Remove';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 import CategoryForm from './CategoryForm';
 import { connect } from 'react-redux';
 import moment from 'moment';
+
+import s from './ModalAddTransaction.module.css';
 
 class ModalAddTransaction extends Component {
   state = {

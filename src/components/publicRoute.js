@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 import registrationSelectors from '../redux/selectors/registrationSelectors';
 import authorisationSelectors from '../redux/selectors/authorisationSelectors';
 
@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, redirectTo, ...routeProps }) => {
       {...routeProps}
       render={props =>
         authorisation && routeProps.restricted ? (
-          <Redirect to={redirectTo} />
+          <Navigate to={redirectTo} />
         ) : (
           <Component {...props} />
         )

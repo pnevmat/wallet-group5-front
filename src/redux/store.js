@@ -1,7 +1,8 @@
 import {
   combineReducers,
   configureStore,
-  getDefaultMiddleware,
+  // getDefaultMiddleware,
+	applyMiddleware
 } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -52,8 +53,9 @@ const store = configureStore({
 
   },
   middleware: process.env.NODE_ENV === 'development' ?
-    [...getDefaultMiddleware({ serializableCheck: false }), logger] :
-    [...getDefaultMiddleware({ serializableCheck: false })],
+	applyMiddleware(logger) : applyMiddleware(),
+    // [...getDefaultMiddleware({ serializableCheck: false }), logger] :
+    // [...getDefaultMiddleware({ serializableCheck: false })],
   devTools: process.env.NODE_ENV === 'development'
 });
 

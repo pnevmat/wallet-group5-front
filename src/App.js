@@ -1,6 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+// import {Switch} from 'react-dom'
 
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
@@ -51,7 +52,7 @@ const FinanceApp = () => {
   return (
     <Suspense fallback={<Spinner />}>
       <section>
-        <Switch>
+        <Router>
           <PublicRoute
             exact
             path={routes.home}
@@ -101,7 +102,7 @@ const FinanceApp = () => {
             component={ReportsPage}
             redirectTo="/login"
           />
-        </Switch>
+        </Router>
       </section>
     </Suspense>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Navigate} from 'react-router-dom';
 import selectors from '../redux/selectors/authorisationSelectors';
 
 const PrivateRoute = ({
@@ -14,7 +14,7 @@ const PrivateRoute = ({
     return (
         <Route 
             {...routeProps}
-            render={props => authorisation ? <Component {...props} /> : <Redirect to={redirectTo} />}
+            render={props => authorisation ? <Component {...props} /> : <Navigate to={redirectTo} />}
         />
     );
 };

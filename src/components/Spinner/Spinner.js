@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Spinner from 'react-loader-spinner';
+import  {MutatingDots} from 'react-loader-spinner';
 import s from './Spinner.module.css';
 
 export default class App extends Component {
@@ -7,7 +7,7 @@ export default class App extends Component {
   render() {
     return (
       <div className={s.spinner}>
-        <Spinner
+        <MutatingDots
           type="ThreeDots"
           color="#00BFFF"
           loading="true"

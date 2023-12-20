@@ -5,8 +5,8 @@ import CategoryForm from './CategoryForm';
 import moment from 'moment';
 
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import AddIcon from '@material-ui/icons/Add';
-import CloseIcon from '@material-ui/icons/Close';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 
 import s from './ModalEditBudget.module.css';
 
