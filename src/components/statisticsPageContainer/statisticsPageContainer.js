@@ -1,9 +1,9 @@
 import React from 'react';
 
 import StatisticsComponent from '../StatisticsComponent/StatisticsComponent';
-import DiagramTab from '../diagramTab/diagramTab';
+import DiagramTab from '../DiagramTab/DiagramTab';
 
-import styles from './statisticsPageContainer.module.css';
+import styles from './StatisticsPageContainer.module.css';
 
 const StatisticsPageContainer = (props) => {
     return (

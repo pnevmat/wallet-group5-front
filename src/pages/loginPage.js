@@ -7,10 +7,10 @@ import errorCleanOperation from '../redux/operations/errorCleanOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
-import LoginForm from '../components/loginForm/loginForm';
+import LoginForm from '../components/LoginForm/LoginForm';
 
 import 'react-toastify/dist/ReactToastify.css';
-import s from '../components/AppBar/financeAppBoyImg/financeAppBoyImg.module.css';
+import s from '../components/AppBar/FinanceAppBoyImg/FinanceAppBoyImg.module.css';
 import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const LoginPage = (props) => {

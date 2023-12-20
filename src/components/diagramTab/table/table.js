@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import styles from './table.module.css';
+import styles from './Table.module.css';
 
 const Table = (props) => {
     const [month, setMonth] = useState('');

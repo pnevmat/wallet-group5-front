@@ -2,8 +2,8 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 
-import PrivateRoute from './components/privateRoute';
-import PublicRoute from './components/publicRoute';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 import getUserDataOperation from './redux/operations/getUserDataOperation';
 
@@ -15,17 +15,17 @@ const HomePage = lazy(() =>
 );
 const RegisterPage = lazy(() =>
   import(
-    './pages/registrationPage' /* webpackChunkName: "Registration-Page" */
+    './pages/RegistrationPage' /* webpackChunkName: "Registration-Page" */
   ),
 );
 const LoginPage = lazy(() =>
-  import('./pages/loginPage' /* webpackChunkName: "Login-Page" */),
+  import('./pages/LoginPage' /* webpackChunkName: "Login-Page" */),
 );
 const DashboardPage = lazy(() =>
-  import('./pages/dashboardPage' /* webpackChunkName: "Dashboard-Page" */),
+  import('./pages/DashboardPage' /* webpackChunkName: "Dashboard-Page" */),
 );
 const StatisticsPage = lazy(() =>
-  import('./pages/statisticsPage' /* webpackChunkName: "Statistics-Page" */),
+  import('./pages/StatisticsPage' /* webpackChunkName: "Statistics-Page" */),
 );
 const CurrencyPage = lazy(() =>
     import('./pages/CurrencyPage' /* webpackChunkName: "Currency-Page" */)

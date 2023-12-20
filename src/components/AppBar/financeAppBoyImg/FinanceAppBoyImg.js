@@ -4,7 +4,7 @@ import eclipseTablet from './images/frameTablet.png';
 import frameTablet from '../../../utils/images/eclipseTablet.png';
 import frame from './images/frame.png';
 
-import s from './financeAppBoyImg.module.css';
+import s from './FinanceAppBoyImg.module.css';
 
 const FinanceAppBoyImg = () => {
     return (

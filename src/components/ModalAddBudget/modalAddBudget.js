@@ -10,7 +10,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 
-import s from './modalAddBudget.module.css';
+import s from './ModalAddBudget.module.css';
 
 const ModalAddBudget = props => {
   const [category, setCategory] = useState({});

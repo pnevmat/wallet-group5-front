@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import ModalDeleteBudget from '../ModalDeleteBudget/ModalDeleteBudget';
 
-import styles from './deleteBudgetButton.module.css';
+import styles from './DeleteBudgetButton.module.css';
 
 const DeleteBudgetButton = () => {
   const [isModalAddBudgetOpen, setIsModalAddBudgetOpen] = useState(false);

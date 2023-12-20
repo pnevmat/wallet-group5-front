@@ -4,13 +4,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import statisticsOperation from '../../redux/operations/statisticsOperation';
 import limitedStatisticsOperation from '../../redux/operations/limitedStatisticsOperation';
 
-import ChartComponent from './chart/chart';
-import Table from './table/table';
+import ChartComponent from './Chart/Chart';
+import Table from './Table/Table';
 
 import authSelectors from '../../redux/selectors/authorisationSelectors';
 import statisticsSelector from '../../redux/selectors/statisticsSelector';
 
-import styles from './diagramTab.module.css';
+import styles from './DiagramTab.module.css';
 
 const DiagramTab = () => {
     const dispatch = useDispatch();

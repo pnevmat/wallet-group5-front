@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import PropTypes from "prop-types"
 
-import ModalAddBudget from '../ModalAddBudget/modalAddBudget';
+import ModalAddBudget from '../ModalAddBudget/ModalAddBudget';
 
 import styles from './AddBudgetButton.module.css';
 

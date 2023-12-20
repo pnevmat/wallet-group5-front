@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from 'react-loader-spinner';
-import s from './spinner.module.css';
+import s from './Spinner.module.css';
 
 export default class App extends Component {
   //other logic

@@ -3,11 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import FormAuth from '../FormAuth/FormAuth';
 
-
-import s from './registrationForm.module.css';
-
 import { Formik } from 'formik';
 import * as yup from 'yup';
+
+import s from './RegistrationForm.module.css';
 
 
 const RegistrationForm = props => {

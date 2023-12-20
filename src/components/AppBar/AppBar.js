@@ -1,7 +1,7 @@
 import React from 'react';
 
-import FinanceAppBoyImg from './financeAppBoyImg/FinanceAppBoyImg';
-import FinanceAppGirlImg from './financeAppGirlImg/FinanceAppGirlImg';
+import FinanceAppBoyImg from './FinanceAppBoyImg/FinanceAppBoyImg';
+import FinanceAppGirlImg from './FinanceAppGirlImg/FinanceAppGirlImg';
 
 export default function AppBar(props) {
   const { path } = props.match;

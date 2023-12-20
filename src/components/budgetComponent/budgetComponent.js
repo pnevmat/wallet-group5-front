@@ -6,12 +6,12 @@ import addBudgetOperation from '../../redux/operations/budgetOperations/addBudge
 import editBudgetOperation from '../../redux/operations/budgetOperations/editBudgetOperation';
 import deleteBudgetOperation from '../../redux/operations/budgetOperations/deleteBudgetOperation';
 
-import ProgressBar from './progressBarComponent/progressBar';
+import ProgressBar from './ProgressBarComponent/ProgressBar';
 import AddBudgetButton from '../AddBudgetButton/AddBudgetButton';
 import EditBudgetButton from '../EditBudgetButton/EditBudgetButton';
 import DeleteBudgetButton from '../DeleteBudgetButton/DeleteBudgetButton';
 
-import styles from './budgetComponent.module.css';
+import styles from './BudgetComponent.module.css';
 
 const BudgetComponent = () => {
   const dispatch = useDispatch();

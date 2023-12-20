@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Navigation from '../Navigation/Navigation';
-import Balance from '../balance/balance';
+import Balance from '../Balance/Balance';
 import ExchangeBox from '../ExchangeBox/ExchangeBox';
 
-import styles from './statisticsComponent.module.css';
+import styles from './StatisticsComponent.module.css';
 
 const StatisticsComponent = (props) => {
   return (

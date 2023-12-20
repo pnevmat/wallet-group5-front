@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import FormAuth from '../FormAuth/FormAuth';
 
-import s from './loginForm.module.css';
+import s from './LoginForm.module.css';
 
 const LoginForm = props => {
   const [email, setEmail] = useState('');

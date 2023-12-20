@@ -9,7 +9,7 @@ import operation from '../../redux/operations/transactionOperations';
 import selectors from '../../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors';
 
-import styles from './transactionTable.module.css';
+import styles from './TransactionTable.module.css';
 
 export default function TransactionTable() {
   const dispatch = useDispatch();

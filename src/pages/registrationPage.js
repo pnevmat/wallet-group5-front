@@ -7,7 +7,7 @@ import errorCleanOperation from '../redux/operations/errorCleanOperation';
 import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
-import RegistrationForm from '../components/registrationForm/registrationForm';
+import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
 
 import 'react-toastify/dist/ReactToastify.css';
 import s from '../components/RegistrationPage/registrationPage.module.css';

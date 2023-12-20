@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './reportsComponent.module.css';
+import styles from './ReportsComponent.module.css';
 
 const ReportsComponent = () => {
   const reportItemsArray = [

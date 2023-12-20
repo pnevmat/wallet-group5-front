@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useCallback } from 'react';
-import s from './modalLogout.module.css';
 import logoutOperation from '../../redux/operations/logoutOperation';
 import Modal from 'react-modal';
 import operation from '../../redux/operations/logoutOperation';
 import { connect } from "react-redux";
+
+import s from './ModalLogout.module.css';
 
 
 

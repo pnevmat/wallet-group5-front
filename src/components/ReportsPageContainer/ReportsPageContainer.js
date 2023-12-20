@@ -3,7 +3,7 @@ import React from 'react';
 import StatisticsComponent from '../StatisticsComponent/StatisticsComponent';
 import ReportsComponent from '../ReportsComponent/ReportsComponent';
 
-import styles from './reportsPageContainer.module.css';
+import styles from './ReportsPageContainer.module.css';
 
 const ReportsPageContainer = (props) => {
     return (

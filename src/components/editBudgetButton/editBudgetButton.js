@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import ModalEditBudget from '../ModalEditBudget/ModalEditBudget';
 
-import styles from './editBudgetButton.module.css';
+import styles from './EditBudgetButton.module.css';
 
 const EditBudgetButton = () => {
   const [isModalEditBudgetOpen, setIsModalAddBudgetOpen] = useState(false);

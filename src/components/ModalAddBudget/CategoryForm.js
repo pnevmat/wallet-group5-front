@@ -10,7 +10,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Box from '@material-ui/core/Box';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import s from './modalAddBudget.module.css';
+import s from './ModalAddBudget.module.css';
 
 
 export default function CategoryForm({ categorieCounter, categoryChange }) {

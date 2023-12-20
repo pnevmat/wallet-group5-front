@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 
-import s from './modalDeleteBudget.module.css';
+import s from './ModalDeleteBudget.module.css';
 
 
 

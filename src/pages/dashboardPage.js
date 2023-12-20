@@ -7,7 +7,7 @@ import authorisationSelectors from '../redux/selectors/authorisationSelectors';
 import {getTransaction} from '../redux/selectors/transactionSelectors/transactionSelectors';
 
 import UserMenu from '../components/UserMenu/UserMenu';
-import DashboardPageContainer from '../components/dashboardPageContainer/dashboardPageContainer';
+import DashboardPageContainer from '../components/DashboardPageContainer/DashboardPageContainer';
 
 const DashboardPage = () => {
   const userToken = useSelector(authorisationSelectors.getUserToken);

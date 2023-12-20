@@ -1,9 +1,9 @@
 import React from 'react';
 
 import StatisticsComponent from '../StatisticsComponent/StatisticsComponent';
-import BudgetComponent from '../budgetComponent/budgetComponent';
+import BudgetComponent from '../BudgetComponent/BudgetComponent';
 
-import styles from './budgetPageContainer.module.css';
+import styles from './BudgetPageContainer.module.css';
 
 const BudgetPageContainer = (props) => { 
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from './balance.module.css';
+import s from './Balance.module.css';
 
 
 

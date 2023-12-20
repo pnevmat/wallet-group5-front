@@ -4,7 +4,7 @@ import eclipseTablet from '../../../utils/images/eclipseTablet.png';
 import frameTablet from './images/frameTablet.png';
 import frame from './images/frame.png';
 
-import s from './financeAppGirlImg.module.css';
+import s from './FinanceAppGirlImg.module.css';
 
 const FinanceAppGirlImg = () => {
 

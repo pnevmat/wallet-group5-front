@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import UserMenu from '../components/UserMenu/UserMenu';
-import StatisticsPageContainer from '../components/statisticsPageContainer/statisticsPageContainer';
+import StatisticsPageContainer from '../components/StatisticsPageContainer/StatisticsPageContainer';
 
 import authSelectors from '../redux/selectors/authorisationSelectors';
 import statisticsSelectors from '../redux/selectors/statisticsSelector';
