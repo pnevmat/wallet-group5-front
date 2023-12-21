@@ -1,6 +1,6 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
-import { Router } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 // import {Switch} from 'react-dom'
 
 import PrivateRoute from './components/PrivateRoute';
@@ -11,98 +11,108 @@ import getUserDataOperation from './redux/operations/getUserDataOperation';
 import routes from '../src/routes';
 import Spinner from '../src/components/Spinner/Spinner';
 
-const HomePage = lazy(() =>
-  import('./pages/HomePage' /* webpackChunkName: "Home-Page" */),
+const HomePage = lazy(
+  () => import('./pages/HomePage' /* webpackChunkName: "Home-Page" */),
 );
-const RegisterPage = lazy(() =>
-  import(
-    './pages/RegistrationPage' /* webpackChunkName: "Registration-Page" */
-  ),
+const RegisterPage = lazy(
+  () =>
+    import(
+      './pages/RegistrationPage' /* webpackChunkName: "Registration-Page" */
+    ),
 );
-const LoginPage = lazy(() =>
-  import('./pages/LoginPage' /* webpackChunkName: "Login-Page" */),
+const LoginPage = lazy(
+  () => import('./pages/LoginPage' /* webpackChunkName: "Login-Page" */),
 );
-const DashboardPage = lazy(() =>
-  import('./pages/DashboardPage' /* webpackChunkName: "Dashboard-Page" */),
+const DashboardPage = lazy(
+  () =>
+    import('./pages/DashboardPage' /* webpackChunkName: "Dashboard-Page" */),
 );
-const StatisticsPage = lazy(() =>
-  import('./pages/StatisticsPage' /* webpackChunkName: "Statistics-Page" */),
+const StatisticsPage = lazy(
+  () =>
+    import('./pages/StatisticsPage' /* webpackChunkName: "Statistics-Page" */),
 );
-const CurrencyPage = lazy(() =>
-    import('./pages/CurrencyPage' /* webpackChunkName: "Currency-Page" */)
+const CurrencyPage = lazy(
+  () => import('./pages/CurrencyPage' /* webpackChunkName: "Currency-Page" */),
 );
 
-const BudgetPage = lazy(() =>
-  import('./pages/BudgetPage' /* webpackChunkName: "Budget-Page" */),
+const BudgetPage = lazy(
+  () => import('./pages/BudgetPage' /* webpackChunkName: "Budget-Page" */),
 );
 
-const ReportsPage = lazy(() =>
-  import('./pages/ReportsPage' /* webpackChunkName: "Reports-Page" */),
+const ReportsPage = lazy(
+  () => import('./pages/ReportsPage' /* webpackChunkName: "Reports-Page" */),
 );
 
 const FinanceApp = () => {
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserDataOperation());
-    
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUserDataOperation());
+  // }, [dispatch]);
 
   return (
     <Suspense fallback={<Spinner />}>
       <section>
-        <Router>
-          <PublicRoute
+        <Routes>
+          {/* {console.log('Route: ', <Route />)} */}
+          <Route
+            element={
+              <PublicRoute component={HomePage} redirectTo="/dashboard" />
+            }
             exact
             path={routes.home}
             restricted
-            component={HomePage}
-            redirectTo="/dashboard"
           />
-          <PublicRoute
+          <Route
+            element={
+              <PublicRoute component={RegisterPage} redirectTo="/dashboard" />
+            }
             path="/register"
             restricted
-            component={RegisterPage}
-            redirectTo="/dashboard"
           />
-          <PublicRoute
+          <Route
+            element={
+              <PublicRoute component={LoginPage} redirectTo="/dashboard" />
+            }
             path="/login"
             restricted
-            component={LoginPage}
-            redirectTo="/dashboard"
           />
-          <PrivateRoute
+          <Route
+            element={
+              <PrivateRoute component={DashboardPage} redirectTo="/login" />
+            }
             path="/dashboard"
             restricted
-            component={DashboardPage}
-            redirectTo="/login"
           />
-          <PrivateRoute
+          <Route
+            element={
+              <PrivateRoute component={StatisticsPage} redirectTo="/login" />
+            }
             path="/statistics"
             restricted
-            component={StatisticsPage}
-            redirectTo="/login"
           />
-          <PrivateRoute
+          <Route
+            element={
+              <PrivateRoute component={CurrencyPage} redirectTo="/login" />
+            }
             path="/currency"
             restricted
-            component={CurrencyPage}
-            redirectTo="/login"
           />
-          <PrivateRoute
+          <Route
+            element={
+              <PrivateRoute component={BudgetPage} redirectTo="/login" />
+            }
             path="/budget"
             restricted
-            component={BudgetPage}
-            redirectTo="/login"
           />
-          <PrivateRoute
+          <Route
+            element={
+              <PrivateRoute component={ReportsPage} redirectTo="/login" />
+            }
             path="/reports"
             restricted
-            component={ReportsPage}
-            redirectTo="/login"
           />
-        </Router>
+        </Routes>
       </section>
     </Suspense>
   );

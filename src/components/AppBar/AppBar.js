@@ -1,14 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import FinanceAppBoyImg from './FinanceAppBoyImg/FinanceAppBoyImg';
 import FinanceAppGirlImg from './FinanceAppGirlImg/FinanceAppGirlImg';
 
-export default function AppBar(props) {
-  const { path } = props.match;
+export default function AppBar() {
+  const { pathname } = useLocation();
 
   return (
     <>
-      {path === '/' || path === '/login' ? (
+      {pathname === '/' || pathname === '/login' ? (
         <FinanceAppBoyImg />
       ) : (
         <FinanceAppGirlImg />

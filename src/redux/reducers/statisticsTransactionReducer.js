@@ -1,13 +1,20 @@
-import {createReducer} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import statisticsActions from '../actions/statisticsActions';
 import limitedStatisticsActions from '../actions/limitedStatisticsActions';
 
 const statisticsTransactionReducerInitialState = [];
 
-const statisticsTransactionReducer = createReducer(statisticsTransactionReducerInitialState, {
-    [statisticsActions.statisticsSuccess]: (_, {payload}) => payload.data,
-    [limitedStatisticsActions.limitedStatisticsSuccess]: (_, {payload}) => payload.data
+const statisticsTransactionReducer = createSlice({
+  name: 'statisticsTransactions',
+  initialState: statisticsTransactionReducerInitialState,
+  reducers: {
+    getStatistics: (state, { payload }) => payload.data,
+    limitedStatistics: (state, { payload }) => payload.data,
+  },
 });
 
-export default {statisticsTransactionReducer};
+export const { getStatistics, limitedStatistics } =
+  statisticsTransactionReducer.actions;
+
+export default statisticsTransactionReducer.reducer;

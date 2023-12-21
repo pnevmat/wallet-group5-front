@@ -1,8 +1,14 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import isModalLogoutOpenActions from '../actions/isModalLogoutOpenAction';
 
-const isModalLogoutOpen = createReducer(false, {
-  [isModalLogoutOpenActions]: (state, _) => !state,
+const isModalLogoutOpen = createSlice({
+  name: 'isModalLogoutOpen',
+  initialState: false,
+  reducers: {
+    getIsModalLogoutOpen: (state, _) => !state,
+  },
 });
 
-export default isModalLogoutOpen;
+export const { getIsModalLogoutOpen } = isModalLogoutOpen.actions;
+
+export default isModalLogoutOpen.reducer;

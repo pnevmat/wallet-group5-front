@@ -1,15 +1,14 @@
-import { createReducer } from "@reduxjs/toolkit";
-import {
-    
-    fetchcategorySuccess,
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchcategorySuccess } from '../../actions/categoryactions/categoryactions.js';
 
-  } from "../../actions/categoryactions/categoryactions.js";
+const categoryReducer = createSlice({
+  name: 'categories',
+  initialState: [],
+  reducers: {
+    getCategories: (state, { payload }) => payload,
+  },
+});
 
-  const categoryReducer = createReducer([], {
-    [ fetchcategorySuccess]: (_, { payload }) => payload,
-   
-  });
+export const { getCategories } = categoryReducer.actions;
 
- 
-
-  export default { categoryReducer };
+export default categoryReducer.reducer;

@@ -10,10 +10,6 @@
   padding: 30px 20px;
 }
 
-.active {
-  color: #ffa848;
-}
-
 .form {
   background-color: #fff;
   display: flex;
@@ -52,11 +48,9 @@
   outline: none;
   border: none;
   border-bottom: 2px solid #e0e0e0;
-  
 }
 
 .button__submit {
-  
   text-decoration: none;
   color: #fff;
   background: #24cca7;
@@ -80,6 +74,10 @@
   border: 1px solid #4a56e2;
   border-radius: 20px;
   margin-bottom: 60px;
+}
+
+.active {
+  color: #ffa848;
 }
 
 .button:hover,
@@ -117,12 +115,12 @@
     margin-bottom: 45px;
   }
 
-  .button__submit{
+  .button__submit {
     width: 280px;
     height: 50px;
   }
 
-  .button__registration{
+  .button__registration {
     width: 280px;
     height: 50px;
     margin-bottom: 110px;
@@ -130,8 +128,7 @@
 }
 
 @media (min-width: 768px) {
-
-  .container{
+  .container {
     padding: 0 25px;
   }
   .form {

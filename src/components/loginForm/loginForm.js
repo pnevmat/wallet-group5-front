@@ -8,6 +8,7 @@ import s from './LoginForm.module.css';
 const LoginForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegBtnActive, setIsRegBtnActive] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -61,13 +62,18 @@ const LoginForm = props => {
             }}
           />
         </label>
-        <button className={s.button__submit}   type="submit">
+        <button className={s.button__submit} type="submit">
           Вход
         </button>
-        <NavLink 
-        className={s.button__registration} 
-        to="/register"
-        activeClassName={s.active}
+        <NavLink
+          className={
+            !isRegBtnActive
+              ? s.button__registration
+              : `${s.button__registration} ${s.active}`
+          }
+          onMouseOver={() => setIsRegBtnActive(true)}
+          onMouseLeave={() => setIsRegBtnActive(false)}
+          to="/register"
         >
           Регистрация
         </NavLink>
