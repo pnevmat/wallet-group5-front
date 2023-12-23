@@ -7,12 +7,12 @@ const authReducer = createSlice({
   initialState: authReducerInitialState,
   reducers: {
     registration: () => true,
-    login: () => true,
+    isLogin: () => true,
     userData: () => true,
     logout: () => false,
   },
 });
 
-export const { registration, login, userData, logout } = authReducer.actions;
+export const { registration, isLogin, userData, logout } = authReducer.actions;
 
 export default authReducer.reducer;

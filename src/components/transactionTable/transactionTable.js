@@ -1,10 +1,12 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import operation from '../../redux/operations/transactionOperations';
+import { getTransactionsRequest } from '../../api/apiRequests';
+import { getTransactions } from '../../redux/reducers/transactionReducer/transactionReducer';
+// import operation from '../../redux/operations/transactionOperations';
 
 import selectors from '../../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors';
@@ -12,17 +14,26 @@ import { getTransaction } from '../../redux/selectors/transactionSelectors/trans
 import styles from './TransactionTable.module.css';
 
 export default function TransactionTable() {
+  const [transactions, setTransactions] = useState([]);
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
+
   useEffect(() => {
-    dispatch(operation.fetchTransaction(token));
+    const getTransactions = async () => {
+      const data = await getTransactionsRequest(token);
+      console.log('Transactions response data: ', data);
+      // if (data) setTransactions(data)
+    };
+    getTransactions();
+
+    // if (transactions.length) dispatch(getTransactions());
   }, [dispatch]);
 
   const rows = useSelector(getTransaction);
 
   const onClickDelete = useCallback(
     id => {
-      dispatch(operation.deleteTransaction(id));
+      // dispatch(operation.deleteTransaction(id));
     },
     [dispatch],
   );

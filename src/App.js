@@ -1,12 +1,13 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-// import {Switch} from 'react-dom'
 
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
-import getUserDataOperation from './redux/operations/getUserDataOperation';
+import { getUserDataRequest } from './api/apiRequests';
+import { getUserData } from './redux/reducers/authorisationReducers/userDataReducer';
+import selectors from './redux/selectors/authorisationSelectors';
 
 import routes from '../src/routes';
 import Spinner from '../src/components/Spinner/Spinner';
@@ -44,11 +45,18 @@ const ReportsPage = lazy(
 );
 
 const FinanceApp = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const userToken = useSelector(selectors.getUserToken);
 
-  // useEffect(() => {
-  //   dispatch(getUserDataOperation());
-  // }, [dispatch]);
+  useEffect(() => {
+    const handleGetUserData = async () => {
+      const response = await getUserDataRequest(userToken);
+      if (response) {
+        dispatch(getUserData(response));
+      }
+    };
+    handleGetUserData();
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<Spinner />}>

@@ -1,12 +1,22 @@
 import {
   combineReducers,
   configureStore,
-  applyMiddleware,
+  createDynamicMiddleware,
 } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import userDataReducer from './reducers/registrationReducers/userDataReducer';
+import regUserDataReducer from './reducers/registrationReducers/userDataReducer';
+import authUserDataReducer from '../redux/reducers/authorisationReducers/userDataReducer';
 import registrationReducer from './reducers/registrationReducers/registrationReducer';
 import authorisationReducer from './reducers/authorisationReducers/authorisationReducer';
 import authReducer from './reducers/authorisationReducers/authReducer';
@@ -24,13 +34,14 @@ const userTokenPersistConfig = {
   storage,
   whitelist: ['registrationToken', 'authorisationToken'],
 };
+const dynamicMiddleware = createDynamicMiddleware();
 
 const store = configureStore(
   {
     reducer: {
       userData: combineReducers({
-        registrationData: userDataReducer,
-        authorisationData: userDataReducer,
+        registrationData: regUserDataReducer,
+        authorisationData: authUserDataReducer,
         modalLogoutOpen: isModalLogoutOpenReducer,
       }),
       userToken: persistReducer(
@@ -50,9 +61,16 @@ const store = configureStore(
       statisticsTransactions: statisticsTransactionReducer,
       budget: budgetReducer,
     },
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).prepend(dynamicMiddleware.middleware),
     devTools: process.env.NODE_ENV === 'development',
   },
-  process.env.NODE_ENV === 'development' && applyMiddleware(logger),
+  process.env.NODE_ENV === 'development' &&
+    dynamicMiddleware.addMiddleware(logger),
 );
 
 const persistor = persistStore(store);

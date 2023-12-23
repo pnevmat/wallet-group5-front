@@ -13,7 +13,7 @@ const authorisationReducer = createSlice({
   name: 'authorisation',
   initialState: authorisationInitialState,
   reducers: {
-    login: (state, { payload }) => payload.data.token,
+    login: (state, { payload }) => payload.token,
     logout: () => null,
   },
 });

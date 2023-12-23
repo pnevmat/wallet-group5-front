@@ -2,32 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const authorisationInitialState = {};
 
-const userDataReducer = createSlice({
-  name: 'userData',
+const authUserDataReducer = createSlice({
+  name: 'authUserData',
   initialState: authorisationInitialState,
   reducers: {
-    login: (state, { payload }) => {
-      return {
-        avatarURL: payload.data.avatarURL,
-        balance: payload.data.balance,
-        email: payload.data.email,
-        id: payload.data.id,
-        name: payload.data.name,
-      };
-    },
     getUserData: (_, { payload }) => {
       return {
-        avatarURL: payload.user.avatarURL,
-        balance: payload.user.balance,
-        email: payload.user.email,
-        id: payload.user.id,
-        name: payload.user.name,
+        avatarURL: payload.avatarURL,
+        balance: payload.balance,
+        email: payload.email,
+        id: payload.id,
+        name: payload.name,
       };
     },
     logout: () => authorisationInitialState,
   },
 });
 
-export const { login, getUserData, logout } = userDataReducer.actions;
+export const { getUserData, logout } = authUserDataReducer.actions;
 
-export default userDataReducer.reducer;
+export default authUserDataReducer.reducer;
