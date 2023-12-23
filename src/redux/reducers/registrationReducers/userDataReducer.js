@@ -6,10 +6,10 @@ const regUserDataReducer = createSlice({
   name: 'regUserData',
   initialState: registrationInitialState,
   reducers: {
-    registration: (state, { payload }) => payload.user,
+    getRegUserData: (state, { payload }) => payload,
   },
 });
 
-export const { registration } = regUserDataReducer.actions;
+export const { getRegUserData } = regUserDataReducer.actions;
 
 export default regUserDataReducer.reducer;

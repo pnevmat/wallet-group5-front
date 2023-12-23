@@ -29,6 +29,11 @@ const api = {
     console.log('Response in login request: ', response);
     return response.data;
   },
+  registrationRequest: async regData => {
+    const response = await axios.post('/api/users/register', regData);
+
+    return response.data;
+  },
   getUserDataRequest: async userToken => {
     if (typeof userToken === 'string') {
       token.set(userToken);
@@ -47,4 +52,9 @@ const api = {
   },
 };
 
-export const { loginRequest, getUserDataRequest, getTransactionsRequest } = api;
+export const {
+  loginRequest,
+  registrationRequest,
+  getUserDataRequest,
+  getTransactionsRequest,
+} = api;

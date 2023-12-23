@@ -6,7 +6,7 @@ const registrationReducer = createSlice({
   name: 'registration',
   initialState: registrationInitialState,
   reducers: {
-    registration: (state, { payload }) => payload.user.token,
+    registration: (state, { payload }) => payload.token,
     login: () => registrationInitialState,
   },
 });
