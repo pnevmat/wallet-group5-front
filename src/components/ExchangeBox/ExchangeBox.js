@@ -11,17 +11,16 @@ export default class ExchangeBox extends Component {
   };
 
   componentDidMount() {
-    fetchCurrency().then(currensy => {
-      return this.setState({ persons: currensy, isLoading: false });
-    });
-
-    if (this.props.props !== undefined) {
-      const { url } = this.props.props.props.match;
-      if (url === '/currency') {
-        const exchangeBox = document.getElementById('exchange');
-        exchangeBox.classList.add(s.visible);
-      }
-    }
+    // fetchCurrency().then(currensy => {
+    //   return this.setState({ persons: currensy, isLoading: false });
+    // });
+    // if (this.props.props !== undefined) {
+    //   const { url } = this.props.props.props.match;
+    //   if (url === '/currency') {
+    //     const exchangeBox = document.getElementById('exchange');
+    //     exchangeBox.classList.add(s.visible);
+    //   }
+    // }
   }
 
   render() {

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
-// import registrationOperation from '../redux/operations/registrationOperation';
 import { registrationRequest } from '../api/apiRequests';
 import { registration } from '../redux/reducers/registrationReducers/registrationReducer';
 import { getRegUserData } from '../redux/reducers/registrationReducers/userDataReducer';

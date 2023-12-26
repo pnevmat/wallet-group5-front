@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-// import getUserDataOperation from '../redux/operations/getUserDataOperation';
 import { getUserDataRequest } from '../api/apiRequests';
 import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
 
