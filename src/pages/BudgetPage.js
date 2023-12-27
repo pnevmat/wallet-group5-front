@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getUserDataRequest } from '../api/apiRequests';
 import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
-// import getUserDataOperation from '../redux/operations/getUserDataOperation';
 
 import authorisationSelectors from '../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../redux/selectors/transactionSelectors/transactionSelectors';
