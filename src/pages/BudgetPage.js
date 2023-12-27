@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import getUserDataOperation from '../redux/operations/getUserDataOperation';
+import { getUserDataRequest } from '../api/apiRequests';
+import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
+// import getUserDataOperation from '../redux/operations/getUserDataOperation';
 
 import authorisationSelectors from '../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../redux/selectors/transactionSelectors/transactionSelectors';
@@ -14,7 +16,14 @@ const BudgetPage = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserDataOperation(userToken));
+    const handleGetUserData = async () => {
+      const response = await getUserDataRequest(userToken);
+
+      if (response) {
+        dispatch(getUserData(response));
+      }
+    };
+    handleGetUserData();
   }, [dispatch]);
 
   const userRegBalance = useSelector(authorisationSelectors.getUserRegBalance);

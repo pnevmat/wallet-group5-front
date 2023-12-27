@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import getBudgetOperation from '../../redux/operations/budgetOperations/getBudgetOperation';
+import { getBudgetRequest } from '../../api/apiRequests';
+import { getBudget } from '../../redux/reducers/budgetReducer';
 import addBudgetOperation from '../../redux/operations/budgetOperations/addBudgetOperation';
 import editBudgetOperation from '../../redux/operations/budgetOperations/editBudgetOperation';
 import deleteBudgetOperation from '../../redux/operations/budgetOperations/deleteBudgetOperation';
@@ -56,11 +57,11 @@ const BudgetComponent = () => {
 
   useEffect(() => {
     if (month !== '' && year !== 0) {
-      handleSubmit();
+      // handleSubmit();
     }
   }, [month, year]);
 
-  const handleSubmit = object => {
+  const handleSubmit = async object => {
     if (object) {
       switch (object.type) {
         case 'addBudget':
@@ -81,7 +82,9 @@ const BudgetComponent = () => {
       }
     } else {
       // обработка ивента и запрос на поиск бюджета
-      dispatch(getBudgetOperation({ month, year }));
+      const data = await getBudgetRequest({ month, year });
+      console.log('Get budget data: ', data);
+      // dispatch(getBudget(data));
       // console.log(month);
       // console.log(year);
       // console.log('Get budget started');
@@ -133,7 +136,7 @@ const BudgetComponent = () => {
               handleChange(e);
             }}
           >
-            <option className={styles.formMonthOptions} selected>
+            <option className={styles.formMonthOptions} defaultValue="Month">
               Месяц
             </option>
             {months.map(month => (
@@ -153,7 +156,7 @@ const BudgetComponent = () => {
               handleChange(e);
             }}
           >
-            <option selected>Год</option>
+            <option defaultValue="Year">Год</option>
             {years.map((year, index) => {
               return <option key={index}>{year}</option>;
             })}

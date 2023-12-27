@@ -50,6 +50,11 @@ const api = {
 
     return response.data;
   },
+  getBudgetRequest: async date => {
+    const response = await axios.get('/api/budgets', date);
+
+    return response.data;
+  },
 };
 
 export const {
@@ -57,4 +62,5 @@ export const {
   registrationRequest,
   getUserDataRequest,
   getTransactionsRequest,
+  getBudgetRequest,
 } = api;
