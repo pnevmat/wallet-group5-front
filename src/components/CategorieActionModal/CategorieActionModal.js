@@ -43,7 +43,6 @@ export default function CategorieActionModal({
     }
 
     document.addEventListener('keydown', onKeyClick);
-
     return () => {
       document.removeEventListener('keydown', onKeyClick);
     };
@@ -64,7 +63,6 @@ export default function CategorieActionModal({
       };
 
       const data = await addCategoryRequest(newCategorie);
-
       if (data) {
         dispatch(addCategory(data.category));
       }
@@ -76,14 +74,12 @@ export default function CategorieActionModal({
       const foundCategory = categories.find(
         cat => cat.name === selectedCategory,
       );
-
       const editedCategory = {
         email: user.email,
         category: { ...foundCategory, name: category },
       };
 
       const data = await editCategoryRequest(editedCategory);
-      console.log('Edit category data: ', data);
       if (data) {
         dispatch(editCategory(data.category));
       }
@@ -97,7 +93,6 @@ export default function CategorieActionModal({
       );
 
       const data = await deleteCategoryRequest(user.email, foundCategory.id);
-
       if (data) {
         dispatch(deleteCategory(data.category));
       }
@@ -105,8 +100,7 @@ export default function CategorieActionModal({
 
     closeModal();
   };
-  console.log('Selected category: ', selectedCategory);
-  console.log('Category: ', category);
+
   // Подключить тостифай вместо консоль лога
   return (
     <div className={s.overlay} onClick={e => handleCloseModal(e)}>

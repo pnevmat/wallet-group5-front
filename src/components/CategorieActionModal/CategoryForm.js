@@ -37,7 +37,7 @@ export default function CategoryForm({
   const filteredCategories = categories.filter(categorie =>
     status ? categorie.type === 'cost' : categorie.type === 'income',
   );
-  console.log('Filtered categories in Category form: ', filteredCategories);
+
   const handleInputChange = e => {
     iputChange(e.target.value);
   };

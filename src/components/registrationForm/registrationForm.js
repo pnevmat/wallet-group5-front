@@ -8,7 +8,6 @@ import * as yup from 'yup';
 
 import s from './RegistrationForm.module.css';
 
-
 const RegistrationForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,8 +33,8 @@ const RegistrationForm = props => {
         console.log('error');
     }
   };
-  
-  const handleSubmit = ({email, password, repeatPassword, name}) => {
+
+  const handleSubmit = ({ email, password, repeatPassword, name }) => {
     const { onRegistrationSubmit } = props;
 
     onRegistrationSubmit({ email, password, repeatPassword, name });
@@ -75,7 +74,6 @@ const RegistrationForm = props => {
       onSubmit={handleSubmit}
     >
       {({
-   
         values,
         errors,
         touched,
@@ -93,8 +91,6 @@ const RegistrationForm = props => {
               handleSubmit(values);
             }}
           >
-
-            
             <FormAuth />
             <label htmlFor="" name="register" className={s.label}>
               <div className={s.input_email}></div>
@@ -142,7 +138,6 @@ const RegistrationForm = props => {
                 onBlur={handleBlur}
                 values={values.email}
               />
-             
             </label>
             <div className={s.progresBar}>
               <div className={s.progresBarFilter}></div>
