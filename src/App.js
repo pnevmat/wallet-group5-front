@@ -62,7 +62,6 @@ const FinanceApp = () => {
     <Suspense fallback={<Spinner />}>
       <section>
         <Routes>
-          {/* {console.log('Route: ', <Route />)} */}
           <Route
             element={
               <PublicRoute component={HomePage} redirectTo="/dashboard" />

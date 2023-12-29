@@ -1,0 +1,31 @@
+.button {
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #fff;
+  background: #24cca7;
+  text-transform: uppercase;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .button {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 768px) {
+  .button {
+    display: block;
+  }
+}

@@ -5,6 +5,21 @@
   background-color: #e5e5e5;
 }
 
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 45px;
+  padding-right: 40px;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media (max-width: 767px) {
   .dashboardContainer {
     width: 320px;

@@ -30,13 +30,13 @@ const fetchTransaction = userToken => async dispatch => {
 };
 
 const addTransaction = transaction => async dispatch => {
-  dispatch(addTransactionRequest());
+  // dispatch(addTransactionRequest());
 
   try {
-    const { data } = await axios.post('/api/transactions/add', transaction);
-    dispatch(addTransactionSuccess(data));
+    // const { data } = await axios.post('/api/transactions/add', transaction);
+    // dispatch(addTransactionSuccess(data));
   } catch (error) {
-    dispatch(addTransactionError(error.message));
+    // dispatch(addTransactionError(error.message));
   }
 };
 

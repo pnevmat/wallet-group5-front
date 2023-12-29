@@ -10,17 +10,14 @@ import selectors from '../../redux/selectors/authorisationSelectors';
 
 import s from './ModalAddTransaction.module.css';
 
-
 export default function CategoryForm({ categoryChange }) {
   const dispatch = useDispatch();
-  const token =useSelector(selectors.getUserToken);
-  
+  const token = useSelector(selectors.getUserToken);
 
   useEffect(() => {
-     dispatch(operation.fetchCategory(token));
+    dispatch(operation.fetchCategory(token));
   }, [dispatch]);
 
-  
   const categories = useSelector(getCategories);
   console.log('Categories in Category form: ', categories);
 
@@ -39,29 +36,22 @@ export default function CategoryForm({ categoryChange }) {
           Выберите категорию
         </InputLabel>
 
-        
         <NativeSelect
           fullWidth
-         validators={['required', ]}
-         errorMessages={[
-           'this field is required',
-         
-         ]}
+          validators={['required']}
+          // errorMessages={['this field is required']}
           name="category"
           onChange={handleChange}
-            defaultValue=''
+          defaultValue=""
           inputProps={{
             id: 'uncontrolled-native',
           }}
         >
-           <option></option>
+          <option>Выберите категорию</option>
           {categories.length > 0 &&
             categories.map((el, i) => {
-              return (
-                <option key={i}>{el}</option>
-              )
+              return <option key={i}>{el}</option>;
             })}
-          
         </NativeSelect>
       </FormControl>
     </Box>

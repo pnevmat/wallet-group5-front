@@ -11,10 +11,6 @@
   z-index: 1200;
 }
 
-.title {
-  text-align: center;
-}
-
 .modal {
   width: 100%;
   height: 100%;
@@ -25,40 +21,26 @@
   visibility: hidden;
 }
 
-@media (min-width: 768px) {
-  .modal {
-    position: relative;
-    width: 540px;
-    height: 540px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.35);
-  }
-  .closeModalIcon {
-    visibility: visible;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 15px;
-    right: 10px;
-    border: 1px solid transparent;
-    cursor: pointer;
-  }
+.title {
+  text-align: center;
 }
 
-.track {
-  background-color: white;
+.switchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .unactive {
   color: #e0e0e0;
 }
 
-.activeInvoice {
-  color: #ff6596;
-}
-
 .activeIncome {
   color: #24cca7;
+}
+
+.activeInvoice {
+  color: #ff6596;
 }
 
 .addIcon {
@@ -82,12 +64,6 @@
   cursor: pointer;
 }
 
-.switchContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .categoryContainer {
   display: flex;
   justify-content: center;
@@ -99,20 +75,23 @@
   text-align: center;
 }
 
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .categoryPlaceholder {
   width: 440px;
 }
 
-.textField {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+.categoryPlaceholder > div > input {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.textFieldcomments {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.categoryPlaceholder > label {
+  top: -10px;
 }
 
 .submitButton {
@@ -137,4 +116,25 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    position: relative;
+    width: 540px;
+    height: 540px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.35);
+  }
+  .closeModalIcon {
+    visibility: visible;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 15px;
+    right: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
 }
