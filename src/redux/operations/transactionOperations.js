@@ -41,13 +41,13 @@ const addTransaction = transaction => async dispatch => {
 };
 
 const deleteTransaction = transacionId => async dispatch => {
-  dispatch(deleteTransactionRequest());
+  // dispatch(deleteTransactionRequest());
 
   try {
-    await axios.delete(`/api/transactions/${transacionId}`);
-    dispatch(deleteTransactionSuccess(transacionId));
+    // await axios.delete(`/api/transactions/${transacionId}`);
+    // dispatch(deleteTransactionSuccess(transacionId));
   } catch (error) {
-    dispatch(deleteTransactionError(error.message));
+    // dispatch(deleteTransactionError(error.message));
   }
 };
 

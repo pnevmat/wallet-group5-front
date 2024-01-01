@@ -83,6 +83,14 @@ const api = {
 
     return response.data;
   },
+  editTransactionRequest: async transaction => {},
+  deleteTransactionRequest: async (userEmail, transacionId) => {
+    const response = await axios.delete(
+      `/api/transactions/${transacionId}?email=${userEmail}`,
+    );
+
+    return response.data;
+  },
   getBudgetRequest: async date => {
     const response = await axios.get('/api/budgets', date);
 
@@ -100,5 +108,7 @@ export const {
   deleteCategoryRequest,
   getTransactionsRequest,
   addTransactionRequest,
+  editTransactionRequest,
+  deleteTransactionRequest,
   getBudgetRequest,
 } = api;

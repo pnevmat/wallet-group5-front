@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import operation from '../../redux/operations/categoryOperations.js';
-import { getCategories } from '../../redux/selectors/categorySelectors/categorySelectors';
+import { getCategoriesRequest } from '../../api/apiRequests';
+import { getCategories } from '../../redux/reducers/categoryReducer/categoryReducer';
 import selectors from '../../redux/selectors/authorisationSelectors';
 
 import FormControl from '@mui/material/FormControl';
@@ -12,24 +12,34 @@ import InputLabel from '@mui/material/InputLabel';
 
 import s from './ModalEditBudget.module.css';
 
-
-export default function CategoryForm({ categorieCounter, categorie, categoryChange }) {
+export default function CategoryForm({
+  categorieCounter,
+  categorie,
+  categoryChange,
+}) {
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
-  
 
   useEffect(() => {
-     dispatch(operation.fetchCategory(token));
+    const handleGetCategories = async () => {
+      const {
+        user: { categories },
+      } = await getCategoriesRequest(token);
+
+      if (categories) {
+        dispatch(getCategories(categories));
+      }
+    };
+    handleGetCategories();
   }, [dispatch]);
 
-  
-  const categories = useSelector(getCategories);
+  const categories = useSelector(store => store.category);
 
   const handleChange = e => {
     categoryChange(e);
   };
 
-  const categorieName = "category" + categorieCounter;
+  const categorieName = 'category' + categorieCounter;
 
   return (
     <Box className={s.categoryInput}>
@@ -42,13 +52,10 @@ export default function CategoryForm({ categorieCounter, categorie, categoryChan
           Выберите категорию
         </InputLabel>
 
-        
         <NativeSelect
           fullWidth
-          validators={['required', ]}
-          errorMessages={[
-           'this field is required',
-         ]}
+          validators={['required']}
+          errorMessages={['this field is required']}
           name={categorieName}
           onChange={handleChange}
           defaultValue={categorie}
@@ -56,14 +63,15 @@ export default function CategoryForm({ categorieCounter, categorie, categoryChan
             id: 'uncontrolled-native',
           }}
         >
-           <option></option>
+          <option></option>
           {categories.length > 0 &&
             categories.map(el => {
-              return <> 
-              <option>{el}</option></>
-           
+              return (
+                <>
+                  <option>{el}</option>
+                </>
+              );
             })}
-          
         </NativeSelect>
       </FormControl>
     </Box>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { addTransactionRequest } from '../../api/apiRequests';
 import { addTransaction } from '../../redux/reducers/transactionReducer/transactionReducer';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,6 +19,8 @@ const ModalAddTransaction = ({ closeModal }) => {
   const [transactionInfo, setTransactionInfo] = useState(
     setTransactionInfoInitState(),
   );
+
+  const dispatch = useDispatch();
 
   const formRef = useRef(null);
 
@@ -66,10 +69,10 @@ const ModalAddTransaction = ({ closeModal }) => {
     };
     const data = await addTransactionRequest(newTransaction);
     console.log('Add transaction response data: ', data);
-    // if (data) {
-    //   addTransaction(data);
-    //   closeModal();
-    // }
+    if (data) {
+      dispatch(addTransaction(data.transaction));
+      closeModal();
+    }
   };
   // Подключить тостифай вместо консоль лога
   return (
@@ -92,12 +95,9 @@ const ModalAddTransaction = ({ closeModal }) => {
             />
             <p className={status ? s.activeInvoice : s.unactive}>Расход</p>
           </div>
-          {status && (
-            <div className={s.categoryContainer}>
-              <CategoryForm categoryChange={setCategory} />
-            </div>
-          )}
-
+          <div className={s.categoryContainer}>
+            <CategoryForm categoryChange={setCategory} status={status} />
+          </div>
           <div className={s.textField}>
             <TextValidator
               validators={['required', 'isNumber']}
@@ -118,7 +118,7 @@ const ModalAddTransaction = ({ closeModal }) => {
               type="date"
               name="currentDate"
               value={transactionInfo.currentDate}
-              defaultValue={`${transactionInfo.currentDate}`}
+              // defaultValue={`${transactionInfo.currentDate}`}
               className={s.textField}
               InputLabelProps={{
                 shrink: true,

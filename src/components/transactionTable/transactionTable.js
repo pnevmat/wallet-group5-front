@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
@@ -6,7 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { getTransactionsRequest } from '../../api/apiRequests';
 import { getTransactions } from '../../redux/reducers/transactionReducer/transactionReducer';
-// import operation from '../../redux/operations/transactionOperations';
+import { deleteTransactionRequest } from '../../api/apiRequests';
+import { deleteTransaction } from '../../redux/reducers/transactionReducer/transactionReducer';
 
 import selectors from '../../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors';
@@ -17,26 +18,30 @@ export default function TransactionTable() {
   const [transactions, setTransactions] = useState([]);
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
-
-  useEffect(() => {
-    const getTransactions = async () => {
-      const data = await getTransactionsRequest(token);
-      console.log('Transactions response data: ', data);
-      // if (data) setTransactions(data)
-    };
-    getTransactions();
-
-    // if (transactions.length) dispatch(getTransactions());
-  }, [dispatch]);
+  const storeTransactions = useSelector(store => store.transactions);
 
   const rows = useSelector(getTransaction);
+  const user = useSelector(store => store.userData.authorisationData);
 
-  const onClickDelete = useCallback(
-    id => {
-      // dispatch(operation.deleteTransaction(id));
-    },
-    [dispatch],
-  );
+  useEffect(() => {
+    const handleGetTransactions = async () => {
+      const { data } = await getTransactionsRequest(token);
+
+      if (data) dispatch(getTransactions(data.transactions));
+    };
+
+    handleGetTransactions();
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    if (transactions.length === 0) setTransactions(storeTransactions);
+  }, [transactions.length, storeTransactions]);
+
+  const onClickDelete = async (userEmail, transactionId) => {
+    const data = await deleteTransactionRequest(userEmail, transactionId);
+    console.log('Removed transaction response data: ', data);
+    if (data) dispatch(deleteTransaction(data.transaction));
+  };
 
   const newDate = date => {
     return moment(date).format('D.MM.YY');
@@ -69,8 +74,8 @@ export default function TransactionTable() {
         {rows.length > 0
           ? modifiedRows.map((rows, i) => {
               return (
-                <div className={styles.tableRowContainer}>
-                  <li className={styles.tableRow} key={i}>
+                <div className={styles.tableRowContainer} key={rows.id}>
+                  <li className={styles.tableRow}>
                     <span className={styles.tableDateText}>{rows.date}</span>
                     <span className={styles.tableRowText}>
                       {rows.type === 'cost' ? '-' : '+'}
@@ -88,7 +93,7 @@ export default function TransactionTable() {
                       {rows.balance}
                     </span>
                   </li>
-                  <li className={styles.mobileTableRow} key={i}>
+                  <li className={styles.mobileTableRow}>
                     <div className={styles.mobileTableRowItemsContainer}>
                       <span className={styles.tableHeadText}>Дата</span>
                       <span className={styles.tableRowText}>{rows.date}</span>
@@ -127,7 +132,7 @@ export default function TransactionTable() {
                     <button
                       className={styles.actionButtons}
                       type="button"
-                      onClick={() => onClickDelete(rows.id)}
+                      onClick={() => onClickDelete(user.email, rows.id)}
                     >
                       <DeleteIcon color="primary" />
                     </button>
