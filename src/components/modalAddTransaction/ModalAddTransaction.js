@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTransactionRequest } from '../../api/apiRequests';
-import { addTransaction } from '../../redux/reducers/transactionReducer/transactionReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getTransactionsRequest,
+  addTransactionRequest,
+} from '../../api/apiRequests';
+import {
+  getTransactions,
+  addTransaction,
+} from '../../redux/reducers/transactionReducer/transactionReducer';
+import selectors from '../../redux/selectors/authorisationSelectors';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import Switch from '@mui/material/Switch';
@@ -20,6 +27,7 @@ const ModalAddTransaction = ({ closeModal }) => {
     setTransactionInfoInitState(),
   );
 
+  const token = useSelector(selectors.getUserToken);
   const dispatch = useDispatch();
 
   const formRef = useRef(null);
@@ -67,12 +75,14 @@ const ModalAddTransaction = ({ closeModal }) => {
       category: category,
       comments: comments,
     };
-    const data = await addTransactionRequest(newTransaction);
-    console.log('Add transaction response data: ', data);
-    if (data) {
-      dispatch(addTransaction(data.transaction));
-      closeModal();
-    }
+    const addData = await addTransactionRequest(newTransaction);
+    console.log('Add transaction response data: ', addData);
+    if (addData) dispatch(addTransaction(addData.transaction));
+
+    const { data } = await getTransactionsRequest(token);
+    if (addData && data) dispatch(getTransactions(data.transactions));
+
+    closeModal();
   };
   // Подключить тостифай вместо консоль лога
   return (

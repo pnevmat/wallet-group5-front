@@ -38,9 +38,11 @@ export default function TransactionTable() {
   }, [transactions.length, storeTransactions]);
 
   const onClickDelete = async (userEmail, transactionId) => {
-    const data = await deleteTransactionRequest(userEmail, transactionId);
-    console.log('Removed transaction response data: ', data);
-    if (data) dispatch(deleteTransaction(data.transaction));
+    const delData = await deleteTransactionRequest(userEmail, transactionId);
+    if (delData) dispatch(deleteTransaction(delData.transaction));
+
+    const { data } = await getTransactionsRequest(token);
+    if (delData && data) dispatch(getTransactions(data.transactions));
   };
 
   const newDate = date => {

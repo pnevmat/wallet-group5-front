@@ -10,7 +10,13 @@ const transactionReducer = createSlice({
   initialState: [],
   reducers: {
     getTransactions: (state, { payload }) => payload,
-    addTransaction: (state, { payload }) => [payload, ...state],
+    addTransaction: (state, { payload }) => {
+      const newState = [payload, ...state].sort((a, b) =>
+        new Date(a.date) > new Date(b.date) ? -1 : 1,
+      );
+
+      return newState;
+    },
     deleteTransaction: (state, { payload }) => {
       return state.filter(el => el.id !== payload.id);
     },
