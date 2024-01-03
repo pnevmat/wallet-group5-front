@@ -17,13 +17,27 @@ const transactionReducer = createSlice({
 
       return newState;
     },
+    editTransaction: (state, { payload }) => {
+      let newState = state.map(transaction => {
+        if (transaction.id === payload.id) {
+          return payload;
+        }
+        return transaction;
+      });
+
+      return newState;
+    },
     deleteTransaction: (state, { payload }) => {
       return state.filter(el => el.id !== payload.id);
     },
   },
 });
 
-export const { getTransactions, addTransaction, deleteTransaction } =
-  transactionReducer.actions;
+export const {
+  getTransactions,
+  addTransaction,
+  editTransaction,
+  deleteTransaction,
+} = transactionReducer.actions;
 
 export default transactionReducer.reducer;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModalEditTransaction from '../ModalEditTransaction/ModalEditTransaction';
 
 import { getTransactionsRequest } from '../../api/apiRequests';
 import { getTransactions } from '../../redux/reducers/transactionReducer/transactionReducer';
@@ -11,15 +11,18 @@ import { deleteTransaction } from '../../redux/reducers/transactionReducer/trans
 
 import selectors from '../../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors';
+import moment from 'moment';
 
 import styles from './TransactionTable.module.css';
 
 export default function TransactionTable() {
   const [transactions, setTransactions] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState({});
+
   const dispatch = useDispatch();
+
   const token = useSelector(selectors.getUserToken);
   const storeTransactions = useSelector(store => store.transactions);
-
   const rows = useSelector(getTransaction);
   const user = useSelector(store => store.userData.authorisationData);
 
@@ -36,6 +39,17 @@ export default function TransactionTable() {
   useEffect(() => {
     if (transactions.length === 0) setTransactions(storeTransactions);
   }, [transactions.length, storeTransactions]);
+
+  useEffect(() => {
+    if (storeTransactions.length > 0) {
+      let modalOpenState = {};
+      storeTransactions.forEach(transaction => {
+        modalOpenState[transaction.id] = false;
+      });
+
+      setIsModalOpen(modalOpenState);
+    }
+  }, [storeTransactions]);
 
   const onClickDelete = async (userEmail, transactionId) => {
     const delData = await deleteTransactionRequest(userEmail, transactionId);
@@ -74,7 +88,7 @@ export default function TransactionTable() {
       </ul>
       <ul className={styles.tableRowList}>
         {rows.length > 0
-          ? modifiedRows.map((rows, i) => {
+          ? modifiedRows.map(rows => {
               return (
                 <div className={styles.tableRowContainer} key={rows.id}>
                   <li className={styles.tableRow}>
@@ -128,7 +142,13 @@ export default function TransactionTable() {
                     </div>
                   </li>
                   <div className={styles.btnContainer}>
-                    <button className={styles.actionButtons} type="button">
+                    <button
+                      className={styles.actionButtons}
+                      type="button"
+                      onClick={() =>
+                        setIsModalOpen({ ...isModalOpen, [rows.id]: true })
+                      }
+                    >
                       <EditIcon color="primary" />
                     </button>
                     <button
@@ -139,6 +159,13 @@ export default function TransactionTable() {
                       <DeleteIcon color="primary" />
                     </button>
                   </div>
+                  {isModalOpen[rows.id] && (
+                    <ModalEditTransaction
+                      isModalOpen={isModalOpen}
+                      closeModal={setIsModalOpen}
+                      transaction={rows}
+                    />
+                  )}
                 </div>
               );
             })

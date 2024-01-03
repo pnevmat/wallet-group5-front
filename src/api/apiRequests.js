@@ -83,7 +83,14 @@ const api = {
 
     return response.data;
   },
-  editTransactionRequest: async transaction => {},
+  editTransactionRequest: async (transactionId, transaction) => {
+    const response = await axios.put(
+      `/api/transactions/${transactionId}`,
+      transaction,
+    );
+
+    return response.data;
+  },
   deleteTransactionRequest: async (userEmail, transacionId) => {
     const response = await axios.delete(
       `/api/transactions/${transacionId}?email=${userEmail}`,

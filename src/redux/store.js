@@ -21,6 +21,7 @@ import registrationReducer from './reducers/registrationReducers/registrationRed
 import authorisationReducer from './reducers/authorisationReducers/authorisationReducer';
 import authReducer from './reducers/authorisationReducers/authReducer';
 import authErrorReducer from './reducers/authorisationReducers/authErrorReducer';
+import exchangeReducer from './reducers/exchangeReducer/exchangeReducer';
 import categoryReducer from './reducers/categoryReducer/categoryReducer';
 import transactionReducer from './reducers/transactionReducer/transactionReducer';
 import statisticsTransactionReducer from './reducers/statisticsTransactionReducer';
@@ -33,6 +34,11 @@ const userTokenPersistConfig = {
   key: 'token',
   storage,
   whitelist: ['registrationToken', 'authorisationToken'],
+};
+const exchangePersistConfig = {
+  key: 'exchange',
+  storage,
+  whitelist: ['rates'],
 };
 const dynamicMiddleware = createDynamicMiddleware();
 
@@ -56,6 +62,10 @@ const store = configureStore(
         error: authErrorReducer,
       }),
 
+      exchange: persistReducer(
+        exchangePersistConfig,
+        combineReducers({ rates: exchangeReducer }),
+      ),
       category: categoryReducer,
       transactions: transactionReducer,
       statisticsTransactions: statisticsTransactionReducer,
