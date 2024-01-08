@@ -49,6 +49,8 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
   }, [closeModal]);
 
   function setTransactionInfoInitState() {
+    // YYYY-MM-DD
+    console.log('Transaction date: ', transaction.date);
     return {
       currentDate: moment(transaction.date).format('YYYY-MM-DD'),
       transactionValue: transaction.amount,
@@ -71,21 +73,24 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
     e.preventDefault();
     const { currentDate, transactionValue, comments } = transactionInfo;
     const editedTransaction = {
-      date: `${currentDate} ${moment().format('HH:mm:ss')}`,
+      date: `${currentDate} ${moment(transaction.date).format('HH:mm:ss')}`,
       type: status ? 'cost' : 'income',
-      amount: transactionValue,
+      amount: Number(transactionValue),
       category: category,
       comments: comments,
     };
     console.log('Edited transaction in submit: ', editedTransaction);
-    // const editData = await editTransactionRequest(transaction.id, newTransaction);
-    // console.log('Edit transaction response data: ', editData);
-    // if (editData) dispatch(editTransaction(editData.transaction));
+    const editData = await editTransactionRequest(
+      transaction.id,
+      editedTransaction,
+    );
+    console.log('Edit transaction response data: ', editData);
+    if (editData) dispatch(editTransaction(editData.transaction));
 
-    // const { data } = await getTransactionsRequest(token);
-    // if (editData && data) dispatch(getTransactions(data.transactions));
+    const { data } = await getTransactionsRequest(token);
+    if (editData && data) dispatch(getTransactions(data.transactions));
 
-    // closeModal();
+    closeModal();
   };
   console.log('Transaction info current date: ', transactionInfo.currentDate);
   // Подключить тостифай вместо консоль лога

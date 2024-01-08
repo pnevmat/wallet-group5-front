@@ -49,7 +49,12 @@ const ExchangeBox = () => {
 
     const todayUnixTime = Math.round(new Date().getTime() / 1000.0);
     const oneDayUnixTime = 24 * 60 * 60;
+    console.log('One day unix time: ', oneDayUnixTime);
     const currencyDate = exchangeRates[0]?.date;
+    console.log(
+      'Today and currency date difference unix: ',
+      todayUnixTime - currencyDate,
+    );
 
     if (
       (exchangeRates.length === 0 && !currencyDate) ||
