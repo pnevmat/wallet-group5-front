@@ -1,8 +1,14 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import statisticsOperation from '../../redux/operations/statisticsOperation';
-import limitedStatisticsOperation from '../../redux/operations/limitedStatisticsOperation';
+import {
+  getStatisticsRequest,
+  limitedStatisticsRequest,
+} from '../../api/apiRequests';
+import {
+  getStatistics,
+  limitedStatistics,
+} from '../../redux/reducers/statisticsTransactionReducer';
 
 import ChartComponent from './Chart/Chart';
 import Table from './Table/Table';
@@ -13,29 +19,45 @@ import statisticsSelector from '../../redux/selectors/statisticsSelector';
 import styles from './DiagramTab.module.css';
 
 const DiagramTab = () => {
-    const dispatch = useDispatch();
-    
-    const userToken = useSelector(authSelectors.getUserToken)
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(statisticsOperation(userToken))
-    }, []);
+  const userToken = useSelector(authSelectors.getUserToken);
 
-    const onMonthYearSubmit = transactionData => dispatch(limitedStatisticsOperation(userToken, transactionData));
+  useEffect(() => {
+    const handleGetStatistics = async () => {
+      const data = await getStatisticsRequest(userToken);
 
-    const statistics = useSelector(statisticsSelector.statisticsTransactionsSelector);
+      if (data) {
+        dispatch(getStatistics(data));
+      }
+    };
 
-    return (
-        <div className={styles.container}>
-            <ChartComponent chartPercentage={statistics.categories} />
-            <Table 
-                table={statistics.categories}
-                cost={statistics.costBalance}
-                income={statistics.incomeBalance}
-                onSubmit={onMonthYearSubmit}
-            />
-        </div>
-    );
+    handleGetStatistics();
+  }, [dispatch, userToken]);
+
+  const onMonthYearSubmit = async transactionData => {
+    const data = await limitedStatisticsRequest(userToken, transactionData);
+
+    if (data) {
+      dispatch(limitedStatistics(data));
+    }
+  };
+
+  const statistics = useSelector(
+    statisticsSelector.statisticsTransactionsSelector,
+  );
+
+  return (
+    <div className={styles.container}>
+      <ChartComponent chartPercentage={statistics.categories} />
+      <Table
+        table={statistics.categories}
+        cost={statistics.costBalance}
+        income={statistics.incomeBalance}
+        onSubmit={onMonthYearSubmit}
+      />
+    </div>
+  );
 };
 
 export default DiagramTab;

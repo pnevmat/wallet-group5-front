@@ -16,6 +16,15 @@ const ExchangeBox = () => {
   const exchangeRates = useSelector(store => store.exchange.rates);
 
   useEffect(() => {
+    // [
+    // 	{
+    // 		currencyCodeA: 840,
+    // 		currencyCodeB: 980,
+    // 		date: 1704282006,
+    // 		rateBuy: 37.95,
+    // 		rateSell: 38.4497,
+    // 	},
+    // ]
     const handleGetCurrency = async () => {
       const data = await fetchCurrency();
 
@@ -37,24 +46,10 @@ const ExchangeBox = () => {
 
       dispatch(getExchange(mainCurrencies));
     };
-    // [
-    // 	{
-    // 		currencyCodeA: 840,
-    // 		currencyCodeB: 980,
-    // 		date: 1704282006,
-    // 		rateBuy: 37.95,
-    // 		rateSell: 38.4497,
-    // 	},
-    // ]
 
     const todayUnixTime = Math.round(new Date().getTime() / 1000.0);
     const oneDayUnixTime = 24 * 60 * 60;
-    console.log('One day unix time: ', oneDayUnixTime);
     const currencyDate = exchangeRates[0]?.date;
-    console.log(
-      'Today and currency date difference unix: ',
-      todayUnixTime - currencyDate,
-    );
 
     if (
       (exchangeRates.length === 0 && !currencyDate) ||

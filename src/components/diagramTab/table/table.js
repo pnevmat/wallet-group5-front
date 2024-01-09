@@ -20,6 +20,15 @@ const Table = props => {
     years.push(2000 + i);
   }
 
+  useEffect(() => {
+    const handleSubmit = () => {
+      onSubmit({ month, year });
+    };
+    if (month !== '' && year !== 0) {
+      handleSubmit();
+    }
+  }, [month, year]);
+
   const handleCange = e => {
     const { name, value } = e.target;
     switch (name) {
@@ -32,16 +41,6 @@ const Table = props => {
       default:
         console.log('error');
     }
-  };
-
-  useEffect(() => {
-    if (month !== '' && year !== 0) {
-      handleSubmit();
-    }
-  }, [month, year]);
-
-  const handleSubmit = () => {
-    onSubmit({ month, year });
   };
 
   return (

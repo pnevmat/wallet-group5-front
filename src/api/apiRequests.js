@@ -98,6 +98,23 @@ const api = {
 
     return response.data;
   },
+  getStatisticsRequest: async userToken => {
+    token.set(userToken);
+
+    const response = await axios.get('/api/transactions/statistics');
+
+    return response.data;
+  },
+  limitedStatisticsRequest: async (userToken, transactionData) => {
+    token.set(userToken);
+
+    const response = await axios.post(
+      '/api/transactions/statistics',
+      transactionData,
+    );
+
+    return response.data;
+  },
   getBudgetRequest: async date => {
     const response = await axios.get('/api/budgets', date);
 
@@ -117,5 +134,7 @@ export const {
   addTransactionRequest,
   editTransactionRequest,
   deleteTransactionRequest,
+  getStatisticsRequest,
+  limitedStatisticsRequest,
   getBudgetRequest,
 } = api;
