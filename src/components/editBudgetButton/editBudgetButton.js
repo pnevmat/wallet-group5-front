@@ -5,7 +5,7 @@ import ModalEditBudget from '../ModalEditBudget/ModalEditBudget';
 
 import styles from './EditBudgetButton.module.css';
 
-const EditBudgetButton = () => {
+const EditBudgetButton = ({ onSubmit }) => {
   const [isModalEditBudgetOpen, setIsModalAddBudgetOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -21,7 +21,9 @@ const EditBudgetButton = () => {
       <button className={styles.button} type="button" onClick={handleOpenModal}>
         Редактировать
       </button>
-      {isModalEditBudgetOpen && <ModalEditBudget closeModal={closeModal} />}
+      {isModalEditBudgetOpen && (
+        <ModalEditBudget onSubmit={onSubmit} closeModal={closeModal} />
+      )}
     </>
   );
 };

@@ -1,51 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 
 import s from './ModalDeleteBudget.module.css';
 
+const ModalDeleteBudget = ({ onSubmit, closeModal, isOpen }) => {
+  const { budget } = useSelector(store => store.budget);
 
+  const handleCloseModal = e => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
 
-const ModalDeleteBudget = ({ closeModal, onSubmit }) => {
-  const [modalIsOpen, setmodalIsOpen] = useState(false);
-
-  const openModal = () => {
-    setmodalIsOpen(true);
-  }
-
-  const handleCloseModal = () => {
-    closeModal(false)
-  }
+  const onClickClose = () => {
+    closeModal();
+  };
 
   const handleSubmit = () => {
-    const budget = {
+    const budgetToDelete = {
       type: 'deleteBudget',
-      // date: currentDate,
+      id: budget.id,
+    };
+    console.log('Budget: ', budget);
+    if (budget.id) {
+      onSubmit(budgetToDelete);
+      onClickClose();
     }
-
-    onSubmit(budget)
-  }
+  };
 
   return (
-    <>
-      <Modal
-        className={s.modal}
-        isOpen={openModal}
-        onRequestClose={handleCloseModal}
-        contentLabel="Example Modal"
-        ariaHideApp={false}
-      >
-        <h2 className={s.modalExit}>Ты действительно хочеш удалить?</h2>
-        <div className={s.modalBtn}>
-          <button className={s.modalExitSucsess} onClick={handleSubmit}>
-            Да
-          </button>
-          <button className={s.modalExitCancel} onClick={handleCloseModal}>
-            Нет
-          </button>
-        </div>
-      </Modal>
-    </>
+    <Modal
+      className={s.modal}
+      isOpen={isOpen}
+      onRequestClose={handleCloseModal}
+      contentLabel="Example Modal"
+      ariaHideApp={false}
+    >
+      <h2 className={s.modalExit}>
+        Вы действительно хотите удалить текущий бюджет?
+      </h2>
+      <div className={s.modalBtn}>
+        <button className={s.modalExitSucsess} onClick={() => handleSubmit()}>
+          Да
+        </button>
+        <button className={s.modalExitCancel} onClick={onClickClose}>
+          Нет
+        </button>
+      </div>
+    </Modal>
   );
 };
 

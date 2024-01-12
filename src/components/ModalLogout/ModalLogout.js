@@ -3,11 +3,9 @@ import React, { useState, useCallback } from 'react';
 import logoutOperation from '../../redux/operations/logoutOperation';
 import Modal from 'react-modal';
 import operation from '../../redux/operations/logoutOperation';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import s from './ModalLogout.module.css';
-
-
 
 const ModalLogout = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -15,17 +13,15 @@ const ModalLogout = ({ closeModal }) => {
 
   const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
   const handleCloseModal = () => {
-    closeModal(false)
-  }
+    closeModal(false);
+  };
 
   const logout = useCallback(() => {
     dispatch(logoutOperation());
   }, [dispatch]);
-
-
 
   return (
     <>
@@ -36,7 +32,7 @@ const ModalLogout = ({ closeModal }) => {
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <h2 className={s.modalExit}>Ты действительно хочеш выйти?</h2>
+        <h2 className={s.modalExit}>Вы действительно хотите выйти?</h2>
         <div className={s.modalBtn}>
           <button className={s.modalExitSucsess} onClick={logout}>
             Да
@@ -52,10 +48,6 @@ const ModalLogout = ({ closeModal }) => {
 
 const mapDispatchToProps = {
   logoutOperation: operation.logoutOperation,
-
-}
+};
 
 export default connect(null, mapDispatchToProps)(ModalLogout);
-
-
-

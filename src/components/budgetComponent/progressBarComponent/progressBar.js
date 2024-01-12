@@ -6,13 +6,13 @@ const ProgressBar = ({ props }) => {
 
   useEffect(() => {
     setProgress(() => {
-      const diff = (props.factAmmount * 100) / props.planAmmount + 100;
+      const diff = (props.factAmount * 100) / props.planAmount + 100;
 
-      return Math.min(diff, props.planAmmount);
+      return Math.min(diff, props.planAmount);
     });
 
     return () => {};
-  }, [props.planAmmount, props.factAmmount]);
+  }, [props.planAmount, props.factAmount]);
 
   return (
     <div
@@ -24,7 +24,7 @@ const ProgressBar = ({ props }) => {
     >
       <LinearProgress
         style={
-          props.planAmmount >= props.factAmmount
+          props.planAmount >= props.factAmount
             ? { height: '10px', background: '#24CCA7' }
             : { height: '10px', background: '#FF6596' }
         }

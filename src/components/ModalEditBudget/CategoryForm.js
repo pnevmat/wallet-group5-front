@@ -13,10 +13,15 @@ import InputLabel from '@mui/material/InputLabel';
 import s from './ModalEditBudget.module.css';
 
 export default function CategoryForm({
-  categorieCounter,
-  categorie,
+  categoryCounter,
+  category,
   categoryChange,
 }) {
+  const categories = useSelector(store => store.category);
+  const costCategories = categories.filter(
+    cat => cat.type === 'cost' && cat.name !== category,
+  );
+
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
 
@@ -33,24 +38,24 @@ export default function CategoryForm({
     handleGetCategories();
   }, [dispatch]);
 
-  const categories = useSelector(store => store.category);
-
   const handleChange = e => {
     categoryChange(e);
   };
 
-  const categorieName = 'category' + categorieCounter;
+  const categorieName = 'category' + categoryCounter;
 
   return (
     <Box className={s.categoryInput}>
       <FormControl fullWidth>
-        <InputLabel
-          className={s.categoryPlaceholder}
-          variant="standard"
-          htmlFor="uncontrolled-native"
-        >
-          Выберите категорию
-        </InputLabel>
+        {!category && (
+          <InputLabel
+            className={s.categoryPlaceholder}
+            variant="standard"
+            htmlFor="uncontrolled-native"
+          >
+            Выберите категорию
+          </InputLabel>
+        )}
 
         <NativeSelect
           fullWidth
@@ -58,20 +63,14 @@ export default function CategoryForm({
           errorMessages={['this field is required']}
           name={categorieName}
           onChange={handleChange}
-          defaultValue={categorie}
+          defaultValue={category}
           inputProps={{
             id: 'uncontrolled-native',
           }}
         >
-          <option></option>
-          {categories.length > 0 &&
-            categories.map(el => {
-              return (
-                <>
-                  <option>{el}</option>
-                </>
-              );
-            })}
+          <option>{category}</option>
+          {costCategories.length > 0 &&
+            costCategories.map(el => <option>{el.name}</option>)}
         </NativeSelect>
       </FormControl>
     </Box>

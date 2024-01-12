@@ -1,25 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import { createPortal } from 'react-dom';
 
 import CategoryForm from './CategoryForm';
 import moment from 'moment';
-
-// import transactionOperation from '../../redux/operations/transactionOperations';
 
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 import s from './ModalAddBudget.module.css';
-
+// Переписать этот компонент чтобы он отдавал на бекенд объект такого типа: {date: 2024-01-10, budget: [{id: 'dffkj', category: 'fdvfg', planAmount: 1500}]}
 const ModalAddBudget = props => {
-  const [category, setCategory] = useState({});
-  const [budgetPlanAmmount, setBudgetPlanAmmount] = useState({
-    budgetPlanAmmount0: 0.0,
-  });
   const dateFormat = moment().format('YYYY-MM-DD');
+  const [budgetFields, setBudgetFields] = useState({ field0: {} });
   const [currentDate, setCurrentDate] = useState(dateFormat);
   const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([0]);
+  console.log('Budget fields: ', budgetFields);
+  console.log('Current date: ', currentDate);
+  const formRef = useRef('form');
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyClick);
@@ -28,8 +25,6 @@ const ModalAddBudget = props => {
       document.removeEventListener('keydown', onKeyClick);
     };
   }, []);
-
-  const formRef = useRef('form');
 
   const handleCloseModal = e => {
     if (e.target === e.currentTarget) {
@@ -42,41 +37,54 @@ const ModalAddBudget = props => {
       props.closeModal();
     }
   };
+
   const onClickClose = () => {
     props.closeModal();
   };
 
-  const handleBudgetPlanAmmount = e => {
-    const { name, value } = e.currentTarget;
-    const newbudgetPlanAmmount = {
-      ...budgetPlanAmmount,
-      [name]: Number(value),
+  const handleBudgetPlanAmmount = (e, field) => {
+    const { value } = e.currentTarget;
+    const newBudgetFields = {
+      ...budgetFields,
+      [field]: { ...budgetFields[field], budgetPlanAmmount: Number(value) },
     };
-    setBudgetPlanAmmount(newbudgetPlanAmmount);
-    console.log(budgetPlanAmmount);
+    setBudgetFields(newBudgetFields);
+    console.log(budgetFields);
   };
 
-  const onSetCategory = e => {
-    const { name, value } = e.target;
-    const newCategories = { ...category, [name]: value };
-    setCategory(newCategories);
+  const onSetCategory = (e, field) => {
+    const { value } = e.target;
+    const newBudgetFields = {
+      ...budgetFields,
+      [field]: { ...budgetFields[field], category: value },
+    };
+    setBudgetFields(newBudgetFields);
+  };
+
+  const handleAddBudgetField = () => {
+    setBudgetFieldsCounter([
+      ...budgetFieldsCounter,
+      budgetFieldsCounter.length,
+    ]);
+
+    setBudgetFields({
+      ...budgetFields,
+      [`field${budgetFieldsCounter.length}`]: {},
+    });
   };
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    let budgetFields = [];
+    let newBudgetFields = [];
 
-    for (const categoryKey in category) {
-      for (const budgetPlanAmmountKey in budgetPlanAmmount) {
-        categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1) &&
-          budgetFields.push({
-            [categoryKey]: category[categoryKey],
-            [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey],
-          });
-      }
-    }
+    Object.keys(budgetFields).forEach(key =>
+      newBudgetFields.push({
+        category: budgetFields[key].category,
+        planAmount: budgetFields[key].budgetPlanAmmount,
+      }),
+    );
 
-    budgetFields.sort((nextItem, prevItem) => {
+    newBudgetFields.sort((nextItem, prevItem) => {
       const stringPrevItem = JSON.stringify(prevItem);
       const stringNextItem = JSON.stringify(nextItem);
 
@@ -94,21 +102,13 @@ const ModalAddBudget = props => {
     const newBudgetPlan = {
       type: 'addBudget',
       date: currentDate,
-      data: budgetFields,
+      budget: newBudgetFields,
     };
     console.log('Budget plan in submit func: ', newBudgetPlan);
+    props.onSubmit(newBudgetPlan);
     onClickClose();
-    // props.onSubmit(newBudgetPlan);
   };
 
-  const handleAddBudgetField = () => {
-    setBudgetFieldsCounter([
-      ...budgetFieldsCounter,
-      budgetFieldsCounter.length,
-    ]);
-  };
-
-  // Подключить тостифай вместо консоль лога
   return (
     <div className={s.overlay} onClick={handleCloseModal}>
       <div className={s.modal}>
@@ -116,7 +116,7 @@ const ModalAddBudget = props => {
         <ValidatorForm
           ref={formRef}
           onSubmit={handleSubmitForm}
-          onError={errors => console.log(errors)}
+          onError={errors => console.log(errors)} // Подключить тостифай вместо консоль лога
         >
           <h2 className={s.title}>Запланировать бюджет</h2>
           <div className={s.formContainer}>
@@ -133,7 +133,7 @@ const ModalAddBudget = props => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  onChange={setCurrentDate}
+                  onChange={e => setCurrentDate(e.currentTarget.value)}
                 />
               </div>
               {budgetFieldsCounter.map(item => {
@@ -149,7 +149,8 @@ const ModalAddBudget = props => {
                       <TextValidator
                         label="0.00"
                         name={'budgetPlanAmmount' + item}
-                        value={budgetPlanAmmount[budgetPlanAmmount + item]}
+                        // budgetPlanAmmount + item
+                        value={budgetFields['field' + item].budgetPlanAmmount}
                         autoComplete={'off'}
                         margin="dense"
                         // validators={['required', 'isNumber']}
@@ -158,7 +159,9 @@ const ModalAddBudget = props => {
                           'пожалуйста, введите число',
                         ]}
                         className={s.textField}
-                        onChange={handleBudgetPlanAmmount}
+                        onChange={e =>
+                          handleBudgetPlanAmmount(e, `field${item}`)
+                        }
                       />
                     </div>
                   </div>

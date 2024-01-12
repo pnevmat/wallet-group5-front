@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 // import { createPortal } from 'react-dom';
 
 import CategoryForm from './CategoryForm';
@@ -9,57 +10,38 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 import s from './ModalEditBudget.module.css';
-
+// Исправить апдейт полей бюджета, потому что при смене категории в боди приходит нул
 const ModalEditBudget = props => {
-  const budgetItemsArray = [
-    {
-      id: 1,
-      categorie: 'Основные расходы',
-      planAmmount: 1000,
-      factAmmount: 500,
-    },
-    { id: 2, categorie: 'Продукты', planAmmount: 500, factAmmount: 500 },
-    { id: 3, categorie: 'Машина', planAmmount: 2000, factAmmount: 700 },
-    { id: 4, categorie: 'Забота о себе', planAmmount: 3000, factAmmount: 1500 },
-    { id: 5, categorie: 'Забота о детях', planAmmount: 700, factAmmount: 800 },
-    {
-      id: 6,
-      categorie: 'Товары для дома',
-      planAmmount: 1500,
-      factAmmount: 1500,
-    },
-    { id: 7, categorie: 'Образование', planAmmount: 1900, factAmmount: 1500 },
-  ];
-
-  const categorieInitialState = () => {
-    let categories = {};
-    budgetItemsArray.map((item, i) => {
-      categories = { ...categories, ['category' + i]: item.categorie };
-    });
-    return categories;
-  };
-  const [category, setCategory] = useState(categorieInitialState);
-
-  const budgetPlanAmmountInitialState = () => {
-    let planAmmounts = {};
-    budgetItemsArray.map((item, i) => {
-      planAmmounts = {
-        ...planAmmounts,
-        ['budgetPlanAmmount' + i]: item.planAmmount,
-      };
-    });
-    return planAmmounts;
-  };
-  const [budgetPlanAmmount, setBudgetPlanAmmount] = useState(
-    budgetPlanAmmountInitialState,
-  );
-
+  const { budget } = useSelector(store => store.budget);
   //   Заменить dateFormat на дату полученную из store
-  const dateFormat = moment().format('YYYY-MM-DD');
-  const [budgetDate, setBudgetDate] = useState(dateFormat);
+  // const dateFormat = moment().format('YYYY-MM-DD');
+  const [budgetDate, setBudgetDate] = useState(budget.date);
+  const [budgetFields, setBudgetFields] = useState(getBudgetFieldsInitState());
   const [budgetFieldsCounter, setBudgetFieldsCounter] = useState(
-    budgetItemsArray.length,
+    getBudgetFieldsCounterInitState(),
   );
+
+  const formRef = useRef('form');
+
+  // const budgetItemsArray = [
+  //   {
+  //     id: 1,
+  //     category: 'Основные расходы',
+  //     planAmount: 1000,
+  //     factAmount: 500,
+  //   },
+  //   { id: 2, category: 'Продукты', planAmount: 500, factAmount: 500 },
+  //   { id: 3, category: 'Машина', planAmount: 2000, factAmount: 700 },
+  //   { id: 4, category: 'Забота о себе', planAmount: 3000, factAmount: 1500 },
+  //   { id: 5, category: 'Забота о детях', planAmount: 700, factAmount: 800 },
+  //   {
+  //     id: 6,
+  //     category: 'Товары для дома',
+  //     planAmount: 1500,
+  //     factAmount: 1500,
+  //   },
+  //   { id: 7, category: 'Образование', planAmount: 1900, factAmount: 1500 },
+  // ];
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyClick);
@@ -68,8 +50,6 @@ const ModalEditBudget = props => {
       document.removeEventListener('keydown', onKeyClick);
     };
   }, []);
-
-  const formRef = useRef('form');
 
   const handleCloseModal = e => {
     if (e.target === e.currentTarget) {
@@ -86,36 +66,68 @@ const ModalEditBudget = props => {
     props.closeModal();
   };
 
-  const handleBudgetPlanAmmount = e => {
-    const { name, value } = e.currentTarget;
-    const newbudgetPlanAmmount = {
-      ...budgetPlanAmmount,
-      [name]: Number(value),
-    };
-    setBudgetPlanAmmount(newbudgetPlanAmmount);
-  };
+  function getBudgetFieldsInitState() {
+    let fields = {};
+    budget.budget.forEach((item, i) => {
+      fields = {
+        ...fields,
+        ['field' + i]: {
+          category: item.category,
+          budgetPlanAmount: item.planAmount,
+        },
+      };
+    });
 
-  const onSetCategory = e => {
-    const { name, value } = e.target;
-    const newCategories = { ...category, [name]: value };
-    setCategory(newCategories);
-  };
+    return fields;
+  }
 
-  const handleSubmitForm = e => {
-    e.preventDefault();
-    let budgetFields = [];
+  function getBudgetFieldsCounterInitState() {
+    let fieldsCounterArray = [];
 
-    for (const categoryKey in category) {
-      for (const budgetPlanAmmountKey in budgetPlanAmmount) {
-        categoryKey.slice(-1) === budgetPlanAmmountKey.slice(-1) &&
-          budgetFields.push({
-            [categoryKey]: category[categoryKey],
-            [budgetPlanAmmountKey]: budgetPlanAmmount[budgetPlanAmmountKey],
-          });
-      }
+    for (let i = 0; i < budget.budget.length; i++) {
+      fieldsCounterArray.push(i);
     }
 
-    budgetFields.sort((nextItem, prevItem) => {
+    return fieldsCounterArray;
+  }
+
+  const handleBudgetPlanAmmount = (e, field) => {
+    const { value } = e.currentTarget;
+    const newBudgetFields = {
+      ...budgetFields,
+      [field]: { ...budgetFields[field], budgetPlanAmount: Number(value) },
+    };
+    setBudgetFields(newBudgetFields);
+  };
+
+  const onSetCategory = (e, field) => {
+    const { value } = e.target;
+    const newBudgetFields = {
+      ...budgetFields,
+      [field]: { ...budgetFields[field], category: value },
+    };
+    setBudgetFields(newBudgetFields);
+  };
+
+  const handleAddBudgetField = () => {
+    setBudgetFieldsCounter([
+      ...budgetFieldsCounter,
+      budgetFieldsCounter.length,
+    ]);
+  };
+  console.log('Budget fields: ', budgetFields);
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    let newBudgetFields = [];
+
+    Object.keys(budgetFields).forEach(key =>
+      newBudgetFields.push({
+        category: budgetFields[key].category,
+        planAmount: budgetFields[key].budgetPlanAmount,
+      }),
+    );
+
+    newBudgetFields.sort((nextItem, prevItem) => {
       const stringPrevItem = JSON.stringify(prevItem);
       const stringNextItem = JSON.stringify(nextItem);
 
@@ -130,22 +142,15 @@ const ModalEditBudget = props => {
       return 0;
     });
 
-    console.log('On submit data array: ', budgetFields);
+    console.log('On submit data array: ', newBudgetFields);
 
     const newBudgetPlan = {
-      date: budgetDate,
       type: 'editBudget',
-      data: budgetFields,
+      date: budgetDate,
+      budget: newBudgetFields,
     };
+    props.onSubmit({ id: budget.id, ...newBudgetPlan });
     onClickClose();
-    props.addTransaction(newBudgetPlan);
-  };
-
-  const handleEditBudgetField = () => {
-    setBudgetFieldsCounter([
-      ...budgetFieldsCounter,
-      budgetFieldsCounter.length,
-    ]);
   };
 
   // Подключить тостифай вместо консоль лога
@@ -161,21 +166,21 @@ const ModalEditBudget = props => {
           <h2 className={s.title}>Редактировать бюджет</h2>
           <div className={s.formContainer}>
             <div className={s.formFieldWrapper}>
-              {budgetItemsArray.map((item, i) => {
+              {budgetFieldsCounter.map((item, i) => {
                 return (
-                  <div key={item.id} className={s.formFieldContainer}>
+                  <div key={i} className={s.formFieldContainer}>
                     <div className={s.categoryContainer}>
                       <CategoryForm
-                        categorie={item.categorie}
-                        categorieCounter={i}
-                        categoryChange={onSetCategory}
+                        categoryCounter={item}
+                        category={budget.budget[i]?.category}
+                        categoryChange={e => onSetCategory(e, `field${item}`)}
                       />
                     </div>
                     <div className={s.formTextContainer}>
                       <TextValidator
-                        label={item.planAmmount}
+                        label={item.planAmount ? item.planAmount : '0'}
                         name={'budgetPlanAmmount' + i}
-                        value={budgetPlanAmmount[budgetPlanAmmount + i]}
+                        value={budgetFields['field' + i]?.budgetPlanAmount}
                         autoComplete={'off'}
                         margin="dense"
                         // validators={['required', 'isNumber']}
@@ -184,7 +189,9 @@ const ModalEditBudget = props => {
                           'пожалуйста, введите число',
                         ]}
                         className={s.textField}
-                        onChange={handleBudgetPlanAmmount}
+                        onChange={e =>
+                          handleBudgetPlanAmmount(e, `field${item}`)
+                        }
                       />
                     </div>
                   </div>
@@ -196,7 +203,7 @@ const ModalEditBudget = props => {
             <button
               className={s.addBtn}
               type="button"
-              onClick={handleEditBudgetField}
+              onClick={handleAddBudgetField}
             >
               <AddIcon />
             </button>

@@ -116,7 +116,22 @@ const api = {
     return response.data;
   },
   getBudgetRequest: async date => {
-    const response = await axios.get('/api/budgets', date);
+    const response = await axios.post('/api/budgets', date);
+
+    return response.data;
+  },
+  addBudgetRequest: async budget => {
+    const response = await axios.post('/api/budgets/add', budget);
+
+    return response.data;
+  },
+  editBudgetRequest: async budget => {
+    const response = await axios.put(`/api/budgets/${budget.id}`, budget);
+
+    return response.data;
+  },
+  deleteBudgetRequest: async budgetId => {
+    const response = await axios.delete(`/api/budgets/${budgetId}`);
 
     return response.data;
   },
@@ -137,4 +152,7 @@ export const {
   getStatisticsRequest,
   limitedStatisticsRequest,
   getBudgetRequest,
+  addBudgetRequest,
+  editBudgetRequest,
+  deleteBudgetRequest,
 } = api;

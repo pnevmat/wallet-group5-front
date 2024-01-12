@@ -5,7 +5,7 @@ import ModalDeleteBudget from '../ModalDeleteBudget/ModalDeleteBudget';
 
 import styles from './DeleteBudgetButton.module.css';
 
-const DeleteBudgetButton = () => {
+const DeleteBudgetButton = ({ onSubmit }) => {
   const [isModalAddBudgetOpen, setIsModalAddBudgetOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -21,7 +21,13 @@ const DeleteBudgetButton = () => {
       <button className={styles.button} type="button" onClick={handleOpenModal}>
         Удалить
       </button>
-      {isModalAddBudgetOpen && <ModalDeleteBudget closeModal={closeModal} />}
+      {isModalAddBudgetOpen && (
+        <ModalDeleteBudget
+          onSubmit={onSubmit}
+          closeModal={closeModal}
+          isOpen={isModalAddBudgetOpen}
+        />
+      )}
     </>
   );
 };

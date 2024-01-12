@@ -13,8 +13,13 @@ import InputLabel from '@mui/material/InputLabel';
 import s from './ModalAddBudget.module.css';
 
 export default function CategoryForm({ categorieCounter, categoryChange }) {
-  const dispatch = useDispatch();
+  const categories = useSelector(store => store.category);
+  const costCategories = categories.filter(
+    category => category.type === 'cost',
+  );
   const token = useSelector(selectors.getUserToken);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleGetCategories = async () => {
@@ -27,12 +32,10 @@ export default function CategoryForm({ categorieCounter, categoryChange }) {
       }
     };
     handleGetCategories();
-  }, [dispatch]);
-
-  const categories = useSelector(store => store.category);
+  }, [dispatch, token]);
 
   const handleChange = e => {
-    categoryChange(e);
+    categoryChange(e, `field${categorieCounter}`);
   };
 
   return (
@@ -58,14 +61,8 @@ export default function CategoryForm({ categorieCounter, categoryChange }) {
           }}
         >
           <option></option>
-          {categories.length > 0 &&
-            categories.map(el => {
-              return (
-                <>
-                  <option>{el}</option>
-                </>
-              );
-            })}
+          {costCategories.length > 0 &&
+            costCategories.map(el => <option>{el.name}</option>)}
         </NativeSelect>
       </FormControl>
     </Box>

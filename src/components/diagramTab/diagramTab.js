@@ -14,7 +14,6 @@ import ChartComponent from './Chart/Chart';
 import Table from './Table/Table';
 
 import authSelectors from '../../redux/selectors/authorisationSelectors';
-import statisticsSelector from '../../redux/selectors/statisticsSelector';
 
 import styles from './DiagramTab.module.css';
 
@@ -22,6 +21,7 @@ const DiagramTab = () => {
   const dispatch = useDispatch();
 
   const userToken = useSelector(authSelectors.getUserToken);
+  const statistics = useSelector(store => store.statisticsTransactions);
 
   useEffect(() => {
     const handleGetStatistics = async () => {
@@ -42,10 +42,6 @@ const DiagramTab = () => {
       dispatch(limitedStatistics(data));
     }
   };
-
-  const statistics = useSelector(
-    statisticsSelector.statisticsTransactionsSelector,
-  );
 
   return (
     <div className={styles.container}>
