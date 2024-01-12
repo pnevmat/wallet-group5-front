@@ -1,9 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchTransactionSuccess,
-  addTransactionSuccess,
-  deleteTransactionSuccess,
-} from '../../actions/transaction/transactionActions';
 
 const transactionReducer = createSlice({
   name: 'transactions',

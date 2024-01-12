@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import statisticsActions from '../actions/statisticsActions';
-import limitedStatisticsActions from '../actions/limitedStatisticsActions';
-
 const statisticsTransactionReducerInitialState = [];
 
 const statisticsTransactionReducer = createSlice({

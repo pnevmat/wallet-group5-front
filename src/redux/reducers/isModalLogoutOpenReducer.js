@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import isModalLogoutOpenActions from '../actions/isModalLogoutOpenAction';
 
 const isModalLogoutOpen = createSlice({
   name: 'isModalLogoutOpen',
