@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import CategoryForm from './CategoryForm';
-import moment from 'moment';
-
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import s from './ModalEditBudget.module.css';
 

@@ -47,31 +47,6 @@ const Navigation = () => {
             </NavLink>
           </li>
         ))}
-        {/* <li className={s.navItem}>
-          <NavLink
-            exact="true"
-            className={s.links}
-            activeClassName={s.activeLinks}
-            to={'/statistics'}
-          >
-            <div className={s.iconWrapper}>
-              <div className={s.iconContainer}>
-                <TimelineIcon />
-              </div>
-            </div>
-            <span className={s.navTitle}>Статистика</span>
-          </NavLink>
-        </li> */}
-        {/* <li className={s.navLastItem}>
-          <NavLink
-            exact="true"
-            className={s.links}
-            activeClassName={s.activeLinks}
-            to={'/currency'}
-          >
-            <CurrencyIcon />
-          </NavLink>
-        </li> */}
       </ul>
       <ul className={s.navBottomList}>
         {bottomList.map((key, i) => (

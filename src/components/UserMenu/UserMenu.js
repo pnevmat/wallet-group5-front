@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import authSelector from '../../redux/selectors/authorisationSelectors';
 import s from './UserMenu.module.css';
 import defaultAvatar from './default-avatar.png';
 import ModalLogout from '../ModalLogout/ModalLogout';
 
-export default function UserMenu(props) {
+export default function UserMenu() {
   const name = useSelector(authSelector.getUserName);
   const avatar = useSelector(authSelector.getUserAvatar);
 
@@ -26,8 +26,13 @@ export default function UserMenu(props) {
       </div>
       <div className={s.containerLogout}>
         <span className={s.name}>
-          {/* <img src={avatar ? avatar : defaultAvatar} alt="" width="32" className={s.avatar} /> */}
           {name}
+          <img
+            src={avatar ? avatar : defaultAvatar}
+            alt=""
+            width="32"
+            className={s.avatar}
+          />
         </span>
         <span className={s.verticalLine}></span>
 

@@ -9,7 +9,7 @@ import s from './ModalLogout.module.css';
 
 const ModalLogout = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [_, setIsOpen] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);

@@ -2,9 +2,7 @@ import React from 'react';
 
 import s from './Balance.module.css';
 
-
-
-const Balance = (props) => {
+const Balance = props => {
   return (
     <div className={s.conteiner}>
       <p className={s.title}>ВАШ БАЛАНС</p>

@@ -4,10 +4,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModalEditTransaction from '../ModalEditTransaction/ModalEditTransaction';
 
-import { getTransactionsRequest } from '../../api/apiRequests';
-import { getTransactions } from '../../redux/reducers/transactionReducer/transactionReducer';
-import { deleteTransactionRequest } from '../../api/apiRequests';
-import { deleteTransaction } from '../../redux/reducers/transactionReducer/transactionReducer';
+import {
+  getTransactionsRequest,
+  deleteTransactionRequest,
+} from '../../api/apiRequests';
+import {
+  getTransactions,
+  deleteTransaction,
+} from '../../redux/reducers/transactionReducer/transactionReducer';
 
 import selectors from '../../redux/selectors/authorisationSelectors';
 import { getTransaction } from '../../redux/selectors/transactionSelectors/transactionSelectors';
@@ -64,7 +68,6 @@ export default function TransactionTable() {
   };
 
   const modifiedRows = rows.map(row => {
-    let modifiedDate = newDate(row.date);
     return {
       amount: row.amount,
       balance: row.balance,
