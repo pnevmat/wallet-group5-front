@@ -7,7 +7,7 @@ const authorisationReducer = createSlice({
   initialState: authorisationInitialState,
   reducers: {
     login: (state, { payload }) => payload.token,
-    logout: () => null,
+    logout: state => (state = {}),
   },
 });
 

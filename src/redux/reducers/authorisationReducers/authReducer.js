@@ -9,10 +9,11 @@ const authReducer = createSlice({
     isRegistered: () => true,
     isLogin: () => true,
     userData: () => true,
-    logout: () => false,
+    sessionLogout: () => false,
   },
 });
 
-export const { isRegistered, isLogin, userData, logout } = authReducer.actions;
+export const { isRegistered, isLogin, userData, sessionLogout } =
+  authReducer.actions;
 
 export default authReducer.reducer;

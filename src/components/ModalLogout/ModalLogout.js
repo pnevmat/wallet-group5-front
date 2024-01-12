@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import React, { useState, useCallback } from 'react';
-import logoutOperation from '../../redux/operations/logoutOperation';
+import { logout } from '../../redux/reducers/authorisationReducers/authorisationReducer';
+import { sessionLogout } from '../../redux/reducers/authorisationReducers/authReducer';
 import Modal from 'react-modal';
-import operation from '../../redux/operations/logoutOperation';
-import { connect } from 'react-redux';
 
 import s from './ModalLogout.module.css';
 
@@ -19,8 +18,9 @@ const ModalLogout = ({ closeModal }) => {
     closeModal(false);
   };
 
-  const logout = useCallback(() => {
-    dispatch(logoutOperation());
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+    dispatch(sessionLogout());
   }, [dispatch]);
 
   return (
@@ -34,7 +34,7 @@ const ModalLogout = ({ closeModal }) => {
       >
         <h2 className={s.modalExit}>Вы действительно хотите выйти?</h2>
         <div className={s.modalBtn}>
-          <button className={s.modalExitSucsess} onClick={logout}>
+          <button className={s.modalExitSucsess} onClick={handleLogout}>
             Да
           </button>
           <button className={s.modalExitCancel} onClick={handleCloseModal}>
@@ -46,8 +46,4 @@ const ModalLogout = ({ closeModal }) => {
   );
 };
 
-const mapDispatchToProps = {
-  logoutOperation: operation.logoutOperation,
-};
-
-export default connect(null, mapDispatchToProps)(ModalLogout);
+export default ModalLogout;
