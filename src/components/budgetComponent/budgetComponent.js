@@ -21,7 +21,7 @@ import DeleteBudgetButton from '../DeleteBudgetButton/DeleteBudgetButton';
 import months from '../../utils/months';
 
 import styles from './BudgetComponent.module.css';
-// Пофиксить добавление бюджета
+
 const BudgetComponent = () => {
   const todayDate = Date.now();
   const [month, setMonth] = useState(getDefaultMonth());

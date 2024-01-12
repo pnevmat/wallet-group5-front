@@ -68,7 +68,6 @@ export default function CategoryForm({
             <NativeSelect
               fullWidth
               validators={['required']}
-              // errorMessages={['this field is required']}
               name="category"
               onChange={handleSelectChange}
               defaultValue="Выберите категорию"
@@ -97,7 +96,6 @@ export default function CategoryForm({
           <NativeSelect
             fullWidth
             validators={['required']}
-            // errorMessages={['this field is required']}
             name="category"
             onChange={handleSelectChange}
             defaultValue="Выберите категорию"

@@ -49,7 +49,6 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
   }, [closeModal]);
 
   function setTransactionInfoInitState() {
-    // YYYY-MM-DD
     console.log('Transaction date: ', transaction.date);
     return {
       currentDate: moment(transaction.date).format('YYYY-MM-DD'),

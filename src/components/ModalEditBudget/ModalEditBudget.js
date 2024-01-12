@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-// import { createPortal } from 'react-dom';
 
 import CategoryForm from './CategoryForm';
 import moment from 'moment';
@@ -10,11 +9,10 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 import s from './ModalEditBudget.module.css';
-// Исправить апдейт полей бюджета, потому что при смене категории в боди приходит нул
+
 const ModalEditBudget = props => {
   const { budget } = useSelector(store => store.budget);
-  //   Заменить dateFormat на дату полученную из store
-  // const dateFormat = moment().format('YYYY-MM-DD');
+
   const [budgetDate, setBudgetDate] = useState(budget.date);
   const [budgetFields, setBudgetFields] = useState(getBudgetFieldsInitState());
   const [budgetFieldsCounter, setBudgetFieldsCounter] = useState(
@@ -22,26 +20,6 @@ const ModalEditBudget = props => {
   );
 
   const formRef = useRef('form');
-
-  // const budgetItemsArray = [
-  //   {
-  //     id: 1,
-  //     category: 'Основные расходы',
-  //     planAmount: 1000,
-  //     factAmount: 500,
-  //   },
-  //   { id: 2, category: 'Продукты', planAmount: 500, factAmount: 500 },
-  //   { id: 3, category: 'Машина', planAmount: 2000, factAmount: 700 },
-  //   { id: 4, category: 'Забота о себе', planAmount: 3000, factAmount: 1500 },
-  //   { id: 5, category: 'Забота о детях', planAmount: 700, factAmount: 800 },
-  //   {
-  //     id: 6,
-  //     category: 'Товары для дома',
-  //     planAmount: 1500,
-  //     factAmount: 1500,
-  //   },
-  //   { id: 7, category: 'Образование', planAmount: 1900, factAmount: 1500 },
-  // ];
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyClick);
@@ -183,7 +161,6 @@ const ModalEditBudget = props => {
                         value={budgetFields['field' + i]?.budgetPlanAmount}
                         autoComplete={'off'}
                         margin="dense"
-                        // validators={['required', 'isNumber']}
                         errorMessages={[
                           'это поле обязательно для заполнения',
                           'пожалуйста, введите число',

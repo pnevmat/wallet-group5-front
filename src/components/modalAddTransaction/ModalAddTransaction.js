@@ -128,7 +128,6 @@ const ModalAddTransaction = ({ closeModal }) => {
               type="date"
               name="currentDate"
               value={transactionInfo.currentDate}
-              // defaultValue={`${transactionInfo.currentDate}`}
               className={s.textField}
               InputLabelProps={{
                 shrink: true,

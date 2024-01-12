@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
 import s from './ModalAddBudget.module.css';
-// Переписать этот компонент чтобы он отдавал на бекенд объект такого типа: {date: 2024-01-10, budget: [{id: 'dffkj', category: 'fdvfg', planAmount: 1500}]}
+
 const ModalAddBudget = props => {
   const dateFormat = moment().format('YYYY-MM-DD');
   const [budgetFields, setBudgetFields] = useState({ field0: {} });
@@ -149,11 +149,9 @@ const ModalAddBudget = props => {
                       <TextValidator
                         label="0.00"
                         name={'budgetPlanAmmount' + item}
-                        // budgetPlanAmmount + item
                         value={budgetFields['field' + item].budgetPlanAmmount}
                         autoComplete={'off'}
                         margin="dense"
-                        // validators={['required', 'isNumber']}
                         errorMessages={[
                           'это поле обязательно для заполнения',
                           'пожалуйста, введите число',

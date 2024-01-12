@@ -52,7 +52,6 @@ export default function CategoryForm({ categoryChange, status }) {
         <NativeSelect
           fullWidth
           validators={['required']}
-          // errorMessages={['this field is required']}
           name="category"
           onChange={handleChange}
           defaultValue=""

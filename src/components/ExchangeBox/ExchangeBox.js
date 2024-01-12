@@ -16,15 +16,6 @@ const ExchangeBox = () => {
   const exchangeRates = useSelector(store => store.exchange.rates);
 
   useEffect(() => {
-    // [
-    // 	{
-    // 		currencyCodeA: 840,
-    // 		currencyCodeB: 980,
-    // 		date: 1704282006,
-    // 		rateBuy: 37.95,
-    // 		rateSell: 38.4497,
-    // 	},
-    // ]
     const handleGetCurrency = async () => {
       const data = await fetchCurrency();
 
@@ -57,14 +48,6 @@ const ExchangeBox = () => {
     ) {
       handleGetCurrency();
     }
-
-    // if (this.props.props !== undefined) {
-    //   const { url } = this.props.props.props.match;
-    //   if (url === '/currency') {
-    //     const exchangeBox = document.getElementById('exchange');
-    //     exchangeBox.classList.add(s.visible);
-    //   }
-    // }
   }, [dispatch, exchangeRates]);
 
   useEffect(() => {
