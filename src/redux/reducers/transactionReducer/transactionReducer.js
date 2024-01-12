@@ -18,7 +18,6 @@ const transactionReducer = createSlice({
       return newState;
     },
     editTransaction: (state, { payload }) => {
-      console.log('Payload: ', payload);
       let newState = state.map(transaction => {
         if (transaction.id === payload.id) {
           return payload;

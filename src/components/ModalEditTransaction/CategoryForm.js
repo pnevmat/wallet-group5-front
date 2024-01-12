@@ -32,7 +32,6 @@ export default function CategoryForm({
   }, [dispatch]);
 
   const categories = useSelector(store => store.category);
-  console.log('Categories in Category form: ', categories);
 
   const handleChange = e => {
     categoryChange(e.target.value);

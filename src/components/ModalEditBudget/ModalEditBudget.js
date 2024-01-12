@@ -93,7 +93,7 @@ const ModalEditBudget = props => {
       budgetFieldsCounter.length,
     ]);
   };
-  console.log('Budget fields: ', budgetFields);
+
   const handleSubmitForm = e => {
     e.preventDefault();
     let newBudgetFields = [];
@@ -119,8 +119,6 @@ const ModalEditBudget = props => {
 
       return 0;
     });
-
-    console.log('On submit data array: ', newBudgetFields);
 
     const newBudgetPlan = {
       type: 'editBudget',

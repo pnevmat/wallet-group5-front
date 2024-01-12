@@ -22,7 +22,6 @@ const RegistrationPage = props => {
   const onRegistrationSubmit = async userData => {
     const { user } = await registrationRequest(userData);
     if (user) {
-      console.log('Registration response: ', user);
       dispatch(registration(user));
       dispatch(getRegUserData(user));
       dispatch(isRegistered());

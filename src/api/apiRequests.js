@@ -26,7 +26,7 @@ const api = {
     if (response) {
       token.set(response.data.token);
     }
-    console.log('Response in login request: ', response);
+
     return response.data;
   },
   registrationRequest: async regData => {

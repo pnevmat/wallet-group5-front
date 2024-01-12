@@ -30,7 +30,7 @@ export default function CategorieActionModal({
 
   const user = useSelector(store => store.userData.authorisationData);
   const categories = useSelector(store => store.category);
-  console.log('Categories in Category form: ', categories);
+
   const dispatch = useDispatch();
 
   const formRef = useRef(null);

@@ -17,7 +17,7 @@ import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const HomePage = props => {
   const [loginData, setLoginData] = useState(false);
-  console.log('Login data in home page state: ', loginData);
+
   const dispatch = useDispatch();
 
   const onLoginSubmit = async userData => {

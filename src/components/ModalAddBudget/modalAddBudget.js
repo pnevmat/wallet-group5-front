@@ -14,8 +14,7 @@ const ModalAddBudget = props => {
   const [budgetFields, setBudgetFields] = useState({ field0: {} });
   const [currentDate, setCurrentDate] = useState(dateFormat);
   const [budgetFieldsCounter, setBudgetFieldsCounter] = useState([0]);
-  console.log('Budget fields: ', budgetFields);
-  console.log('Current date: ', currentDate);
+
   const formRef = useRef('form');
 
   useEffect(() => {
@@ -49,7 +48,6 @@ const ModalAddBudget = props => {
       [field]: { ...budgetFields[field], budgetPlanAmmount: Number(value) },
     };
     setBudgetFields(newBudgetFields);
-    console.log(budgetFields);
   };
 
   const onSetCategory = (e, field) => {
@@ -104,7 +102,6 @@ const ModalAddBudget = props => {
       date: currentDate,
       budget: newBudgetFields,
     };
-    console.log('Budget plan in submit func: ', newBudgetPlan);
     props.onSubmit(newBudgetPlan);
     onClickClose();
   };

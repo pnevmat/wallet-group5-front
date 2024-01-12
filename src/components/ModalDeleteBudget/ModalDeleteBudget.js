@@ -22,7 +22,7 @@ const ModalDeleteBudget = ({ onSubmit, closeModal, isOpen }) => {
       type: 'deleteBudget',
       id: budget.id,
     };
-    console.log('Budget: ', budget);
+
     if (budget.id) {
       onSubmit(budgetToDelete);
       onClickClose();

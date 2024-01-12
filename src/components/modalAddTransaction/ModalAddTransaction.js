@@ -76,7 +76,6 @@ const ModalAddTransaction = ({ closeModal }) => {
       comments: comments,
     };
     const addData = await addTransactionRequest(newTransaction);
-    console.log('Add transaction response data: ', addData);
     if (addData) dispatch(addTransaction(addData.transaction));
 
     const { data } = await getTransactionsRequest(token);

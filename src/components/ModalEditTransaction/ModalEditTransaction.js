@@ -49,7 +49,6 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
   }, [closeModal]);
 
   function setTransactionInfoInitState() {
-    console.log('Transaction date: ', transaction.date);
     return {
       currentDate: moment(transaction.date).format('YYYY-MM-DD'),
       transactionValue: transaction.amount,
@@ -78,12 +77,11 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
       category: category,
       comments: comments,
     };
-    console.log('Edited transaction in submit: ', editedTransaction);
+
     const editData = await editTransactionRequest(
       transaction.id,
       editedTransaction,
     );
-    console.log('Edit transaction response data: ', editData);
     if (editData) dispatch(editTransaction(editData.transaction));
 
     const { data } = await getTransactionsRequest(token);
@@ -91,7 +89,7 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
 
     closeModal();
   };
-  console.log('Transaction info current date: ', transactionInfo.currentDate);
+
   // Подключить тостифай вместо консоль лога
   return (
     <div className={s.overlay} onClick={e => handleCloseModal(e)}>
