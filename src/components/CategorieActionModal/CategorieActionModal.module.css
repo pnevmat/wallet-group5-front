@@ -67,6 +67,7 @@
 .categoryContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 45px;
 }
 
 .categoryInput {
@@ -76,13 +77,29 @@
 }
 
 .editContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
 }
 
 .categoryPlaceholder {
+  position: relative;
   width: 440px;
+}
+
+.validationMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: red;
+}
+
+.selectValidMessage {
+  position: absolute;
+  top: 33%;
+  left: 0;
+  color: red;
 }
 
 .categoryPlaceholder > div > input {

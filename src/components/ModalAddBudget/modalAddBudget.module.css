@@ -75,10 +75,19 @@
 }
 
 .categoryContainer {
+  position: relative;
   display: inline-block;
   width: 100%;
   max-width: 440px;
+  margin-bottom: 17px;
   text-align: center;
+}
+
+.selectValidMessage {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  color: red;
 }
 
 .formTextContainer {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { validate } from 'indicative/validator';
 
 import BASE_URL from '../utils/baseUrl';
-import validation from '../utils/validation/loginFormValidate';
+import { rules, messages } from '../utils/validation/loginFormValidate';
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -14,7 +14,7 @@ const token = {
 
 const api = {
   loginRequest: async userData => {
-    validate(userData, validation.rules, validation.messages)
+    validate(userData, rules, messages)
       .then(result => result)
       .catch(error => {
         const err = error[0];

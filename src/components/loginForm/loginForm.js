@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import FormAuth from '../FormAuth/FormAuth';
+import { validate, messages } from '../../utils/validation/loginFormValidate';
 
 import s from './LoginForm.module.css';
 
 const LoginForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validMassage, setValidMessage] = useState({ email: {}, password: {} });
   const [isRegBtnActive, setIsRegBtnActive] = useState(false);
 
   const handleChange = e => {
@@ -15,17 +17,59 @@ const LoginForm = props => {
     switch (name) {
       case 'email':
         setEmail(value);
+        setValidMessage({ ...validMassage, email: {} });
         break;
       case 'password':
         setPassword(value);
+        setValidMessage({ ...validMassage, password: {} });
         break;
       default:
         console.log('error');
     }
   };
 
+  const handleBlur = e => {
+    const { name, value } = e.target;
+    if (
+      (name === 'email' && email === '') ||
+      (name === 'password' && password === '')
+    ) {
+      return {
+        ...validMassage,
+        [name]: { name, message: messages.required(name) },
+      };
+    }
+
+    if (
+      (name === 'email' && email !== '') ||
+      (name === 'password' && password !== '')
+    ) {
+      const validation = validate[name];
+      const result = validation(value);
+
+      if (!result) {
+        return {
+          ...validMassage,
+          [name]: {
+            name,
+            message:
+              name === 'email'
+                ? messages['email.email']
+                : messages['password.min'],
+          },
+        };
+      }
+    }
+
+    return validMassage;
+  };
+
   const handleSubmit = () => {
     const { onLoginSubmit } = props;
+
+    if (validMassage.email.name || validMassage.password.name) {
+      return;
+    }
 
     onLoginSubmit({ email, password });
   };
@@ -40,7 +84,7 @@ const LoginForm = props => {
         }}
       >
         <FormAuth />
-        <label htmlFor="" name="register">
+        <label htmlFor="" name="register" className={s.label}>
           <input
             className={s.input__email}
             type="text"
@@ -49,9 +93,15 @@ const LoginForm = props => {
             onChange={e => {
               handleChange(e);
             }}
+            onBlur={e => setValidMessage(handleBlur(e))}
           />
+          {validMassage?.email.name === 'email' && (
+            <span className={s.validationMessage}>
+              {validMassage.email.message}
+            </span>
+          )}
         </label>
-        <label>
+        <label className={s.label}>
           <input
             className={s.input__password}
             type="text"
@@ -60,7 +110,13 @@ const LoginForm = props => {
             onChange={e => {
               handleChange(e);
             }}
+            onBlur={e => setValidMessage(handleBlur(e))}
           />
+          {validMassage?.password.name === 'password' && (
+            <span className={s.validationMessage}>
+              {validMassage.password.message}
+            </span>
+          )}
         </label>
         <button className={s.button__submit} type="submit">
           Вход

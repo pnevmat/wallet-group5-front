@@ -10,7 +10,12 @@ import selectors from '../../redux/selectors/authorisationSelectors';
 
 import s from './ModalAddTransaction.module.css';
 
-export default function CategoryForm({ categoryChange, status }) {
+export default function CategoryForm({
+  categoryChange,
+  blur,
+  validCategory,
+  status,
+}) {
   const dispatch = useDispatch();
   const token = useSelector(selectors.getUserToken);
 
@@ -31,6 +36,7 @@ export default function CategoryForm({ categoryChange, status }) {
 
   const handleChange = e => {
     categoryChange(e.target.value);
+    blur(e);
   };
 
   const filteredCategories = categories.filter(categorie =>
@@ -53,6 +59,7 @@ export default function CategoryForm({ categoryChange, status }) {
           validators={['required']}
           name="category"
           onChange={handleChange}
+          onBlur={e => blur(e)}
           defaultValue=""
           inputProps={{
             id: 'uncontrolled-native',
@@ -64,6 +71,9 @@ export default function CategoryForm({ categoryChange, status }) {
               return <option key={el.id}>{el.name}</option>;
             })}
         </NativeSelect>
+        {validCategory.category !== '' && (
+          <span className={s.selectValidMessage}>{validCategory.category}</span>
+        )}
       </FormControl>
     </Box>
   );

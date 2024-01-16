@@ -15,7 +15,9 @@ import s from './ModalEditBudget.module.css';
 export default function CategoryForm({
   categoryCounter,
   category,
+  validCategory,
   categoryChange,
+  blur,
 }) {
   const categories = useSelector(store => store.category);
   const costCategories = categories.filter(
@@ -59,10 +61,9 @@ export default function CategoryForm({
 
         <NativeSelect
           fullWidth
-          validators={['required']}
-          errorMessages={['this field is required']}
           name={categorieName}
           onChange={handleChange}
+          onBlur={e => blur(e)}
           defaultValue={category}
           inputProps={{
             id: 'uncontrolled-native',
@@ -72,6 +73,11 @@ export default function CategoryForm({
           {costCategories.length > 0 &&
             costCategories.map(el => <option>{el.name}</option>)}
         </NativeSelect>
+        {validCategory['category' + categoryCounter] !== '' && (
+          <span className={s.selectValidMessage}>
+            {validCategory['category' + categoryCounter]}
+          </span>
+        )}
       </FormControl>
     </Box>
   );

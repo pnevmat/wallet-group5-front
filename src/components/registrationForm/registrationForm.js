@@ -47,8 +47,8 @@ const RegistrationForm = props => {
       .required('Обязательное поле'),
     password: yup
       .string()
-      .min(6)
-      .max(12)
+      .min(6, 'Пароль должен быть не меньше 6 символов')
+      .max(12, 'Пароль должен быть не более 12 символов')
       .typeError('должно быть строкой')
       .required('Обязательное поле'),
     repeatPassword: yup

@@ -108,9 +108,18 @@
 }
 
 .textFieldcomments {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 45px;
+}
+
+.validationMessage {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  color: red;
 }
 
 .submitButton {
@@ -122,7 +131,6 @@
   border-style: none;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
 }
 
 .closeButton {

@@ -13,8 +13,10 @@ import s from './CategorieActionModal.module.css';
 export default function CategoryForm({
   categories,
   category,
+  validCategory,
   iputChange,
   selectChange,
+  blur,
   actionType,
   status,
 }) {
@@ -40,6 +42,7 @@ export default function CategoryForm({
 
   const handleInputChange = e => {
     iputChange(e.target.value);
+    blur(e);
   };
 
   const handleSelectChange = e => {
@@ -53,23 +56,30 @@ export default function CategoryForm({
     <Box className={s.categoryInput}>
       <FormControl fullWidth>
         {actionType === 'add' ? (
-          <TextField
-            className={s.categoryPlaceholder}
-            autoComplete={'off'}
-            label="Новая категория"
-            margin="dense"
-            type="textarea"
-            name="category"
-            value={category}
-            onChange={e => handleInputChange(e)}
-          />
+          <>
+            <TextField
+              className={s.categoryPlaceholder}
+              autoComplete={'off'}
+              label="Новая категория"
+              margin="dense"
+              type="textarea"
+              name="category"
+              value={category}
+              onChange={e => handleInputChange(e)}
+              onBlur={e => blur(e)}
+            />
+            {validCategory.input !== '' && (
+              <span className={s.validationMessage}>{validCategory.input}</span>
+            )}
+          </>
         ) : actionType === 'edit' ? (
           <div className={s.editContainer}>
             <NativeSelect
               fullWidth
               validators={['required']}
-              name="category"
+              name="select"
               onChange={handleSelectChange}
+              onBlur={e => blur(e)}
               defaultValue="Выберите категорию"
               inputProps={{
                 id: 'uncontrolled-native',
@@ -81,6 +91,11 @@ export default function CategoryForm({
                   return <option key={el.id}>{el.name}</option>;
                 })}
             </NativeSelect>
+            {validCategory.select !== '' && (
+              <span className={s.selectValidMessage}>
+                {validCategory.select}
+              </span>
+            )}
             <TextField
               className={s.categoryPlaceholder}
               autoComplete={'off'}
@@ -90,25 +105,37 @@ export default function CategoryForm({
               name="category"
               value={category}
               onChange={e => handleInputChange(e)}
+              onBlur={e => blur(e)}
             />
+            {validCategory.input !== '' && (
+              <span className={s.validationMessage}>{validCategory.input}</span>
+            )}
           </div>
         ) : (
-          <NativeSelect
-            fullWidth
-            validators={['required']}
-            name="category"
-            onChange={handleSelectChange}
-            defaultValue="Выберите категорию"
-            inputProps={{
-              id: 'uncontrolled-native',
-            }}
-          >
-            <option>Выберите категорию</option>
-            {filteredCategories.length > 0 &&
-              filteredCategories.map(el => {
-                return <option key={el.id}>{el.name}</option>;
-              })}
-          </NativeSelect>
+          <>
+            <NativeSelect
+              fullWidth
+              validators={['required']}
+              name="select"
+              onChange={handleSelectChange}
+              onBlur={e => blur(e)}
+              defaultValue="Выберите категорию"
+              inputProps={{
+                id: 'uncontrolled-native',
+              }}
+            >
+              <option>Выберите категорию</option>
+              {filteredCategories.length > 0 &&
+                filteredCategories.map(el => {
+                  return <option key={el.id}>{el.name}</option>;
+                })}
+            </NativeSelect>
+            {validCategory.select !== '' && (
+              <span className={s.selectValidMessage} style={{ top: '105%' }}>
+                {validCategory.select}
+              </span>
+            )}
+          </>
         )}
       </FormControl>
     </Box>

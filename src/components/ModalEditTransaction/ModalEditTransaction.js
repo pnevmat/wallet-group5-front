@@ -17,6 +17,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import TextField from '@mui/material/TextField';
 import CategoryForm from './CategoryForm';
 import moment from 'moment';
+import { validate } from '../../utils/validation/categoryFormValidate';
 
 import s from './ModalEditTransaction.module.css';
 
@@ -28,6 +29,7 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
   const [transactionInfo, setTransactionInfo] = useState(
     setTransactionInfoInitState(),
   );
+  const [validField, setValidField] = useState({ comments: '' });
 
   const token = useSelector(selectors.getUserToken);
   const dispatch = useDispatch();
@@ -65,10 +67,31 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
   const handleTransactionInfo = e => {
     const { name, value } = e.currentTarget;
     setTransactionInfo({ ...transactionInfo, [name]: value });
+
+    if (name === 'comments') {
+      handleBlur(e);
+    }
+  };
+
+  const handleBlur = e => {
+    const { name, value } = e.target;
+
+    if (name === 'comments' && value === '') {
+      setValidField({ ...validField, comments: validate.input() });
+    }
+
+    if (name === 'comments' && value !== '') {
+      setValidField({ ...validField, comments: '' });
+    }
   };
 
   const handleSubmitForm = async e => {
     e.preventDefault();
+    if (transactionInfo.comments === '') {
+      setValidField({ ...validField, comments: validate.input() });
+      return;
+    }
+
     const { currentDate, transactionValue, comments } = transactionInfo;
     const editedTransaction = {
       date: `${currentDate} ${moment(transaction.date).format('HH:mm:ss')}`,
@@ -90,16 +113,11 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
     closeModal();
   };
 
-  // Подключить тостифай вместо консоль лога
   return (
     <div className={s.overlay} onClick={e => handleCloseModal(e)}>
       <div className={s.modal}>
         <CloseIcon className={s.closeModalIcon} onClick={closeModal} />
-        <ValidatorForm
-          ref={formRef}
-          onSubmit={e => handleSubmitForm(e)}
-          onError={errors => console.log(errors)}
-        >
+        <ValidatorForm ref={formRef} onSubmit={e => handleSubmitForm(e)}>
           <h2 className={s.title}>Редактировать транзакцию</h2>
           <div className={s.switchContainer}>
             <p className={status ? s.unactive : s.activeIncome}>Доход</p>
@@ -155,8 +173,11 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
               name="comments"
               value={transactionInfo.comments}
               onChange={e => handleTransactionInfo(e)}
+              onBlur={e => handleBlur(e)}
             />
-            <div />
+            {validField.comments !== '' && (
+              <span className={s.validationMessage}>{validField.comments}</span>
+            )}
           </div>
           <button className={s.submitButton} type="submit">
             Добавить

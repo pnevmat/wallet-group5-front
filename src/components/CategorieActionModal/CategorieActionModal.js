@@ -16,6 +16,7 @@ import Switch from '@mui/material/Switch';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import CategoryForm from './CategoryForm';
+import { validate } from '../../utils/validation/categoryFormValidate';
 
 import s from './CategorieActionModal.module.css';
 
@@ -27,6 +28,7 @@ export default function CategorieActionModal({
   const [category, setCategory] = useState('');
   const [selectedCategory, setSelectedCategory] = useState({});
   const [status, setStatus] = useState(true);
+  const [validCategory, setValidCategory] = useState({ select: '', input: '' });
 
   const user = useSelector(store => store.userData.authorisationData);
   const categories = useSelector(store => store.category);
@@ -54,8 +56,36 @@ export default function CategorieActionModal({
     }
   };
 
+  const handleBlur = e => {
+    const { name, value } = e.target;
+
+    if (
+      (name === 'category' && value === '') ||
+      (name === 'category' && value === 'Выберите категорию')
+    ) {
+      setValidCategory({ ...validCategory, input: validate.input() });
+    } else if (
+      (name === 'select' && value === '') ||
+      (name === 'select' && value === 'Выберите категорию')
+    ) {
+      setValidCategory({ ...validCategory, select: validate.select() });
+    } else {
+      setValidCategory({ select: '', input: '' });
+    }
+  };
+
   const handleSubmitForm = async e => {
     e.preventDefault();
+    console.log('Selected category: ', selectedCategory);
+    if (
+      (selectedCategory === '' && category === '') ||
+      (selectedCategory === 'Выберите категорию' && category === '') ||
+      (!selectedCategory.name && category === '')
+    ) {
+      setValidCategory({ select: validate.select(), input: validate.input() });
+      return;
+    }
+
     if (actionType === 'add') {
       const newCategorie = {
         email: user.email,
@@ -69,7 +99,18 @@ export default function CategorieActionModal({
     }
 
     if (actionType === 'edit') {
-      if (selectedCategory === '') return;
+      if (
+        selectedCategory === '' ||
+        selectedCategory === 'Выберите категорию'
+      ) {
+        setValidCategory({ ...validCategory, select: validate.select() });
+        return;
+      }
+
+      if (category === '') {
+        setValidCategory({ ...validCategory, input: validate.input() });
+        return;
+      }
 
       const foundCategory = categories.find(
         cat => cat.name === selectedCategory,
@@ -86,7 +127,12 @@ export default function CategorieActionModal({
     }
 
     if (actionType === 'delete') {
-      if (selectedCategory === '') return;
+      if (
+        selectedCategory === '' ||
+        selectedCategory === 'Выберите категорию'
+      ) {
+        return;
+      }
 
       const foundCategory = categories.find(
         cat => cat.name === selectedCategory,
@@ -126,8 +172,10 @@ export default function CategorieActionModal({
             <CategoryForm
               categories={categories}
               category={category}
+              validCategory={validCategory}
               iputChange={setCategory}
               selectChange={setSelectedCategory}
+              blur={handleBlur}
               actionType={actionType}
               status={status}
             />

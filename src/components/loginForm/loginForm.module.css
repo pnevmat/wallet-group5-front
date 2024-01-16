@@ -21,6 +21,10 @@
   height: auto;
 }
 
+.label {
+  position: relative;
+}
+
 .input__email {
   background-image: url(./images/email.png);
   background-repeat: no-repeat;
@@ -37,7 +41,6 @@
 
 .input__password {
   background-image: url(./images/lock.png);
-
   background-repeat: no-repeat;
   background-position-x: 15px;
   background-position-y: 3px;
@@ -48,6 +51,13 @@
   outline: none;
   border: none;
   border-bottom: 2px solid #e0e0e0;
+}
+
+.validationMessage {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  color: red;
 }
 
 .button__submit {

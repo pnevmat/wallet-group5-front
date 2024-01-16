@@ -5,6 +5,7 @@ import CategoryForm from './CategoryForm';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { validate } from '../../utils/validation/categoryFormValidate';
 
 import s from './ModalEditBudget.module.css';
 
@@ -16,6 +17,7 @@ const ModalEditBudget = props => {
   const [budgetFieldsCounter, setBudgetFieldsCounter] = useState(
     getBudgetFieldsCounterInitState(),
   );
+  const [validField, setValidField] = useState(setValidFieldInitState());
 
   const formRef = useRef('form');
 
@@ -67,6 +69,15 @@ const ModalEditBudget = props => {
     return fieldsCounterArray;
   }
 
+  function setValidFieldInitState() {
+    let initState = {};
+    budgetFieldsCounter.forEach(item => {
+      initState = { ...initState, ['category' + item]: '' };
+    });
+
+    return initState;
+  }
+
   const handleBudgetPlanAmmount = (e, field) => {
     const { value } = e.currentTarget;
     const newBudgetFields = {
@@ -77,12 +88,37 @@ const ModalEditBudget = props => {
   };
 
   const onSetCategory = (e, field) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
     const newBudgetFields = {
       ...budgetFields,
       [field]: { ...budgetFields[field], category: value },
     };
     setBudgetFields(newBudgetFields);
+
+    if (validField[name]) {
+      setValidField({ ...validField, [name]: '' });
+    }
+  };
+
+  const handleBlur = e => {
+    const { name, value } = e.target;
+
+    if (
+      (name === Object.keys(validField).find(key => key === name) &&
+        value === '') ||
+      (name === Object.keys(validField).find(key => key === name) &&
+        value === 'Выберите категорию')
+    ) {
+      setValidField({ ...validField, [name]: validate.select() });
+    }
+
+    if (
+      name === Object.keys(validField).find(key => key === name) &&
+      value !== '' &&
+      value !== 'Выберите категорию'
+    ) {
+      setValidField({ ...validField, [name]: '' });
+    }
   };
 
   const handleAddBudgetField = () => {
@@ -90,10 +126,33 @@ const ModalEditBudget = props => {
       ...budgetFieldsCounter,
       budgetFieldsCounter.length,
     ]);
+
+    setValidField({
+      ...validField,
+      ['category' + budgetFieldsCounter.length]: '',
+    });
   };
 
   const handleSubmitForm = e => {
     e.preventDefault();
+    const invalidKeys = Object.keys(budgetFields).filter(
+      key => !budgetFields[key].category,
+    );
+
+    if (invalidKeys.length > 0) {
+      let validFieldData = {};
+      Object.keys(budgetFields).forEach((key, i) => {
+        if (!budgetFields[key].category) {
+          validFieldData = {
+            ...validFieldData,
+            ['category' + i]: validate.select(),
+          };
+        }
+      });
+      setValidField(validFieldData);
+      return;
+    }
+
     let newBudgetFields = [];
 
     Object.keys(budgetFields).forEach(key =>
@@ -132,11 +191,7 @@ const ModalEditBudget = props => {
     <div className={s.overlay} onClick={handleCloseModal}>
       <div className={s.modal}>
         <CloseIcon className={s.closeModalIcon} onClick={onClickClose} />
-        <ValidatorForm
-          ref={formRef}
-          onSubmit={handleSubmitForm}
-          onError={errors => console.log(errors)}
-        >
+        <ValidatorForm ref={formRef} onSubmit={handleSubmitForm}>
           <h2 className={s.title}>Редактировать бюджет</h2>
           <div className={s.formContainer}>
             <div className={s.formFieldWrapper}>
@@ -147,7 +202,9 @@ const ModalEditBudget = props => {
                       <CategoryForm
                         categoryCounter={item}
                         category={budget.budget[i]?.category}
+                        validCategory={validField}
                         categoryChange={e => onSetCategory(e, `field${item}`)}
+                        blur={handleBlur}
                       />
                     </div>
                     <div className={s.formTextContainer}>
@@ -157,6 +214,7 @@ const ModalEditBudget = props => {
                         value={budgetFields['field' + i]?.budgetPlanAmount}
                         autoComplete={'off'}
                         margin="dense"
+                        validators={['required', 'isNumber']}
                         errorMessages={[
                           'это поле обязательно для заполнения',
                           'пожалуйста, введите число',

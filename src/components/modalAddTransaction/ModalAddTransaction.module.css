@@ -94,9 +94,24 @@
 }
 
 .categoryInput {
+  position: relative;
   width: 440px;
   align-items: center;
   text-align: center;
+}
+
+.validationMessage {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  color: red;
+}
+
+.selectValidMessage {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  color: red;
 }
 
 .categoryPlaceholder {
@@ -110,9 +125,11 @@
 }
 
 .textFieldcomments {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 45px;
 }
 
 .submitButton {
@@ -124,7 +141,6 @@
   border-style: none;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
 }
 
 .closeButton {

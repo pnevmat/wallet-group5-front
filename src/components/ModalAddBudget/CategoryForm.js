@@ -12,7 +12,12 @@ import InputLabel from '@mui/material/InputLabel';
 
 import s from './ModalAddBudget.module.css';
 
-export default function CategoryForm({ categorieCounter, categoryChange }) {
+export default function CategoryForm({
+  categorieCounter,
+  validCategory,
+  categoryChange,
+  blur,
+}) {
   const categories = useSelector(store => store.category);
   const costCategories = categories.filter(
     category => category.type === 'cost',
@@ -51,10 +56,9 @@ export default function CategoryForm({ categorieCounter, categoryChange }) {
 
         <NativeSelect
           fullWidth
-          validators={['required']}
-          errorMessages={['this field is required']}
           name={'category' + categorieCounter}
           onChange={handleChange}
+          onBlur={e => blur(e)}
           defaultValue=""
           inputProps={{
             id: 'uncontrolled-native',
@@ -64,6 +68,11 @@ export default function CategoryForm({ categorieCounter, categoryChange }) {
           {costCategories.length > 0 &&
             costCategories.map(el => <option>{el.name}</option>)}
         </NativeSelect>
+        {validCategory['category' + categorieCounter] !== '' && (
+          <span className={s.selectValidMessage}>
+            {validCategory['category' + categorieCounter]}
+          </span>
+        )}
       </FormControl>
     </Box>
   );
