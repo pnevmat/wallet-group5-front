@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { loginRequest } from '../api/apiRequests';
 import { login } from '../redux/reducers/authorisationReducers/authorisationReducer';
 import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
 import { isLogin } from '../redux/reducers/authorisationReducers/authReducer';
-import errorCleanOperation from '../redux/operations/errorCleanOperation';
-import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
 import LoginForm from '../components/LoginForm/LoginForm';
@@ -18,16 +16,15 @@ import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const LoginPage = props => {
   const [loginData, setLoginData] = useState(false);
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
 
   const onLoginSubmit = async userData => {
-    const { data } = await loginRequest(userData);
-
+    const { data, error } = await loginRequest(userData);
     if (data) setLoginData(data);
+    if (error) setError(error);
   };
-
-  const error = useSelector(selectors.registrationSelector);
 
   useEffect(() => {
     if (loginData) {
@@ -48,10 +45,7 @@ const LoginPage = props => {
       };
       notify();
     }
-    return () => {
-      dispatch(errorCleanOperation());
-    };
-  }, [onLoginSubmit]);
+  }, [dispatch, error]);
 
   return (
     <div className={s.containerloginPages}>

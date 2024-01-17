@@ -17,7 +17,6 @@ import storage from 'redux-persist/lib/storage';
 
 import regUserDataReducer from './reducers/registrationReducers/userDataReducer';
 import authUserDataReducer from '../redux/reducers/authorisationReducers/userDataReducer';
-import registrationReducer from './reducers/registrationReducers/registrationReducer';
 import authorisationReducer from './reducers/authorisationReducers/authorisationReducer';
 import authReducer from './reducers/authorisationReducers/authReducer';
 import authErrorReducer from './reducers/authorisationReducers/authErrorReducer';
@@ -53,7 +52,6 @@ const store = configureStore(
       userToken: persistReducer(
         userTokenPersistConfig,
         combineReducers({
-          registrationToken: registrationReducer,
           authorisationToken: authorisationReducer,
         }),
       ),

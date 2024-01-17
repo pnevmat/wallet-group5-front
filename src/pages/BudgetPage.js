@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { getUserDataRequest } from '../api/apiRequests';
 import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
@@ -10,20 +11,35 @@ import { getTransaction } from '../redux/selectors/transactionSelectors/transact
 import UserMenu from '../components/UserMenu/UserMenu';
 import BudgetPageContainer from '../components/BudgetPageContainer/BudgetPageContainer';
 
+import ts from '../utils/toastifyStyles/toastify.module.css';
+
 const BudgetPage = () => {
+  const [error, setError] = useState(false);
   const userToken = useSelector(authorisationSelectors.getUserToken);
 
   const dispatch = useDispatch();
   useEffect(() => {
     const handleGetUserData = async () => {
-      const response = await getUserDataRequest(userToken);
-
-      if (response) {
-        dispatch(getUserData(response));
-      }
+      const { user, error } = await getUserDataRequest(userToken);
+      console.log('Error in budget page: ', error);
+      if (user) dispatch(getUserData(user));
+      if (error) setError(error);
     };
     handleGetUserData();
-  }, [dispatch]);
+  }, [dispatch, userToken]);
+
+  useEffect(() => {
+    if (error && typeof error === 'string') {
+      const toastId = 2;
+      const notify = () => {
+        toast(`${error}`, {
+          toastId: toastId,
+          className: ts.error,
+        });
+      };
+      notify();
+    }
+  }, [dispatch, error]);
 
   const userRegBalance = useSelector(authorisationSelectors.getUserRegBalance);
   const userAuthBalance = useSelector(
@@ -43,6 +59,7 @@ const BudgetPage = () => {
 
   return (
     <>
+      <ToastContainer />
       <UserMenu />
       <BudgetPageContainer balance={balance()} />
     </>

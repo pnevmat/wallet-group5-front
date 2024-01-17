@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
 import LoginForm from '../components/LoginForm/LoginForm';
@@ -8,8 +8,6 @@ import { loginRequest } from '../api/apiRequests';
 import { getUserData } from '../redux/reducers/authorisationReducers/userDataReducer';
 import { login } from '../redux/reducers/authorisationReducers/authorisationReducer';
 import { isLogin } from '../redux/reducers/authorisationReducers/authReducer';
-import errorCleanOperation from '../redux/operations/errorCleanOperation';
-import selectors from '../redux/selectors/registrationSelectors';
 
 import 'react-toastify/dist/ReactToastify.css';
 import s from '../components/AppBar/FinanceAppBoyImg/FinanceAppBoyImg.module.css';
@@ -17,15 +15,15 @@ import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const HomePage = props => {
   const [loginData, setLoginData] = useState(false);
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
 
   const onLoginSubmit = async userData => {
-    const { data } = await loginRequest(userData);
+    const { data, error } = await loginRequest(userData);
     if (data) setLoginData(data);
+    if (error) setError(error);
   };
-
-  const error = useSelector(selectors.registrationSelector);
 
   useEffect(() => {
     if (loginData) {
@@ -46,10 +44,7 @@ const HomePage = props => {
       };
       notify();
     }
-    return () => {
-      dispatch(errorCleanOperation());
-    };
-  }, []);
+  }, [dispatch, error]);
 
   return (
     <div className={s.containerloginPages}>

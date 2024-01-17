@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { registrationRequest } from '../api/apiRequests';
-import { registration } from '../redux/reducers/registrationReducers/registrationReducer';
+import { registration } from '../redux/reducers/authorisationReducers/authorisationReducer';
 import { getRegUserData } from '../redux/reducers/registrationReducers/userDataReducer';
 import { isRegistered } from '../redux/reducers/authorisationReducers/authReducer';
-import errorCleanOperation from '../redux/operations/errorCleanOperation';
-import selectors from '../redux/selectors/registrationSelectors';
 
 import AppBar from '../components/AppBar/AppBar';
 import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
@@ -17,18 +15,22 @@ import s from '../components/RegistrationPage/registrationPage.module.css';
 import ts from '../utils/toastifyStyles/toastify.module.css';
 
 const RegistrationPage = props => {
+  const [error, setError] = useState(false);
+
   const dispatch = useDispatch();
 
   const onRegistrationSubmit = async userData => {
-    const { user } = await registrationRequest(userData);
+    const { user, error } = await registrationRequest(userData);
     if (user) {
       dispatch(registration(user));
       dispatch(getRegUserData(user));
       dispatch(isRegistered());
     }
-  };
 
-  const error = useSelector(selectors.registrationSelector);
+    if (error) {
+      setError(error);
+    }
+  };
 
   useEffect(() => {
     if (error && typeof error === 'string') {
@@ -41,10 +43,7 @@ const RegistrationPage = props => {
       };
       notify();
     }
-    return () => {
-      dispatch(errorCleanOperation());
-    };
-  }, [onRegistrationSubmit]);
+  }, [dispatch, error]);
 
   return (
     <div className={s.container}>

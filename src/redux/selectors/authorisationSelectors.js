@@ -18,13 +18,8 @@ const getUserRegBalance = state => state.userData.registrationData.balance;
 
 const getUserAuthBalance = state => state.userData.authorisationData.balance;
 
-const getUserToken = state=> {
-  if (typeof state.userToken.registrationToken !== 'object')
-  {
-    return state.userToken.registrationToken;
-  } else {
-    return state.userToken.authorisationToken;
-  };
+const getUserToken = state => {
+  return state.userToken.authorisationToken;
 };
 
 const getUserAvatar = state => {
@@ -34,16 +29,19 @@ const getUserAvatar = state => {
     return regAvatar;
   } else if (authAvatar) {
     return authAvatar;
-  };
+  }
 };
 
-const authorisationSelector = createSelector([getIsAuthorisation], authorised => {
-  return authorised;
-});
+const authorisationSelector = createSelector(
+  [getIsAuthorisation],
+  authorised => {
+    return authorised;
+  },
+);
 
-const userTokenSelector=createSelector([getUserToken],userToken=>{
-  return userToken
-})
+const userTokenSelector = createSelector([getUserToken], userToken => {
+  return userToken;
+});
 
 const userNameSelector = createSelector([getUserName], userName => {
   return userName;
@@ -70,5 +68,4 @@ export default {
   userRegBalanceSelector,
   userAuthBalanceSelector,
   userTokenSelector,
-  
 };

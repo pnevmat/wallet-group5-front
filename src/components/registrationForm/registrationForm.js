@@ -118,7 +118,7 @@ const RegistrationForm = props => {
                 name="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                values={values.email}
+                values={values.password}
               />
             </label>
             {touched.password && errors.password && (
@@ -136,7 +136,7 @@ const RegistrationForm = props => {
                 name="repeatPassword"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                values={values.email}
+                values={values.repeatPassword}
               />
             </label>
             <div className={s.progresBar}>
@@ -157,7 +157,7 @@ const RegistrationForm = props => {
                 name="name"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                values={values.email}
+                values={values.name}
               />
             </label>
             {touched.name && errors.name && (
@@ -167,7 +167,6 @@ const RegistrationForm = props => {
             )}
             <button
               disabled={!isValid && !dirty}
-              onClick={handleBlur}
               type="submit"
               className={s.button_registr}
             >

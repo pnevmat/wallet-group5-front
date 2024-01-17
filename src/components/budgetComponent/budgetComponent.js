@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 import {
   getBudgetRequest,
@@ -21,11 +22,13 @@ import DeleteBudgetButton from '../DeleteBudgetButton/DeleteBudgetButton';
 import months from '../../utils/months';
 
 import styles from './BudgetComponent.module.css';
+import ts from '../../utils/toastifyStyles/toastify.module.css';
 
 const BudgetComponent = () => {
   const todayDate = Date.now();
   const [month, setMonth] = useState(getDefaultMonth());
   const [year, setYear] = useState(getDefaultYear());
+  const [error, setError] = useState(false);
 
   const numberOfYears = getDefaultYear() - 2000;
   const years = getYearsArray();
@@ -38,6 +41,19 @@ const BudgetComponent = () => {
       handleSubmit();
     }
   }, [month, year]);
+
+  useEffect(() => {
+    if (error && typeof error === 'string') {
+      const toastId = 2;
+      const notify = () => {
+        toast(`${error}`, {
+          toastId: toastId,
+          className: ts.error,
+        });
+      };
+      notify();
+    }
+  }, [dispatch, error]);
 
   function getDefaultMonth() {
     return Intl.DateTimeFormat('en-US', { month: 'short' }).format(todayDate);
@@ -77,17 +93,15 @@ const BudgetComponent = () => {
       const { id, date, budget } = object;
       if (object.type === 'addBudget') {
         // запрос на добавление бюджета
-        const { data } = await addBudgetRequest({ date, budget });
-        if (data) {
-          dispatch(addBudget(data));
-        }
+        const { data, error } = await addBudgetRequest({ date, budget });
+        if (data) dispatch(addBudget(data));
+        if (error) setError(error);
       }
 
       if (object.type === 'editBudget') {
         // запрос на редактирование бюджета
         console.log('Budget id: ', id);
         const { data } = await editBudgetRequest({ id, date, budget });
-        console.log('Edit budget response data: ', data);
         if (data) {
           dispatch(editBudget(data));
         }
@@ -111,6 +125,7 @@ const BudgetComponent = () => {
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <div className={styles.actionsContainer}>
         <AddBudgetButton onSubmit={handleSubmit} />
         <EditBudgetButton onSubmit={handleSubmit} />

@@ -64,12 +64,37 @@ const LoginForm = props => {
     return validMassage;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
     const { onLoginSubmit } = props;
 
-    if (validMassage.email.name || validMassage.password.name) {
+    if (email === '' && password === '') {
+      setValidMessage({
+        email: { name: 'email', message: messages.required('email') },
+        password: { name: 'password', message: messages.required('password') },
+      });
+
       return;
     }
+
+    if (email === '') {
+      setValidMessage({
+        ...validMassage,
+        email: { name: 'email', message: messages.required('email') },
+      });
+
+      return;
+    }
+
+    if (password === '') {
+      setValidMessage({
+        ...validMassage,
+        password: { name: 'password', message: messages.required('password') },
+      });
+
+      return;
+    }
+
+    if (validMassage.email.name || validMassage.password.name) return;
 
     onLoginSubmit({ email, password });
   };
@@ -80,7 +105,7 @@ const LoginForm = props => {
         className={s.form}
         onSubmit={e => {
           e.preventDefault();
-          handleSubmit();
+          handleSubmit(e);
         }}
       >
         <FormAuth />

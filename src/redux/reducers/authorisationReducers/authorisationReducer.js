@@ -6,11 +6,12 @@ const authorisationReducer = createSlice({
   name: 'authorisation',
   initialState: authorisationInitialState,
   reducers: {
+    registration: (state, { payload }) => payload.token,
     login: (state, { payload }) => payload.token,
     logout: state => (state = {}),
   },
 });
 
-export const { login, logout } = authorisationReducer.actions;
+export const { registration, login, logout } = authorisationReducer.actions;
 
 export default authorisationReducer.reducer;

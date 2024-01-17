@@ -21,18 +21,26 @@ const api = {
         return err;
       });
 
-    const response = await axios.post('/api/users/login', userData);
+    try {
+      const response = await axios.post('/api/users/login', userData);
 
-    if (response) {
-      token.set(response.data.token);
+      if (response) {
+        token.set(response.data.token);
+      }
+
+      return response.data;
+    } catch (error) {
+      return { error: error.response.data.message };
     }
-
-    return response.data;
   },
   registrationRequest: async regData => {
-    const response = await axios.post('/api/users/register', regData);
+    try {
+      const response = await axios.post('/api/users/register', regData);
 
-    return response.data;
+      return response.data;
+    } catch (error) {
+      return { error: error.response.data.message };
+    }
   },
   getUserDataRequest: async userToken => {
     if (typeof userToken === 'string') {
@@ -40,9 +48,13 @@ const api = {
     } else {
       return;
     }
+    try {
+      const response = await axios.get('api/users/getUserData');
 
-    const response = await axios.get('api/users/getUserData');
-    return response.data;
+      return response.data;
+    } catch (error) {
+      return { error: error.response.data.message };
+    }
   },
   getCategoriesRequest: async userToken => {
     if (typeof userToken === 'string') {
@@ -121,9 +133,13 @@ const api = {
     return response.data;
   },
   addBudgetRequest: async budget => {
-    const response = await axios.post('/api/budgets/add', budget);
+    try {
+      const response = await axios.post('/api/budgets/add', budget);
 
-    return response.data;
+      return response.data;
+    } catch (error) {
+      return { error: error.response.data.message };
+    }
   },
   editBudgetRequest: async budget => {
     const response = await axios.put(`/api/budgets/${budget.id}`, budget);
