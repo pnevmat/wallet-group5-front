@@ -123,6 +123,12 @@
   margin-top: 20px;
 }
 
+.submitButton:hover {
+  border: 1px solid #4a56e2;
+  background: transparent;
+  cursor: pointer;
+}
+
 .closeButton {
   display: block;
   width: 300px;
@@ -133,6 +139,12 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+}
+
+.closeButton:hover {
+  border: none;
+  background-color: #24cca7;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

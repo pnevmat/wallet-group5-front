@@ -156,7 +156,6 @@ const ModalEditTransaction = ({ isModalOpen, closeModal, transaction }) => {
               type="date"
               name="currentDate"
               value={transactionInfo.currentDate}
-              className={s.textField}
               InputLabelProps={{
                 shrink: true,
               }}

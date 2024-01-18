@@ -30,6 +30,8 @@
 }
 
 .name {
+  display: flex;
+  align-items: center;
   font-weight: 400;
   font-size: 18px;
 
@@ -45,6 +47,7 @@
 .containerLogout {
   max-width: 250px;
   display: flex;
+  align-items: center;
 }
 
 .btnLogout {

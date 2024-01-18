@@ -10,12 +10,15 @@
   text-transform: uppercase;
 }
 
-.button:focus {
-  outline: none;
+.button:hover {
+  border: 1px solid #4a56e2;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
 }
 
-.button:hover {
-  cursor: pointer;
+.button:focus {
+  outline: none;
 }
 
 @media (max-width: 767px) {

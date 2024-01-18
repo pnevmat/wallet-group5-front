@@ -1,205 +1,206 @@
 .container {
-    width: 100%;
-    max-width: 435px;
-    background: transparent;
+  width: 100%;
+  max-width: 435px;
+  background: transparent;
 }
 
 .form {
-    width: 100%;
-    max-width: 351px;
-    margin-bottom: 20px;
+  width: 100%;
+  max-width: 351px;
+  margin-bottom: 20px;
 }
 
 .formSelect {
-    width: 100%;
-    padding-top: 12px;
-    /* padding-right: 20px; */
-    padding-bottom: 14px;
-    padding-left: 21px;
-    border: 1px solid #000000;
-    border-radius: 30px;
-    outline: none;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  padding-left: 21px;
+  border: 1px solid #000000;
+  border-radius: 30px;
+  outline: none;
+}
+
+.formSelect:hover {
+  cursor: pointer;
 }
 
 .formMonthOptions {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .tableHeadersContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    /* border: 1px solid tomato; */
-    border-radius: 25px;
-    background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 25px;
+  background-color: #ffffff;
 }
 
 .tableHeaderText {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
 }
 
 .tableContainer {
-    width: 100%;
-    max-width: 350px;
-    margin-bottom: 15px;
-    list-style: none;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 15px;
+  list-style: none;
 }
 
 .tableItem {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #DCDCDF;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-    /* transform: rotate(-90deg); */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .itemInnerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .itemTextContainer {
-    display: inline-flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 260px;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 260px;
 }
 
 .itemColorLable {
-    display: inline-block;
-    width: 100%;
-    max-width: 24px;
-    height: 24px;
+  display: inline-block;
+  width: 100%;
+  max-width: 24px;
+  height: 24px;
 }
 
 .tableItemsText {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .totalsGroupContainer {
-    width: 100%;
-    max-width: 350px;
-    padding-right: 25px;
-    padding-left: 25px;
+  width: 100%;
+  max-width: 350px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 .totalsGroupContainer :not(:last-child) {
-    margin-bottom: 13px;
+  margin-bottom: 13px;
 }
 
 .totalsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .costTotalText {
-    font-weight: 700;
-    color: #FF6596;
+  font-weight: 700;
+  color: #ff6596;
 }
 
 .incomeTotalText {
-    font-weight: 700;
-    color: #24CCA7;
+  font-weight: 700;
+  color: #24cca7;
 }
 
 @media (max-width: 767px) {
-    .container {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 
-    .form :not(:last-child) {
-        margin-bottom: 20px;
-    }
+  .form :not(:last-child) {
+    margin-bottom: 20px;
+  }
 
-    .tableHeadersContainer {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+  .tableHeadersContainer {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 
-    .tableItem {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+  .tableItem {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 
-    .itemColorLable {
-        margin-right: 16px;
-    }
+  .itemColorLable {
+    margin-right: 16px;
+  }
 
-    .tableItemsText {
-        line-height: 18px;
-    }
+  .tableItemsText {
+    line-height: 18px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    .container {
-        display: inline-block;
-        max-width: 350px;
-        padding-top: 65px;
-    }
+  .container {
+    display: inline-block;
+    max-width: 350px;
+    padding-top: 65px;
+  }
 
-    .form {
-        display: inline-block;
-    }
+  .form {
+    display: inline-block;
+  }
 
-    .formSelect {
-        max-width: 166px;
-    }
+  .formSelect {
+    max-width: 166px;
+  }
 
-    .tableItem {
-        padding-right: 30px;
-        padding-left: 20px;
-    }
+  .tableItem {
+    padding-right: 30px;
+    padding-left: 20px;
+  }
 }
 
 @media (min-width: 768px) {
-    .form :not(:last-child) {
-        margin-right: 18px;
-    }
+  .form :not(:last-child) {
+    margin-right: 18px;
+  }
 
-    .tableHeadersContainer {
-        padding-right: 30px;
-        padding-left: 30px;
-    }
+  .tableHeadersContainer {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
 }
 
 @media (min-width: 1280px) {
-    .container {
-        padding-top: 65px;
-        padding-right: 85px;
-    }
+  .container {
+    padding-top: 65px;
+    padding-right: 85px;
+  }
 
-    .form {
-        height: 50px;
-    }
+  .form {
+    height: 50px;
+  }
 
-    .formSelect {
-        max-width: 166px;
-        height: 100%;
-    }
+  .formSelect {
+    max-width: 166px;
+    height: 100%;
+  }
 
-    .tableItem {
-        padding-right: 25px;
-        padding-left: 25px;
-    }
+  .tableItem {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
 
-    .tableItemsText {
-        line-height: 24px;
-    }
+  .tableItemsText {
+    line-height: 24px;
+  }
 }

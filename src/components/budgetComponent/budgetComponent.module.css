@@ -2,14 +2,6 @@
   width: 100%;
 }
 
-/* .actionsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  text-align: center;
-} */
-
 .budgetContainer {
   padding-right: 20px;
   padding-bottom: 20px;
@@ -24,10 +16,6 @@
   margin-bottom: 20px;
 }
 
-/* .form :not(:last-child) {
-  margin-right: 18px;
-} */
-
 .formSelect {
   width: 100%;
   max-width: 166px;
@@ -37,6 +25,10 @@
   border: 1px solid #000000;
   border-radius: 30px;
   outline: none;
+}
+
+.formSelect:hover {
+  cursor: pointer;
 }
 
 .formMonthOptions {
