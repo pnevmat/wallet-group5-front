@@ -71,7 +71,7 @@
 }
 
 .categoryInput {
-  width: 440px;
+  width: 100%;
   align-items: center;
   text-align: center;
 }
@@ -85,7 +85,7 @@
 
 .categoryPlaceholder {
   position: relative;
-  width: 440px;
+  width: 100%;
 }
 
 .validationMessage {
@@ -147,6 +147,17 @@
   cursor: pointer;
 }
 
+@media (max-width: 767px) {
+  .modal {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .categoryInput {
+    max-width: 767px;
+  }
+}
+
 @media (min-width: 768px) {
   .modal {
     position: relative;
@@ -165,5 +176,13 @@
     right: 10px;
     border: 1px solid transparent;
     cursor: pointer;
+  }
+
+  .categoryInput {
+    width: 440px;
+  }
+
+  .categoryPlaceholder {
+    width: 440px;
   }
 }

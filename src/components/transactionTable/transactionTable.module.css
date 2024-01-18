@@ -68,10 +68,9 @@
 
 @media (max-width: 767px) {
   .container {
-    display: inline-flex;
-    justify-content: space-between;
+    display: inline-block;
     width: 280px;
-    margin-top: 29px;
+    margin-top: 10px;
     border-radius: 10px;
     box-shadow: inherit;
   }

@@ -9,22 +9,29 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 45px;
-  padding-right: 40px;
 }
 
 .buttonsContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
 @media (max-width: 767px) {
   .dashboardContainer {
-    width: 320px;
+    width: 100%;
     min-height: 508px;
     text-align: center;
+  }
+
+  .tableContainer {
+    padding-top: 45px;
+    align-items: center;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
   }
 }
 
@@ -37,6 +44,10 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .buttonsContainer {
+    padding-left: 60px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -46,5 +57,15 @@
     background-image: url(./images/dashboardBackgroundPc.png);
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .buttonsContainer {
+    justify-content: space-between;
+    width: 91%;
+  }
+
+  .tableContainer {
+    padding-top: 45px;
+    padding-right: 40px;
   }
 }

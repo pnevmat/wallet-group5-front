@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import CurrencyIcon from './svg/CurrencyIcon/CurrencyIcon';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 
@@ -39,7 +39,7 @@ const Navigation = () => {
                   ) : pageNames[key] === 'Статистика' ? (
                     <TimelineIcon />
                   ) : (
-                    <CurrencyIcon />
+                    <AttachMoneyIcon />
                   )}
                 </div>
               </div>
@@ -60,11 +60,15 @@ const Navigation = () => {
               }
               to={`/${key}`}
             >
-              {pageNames[key] === 'Бюджет' ? (
-                <CalculateIcon />
-              ) : (
-                <AnalyticsIcon />
-              )}
+              <div className={s.iconWrapper}>
+                <div className={s.iconContainer}>
+                  {pageNames[key] === 'Бюджет' ? (
+                    <CalculateIcon />
+                  ) : (
+                    <AnalyticsIcon />
+                  )}
+                </div>
+              </div>
               <span className={s.navTitle}>{pageNames[key]}</span>
             </NavLink>
           </li>

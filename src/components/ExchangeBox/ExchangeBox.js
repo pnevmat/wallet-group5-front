@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
 import fetchCurrency from '../../api/apiPrivatbank';
@@ -8,6 +9,7 @@ import { currencyCodes } from '../../utils/iso4217CurrencyCodes';
 import s from './ExchangeBox.module.css';
 
 const ExchangeBox = () => {
+  const { pathname } = useLocation();
   const [persons, setPersons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -58,7 +60,21 @@ const ExchangeBox = () => {
   }, [exchangeRates, persons.length]);
 
   return (
-    <div className={s.exchangeContainer} id="exchange">
+    <div
+      className={s.exchangeContainer}
+      style={
+        pathname === '/currency'
+          ? {
+              display: 'inline-block',
+              width: '100%',
+              paddingRight: '10px',
+              paddingLeft: '10px',
+              marginTop: '10px',
+            }
+          : {}
+      }
+      id="exchange"
+    >
       <div className={s.exchangeTitleBox}>
         <ul className={s.exchangeListTitle}>
           <li className={s.exchangeListAtemTitle}>

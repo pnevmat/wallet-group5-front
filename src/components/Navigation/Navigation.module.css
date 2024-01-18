@@ -57,25 +57,13 @@
     padding-left: 20px;
   }
 
-  .navTitle {
-    display: none;
-  }
-
   .navList,
   .navBottomList {
-    display: flex;
-    justify-content: space-around;
     padding-bottom: 14px;
   }
 
-  .navList {
-    padding-left: 45px;
-    padding-right: 45px;
-  }
-
-  .navBottomList {
-    padding-left: 90px;
-    padding-right: 90px;
+  .navTitle {
+    display: none;
   }
 
   .iconWrapper {
@@ -93,11 +81,81 @@
     max-width: 30px;
     max-height: 30px;
   }
+}
+
+@media screen and (max-width: 339px) {
+  .navList,
+  .navBottomList {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .navList {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .navBottomList {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
 
   .budgetLinks > svg,
   .reportsLinks > svg {
     width: 48px;
     height: 48px;
+  }
+}
+
+@media screen and (min-width: 340px) and (max-width: 479px) {
+  .navList {
+    width: 53%;
+  }
+
+  .navBottomList {
+    width: 47%;
+  }
+}
+
+@media screen and (min-width: 340px) and (max-width: 767px) {
+  .container {
+    display: flex;
+  }
+
+  .navList {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navBottomList {
+    display: inline-flex;
+    justify-content: space-evenly;
+  }
+
+  .budgetLinks > svg,
+  .reportsLinks > svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .budgetLinks > .iconWrapper > .iconContainer > svg {
+    fill: #4a56e2;
+    stroke: #ffffff;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navList {
+    width: 150px;
+  }
+
+  .navBottomList {
+    width: 130px;
   }
 }
 

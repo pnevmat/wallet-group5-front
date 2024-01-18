@@ -5,13 +5,13 @@ import ExchangeBox from '../ExchangeBox/ExchangeBox';
 
 import styles from './CurrencyPageContainer.module.css';
 
-const CurrencyPageContainer = (props) => {
-    return (
-        <div className={styles.container}>
-            <Navigation />
-            <ExchangeBox props={props} />
-        </div>
-    );
+const CurrencyPageContainer = () => {
+  return (
+    <div className={styles.container}>
+      <Navigation />
+      <ExchangeBox />
+    </div>
+  );
 };
 
 export default CurrencyPageContainer;

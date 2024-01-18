@@ -86,7 +86,7 @@
 @media (max-width: 767px) {
   .modal {
     max-width: 320px;
-    inset: 20% auto auto 20%;
+    inset: 10% auto auto 10%;
     transform: translate(-10%, -10%);
   }
 }
