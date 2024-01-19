@@ -30,12 +30,19 @@ const ExchangeBox = () => {
           currency.currencyCodeB === 980,
       );
 
-      const mainCurrencies = filteredData.filter(
-        currency =>
-          (currency && currencyCodes[currency.currencyCodeA] === 'USD') ||
-          currencyCodes[currency.currencyCodeA] === 'EUR' ||
-          currencyCodes[currency.currencyCodeA] === 'GBP',
-      );
+      const mainCurrencies = filteredData.filter(currency => {
+        if (currency && !currency.rateCross) {
+          if (
+            currencyCodes[currency.currencyCodeA] === 'USD' ||
+            currencyCodes[currency.currencyCodeA] === 'EUR' ||
+            currencyCodes[currency.currencyCodeA] === 'GBP'
+          ) {
+            return currency;
+          }
+        }
+
+        return false;
+      });
 
       dispatch(getExchange(mainCurrencies));
     };
@@ -45,7 +52,7 @@ const ExchangeBox = () => {
     const currencyDate = exchangeRates[0]?.date;
 
     if (
-      (exchangeRates.length === 0 && !currencyDate) ||
+      (Object.keys(exchangeRates).length === 0 && !currencyDate) ||
       (currencyDate && todayUnixTime - currencyDate >= oneDayUnixTime)
     ) {
       handleGetCurrency();

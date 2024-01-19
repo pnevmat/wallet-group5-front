@@ -180,7 +180,6 @@ const ModalAddBudget = props => {
                   type="date"
                   name="currentDate"
                   value={currentDate}
-                  defaultValue={`${currentDate}`}
                   className={s.textField}
                   InputLabelProps={{
                     shrink: true,

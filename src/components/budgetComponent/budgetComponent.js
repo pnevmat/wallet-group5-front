@@ -86,8 +86,7 @@ const BudgetComponent = () => {
         console.log('error');
     }
   };
-  console.log('Default month: ', month);
-  console.log('Default year: ', year);
+
   const handleSubmit = async object => {
     if (object) {
       const { id, date, budget } = object;

@@ -28,17 +28,11 @@ p {
   list-style: none;
 }
 
-.exchangeListAtemTitle {
-  /* margin-right: 15px; */
-
-}
-
 .exchangeListBox {
   position: relative;
 }
 
 .exchangeList {
-  width: 280px;
   padding-top: 10px;
   border-radius: 0px 0px 30px 30px;
   margin: 0;
@@ -59,10 +53,6 @@ p {
   font-size: 16px;
 }
 
-.exchangeListItem:last-child {
-  display: none;
-}
-
 .exchangeListItemName {
   width: 33px;
   text-align: left;
@@ -76,7 +66,6 @@ p {
 .exchangeListItemSell {
   text-align: right;
 }
-
 
 @media (max-width: 767px) {
   .exchangeContainer {
@@ -97,17 +86,16 @@ p {
   .exchangeListTitle {
     width: 100%;
   }
-  
+
   .exchangeListItemBuy {
     width: 33px;
     text-align: center;
   }
-  
+
   .exchangeListItemSell {
     width: 50px;
   }
 }
-
 
 @media (min-width: 768px) {
   .exchangeContainer {
@@ -138,17 +126,21 @@ p {
     width: 348px;
     height: 125px;
     left: 0px;
-    bottom:  0px;
+    bottom: 0px;
     border-radius: 0px 0px 30px 30px;
-  
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.2) -7.46%, rgba(255, 255, 255, 0) 100%);
+
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.2) -7.46%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
-  
+
   .exchangeListItemBuy {
     width: 33px;
     text-align: left;
   }
-  
+
   .exchangeListItemSell {
     width: 80px;
   }
@@ -176,15 +168,19 @@ p {
     width: 288px;
   }
 
-  .linear{
+  .linear {
     position: absolute;
     width: 348px;
     height: 134px;
     left: 0px;
-    bottom:  0px;
+    bottom: 0px;
     border-radius: 0px 0px 30px 30px;
-  
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.2) -7.46%, rgba(255, 255, 255, 0) 100%);
+
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.2) -7.46%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   .exchangeListItem > .exchangeListItemName {
@@ -193,7 +189,7 @@ p {
 
   .exchangeListItem > .exchangeListItemBuy {
     margin: 0;
-  }  
+  }
 }
 
 .visible {

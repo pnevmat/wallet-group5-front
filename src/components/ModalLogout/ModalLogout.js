@@ -1,18 +1,13 @@
 import { useDispatch } from 'react-redux';
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { logout } from '../../redux/reducers/authorisationReducers/authorisationReducer';
 import { sessionLogout } from '../../redux/reducers/authorisationReducers/authReducer';
 import Modal from 'react-modal';
 
 import s from './ModalLogout.module.css';
 
-const ModalLogout = ({ closeModal }) => {
+const ModalLogout = ({ isOpen, closeModal }) => {
   const dispatch = useDispatch();
-  const [_, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
 
   const handleCloseModal = () => {
     closeModal(false);
@@ -27,9 +22,9 @@ const ModalLogout = ({ closeModal }) => {
     <>
       <Modal
         className={s.modal}
-        isOpen={openModal}
+        isOpen={isOpen}
         onRequestClose={handleCloseModal}
-        contentLabel="Example Modal"
+        contentLabel="Modal Logout"
         ariaHideApp={false}
       >
         <h2 className={s.modalExit}>Вы действительно хотите выйти?</h2>

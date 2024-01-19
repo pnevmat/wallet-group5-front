@@ -34,7 +34,7 @@ const ModalDeleteBudget = ({ onSubmit, closeModal, isOpen }) => {
       className={s.modal}
       isOpen={isOpen}
       onRequestClose={handleCloseModal}
-      contentLabel="Example Modal"
+      contentLabel="Modal Delete Budget"
       ariaHideApp={false}
     >
       <h2 className={s.modalExit}>

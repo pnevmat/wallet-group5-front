@@ -40,7 +40,9 @@ export default function UserMenu() {
           <span className={s.exitSvg}></span>
           <span className={s.logoutTitle}>Вийти</span>
         </button>
-        {modalIsOpen && <ModalLogout closeModal={closeModal} />}
+        {modalIsOpen && (
+          <ModalLogout isOpen={modalIsOpen} closeModal={closeModal} />
+        )}
       </div>
     </div>
   );
