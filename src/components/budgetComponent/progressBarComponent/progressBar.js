@@ -15,13 +15,7 @@ const ProgressBar = ({ props }) => {
   }, [props.planAmount, props.factAmount]);
 
   return (
-    <div
-      style={{
-        display: 'inline-block',
-        width: '93%',
-        background: '#ffffff',
-      }}
-    >
+    <div>
       <LinearProgress
         style={
           props.planAmount >= props.factAmount

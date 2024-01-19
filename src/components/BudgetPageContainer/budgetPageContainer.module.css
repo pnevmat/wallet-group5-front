@@ -1,13 +1,11 @@
 .dashboardContainer {
   width: 100%;
   max-width: 1280px;
-  margin: auto auto;
   background-color: #e5e5e5;
 }
 
 @media (max-width: 767px) {
   .dashboardContainer {
-    width: 320px;
     min-height: 508px;
     text-align: center;
   }
@@ -21,6 +19,12 @@
     background-image: url(./images/dashboardBackgroundTablet.png);
     background-repeat: no-repeat;
     background-size: cover;
+  }
+}
+
+@media (min-width: 769px) {
+  .dashboardContainer {
+    margin: auto auto;
   }
 }
 

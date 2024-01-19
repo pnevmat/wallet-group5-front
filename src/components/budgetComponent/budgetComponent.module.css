@@ -121,7 +121,9 @@
   }
 
   .budgetItemContainer > div {
-    width: 200px;
+    display: inline-block;
+    width: 85%;
+    background: #ffffff;
   }
 }
 
@@ -143,6 +145,12 @@
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px;
+  }
+
+  .budgetItemContainer > div {
+    display: inline-block;
+    width: 93%;
+    background: #ffffff;
   }
 }
 
