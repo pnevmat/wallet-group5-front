@@ -91,8 +91,8 @@
 .totalsGroupContainer {
   width: 100%;
   max-width: 350px;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .totalsGroupContainer :not(:last-child) {
@@ -167,6 +167,10 @@
     padding-right: 30px;
     padding-left: 20px;
   }
+
+  .totalsGroupContainer {
+    padding-right: 30px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -202,5 +206,10 @@
 
   .tableItemsText {
     line-height: 24px;
+  }
+
+  .totalsGroupContainer {
+    padding-right: 25px;
+    padding-left: 25px;
   }
 }

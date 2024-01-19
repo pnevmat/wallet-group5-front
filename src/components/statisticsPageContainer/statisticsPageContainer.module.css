@@ -1,41 +1,37 @@
 .statisticsContainer {
-    width: 100%;
-    max-width: 1280px;
+  width: 100%;
+  max-width: 1280px;
 }
 
 @media (max-width: 767px) {
-    .statisticsContainer {
-        width: 100%;
-        max-width: 320px;
-        margin-right: auto;
-        margin-left: auto;
-        background-color: #e5e5e5;
-        text-align: center;
-    }
-}
-
-@media (min-width: 767px) {
-    .statisticsContainer {
-        margin-right: auto;
-        margin-left: auto;
-    }
+  .statisticsContainer {
+    background-color: #e5e5e5;
+    text-align: center;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    .statisticsContainer {
-        max-width: 768px;
-        background-image: url(./images/statisticsBackgroundTablet.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+  .statisticsContainer {
+    max-width: 768px;
+    background-image: url(./images/statisticsBackgroundTablet.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 769px) {
+  .statisticsContainer {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 1280px) {
-    .statisticsContainer {
-        display: flex;
-        align-items: flex-start;
-        background-image: url(./images/statisticsBackgroundPc.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+  .statisticsContainer {
+    display: flex;
+    align-items: flex-start;
+    background-image: url(./images/statisticsBackgroundPc.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
